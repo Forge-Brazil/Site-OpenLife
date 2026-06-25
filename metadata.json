@@ -1,0 +1,7 @@
+{
+  "name": "OpenLife English School",
+  "description": "Comprehensive institutional website for OpenLife English School featuring a methodology showcase, course catalog, interactive level test, and an AI-powered academic assistant.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
