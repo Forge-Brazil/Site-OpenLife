@@ -1,4 +1,6 @@
 
+import type { ReactNode } from 'react';
+
 export interface Course {
   id: string;
   title: string;
@@ -14,6 +16,7 @@ export interface Post {
   title: string;
   excerpt: string;
   content: string;
+  contentNode?: ReactNode;
   category: string;
   tags: string[];
   date: string;

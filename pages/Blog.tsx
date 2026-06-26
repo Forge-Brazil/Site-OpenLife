@@ -91,16 +91,24 @@ const Blog: React.FC = () => {
 
             {/* Structured/Technical Content */}
             <div className="prose prose-lg md:prose-xl prose-slate max-w-none prose-headings:text-slate-900 prose-headings:font-black prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-purple-brand">
-              <div className="bg-slate-50 border-l-4 border-orange-brand p-8 md:p-10 rounded-r-3xl mb-12">
-                <p className="text-xl md:text-2xl text-slate-700 font-bold italic m-0 leading-relaxed">
-                  "{selectedPost.excerpt}"
-                </p>
-              </div>
+              {!selectedPost.contentNode && (
+                <div className="bg-slate-50 border-l-4 border-orange-brand p-8 md:p-10 rounded-r-3xl mb-12">
+                  <p className="text-xl md:text-2xl text-slate-700 font-bold italic m-0 leading-relaxed">
+                    "{selectedPost.excerpt}"
+                  </p>
+                </div>
+              )}
 
               {/* Main Content Body */}
-              <div className="space-y-8 whitespace-pre-line text-lg text-slate-600 leading-relaxed">
-                {selectedPost.content}
-              </div>
+              {selectedPost.contentNode ? (
+                <div className="space-y-0">
+                  {selectedPost.contentNode}
+                </div>
+              ) : (
+                <div className="space-y-8 whitespace-pre-line text-lg text-slate-600 leading-relaxed">
+                  {selectedPost.content}
+                </div>
+              )}
 
               {/* CTA Section - Integrated and Standardized */}
               <div className="mt-20 p-10 md:p-16 bg-gradient-to-br from-purple-brand to-indigo-900 rounded-[40px] text-white relative overflow-hidden shadow-2xl">
