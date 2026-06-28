@@ -163,18 +163,87 @@ fbq('track', 'PageView');
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
+      /* ─── Base ──────────────────────────────────────────── */
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
+        background-color: #F5F5F7;   /* cinza clarinho — tom de página */
       }
-      .bg-purple-brand { background-color: #6B2D8B; }
-      .text-purple-brand { color: #6B2D8B; }
-      .bg-orange-brand { background-color: #F57C20; }
-      .text-orange-brand { color: #F57C20; }
-      .border-purple-brand { border-color: #6B2D8B; }
-      .border-orange-brand { border-color: #F57C20; }
+
+      /* ─── Brand: Roxo vivo (primário) ───────────────────── */
+      :root {
+        --purple: #7C3AED;
+        --purple-dark: #5B21B6;
+        --orange: #F57C20;
+        --orange-dark: #EA580C;
+        --page-bg: #F5F5F7;
+      }
+
+      .bg-purple-brand         { background-color: #7C3AED; }
+      .text-purple-brand       { color: #7C3AED; }
+      .border-purple-brand     { border-color: #7C3AED; }
+      .ring-purple-brand       { --tw-ring-color: #7C3AED; }
+
+      .hover\:bg-purple-brand:hover       { background-color: #7C3AED; }
+      .hover\:bg-purple-900:hover         { background-color: #4C1D95; }
+      .hover\:text-purple-brand:hover     { color: #7C3AED; }
+      .hover\:border-purple-brand:hover   { border-color: #7C3AED; }
+      .focus\:ring-purple-brand:focus     { box-shadow: 0 0 0 3px rgba(124,58,237,0.25); }
+
+      /* Purple gradient */
+      .from-purple-brand  { --tw-gradient-from: #7C3AED; }
+      .to-purple-brand    { --tw-gradient-to: #7C3AED; }
+      .via-purple-brand   { --tw-gradient-via: #7C3AED; }
+
+      /* Purple shadow utility */
+      .shadow-purple-brand\/20  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.20); }
+      .shadow-purple-brand\/40  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.40); }
+
+      /* Bg tints */
+      .bg-purple-50  { background-color: #F5F3FF; }
+      .bg-purple-100 { background-color: #EDE9FE; }
+      .text-purple-100 { color: #EDE9FE; }
+      .text-purple-200 { color: #DDD6FE; }
+      .border-purple-200 { border-color: #DDD6FE; }
+
+      /* ─── Brand: Laranja (acento / detalhe) ─────────────── */
+      .bg-orange-brand         { background-color: #F57C20; }
+      .text-orange-brand       { color: #F57C20; }
+      .border-orange-brand     { border-color: #F57C20; }
+
+      .hover\:bg-orange-brand:hover   { background-color: #F57C20; }
+      .hover\:bg-orange-600:hover     { background-color: #EA580C; }
+      .hover\:text-orange-brand:hover { color: #F57C20; }
+      .hover\:text-orange-400:hover   { color: #FB923C; }
+
+      .bg-orange-50  { background-color: #FFF7ED; }
+      .bg-orange-100 { background-color: #FFEDD5; }
+      .text-orange-100 { color: #FFEDD5; }
+      .text-orange-200 { color: #FED7AA; }
+      .border-orange-200 { border-color: #FED7AA; }
+
+      .from-orange-brand { --tw-gradient-from: #F57C20; }
+      .to-orange-600     { --tw-gradient-to: #EA580C; }
+
+      /* ─── Ícones finos (global Lucide) ──────────────────── */
+      main svg,
+      header svg,
+      footer svg {
+        stroke-width: 1.5;
+      }
+
+      /* ─── Utilitários extras ─────────────────────────────── */
+      .bg-page { background-color: #F5F5F7; }
+
+      /* Scrollbar hiding for category nav */
+      .scrollbar-hide::-webkit-scrollbar { display: none; }
+      .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+      /* Smooth animations */
+      .animate-in { animation: fadeIn 0.3s ease both; }
+      @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
     </style>
   <script type="importmap">
 {
@@ -190,7 +259,7 @@ fbq('track', 'PageView');
 </script>
 <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-white text-slate-900">
+  <body class="text-slate-900">
 
     <!-- Meta Pixel (noscript) -->
 <noscript><img height="1" width="1" style="display:none"
