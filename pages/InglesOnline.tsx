@@ -28,7 +28,7 @@ const InglesOnline: React.FC = () => {
             método ESL imersivo e turmas pequenas. Fluência garantida em 18 meses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-orange-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl">
+            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Começar aula experimental grátis <ArrowRight className="ml-2" size={20} />
             </a>
             <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
@@ -149,7 +149,7 @@ const InglesOnline: React.FC = () => {
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Comece hoje. Do seu sofá.</h2>
           <p className="text-purple-100">Aula experimental gratuita. Sem compromisso. Online agora.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-orange-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl">
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-purple-brand px-10 py-5 rounded-2xl font-bold text-xl hover:bg-purple-50 transition-all shadow-xl">
             Quero minha aula grátis <ArrowRight className="ml-3" size={22} />
           </a>
         </div>

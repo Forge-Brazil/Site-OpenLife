@@ -28,7 +28,7 @@ const InglesNegocios: React.FC = () => {
             Business English com método ESL — do zero ao fluente em 18 meses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-orange-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl">
+            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Agendar aula experimental grátis <ArrowRight className="ml-2" size={20} />
             </a>
             <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-xl font-bold text-lg hover:border-white hover:text-white transition-all">

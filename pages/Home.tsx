@@ -412,45 +412,47 @@ const Home: React.FC = () => {
                 key={cat.id}
                 className={`rounded-2xl overflow-hidden transition-all border ${
                   expandedCategory === cat.id
-                    ? 'bg-purple-brand border-purple-brand'
-                    : 'bg-slate-50 border-slate-100 hover:border-slate-200'
+                    ? 'bg-purple-50 border-purple-200'
+                    : 'bg-white border-slate-100 hover:border-purple-100'
                 }`}
               >
                 <button
                   onClick={() => setExpandedCategory(expandedCategory === cat.id ? null : cat.id)}
                   className={`w-full flex items-center justify-between p-5 text-left transition-colors ${
-                    expandedCategory === cat.id ? 'text-white' : 'text-slate-700'
+                    expandedCategory === cat.id ? 'text-purple-brand' : 'text-slate-700 hover:text-purple-brand'
                   }`}
                   aria-expanded={expandedCategory === cat.id}
                 >
                   <div className="flex items-center space-x-3">
                     <div className={`w-9 h-9 rounded-xl flex items-center justify-center border ${
-                      expandedCategory === cat.id ? 'border-white/20 text-white' : 'border-slate-200 text-slate-400 bg-white'
+                      expandedCategory === cat.id
+                        ? 'border-purple-200 text-purple-brand bg-white'
+                        : 'border-slate-200 text-slate-400 bg-slate-50'
                     }`}>{cat.icon}</div>
                     <span className="font-semibold text-base">{cat.category}</span>
                   </div>
                   {expandedCategory === cat.id
-                    ? <ChevronUp size={18} strokeWidth={1.5} className="text-white/70 shrink-0" />
+                    ? <ChevronUp size={18} strokeWidth={1.5} className="text-purple-brand shrink-0" />
                     : <ChevronDown size={18} strokeWidth={1.5} className="text-slate-400 shrink-0" />}
                 </button>
 
                 {expandedCategory === cat.id && (
-                  <div className="px-5 pb-4 space-y-2 animate-in">
+                  <div className="px-5 pb-5 space-y-2 animate-in">
                     {cat.questions.map((item, qIdx) => (
-                      <div key={qIdx} className="bg-white/10 rounded-xl overflow-hidden">
+                      <div key={qIdx} className="bg-white border border-purple-100 rounded-xl overflow-hidden shadow-sm">
                         <button
                           onClick={() => setExpandedQuestion(expandedQuestion === item.q ? null : item.q)}
-                          className="w-full flex items-center justify-between p-4 text-white text-left hover:bg-white/10 transition-colors"
+                          className="w-full flex items-center justify-between p-4 text-slate-800 text-left hover:bg-purple-50 transition-colors"
                         >
                           <span className="font-medium text-sm pr-4">{item.q}</span>
                           <ChevronDown
                             size={16}
                             strokeWidth={1.5}
-                            className={`text-white/50 shrink-0 transition-transform ${expandedQuestion === item.q ? 'rotate-180' : ''}`}
+                            className={`text-purple-brand shrink-0 transition-transform ${expandedQuestion === item.q ? 'rotate-180' : ''}`}
                           />
                         </button>
                         {expandedQuestion === item.q && (
-                          <div className="px-4 pb-4 pt-0 text-white/70 text-sm leading-relaxed whitespace-pre-line border-t border-white/10">
+                          <div className="px-4 pb-4 pt-0 text-slate-600 text-sm leading-relaxed whitespace-pre-line border-t border-purple-50">
                             {item.a}
                           </div>
                         )}

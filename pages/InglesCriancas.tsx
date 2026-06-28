@@ -28,7 +28,7 @@ const InglesCriancas: React.FC = () => {
             Bilinguismo precoce com professores especializados, gamificação e muito aprendizado divertido.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-orange-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl">
+            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Agendar aula experimental grátis <ArrowRight className="ml-2" size={20} />
             </a>
           </div>
