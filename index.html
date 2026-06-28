@@ -44,80 +44,122 @@ fbq('track', 'PageView');
     <meta name="google-site-verification" content="6qYhQk3tsRYTMqyMIxZ2pi0FXdPS8tD19VbVHZ-S0vI" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/png" href="/favicon.png" />
-    <link rel="canonical" href="https://openlifebrasil.com.br/" />
 
-    <!-- SEO Primary -->
-    <title>OpenLife English School Bagé | Inglês Imersivo – Fluência em 18 Meses</title>
-    <meta name="description" content="Escola de inglês em Bagé com método imersivo. Kids, Teens e Adultos. Fluência em 18 meses, certificação internacional CEFR, aulas online e presenciais. Agende sua aula grátis!">
-    <meta name="keywords" content="escola de inglês Bagé, curso de inglês Bagé, inglês online Bagé, inglês para crianças Bagé, fluência em inglês, inglês imersivo, certificação CEFR, OpenLife English School">
+    <!-- SEO Primary — canonical é atualizado dinamicamente via SEOUpdater em App.tsx -->
+    <title>Curso de Inglês Online | Fluência em 18 Meses com Método ESL | OpenLife</title>
+    <meta name="description" content="Aprenda inglês com método ESL imersivo da OpenLife. Fluência em 18 meses. Para adultos, jovens e executivos. Online e presencial em todo o Brasil.">
+    <meta name="keywords" content="curso de inglês online, inglês para adultos, inglês para crianças, inglês para adolescentes, inglês para negócios, fluência em inglês, método ESL, certificação CEFR, OpenLife English School, intercâmbio">
     <meta name="author" content="OpenLife English School">
-    <meta name="robots" content="index, follow">
-    <meta name="geo.region" content="BR-RS">
-    <meta name="geo.placename" content="Bagé, Rio Grande do Sul">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-    <!-- Open Graph (Facebook / Instagram) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://openlifebrasil.com.br/">
-    <meta property="og:title" content="OpenLife English School Bagé | Inglês Imersivo – Fluência em 18 Meses">
-    <meta property="og:description" content="Escola de inglês em Bagé com método imersivo. Kids, Teens e Adultos. Fluência em 18 meses e certificação internacional. Agende sua aula grátis!">
-    <meta property="og:image" content="https://openlifebrasil.com.br/favicon.png">
+    <meta property="og:title" content="Curso de Inglês Online | Fluência em 18 Meses | OpenLife">
+    <meta property="og:description" content="Método ESL imersivo. Do A1 ao C1 em 18 meses. Para adultos, jovens e executivos. Online ou presencial em todo o Brasil.">
+    <meta property="og:image" content="https://openlifebrasil.com.br/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="OpenLife English School">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="OpenLife English School Bagé | Inglês Imersivo">
-    <meta name="twitter:description" content="Fluência em inglês em 18 meses com método imersivo. Escola em Bagé-RS.">
+    <meta name="twitter:site" content="@openlifebrasil">
+    <meta name="twitter:title" content="Curso de Inglês Online | Fluência em 18 Meses | OpenLife">
+    <meta name="twitter:description" content="Método ESL imersivo. Do A1 ao C1 em 18 meses. Online e presencial em todo o Brasil.">
+    <meta name="twitter:image" content="https://openlifebrasil.com.br/og-image.jpg">
 
-    <!-- Schema.org: LocalBusiness + EducationalOrganization -->
+    <!-- Schema.org: EducationalOrganization nacional + WebSite -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": ["EducationalOrganization", "LocalBusiness"],
-      "name": "OpenLife English School",
-      "alternateName": "OpenLife Bagé",
-      "url": "https://openlifebrasil.com.br",
-      "logo": "https://openlifebrasil.com.br/favicon.png",
-      "image": "https://openlifebrasil.com.br/favicon.png",
-      "description": "Escola de inglês em Bagé com método imersivo ESL. Cursos para Kids, Teens e Adultos com fluência garantida em 18 meses e certificação internacional CEFR.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Bagé",
-        "addressRegion": "RS",
-        "addressCountry": "BR"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "-31.3289",
-        "longitude": "-54.1069"
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Bagé"
-      },
-      "telephone": "",
-      "priceRange": "$$",
-      "openingHoursSpecification": [
+      "@graph": [
         {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-          "opens": "08:00",
-          "closes": "22:00"
+          "@type": "EducationalOrganization",
+          "@id": "https://openlifebrasil.com.br/#organization",
+          "name": "OpenLife English School",
+          "alternateName": "OpenLife",
+          "url": "https://openlifebrasil.com.br",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://openlifebrasil.com.br/2.png",
+            "width": 400,
+            "height": 400
+          },
+          "image": "https://openlifebrasil.com.br/og-image.jpg",
+          "description": "Escola de inglês com método ESL imersivo. Fluência garantida em 18 meses para adultos, jovens e executivos. Online e presencial em todo o Brasil. +66 mil alunos formados.",
+          "foundingDate": "2003",
+          "areaServed": {"@type": "Country", "name": "Brasil"},
+          "email": "contato@openlifebrasil.com",
+          "telephone": "+55-53-99965-6216",
+          "sameAs": [
+            "https://www.instagram.com/openlifebrasil/",
+            "https://www.linkedin.com/in/openlife-english-school-bage/"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Cursos de Inglês",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Course",
+                  "name": "Journey 18 Meses",
+                  "description": "Curso de inglês imersivo do A1 ao C1 em 18 meses com certificação CEFR. Para adultos, universitários e executivos.",
+                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"},
+                  "educationalLevel": "A1 ao C1 (CEFR)",
+                  "timeRequired": "P18M",
+                  "url": "https://openlifebrasil.com.br/#/cursos"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Course",
+                  "name": "OpenLife Kids",
+                  "description": "Inglês para crianças de 6 a 9 anos com bilinguismo precoce e método lúdico.",
+                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Course",
+                  "name": "OpenLife Teens",
+                  "description": "Inglês para adolescentes de 10 a 17 anos com gamificação e prep para intercâmbio.",
+                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Course",
+                  "name": "Inglês para Negócios",
+                  "description": "Business English para executivos e profissionais. Reuniões, negociações e apresentações internacionais.",
+                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
+                }
+              }
+            ]
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "847",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://openlifebrasil.com.br/#website",
+          "url": "https://openlifebrasil.com.br",
+          "name": "OpenLife English School",
+          "description": "Curso de inglês online e presencial com método ESL imersivo. Fluência em 18 meses.",
+          "publisher": {"@id": "https://openlifebrasil.com.br/#organization"},
+          "inLanguage": "pt-BR"
         }
-      ],
-      "sameAs": [
-        "https://www.instagram.com/openlifebrasil/",
-        "https://www.linkedin.com/in/openlife-english-school-bage/"
-      ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Cursos de Inglês",
-        "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "OpenLife Kids", "description": "Inglês para crianças de 6 a 9 anos com bilinguismo precoce"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "OpenLife Teens", "description": "Inglês para adolescentes de 10 a 12 anos com gamificação e certificações"}},
-          {"@type": "Offer", "itemOffered": {"@type": "Course", "name": "OpenLife Journey", "description": "Fluência em 18 meses com método ESL imersivo e certificação CEFR C1/C2"}}
-        ]
-      }
+      ]
     }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
