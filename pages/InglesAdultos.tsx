@@ -92,7 +92,7 @@ const InglesAdultos: React.FC = () => {
       </section>
 
       {/* Para quem é */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-page">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">Para quem é o Journey 18 Meses?</h2>
@@ -137,7 +137,7 @@ const InglesAdultos: React.FC = () => {
               </div>
             ))}
           </div>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Começar minha jornada <ArrowRight className="ml-3" size={22} />
           </a>
         </div>

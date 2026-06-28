@@ -169,16 +169,17 @@ fbq('track', 'PageView');
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
-        background-color: #F5F5F7;   /* cinza clarinho — tom de página */
+        background-color: #F6F4FC;   /* roxo clarinho — tom de página */
       }
 
       /* ─── Brand: Roxo vivo (primário) ───────────────────── */
       :root {
         --purple: #7C3AED;
         --purple-dark: #5B21B6;
+        --purple-deep: #1A1033;
         --orange: #F57C20;
         --orange-dark: #EA580C;
-        --page-bg: #F5F5F7;
+        --page-bg: #F6F4FC;
       }
 
       .bg-purple-brand         { background-color: #7C3AED; }
@@ -239,7 +240,12 @@ fbq('track', 'PageView');
       }
 
       /* ─── Utilitários extras ─────────────────────────────── */
-      .bg-page { background-color: #F5F5F7; }
+      .bg-page       { background-color: #F6F4FC; }
+      .bg-deep-purple { background-color: #1A1033; }
+      .text-deep-purple { color: #1A1033; }
+
+      /* Pílula — rounded-full para CTAs principais */
+      .rounded-full { border-radius: 9999px; }
 
       /* Scrollbar hiding for category nav */
       .scrollbar-hide::-webkit-scrollbar { display: none; }

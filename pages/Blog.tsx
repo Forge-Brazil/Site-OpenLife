@@ -46,13 +46,13 @@ const Blog: React.FC = () => {
         </div>
 
         {/* Minimalist Hero Section */}
-        <section className="bg-purple-brand text-white py-16 md:py-24">
+        <section className="text-white py-16 md:py-24" style={{ backgroundColor: '#1A1033' }}>
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
                 <div className="flex items-center space-x-3">
-                  <span className="w-8 h-px bg-orange-brand"></span>
-                  <span className="text-orange-brand text-xs font-black uppercase tracking-widest">{selectedPost.category}</span>
+                  <span className="w-8 h-px bg-purple-200"></span>
+                  <span className="text-purple-200 text-xs font-black uppercase tracking-widest">{selectedPost.category}</span>
                 </div>
                 <h1 className="text-3xl md:text-5xl lg:text-6xl font-black leading-tight">
                   {selectedPost.title}
@@ -84,7 +84,7 @@ const Blog: React.FC = () => {
                 <span>Publicado em {selectedPost.date}</span>
               </div>
               <div className="flex items-center space-x-2">
-                <Tag size={14} className="text-orange-brand" />
+                <Tag size={14} className="text-purple-brand" />
                 <span>{selectedPost.tags.join(' / ')}</span>
               </div>
             </div>
@@ -92,7 +92,7 @@ const Blog: React.FC = () => {
             {/* Structured/Technical Content */}
             <div className="prose prose-lg md:prose-xl prose-slate max-w-none prose-headings:text-slate-900 prose-headings:font-black prose-p:text-slate-600 prose-p:leading-relaxed prose-strong:text-purple-brand">
               {!selectedPost.contentNode && (
-                <div className="bg-slate-50 border-l-4 border-orange-brand p-8 md:p-10 rounded-r-3xl mb-12">
+                <div className="bg-slate-50 border-l-4 border-purple-brand p-8 md:p-10 rounded-r-3xl mb-12">
                   <p className="text-xl md:text-2xl text-slate-700 font-bold italic m-0 leading-relaxed">
                     "{selectedPost.excerpt}"
                   </p>
@@ -111,7 +111,7 @@ const Blog: React.FC = () => {
               )}
 
               {/* CTA Section - Integrated and Standardized */}
-              <div className="mt-20 p-10 md:p-16 bg-gradient-to-br from-purple-brand to-indigo-900 rounded-[40px] text-white relative overflow-hidden shadow-2xl">
+              <div className="mt-20 p-10 md:p-16 rounded-[40px] text-white relative overflow-hidden shadow-2xl" style={{ backgroundColor: '#1A1033' }}>
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 <div className="relative z-10 space-y-8 text-center">
                   <h2 className="text-3xl md:text-4xl font-black m-0 leading-tight">Domine o inglês de forma técnica e definitiva</h2>
@@ -123,7 +123,7 @@ const Blog: React.FC = () => {
                       href="https://form.respondi.app/5HvbxD84" 
                       target="_blank" 
                       rel="noopener noreferrer" 
-                      className="inline-flex items-center space-x-3 bg-orange-brand text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all transform hover:scale-105 shadow-xl"
+                      className="inline-flex items-center space-x-3 bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all transform hover:scale-105 shadow-xl"
                     >
                       <span>Agendar Aula Experimental</span>
                       <ArrowRight size={24} />
@@ -154,7 +154,7 @@ const Blog: React.FC = () => {
                   </div>
                   <div className="space-y-2">
                     <span className="text-[10px] font-black text-purple-brand uppercase tracking-widest">{post.category}</span>
-                    <h4 className="text-lg font-black text-slate-900 group-hover:text-orange-brand transition-colors leading-tight line-clamp-2">{post.title}</h4>
+                    <h4 className="text-lg font-black text-slate-900 group-hover:text-purple-brand transition-colors leading-tight line-clamp-2">{post.title}</h4>
                   </div>
                 </div>
               ))}
@@ -235,7 +235,7 @@ const Blog: React.FC = () => {
                   </p>
                   <div className="pt-6 mt-auto flex items-center justify-between border-t border-gray-50">
                     <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest">{post.date}</span>
-                    <span className="text-orange-brand font-black text-[10px] uppercase flex items-center group-hover:translate-x-2 transition-transform">
+                    <span className="text-purple-brand font-black text-[10px] uppercase flex items-center group-hover:translate-x-2 transition-transform">
                       Ler Artigo <ArrowRight size={14} className="ml-1" />
                     </span>
                   </div>

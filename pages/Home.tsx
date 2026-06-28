@@ -133,14 +133,14 @@ const Home: React.FC = () => {
                   href={CTA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-purple-brand text-white px-7 py-3.5 rounded-xl font-semibold text-base hover:bg-purple-900 transition-all shadow-sm hover:shadow-purple-brand/20 group"
+                  className="inline-flex items-center justify-center bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-base hover:bg-purple-900 transition-all shadow-sm hover:shadow-purple-brand/20 group"
                 >
                   Agendar aula experimental grátis
                   <ArrowRight size={17} strokeWidth={1.5} className="ml-2 transition-transform group-hover:translate-x-0.5" />
                 </a>
                 <Link
                   to="/metodologia"
-                  className="inline-flex items-center justify-center border border-slate-200 text-slate-600 px-7 py-3.5 rounded-xl font-medium text-base hover:border-purple-brand hover:text-purple-brand transition-all"
+                  className="inline-flex items-center justify-center border border-slate-200 text-slate-600 px-7 py-3.5 rounded-full font-medium text-base hover:border-purple-brand hover:text-purple-brand transition-all"
                 >
                   Ver metodologia
                 </Link>
@@ -240,7 +240,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
-            <span className="text-orange-brand font-semibold text-xs uppercase tracking-[0.2em]">Para quem é</span>
+            <span className="inline-block bg-purple-50 text-purple-brand border border-purple-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3.5 py-1 rounded-full">Para quem é</span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">
               O Journey foi construído <span className="text-purple-brand">para você</span>
             </h2>
@@ -280,7 +280,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
-            <span className="text-purple-brand font-semibold text-xs uppercase tracking-[0.2em]">O método</span>
+            <span className="inline-block bg-purple-50 text-purple-brand border border-purple-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3.5 py-1 rounded-full">O método</span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">
               Journey 18 Meses —{' '}
               <span className="text-purple-brand">do A1 ao C1</span>
@@ -359,7 +359,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
-            <span className="text-orange-brand font-semibold text-xs uppercase tracking-[0.2em]">Programas</span>
+            <span className="inline-block bg-purple-50 text-purple-brand border border-purple-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3.5 py-1 rounded-full">Programas</span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">
               Escolha o <span className="text-purple-brand">programa ideal</span> para você
             </h2>
@@ -385,7 +385,7 @@ const Home: React.FC = () => {
                   <p className="text-white/60 text-xs mb-4">{course.age}</p>
                   <Link
                     to="/cursos"
-                    className="bg-white text-slate-900 text-center py-2.5 rounded-xl text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity hover:bg-purple-brand hover:text-white"
+                    className="bg-white text-slate-900 text-center py-2.5 rounded-full text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity hover:bg-purple-brand hover:text-white"
                   >
                     Saiba Mais
                   </Link>
@@ -400,7 +400,7 @@ const Home: React.FC = () => {
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12 space-y-3">
-            <span className="text-orange-brand font-semibold text-xs uppercase tracking-[0.2em]">Dúvidas frequentes</span>
+            <span className="inline-block bg-purple-50 text-purple-brand border border-purple-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3.5 py-1 rounded-full">Dúvidas frequentes</span>
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">
               Tudo que você precisa <span className="text-purple-brand">saber</span>
             </h2>
@@ -469,7 +469,7 @@ const Home: React.FC = () => {
       {/* ── CTA FINAL ─────────────────────────────────────────── */}
       <section className="py-20 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-purple-brand rounded-3xl overflow-hidden relative p-10 md:p-20 text-center">
+          <div className="rounded-3xl overflow-hidden relative p-10 md:p-20 text-center" style={{ backgroundColor: '#1A1033' }}>
             <div className="absolute top-0 right-0 w-80 h-80 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-60 h-60 bg-black/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -489,7 +489,7 @@ const Home: React.FC = () => {
                   href={CTA_URL}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center bg-white text-purple-brand px-9 py-4 rounded-xl font-bold text-base hover:bg-purple-50 transition-all shadow-sm group"
+                  className="inline-flex items-center bg-purple-brand text-white px-9 py-4 rounded-full font-bold text-base hover:bg-purple-900 transition-all shadow-sm group"
                 >
                   Agendar Aula Grátis Agora
                   <ArrowRight size={17} strokeWidth={1.5} className="ml-2 group-hover:translate-x-0.5 transition-transform" />

@@ -74,7 +74,7 @@ const InglesCriancas: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-emerald-600 text-white px-8 py-4 rounded-xl font-bold hover:bg-emerald-700 transition-all">
+              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-full font-bold hover:bg-purple-900 transition-all">
                 Garantir vaga do meu filho <ArrowRight className="ml-2" size={18} />
               </a>
             </div>
@@ -90,7 +90,7 @@ const InglesCriancas: React.FC = () => {
       </section>
 
       {/* Como funciona o Kids */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-page">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">
@@ -132,7 +132,7 @@ const InglesCriancas: React.FC = () => {
             <details key={i} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 list-none hover:bg-slate-50 transition-colors">
                 {item.q}
-                <span className="text-emerald-600 ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
+                <span className="text-purple-brand ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
               </summary>
               <div className="px-6 pb-6 text-slate-500 text-sm leading-relaxed border-t border-gray-50 pt-4">{item.a}</div>
             </details>
@@ -141,11 +141,11 @@ const InglesCriancas: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-emerald-600 text-white text-center px-4">
+      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Dê ao seu filho a vantagem do bilinguismo.</h2>
-          <p className="text-emerald-100">Aula experimental gratuita. Sem compromisso. Resultado para toda a vida.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-orange-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl">
+          <p className="text-purple-200">Aula experimental gratuita. Sem compromisso. Resultado para toda a vida.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Agendar aula grátis para meu filho <ArrowRight className="ml-3" size={22} />
           </a>
         </div>

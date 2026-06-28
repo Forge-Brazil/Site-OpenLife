@@ -23,23 +23,23 @@ const Franchise: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 bg-purple-brand overflow-hidden text-white">
+      <section className="relative py-24 overflow-hidden text-white" style={{ backgroundColor: '#1A1033' }}>
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-full border border-white/20">
-            <Rocket size={18} className="text-orange-brand" />
+            <Rocket size={18} className="text-purple-200" />
             <span className="text-xs font-black uppercase tracking-widest">Expansão OpenLife 2024</span>
           </div>
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight max-w-5xl mx-auto">
-            Invista em uma franquia com <span className="text-orange-brand">propósito, resultado</span> e transformação real de vidas.
+            Invista em uma franquia com <span className="text-purple-200">propósito, resultado</span> e transformação real de vidas.
           </h1>
           <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto font-medium leading-relaxed">
             Empreenda com a marca que revolucionou o ensino de idiomas. Mais que uma escola, um modelo de negócio altamente rentável e transformador.
           </p>
           <div className="pt-8">
-            <a href="#contato-franquia" className="bg-orange-brand text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-2xl inline-flex items-center group">
+            <a href="#contato-franquia" className="bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl inline-flex items-center group">
               Seja um franqueado OpenLife
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -48,7 +48,7 @@ const Franchise: React.FC = () => {
       </section>
 
       {/* Numbers Section */}
-      <section className="py-16 bg-gray-50 border-y border-gray-100">
+      <section className="py-16 bg-page border-y border-gray-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
@@ -71,7 +71,7 @@ const Franchise: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
             <div className="relative">
-              <div className="absolute -inset-4 bg-orange-brand/10 rounded-[40px] blur-3xl"></div>
+              <div className="absolute -inset-4 bg-purple-brand/10 rounded-[40px] blur-3xl"></div>
               <img 
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200" 
                 alt="Reunião de negócios OpenLife" 
@@ -93,9 +93,9 @@ const Franchise: React.FC = () => {
                   <ShieldCheck className="text-purple-brand" size={24} />
                   <span className="font-bold text-purple-brand">Modelo Validado</span>
                 </div>
-                <div className="flex items-center space-x-3 p-4 bg-orange-50 rounded-2xl">
-                  <BarChart3 className="text-orange-brand" size={24} />
-                  <span className="font-bold text-orange-brand">Alta Rentabilidade</span>
+                <div className="flex items-center space-x-3 p-4 bg-purple-50 rounded-2xl">
+                  <BarChart3 className="text-purple-brand" size={24} />
+                  <span className="font-bold text-purple-brand">Alta Rentabilidade</span>
                 </div>
               </div>
             </div>
@@ -104,12 +104,12 @@ const Franchise: React.FC = () => {
       </section>
 
       {/* Por que ser um franqueado? */}
-      <section className="py-24 bg-purple-brand text-white overflow-hidden relative">
+      <section className="py-24 text-white overflow-hidden relative" style={{ backgroundColor: '#1A1033' }}>
         <div className="absolute top-0 right-0 p-20 opacity-5">
           <Globe size={400} />
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-4xl md:text-6xl font-black mb-16">Por que ser um <span className="text-orange-brand">franqueado OpenLife?</span></h2>
+          <h2 className="text-4xl md:text-6xl font-black mb-16">Por que ser um <span className="text-purple-200">franqueado OpenLife?</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: <CheckCircle2 />, title: "Metodologia Exclusiva", desc: "Sistema imersivo validado por 66 mil alunos que garante fluência em 18 meses." },
@@ -120,7 +120,7 @@ const Franchise: React.FC = () => {
               { icon: <HeartHandshake />, title: "Capacitação Contínua", desc: "Treinamentos recorrentes para você e sua equipe na OpenLife University." }
             ].map((item, i) => (
               <div key={i} className="bg-white/10 backdrop-blur-md p-10 rounded-[40px] border border-white/20 text-left space-y-6 hover:bg-white/15 transition-all">
-                <div className="text-orange-brand">{item.icon}</div>
+                <div className="text-purple-200">{item.icon}</div>
                 <h3 className="text-2xl font-black">{item.title}</h3>
                 <p className="text-purple-100 leading-relaxed">{item.desc}</p>
               </div>
@@ -137,7 +137,7 @@ const Franchise: React.FC = () => {
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">O negócio certo para quem busca solidez e impacto.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 p-10 rounded-[40px] space-y-6 border border-gray-100">
+            <div className="bg-page p-10 rounded-[40px] space-y-6 border border-gray-100">
               <h3 className="text-2xl font-black text-purple-brand">Potencial de Mercado</h3>
               <p className="text-slate-600 leading-relaxed">
                 Apenas 3% da população brasileira fala inglês fluentemente. Você estará atuando em um nicho com demanda reprimida e busca constante por qualificação para o mercado global.
@@ -151,8 +151,8 @@ const Franchise: React.FC = () => {
                 ))}
               </ul>
             </div>
-            <div className="bg-gray-50 p-10 rounded-[40px] space-y-6 border border-gray-100">
-              <h3 className="text-2xl font-black text-orange-brand">Flexibilidade de Modelos</h3>
+            <div className="bg-page p-10 rounded-[40px] space-y-6 border border-gray-100">
+              <h3 className="text-2xl font-black text-purple-brand">Flexibilidade de Modelos</h3>
               <p className="text-slate-600 leading-relaxed">
                 Temos formatos de negócio adaptáveis para cidades pequenas, médias e grandes, garantindo que o seu investimento seja otimizado de acordo com a sua região.
               </p>
@@ -170,7 +170,7 @@ const Franchise: React.FC = () => {
       </section>
 
       {/* Prova Social */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-black text-center mb-16">Histórias de <span className="text-purple-brand">Sucesso</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -210,21 +210,21 @@ const Franchise: React.FC = () => {
       <section id="contato-franquia" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-[60px] shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 bg-purple-brand p-12 md:p-20 text-white flex flex-col justify-center space-y-8">
-              <h2 className="text-4xl md:text-5xl font-black leading-tight">Vamos construir o <span className="text-orange-brand">seu futuro</span> juntos?</h2>
+            <div className="lg:w-1/2 p-12 md:p-20 text-white flex flex-col justify-center space-y-8" style={{ backgroundColor: '#1A1033' }}>
+              <h2 className="text-4xl md:text-5xl font-black leading-tight">Vamos construir o <span className="text-purple-200">seu futuro</span> juntos?</h2>
               <p className="text-xl text-purple-100">
                 Preencha o formulário e receba em primeira mão a apresentação completa da nossa franquia.
               </p>
               <div className="space-y-6">
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                    <MessageCircle className="text-orange-brand" size={24} />
+                    <MessageCircle className="text-purple-200" size={24} />
                   </div>
                   <p className="font-bold">Atendimento personalizado em até 24h</p>
                 </div>
                 <div className="flex items-center space-x-4">
                   <div className="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center">
-                    <FileText className="text-orange-brand" size={24} />
+                    <FileText className="text-purple-200" size={24} />
                   </div>
                   <p className="font-bold">Dossiê completo da franquia incluso</p>
                 </div>
@@ -285,7 +285,7 @@ const Franchise: React.FC = () => {
                   </select>
                 </div>
                 <div className="pt-4">
-                  <button type="submit" className="w-full bg-orange-brand text-white py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20">
+                  <button type="submit" className="w-full bg-purple-brand text-white py-5 rounded-full font-black text-xl hover:bg-purple-900 transition-all shadow-xl shadow-purple-brand/20">
                     Baixar apresentação agora
                   </button>
                 </div>

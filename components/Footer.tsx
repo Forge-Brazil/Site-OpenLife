@@ -6,7 +6,7 @@ const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="bg-purple-900 text-white">
+    <footer className="text-white" style={{ backgroundColor: '#1A1033' }}>
 
       {/* CTA strip */}
       <div className="border-b border-white/10 py-7 px-4">
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
             href={CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center bg-purple-brand text-white px-7 py-3 rounded-xl font-semibold text-sm hover:bg-purple-900 transition-all"
+            className="shrink-0 inline-flex items-center bg-purple-brand text-white px-7 py-3 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all"
           >
             Agendar Aula Grátis
             <ArrowRight size={16} strokeWidth={1.5} className="ml-2" />

@@ -96,7 +96,7 @@ const InglesOnline: React.FC = () => {
       </section>
 
       {/* Como funciona */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-page">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-16">
           <div className="space-y-4">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900">Como funciona o inglês online</h2>
@@ -110,7 +110,7 @@ const InglesOnline: React.FC = () => {
               { n: '04', title: 'Fluência em 18 meses', desc: 'Com constância e nosso método ESL, você alcança o C1 em 18 meses e recebe sua certificação internacional.' },
             ].map((step, i) => (
               <div key={i} className="flex gap-5">
-                <div className="shrink-0 w-12 h-12 bg-purple-brand text-white rounded-2xl flex items-center justify-center font-black text-sm">
+                <div className="shrink-0 w-12 h-12 bg-purple-brand text-white rounded-full flex items-center justify-center font-black text-sm">
                   {step.n}
                 </div>
                 <div>
@@ -145,11 +145,11 @@ const InglesOnline: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-purple-brand text-white text-center px-4">
+      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Comece hoje. Do seu sofá.</h2>
-          <p className="text-purple-100">Aula experimental gratuita. Sem compromisso. Online agora.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-purple-brand px-10 py-5 rounded-2xl font-bold text-xl hover:bg-purple-50 transition-all shadow-xl">
+          <p className="text-purple-200">Aula experimental gratuita. Sem compromisso. Online agora.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Quero minha aula grátis <ArrowRight className="ml-3" size={22} />
           </a>
         </div>

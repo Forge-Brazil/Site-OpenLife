@@ -12,7 +12,7 @@ const CoursesPage: React.FC = () => {
       {/* Header */}
       <section className="bg-white py-20 border-b border-slate-100">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
-          <span className="text-orange-brand font-semibold text-xs uppercase tracking-[0.2em]">Programas</span>
+          <span className="inline-block bg-purple-50 text-purple-brand border border-purple-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3.5 py-1 rounded-full">Programas</span>
           <h1 className="text-4xl md:text-5xl font-black text-slate-900">
             Nossos <span className="text-purple-brand">Cursos</span>
           </h1>
@@ -46,7 +46,7 @@ const CoursesPage: React.FC = () => {
 
                 <div className="flex-1 space-y-6 bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
                   <div className="space-y-3">
-                    <span className="text-orange-brand font-semibold text-xs uppercase tracking-[0.2em]">{course.focus}</span>
+                    <span className="inline-block bg-orange-50 text-orange-brand border border-orange-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3 py-0.5 rounded-full">{course.focus}</span>
                     <h2 className="text-3xl md:text-4xl font-black text-slate-900">{course.title}</h2>
                     <p className="text-slate-400 leading-relaxed">{course.description}</p>
                   </div>
@@ -67,7 +67,7 @@ const CoursesPage: React.FC = () => {
                     href={CTA_URL}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-xl font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
+                    className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
                   >
                     <span>Quero saber mais</span>
                     <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
@@ -80,7 +80,7 @@ const CoursesPage: React.FC = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="bg-slate-900 py-20">
+      <section className="py-20" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
           <div className="flex justify-center">
             <span className="inline-block w-8 h-1 bg-orange-brand rounded-full"></span>
@@ -93,7 +93,7 @@ const CoursesPage: React.FC = () => {
             href={CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center bg-purple-brand text-white px-9 py-4 rounded-xl font-semibold text-base hover:bg-purple-900 transition-all shadow-sm group"
+            className="inline-flex items-center bg-purple-brand text-white px-9 py-4 rounded-full font-semibold text-base hover:bg-purple-900 transition-all shadow-sm group"
           >
             Agendar Aula Grátis
             <ArrowRight size={17} strokeWidth={1.5} className="ml-2 group-hover:translate-x-0.5 transition-transform" />

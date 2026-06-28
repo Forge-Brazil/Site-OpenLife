@@ -72,12 +72,12 @@ const InglesNegocios: React.FC = () => {
                   'Network global em eventos e conferências',
                 ].map((item, i) => (
                   <div key={i} className="flex items-start space-x-3">
-                    <CheckCircle2 size={20} className="text-orange-brand shrink-0 mt-0.5" />
+                    <CheckCircle2 size={20} className="text-purple-brand shrink-0 mt-0.5" />
                     <span className="text-slate-700 text-sm font-medium">{item}</span>
                   </div>
                 ))}
               </div>
-              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-slate-900 text-white px-8 py-4 rounded-xl font-bold hover:bg-slate-800 transition-all">
+              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-full font-bold hover:bg-purple-900 transition-all">
                 Quero falar inglês nos negócios <ArrowRight className="ml-2" size={18} />
               </a>
             </div>
@@ -93,7 +93,7 @@ const InglesNegocios: React.FC = () => {
       </section>
 
       {/* Habilidades */}
-      <section className="py-24 bg-slate-50">
+      <section className="py-24 bg-page">
         <div className="max-w-6xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-black text-slate-900 mb-4">O que você vai dominar</h2>
@@ -112,7 +112,7 @@ const InglesNegocios: React.FC = () => {
               { icon: <CheckCircle2 size={24} />, title: 'Certificação CEFR C1', desc: 'Certificado internacionalmente reconhecido que valida sua proficiência para qualquer empresa global.' },
             ].map((b, i) => (
               <div key={i} className="bg-white p-7 rounded-2xl border border-gray-100 shadow-sm hover:shadow-md transition-all group">
-                <div className="w-11 h-11 bg-orange-50 text-orange-brand rounded-xl flex items-center justify-center mb-4 group-hover:bg-orange-brand group-hover:text-white transition-all">
+                <div className="w-11 h-11 bg-purple-50 text-purple-brand rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-brand group-hover:text-white transition-all">
                   {b.icon}
                 </div>
                 <h3 className="font-black text-slate-900 mb-2">{b.title}</h3>
@@ -124,7 +124,7 @@ const InglesNegocios: React.FC = () => {
       </section>
 
       {/* Testimonial */}
-      <section className="py-20 bg-slate-900 text-white">
+      <section className="py-20 text-white" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
           <blockquote className="text-xl md:text-2xl font-bold italic leading-relaxed text-slate-200">
             "Em 14 meses comecei a conduzir reuniões com o time da matriz dos EUA sozinho. Antes eu precisava de um intérprete. A OpenLife mudou a trajetória da minha carreira."
@@ -149,7 +149,7 @@ const InglesNegocios: React.FC = () => {
             <details key={i} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 list-none hover:bg-slate-50 transition-colors">
                 {item.q}
-                <span className="text-orange-brand ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
+                <span className="text-purple-brand ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
               </summary>
               <div className="px-6 pb-6 text-slate-500 text-sm leading-relaxed border-t border-gray-50 pt-4">{item.a}</div>
             </details>
@@ -158,12 +158,12 @@ const InglesNegocios: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-gradient-to-r from-orange-brand to-orange-600 text-white text-center px-4">
+      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Seu próximo nível na carreira começa com inglês.</h2>
-          <p className="text-orange-100">Aula experimental gratuita com um de nossos especialistas em Business English.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-white text-orange-brand px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-50 transition-all shadow-xl">
-            Agendar minha aula grátis <ArrowRight className="ml-3 text-orange-brand" size={22} />
+          <p className="text-purple-200">Aula experimental gratuita com um de nossos especialistas em Business English.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
+            Agendar minha aula grátis <ArrowRight className="ml-3" size={22} />
           </a>
         </div>
       </section>

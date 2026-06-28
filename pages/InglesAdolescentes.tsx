@@ -79,7 +79,7 @@ const InglesAdolescentes: React.FC = () => {
               { icon: <Zap size={24} />, title: 'Inglês de forma natural', desc: 'Método ESL imersivo — adolescentes aprendem a pensar em inglês, não a traduzir. Resultado mais rápido e duradouro.' },
             ].map((b, i) => (
               <div key={i} className="p-7 border border-gray-100 rounded-2xl shadow-sm hover:shadow-lg transition-all group">
-                <div className="w-11 h-11 bg-indigo-50 text-indigo-600 rounded-xl flex items-center justify-center mb-4 group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                <div className="w-11 h-11 bg-purple-50 text-purple-brand rounded-xl flex items-center justify-center mb-4 group-hover:bg-purple-brand group-hover:text-white transition-all">
                   {b.icon}
                 </div>
                 <h3 className="font-black text-slate-900 mb-2">{b.title}</h3>
@@ -91,9 +91,9 @@ const InglesAdolescentes: React.FC = () => {
       </section>
 
       {/* Depoimento */}
-      <section className="py-20 bg-indigo-50">
+      <section className="py-20 bg-page">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-8">
-          <div className="flex justify-center text-indigo-400">
+          <div className="flex justify-center text-purple-brand">
             {[1,2,3,4,5].map(i => <Star key={i} size={24} fill="currentColor" />)}
           </div>
           <blockquote className="text-xl md:text-2xl font-bold text-slate-900 italic leading-relaxed">
@@ -116,7 +116,7 @@ const InglesAdolescentes: React.FC = () => {
             <details key={i} className="group bg-white border border-gray-100 rounded-2xl overflow-hidden">
               <summary className="flex items-center justify-between p-6 cursor-pointer font-bold text-slate-900 list-none hover:bg-slate-50 transition-colors">
                 {item.q}
-                <span className="text-indigo-600 ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
+                <span className="text-purple-brand ml-4 shrink-0 text-xl group-open:rotate-45 transition-transform inline-block">+</span>
               </summary>
               <div className="px-6 pb-6 text-slate-500 text-sm leading-relaxed border-t border-gray-50 pt-4">{item.a}</div>
             </details>
@@ -125,11 +125,11 @@ const InglesAdolescentes: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-indigo-700 text-white text-center px-4">
+      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">O futuro do seu filho começa agora.</h2>
-          <p className="text-indigo-200">Fluência antes dos 18 é a vantagem competitiva mais valiosa que você pode dar.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-orange-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl">
+          <p className="text-purple-200">Fluência antes dos 18 é a vantagem competitiva mais valiosa que você pode dar.</p>
+          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Agendar aula grátis <ArrowRight className="ml-3" size={22} />
           </a>
         </div>
