@@ -38,57 +38,57 @@ const SEO_META: Record<string, { title: string; description: string; canonical: 
   '/cursos': {
     title: 'Cursos de Inglês | Kids, Teens, Journey e Business | OpenLife',
     description: 'Escolha o curso de inglês ideal: Kids (6-9 anos), Teens (10-17 anos), Journey para adultos e Business para executivos. Método ESL imersivo.',
-    canonical: 'https://openlifebrasil.com.br/#/cursos',
+    canonical: 'https://openlifebrasil.com.br/cursos',
   },
   '/ingles-online': {
     title: 'Inglês Online | Aulas ao Vivo com Professores Certificados | OpenLife',
     description: 'Curso de inglês online com aulas ao vivo, professores certificados e método ESL imersivo. Aprenda de qualquer lugar do Brasil. Fluência em 18 meses.',
-    canonical: 'https://openlifebrasil.com.br/#/ingles-online',
+    canonical: 'https://openlifebrasil.com.br/ingles-online',
   },
   '/ingles-para-adultos': {
     title: 'Inglês para Adultos | Curso Intensivo do Zero ao Fluente | OpenLife',
     description: 'Curso de inglês para adultos e profissionais. Método ESL imersivo, horários flexíveis, do zero ao C1 em 18 meses. Presencial ou online em todo o Brasil.',
-    canonical: 'https://openlifebrasil.com.br/#/ingles-para-adultos',
+    canonical: 'https://openlifebrasil.com.br/ingles-para-adultos',
   },
   '/ingles-para-criancas': {
     title: 'Inglês para Crianças | Bilinguismo desde os 6 Anos | OpenLife Kids',
     description: 'Curso de inglês para crianças de 6 a 9 anos com método imersivo OpenLife Kids. Bilinguismo precoce, gamificação e professores especializados.',
-    canonical: 'https://openlifebrasil.com.br/#/ingles-para-criancas',
+    canonical: 'https://openlifebrasil.com.br/ingles-para-criancas',
   },
   '/ingles-para-adolescentes': {
     title: 'Inglês para Adolescentes | Fluência antes dos 18 | OpenLife Teens',
     description: 'Curso de inglês para adolescentes de 13 a 17 anos. Preparação para vestibular, SAT, intercâmbio e faculdade internacional. Método ESL OpenLife.',
-    canonical: 'https://openlifebrasil.com.br/#/ingles-para-adolescentes',
+    canonical: 'https://openlifebrasil.com.br/ingles-para-adolescentes',
   },
   '/ingles-para-negocios': {
     title: 'Inglês para Negócios | Business English para Executivos | OpenLife',
     description: 'Inglês para executivos e profissionais de negócios. Reuniões em inglês, negociações internacionais, LinkedIn global. Curso intensivo OpenLife Business.',
-    canonical: 'https://openlifebrasil.com.br/#/ingles-para-negocios',
+    canonical: 'https://openlifebrasil.com.br/ingles-para-negocios',
   },
   '/metodologia': {
     title: 'Metodologia ESL | Como Aprender Inglês em 18 Meses | OpenLife',
     description: 'Conheça o método ESL imersivo da OpenLife que já formou 66 mil alunos fluentes em 18 meses. 5 módulos progressivos, 500 horas de imersão, CEFR C1.',
-    canonical: 'https://openlifebrasil.com.br/#/metodologia',
+    canonical: 'https://openlifebrasil.com.br/metodologia',
   },
   '/sobre': {
     title: 'Sobre a OpenLife | 21 Anos Formando Fluentes em Inglês no Brasil',
     description: 'A OpenLife é uma escola de inglês com mais de 21 anos de história, 66 mil alunos formados e metodologia ESL pioneira no Brasil. Conheça nossa história.',
-    canonical: 'https://openlifebrasil.com.br/#/sobre',
+    canonical: 'https://openlifebrasil.com.br/sobre',
   },
   '/blog': {
     title: 'Blog de Inglês | Dicas, Cultura e Carreira Internacional | OpenLife',
     description: 'Blog com dicas de inglês, estratégias para IELTS/TOEFL, cultura internacional, intercâmbio e carreira global. Conteúdo gratuito da OpenLife.',
-    canonical: 'https://openlifebrasil.com.br/#/blog',
+    canonical: 'https://openlifebrasil.com.br/blog',
   },
   '/contato': {
     title: 'Contato | Agende sua Aula Experimental Grátis | OpenLife',
     description: 'Entre em contato com a OpenLife para agendar sua aula experimental gratuita. Atendimento online ou na sua cidade. Fale conosco agora pelo WhatsApp.',
-    canonical: 'https://openlifebrasil.com.br/#/contato',
+    canonical: 'https://openlifebrasil.com.br/contato',
   },
   '/franquia': {
     title: 'Franquia de Escola de Inglês | Seja um Franqueado OpenLife',
     description: 'Seja um franqueado da OpenLife. Negócio lucrativo com suporte completo, metodologia validada e uma das marcas mais reconhecidas no ensino de inglês no Brasil.',
-    canonical: 'https://openlifebrasil.com.br/#/franquia',
+    canonical: 'https://openlifebrasil.com.br/franquia',
   },
 };
 
