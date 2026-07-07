@@ -1,7 +1,8 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ExternalLink } from 'lucide-react';
+
+const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,89 +21,117 @@ const Header: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Cursos', path: '/cursos' },
     { name: 'Metodologia', path: '/metodologia' },
-    { name: 'Reels', path: '/reels' },
     { name: 'Sobre', path: '/sobre' },
     { name: 'Blog', path: '/blog' },
     { name: 'Contato', path: '/contato' },
-    { name: 'OpenStore', path: '/openstore' },
   ];
 
+  const isActive = (path: string) => location.pathname === path;
+
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3'
+          : 'bg-white/80 backdrop-blur-sm py-4'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2">
-          <img 
-            src="/2.png" 
-            alt="OpenLife Logo" 
-            className="w-16 h-16 object-contain" 
-            referrerPolicy="no-referrer"
+        <Link to="/" className="flex items-center space-x-2.5 shrink-0">
+          <img
+            src="/2.png"
+            alt="OpenLife English School"
+            className="w-10 h-10 object-contain"
           />
-          <span className={`text-xl font-bold tracking-tight ${scrolled ? 'text-purple-brand' : 'text-purple-brand'}`}>OpenLife</span>
+          <div className="leading-tight">
+            <span className="block text-base font-black text-purple-brand tracking-tight">OpenLife</span>
+            <span className="block text-[10px] text-slate-400 font-medium tracking-widest uppercase">English School</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center space-x-8">
+        <nav className="hidden md:flex items-center space-x-1">
           {navLinks.map((link) => (
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-orange-brand ${location.pathname === link.path ? 'text-orange-brand' : 'text-slate-600'}`}
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                isActive(link.path)
+                  ? 'text-purple-brand bg-purple-50'
+                  : 'text-slate-500 hover:text-purple-brand hover:bg-slate-50'
+              }`}
             >
               {link.name}
             </Link>
           ))}
-          <a 
-            href="https://openlifebrasil.classbuild.com/login" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="text-xs font-semibold text-slate-400 hover:text-slate-600 flex items-center"
+        </nav>
+
+        {/* Desktop Actions */}
+        <div className="hidden md:flex items-center space-x-3">
+          <a
+            href="https://openlifebrasil.classbuild.com/login"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center space-x-1 text-xs font-medium text-slate-400 hover:text-purple-brand transition-colors"
           >
-            Acesso a Plataforma
+            <span>Plataforma</span>
+            <ExternalLink size={12} />
           </a>
-          <a 
-            href="https://form.respondi.app/5HvbxD84" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="bg-orange-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-brand/20"
+          <a
+            href={CTA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bg-purple-brand text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-purple-900 transition-all shadow-sm hover:shadow-purple-brand/20"
           >
             Agendar Aula Grátis
           </a>
-        </nav>
+        </div>
 
         {/* Mobile Toggle */}
-        <button className="md:hidden p-2 text-slate-600" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+        <button
+          className="md:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
+        >
+          {isOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-100 shadow-xl animate-in fade-in slide-in-from-top-4">
-          <div className="px-4 pt-2 pb-6 space-y-2">
+        <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-slate-100 shadow-lg animate-in">
+          <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className="block px-3 py-4 text-base font-medium text-slate-700 hover:bg-gray-50 rounded-lg"
+                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-colors ${
+                  isActive(link.path)
+                    ? 'text-purple-brand bg-purple-50'
+                    : 'text-slate-600 hover:bg-slate-50 hover:text-purple-brand'
+                }`}
               >
                 {link.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-gray-100 flex flex-col space-y-3">
-              <a 
-                href="https://openlifebrasil.classbuild.com/login" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-center py-3 font-medium text-slate-600"
+
+            <div className="pt-3 border-t border-slate-100 space-y-2">
+              <a
+                href="https://openlifebrasil.classbuild.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center space-x-1.5 py-3 text-sm font-medium text-slate-400"
               >
-                Acesso a Plataforma
+                <span>Acesso à Plataforma</span>
+                <ExternalLink size={14} />
               </a>
-              <a 
-                href="https://form.respondi.app/5HvbxD84" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="bg-orange-brand text-white text-center py-4 rounded-xl font-bold"
+              <a
+                href={CTA_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-purple-brand text-white text-center py-3.5 rounded-xl text-sm font-semibold hover:bg-purple-900 transition-all"
               >
                 Agendar Aula Grátis
               </a>

@@ -18,21 +18,21 @@ const Methodology: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="bg-purple-brand py-24 text-center text-white relative overflow-hidden">
+      <section className="py-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
-          <div className="w-[120%] h-[120%] bg-gradient-to-br from-orange-500 via-purple-brand to-pink-500 blur-3xl rounded-full"></div>
+          <div className="w-[120%] h-[120%] bg-gradient-to-br from-purple-brand via-purple-800 to-purple-900 blur-3xl rounded-full"></div>
         </div>
         <div className="max-w-4xl mx-auto px-4 relative z-10 space-y-6">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight">
             <span className="block">Sistema Natural,</span>
-            <span className="text-orange-brand block">a metodologia que transforma seu inglês</span>
+            <span className="text-purple-200 block">a metodologia que transforma seu inglês</span>
             <span className="text-white block">em 18 meses!</span>
           </h1>
           <p className="text-xl md:text-2xl text-purple-100 leading-relaxed font-medium">
             Aprenda inglês de forma natural, sem tradução mental, com contato diário e foco em comunicação real. Uma experiência imersiva que transforma sua carreira e sua vida.
           </p>
           <div className="pt-6">
-            <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-orange-brand text-white px-10 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-2xl inline-flex items-center group">
+            <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl inline-flex items-center group">
               Quero aprender com a metodologia OpenLife
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
             </a>
@@ -45,7 +45,7 @@ const Methodology: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-8">
-              <h2 className="text-4xl font-black text-orange-brand leading-tight">
+              <h2 className="text-4xl font-black text-slate-900 leading-tight">
                 Na <span className="text-purple-brand">OpenLife</span>, você não aprende inglês como em escolas tradicionais.
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
@@ -58,10 +58,10 @@ const Methodology: React.FC = () => {
                   { icon: <Zap className="text-purple-brand" />, title: "Sem Tradução", desc: "Pense direto em inglês" },
                   { icon: <Target className="text-purple-brand" />, title: "Regularidade", desc: "Natural como sua língua materna" }
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center space-x-4 p-4 bg-gray-50 rounded-2xl">
+                  <div key={i} className="flex items-center space-x-4 p-4 bg-purple-50 rounded-2xl">
                     <div className="shrink-0">{item.icon}</div>
                     <div>
-                      <h4 className="font-bold text-orange-brand">{item.title}</h4>
+                      <h4 className="font-bold text-purple-brand">{item.title}</h4>
                       <p className="text-sm text-slate-500">{item.desc}</p>
                     </div>
                   </div>
@@ -84,10 +84,10 @@ const Methodology: React.FC = () => {
       </section>
 
       {/* Bloco 2 – Para Quem é Essa Metodologia? */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black text-orange-brand mb-4">
+            <h2 className="text-4xl font-black text-slate-900 mb-4">
               Para quem é a <span className="text-purple-brand">OpenLife</span>?
             </h2>
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">
@@ -101,10 +101,10 @@ const Methodology: React.FC = () => {
               { icon: <Globe size={40} />, title: "Viajantes", desc: "Pessoas que sonham em trabalhar, estudar ou viver no exterior com total segurança." }
             ].map((card, i) => (
               <div key={i} className="bg-white p-10 rounded-[40px] shadow-sm hover:shadow-xl transition-all border border-gray-100 text-center space-y-6">
-                <div className="w-20 h-20 bg-gray-50 text-purple-brand rounded-3xl flex items-center justify-center mx-auto">
+                <div className="w-20 h-20 bg-purple-50 text-purple-brand rounded-3xl flex items-center justify-center mx-auto">
                   {card.icon}
                 </div>
-                <h3 className="text-2xl font-black text-orange-brand">{card.title}</h3>
+                <h3 className="text-2xl font-black text-slate-900">{card.title}</h3>
                 <p className="text-slate-500 leading-relaxed">{card.desc}</p>
               </div>
             ))}
@@ -115,7 +115,7 @@ const Methodology: React.FC = () => {
       {/* Bloco 3 – Como Funciona na Prática? */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-4xl font-black text-orange-brand mb-16 text-center">
+          <h2 className="text-4xl font-black text-slate-900 mb-16 text-center">
             Como a <span className="text-purple-brand">OpenLife</span> funciona na prática?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
@@ -128,11 +128,11 @@ const Methodology: React.FC = () => {
               { title: "Suporte 24/7", desc: "Tira-dúvidas acadêmico sempre disponível para sua jornada não parar.", icon: <MessageSquare className="text-purple-brand" /> }
             ].map((item, i) => (
               <div key={i} className="flex space-x-6">
-                <div className="shrink-0 w-12 h-12 bg-gray-50 text-purple-brand rounded-xl flex items-center justify-center font-bold">
+                <div className="shrink-0 w-12 h-12 bg-purple-50 text-purple-brand rounded-xl flex items-center justify-center font-bold">
                   {item.icon}
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-xl font-bold text-orange-brand">{item.title}</h4>
+                  <h4 className="text-xl font-bold text-purple-brand">{item.title}</h4>
                   <p className="text-slate-600 leading-relaxed">{item.desc}</p>
                 </div>
               </div>
@@ -142,7 +142,7 @@ const Methodology: React.FC = () => {
       </section>
 
       {/* Bloco 4 – Resultados Comprovados */}
-      <section className="py-24 bg-purple-brand text-white overflow-hidden relative">
+      <section className="py-24 text-white overflow-hidden relative" style={{ backgroundColor: '#1A1033' }}>
         <div className="absolute top-0 right-0 p-20 opacity-10">
           <Quote size={200} />
         </div>
@@ -195,8 +195,8 @@ const Methodology: React.FC = () => {
             </p>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {["Exposição constante", "Repetição com propósito", "Interação significativa", "Feedback imediato"].map((item, i) => (
-                <div key={i} className="p-6 bg-orange-50 rounded-2xl border border-orange-100">
-                  <span className="font-black text-orange-brand text-sm uppercase tracking-widest">{item}</span>
+                <div key={i} className="p-6 bg-purple-50 rounded-2xl border border-purple-100">
+                  <span className="font-black text-purple-brand text-sm uppercase tracking-widest">{item}</span>
                 </div>
               ))}
             </div>
@@ -209,9 +209,9 @@ const Methodology: React.FC = () => {
         <div className="max-w-5xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black mb-4 leading-tight">
-              <span className="text-orange-brand block">Sistema Natura &quot;ESL&quot;</span>
+              <span className="text-purple-brand block">Sistema Natural &quot;ESL&quot;</span>
               <span className="text-slate-400 block my-2">x</span>
-              <span className="text-purple-brand block">Escolas Tradicionais</span>
+              <span className="text-slate-500 block">Escolas Tradicionais</span>
             </h2>
           </div>
 
@@ -219,9 +219,9 @@ const Methodology: React.FC = () => {
             <table className="w-full border-collapse table-fixed">
               <thead>
                 <tr className="text-white text-center">
-                  <th className="p-6 md:p-8 text-lg font-black bg-slate-800 w-1/3">Característica</th>
-                  <th className="p-6 md:p-8 text-lg font-black bg-purple-brand w-1/3 border-x border-white/10">Método Tradicional</th>
-                  <th className="p-6 md:p-8 text-lg font-black bg-orange-brand w-1/3">Método OpenLife</th>
+                  <th className="p-6 md:p-8 text-lg font-black w-1/3" style={{ backgroundColor: '#1A1033' }}>Característica</th>
+                  <th className="p-6 md:p-8 text-lg font-black bg-slate-500 w-1/3 border-x border-white/10">Método Tradicional</th>
+                  <th className="p-6 md:p-8 text-lg font-black bg-purple-brand w-1/3">Método OpenLife</th>
                 </tr>
               </thead>
               <tbody>
@@ -236,7 +236,7 @@ const Methodology: React.FC = () => {
                         <span className="text-sm font-medium">{row.trad}</span>
                       </div>
                     </td>
-                    <td className="p-6 md:p-8 text-slate-900 font-bold text-center bg-orange-50/20">
+                    <td className="p-6 md:p-8 text-slate-900 font-bold text-center bg-purple-50/20">
                       <div className="flex flex-col items-center justify-center space-y-2">
                         <Check className="text-green-500" size={24} />
                         <span className="text-sm">{row.open}</span>
@@ -251,7 +251,7 @@ const Methodology: React.FC = () => {
       </section>
 
       {/* Bloco 7 – O Que Você Vai Desenvolver */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-page">
         <div className="max-w-4xl mx-auto px-4">
           <h2 className="text-4xl font-black text-slate-900 mb-12 text-center">O Que Você Vai Desenvolver</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -276,7 +276,7 @@ const Methodology: React.FC = () => {
       {/* Bloco 8 – Chamada à Ação (CTA) */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-purple-brand rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden">
+          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
               <h2 className="text-4xl md:text-6xl font-black">Pronto para transformar sua carreira com o inglês?</h2>
@@ -284,7 +284,7 @@ const Methodology: React.FC = () => {
                 Faça o teste de nível gratuito e agende sua aula experimental com um de nossos consultores.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-orange-brand text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-2xl transform hover:scale-105">
+                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
                   Quero aprender com a metodologia OpenLife
                 </a>
               </div>

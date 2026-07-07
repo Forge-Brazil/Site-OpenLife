@@ -8,14 +8,14 @@ const About: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-24 bg-purple-brand overflow-hidden text-white">
+      <section className="relative py-24 overflow-hidden text-white" style={{ backgroundColor: '#1A1033' }}>
         <div className="absolute inset-0 opacity-10 pointer-events-none">
            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
           <h1 className="text-5xl md:text-7xl font-black leading-tight">
             Mais que uma escola,<br />
-            <span className="text-orange-brand">um projeto de vida.</span>
+            <span className="text-purple-200">um projeto de vida.</span>
           </h1>
           <p className="text-xl md:text-2xl text-purple-100 max-w-3xl mx-auto font-medium">
             Há 21 anos empoderando pessoas para uma vida sem limites através da fluência real no inglês.
@@ -28,7 +28,7 @@ const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative">
-              <div className="absolute -inset-4 bg-orange-brand/10 rounded-[40px] blur-2xl"></div>
+              <div className="absolute -inset-4 bg-purple-brand/10 rounded-[40px] blur-2xl"></div>
               <img 
                 src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&q=80&w=1200" 
                 alt="História OpenLife" 
@@ -40,7 +40,7 @@ const About: React.FC = () => {
               </div>
             </div>
             <div className="space-y-8">
-              <h2 className="text-4xl font-black text-orange-brand leading-tight">
+              <h2 className="text-4xl font-black text-slate-900 leading-tight">
                 Nossa jornada começou com um <span className="text-purple-brand">propósito claro.</span>
               </h2>
               <p className="text-lg text-slate-600 leading-relaxed">
@@ -56,7 +56,7 @@ const About: React.FC = () => {
                       <img src={`https://i.pravatar.cc/150?u=${i}`} alt="Aluno" />
                     </div>
                   ))}
-                  <div className="w-12 h-12 rounded-full border-4 border-white bg-orange-brand flex items-center justify-center text-white text-xs font-black">
+                  <div className="w-12 h-12 rounded-full border-4 border-white bg-purple-brand flex items-center justify-center text-white text-xs font-black">
                     +66k
                   </div>
                 </div>
@@ -68,7 +68,7 @@ const About: React.FC = () => {
       </section>
 
       {/* Valores Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-black text-slate-900 mb-4">No que acreditamos</h2>
@@ -81,10 +81,10 @@ const About: React.FC = () => {
               { icon: <Globe size={32} />, title: "Vida Sem Limites", desc: "Acreditamos que o inglês é a chave para a liberdade geográfica e profissional." }
             ].map((v, i) => (
               <div key={i} className="bg-white p-10 rounded-[40px] shadow-sm hover:shadow-xl transition-all border border-gray-100 space-y-6 group">
-                <div className="w-16 h-16 bg-purple-50 text-purple-brand rounded-2xl flex items-center justify-center group-hover:bg-orange-brand group-hover:text-white transition-colors">
+                <div className="w-16 h-16 bg-purple-50 text-purple-brand rounded-2xl flex items-center justify-center group-hover:bg-purple-brand group-hover:text-white transition-colors">
                   {v.icon}
                 </div>
-                <h3 className="text-2xl font-black text-orange-brand">{v.title}</h3>
+                <h3 className="text-2xl font-black text-slate-900">{v.title}</h3>
                 <p className="text-slate-500 leading-relaxed">{v.desc}</p>
               </div>
             ))}
@@ -98,13 +98,13 @@ const About: React.FC = () => {
           <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-6">
             <div className="max-w-2xl">
               <h2 className="text-4xl font-black text-purple-brand mb-4">
-                Estrutura pensada para a <span className="text-orange-brand">imersão total.</span>
+                Estrutura pensada para a <span className="text-purple-brand">imersão total.</span>
               </h2>
               <p className="text-lg text-slate-500">
                 Nossas unidades em Bagé, Santa Maria e Porto Alegre oferecem ambientes modernos que respiram o idioma, além de uma plataforma online de última geração.
               </p>
             </div>
-            <Link to="/contato" className="text-orange-brand font-black flex items-center hover:text-purple-brand transition-colors">
+            <Link to="/contato" className="text-purple-brand font-black flex items-center hover:text-purple-900 transition-colors">
               Conheça nossas unidades <ArrowRight size={20} className="ml-2" />
             </Link>
           </div>
@@ -127,9 +127,9 @@ const About: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gray-50">
+      <section className="py-24 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-purple-brand rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden">
+          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
               <h2 className="text-4xl md:text-6xl font-black">Faça parte da nossa história.</h2>
@@ -137,7 +137,7 @@ const About: React.FC = () => {
                 Junte-se a milhares de alunos que já transformaram suas vidas com o Sistema Natural OpenLife.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-orange-brand text-white px-12 py-5 rounded-2xl font-black text-xl hover:bg-orange-600 transition-all shadow-2xl transform hover:scale-105">
+                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
                   Agendar Aula Grátis
                 </a>
               </div>

@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
             {/* Contact Info */}
             <div className="space-y-12">
               <div className="space-y-6">
-                <h1 className="text-4xl md:text-6xl font-black"><span className="text-purple-brand">Vamos</span> <span className="text-orange-brand">conversar?</span></h1>
+                <h1 className="text-4xl md:text-6xl font-black"><span className="text-purple-brand">Vamos</span> <span className="text-purple-900">conversar?</span></h1>
                 <p className="text-xl text-slate-600 leading-relaxed">
                   Tire suas dúvidas, agende uma visita ou peça um orçamento personalizado. Estamos prontos para te atender e transformar sua fluência.
                 </p>
@@ -54,14 +54,14 @@ const Contact: React.FC = () => {
               </div>
 
               <div className="pt-8 flex space-x-4">
-                <a href="https://www.instagram.com/openlifebrasil/" target="_blank" rel="noopener noreferrer" className="p-4 bg-white rounded-2xl shadow-lg hover:text-orange-brand transition-colors"><Instagram /></a>
-                <a href="#" className="p-4 bg-white rounded-2xl shadow-lg hover:text-orange-brand transition-colors"><Youtube /></a>
+                <a href="https://www.instagram.com/openlifebrasil/" target="_blank" rel="noopener noreferrer" className="p-4 bg-white rounded-2xl shadow-lg hover:text-purple-brand transition-colors"><Instagram /></a>
+                <a href="#" className="p-4 bg-white rounded-2xl shadow-lg hover:text-purple-brand transition-colors"><Youtube /></a>
               </div>
             </div>
 
             {/* CTA instead of form */}
             <div className="bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-gray-100 flex flex-col items-center text-center justify-center space-y-8 min-h-[450px]">
-              <div className="w-20 h-20 bg-orange-100 text-orange-brand rounded-3xl flex items-center justify-center">
+              <div className="w-20 h-20 bg-purple-50 text-purple-brand rounded-3xl flex items-center justify-center">
                 <MessageCircle size={40} />
               </div>
               <div className="space-y-4">
@@ -74,7 +74,7 @@ const Contact: React.FC = () => {
                 href="https://form.respondi.app/5HvbxD84" 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="w-full bg-purple-brand text-white py-5 rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all flex items-center justify-center space-x-3 shadow-xl shadow-purple-brand/20 group"
+                className="w-full bg-purple-brand text-white py-5 rounded-full font-bold text-xl hover:bg-purple-700 transition-all flex items-center justify-center space-x-3 shadow-xl shadow-purple-brand/20 group"
               >
                 <span>Quero Começar Agora</span>
                 <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
@@ -97,7 +97,7 @@ const Contact: React.FC = () => {
             href="https://share.google/egMmZSfXSk33Uj1rN" 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="bg-white px-8 py-4 rounded-2xl font-bold text-slate-900 shadow-2xl flex items-center space-x-3 hover:bg-orange-brand hover:text-white transition-all transform hover:scale-105"
+            className="bg-white px-8 py-4 rounded-full font-bold text-slate-900 shadow-2xl flex items-center space-x-3 hover:bg-purple-brand hover:text-white transition-all transform hover:scale-105"
           >
             <MapPin size={20} />
             <span>Ver no Google Maps</span>
