@@ -28,12 +28,15 @@ const Header: React.FC = () => {
 
   const isActive = (path: string) => location.pathname === path;
 
+  // Header é transparente apenas na hero da Home (topo, sem scroll)
+  const isHomeHero = location.pathname === '/' && !scrolled;
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3'
-          : 'bg-white/80 backdrop-blur-sm py-4'
+        isHomeHero
+          ? 'bg-transparent py-5'
+          : 'bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm py-3'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -41,13 +44,13 @@ const Header: React.FC = () => {
         {/* Logo */}
         <Link to="/" className="flex items-center space-x-2.5 shrink-0">
           <img
-            src="/2.png"
+            src="/logomarca-real.png"
             alt="OpenLife English School"
-            className="w-10 h-10 object-contain"
+            className="w-11 h-11 object-contain"
           />
           <div className="leading-tight">
-            <span className="block text-base font-black text-purple-brand tracking-tight">OpenLife</span>
-            <span className="block text-[10px] text-slate-400 font-medium tracking-widest uppercase">English School</span>
+            <span className={`block text-base font-black tracking-tight transition-colors ${isHomeHero ? 'text-white' : 'text-purple-brand'}`}>OpenLife</span>
+            <span className={`block text-[10px] font-medium tracking-widest uppercase transition-colors ${isHomeHero ? 'text-white/70' : 'text-slate-400'}`}>English School</span>
           </div>
         </Link>
 
@@ -58,9 +61,9 @@ const Header: React.FC = () => {
               key={link.path}
               to={link.path}
               className={`px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                isActive(link.path)
-                  ? 'text-purple-brand bg-purple-50'
-                  : 'text-slate-500 hover:text-purple-brand hover:bg-slate-50'
+                isHomeHero
+                  ? isActive(link.path) ? 'text-white bg-white/15' : 'text-white/80 hover:text-white hover:bg-white/10'
+                  : isActive(link.path) ? 'text-purple-brand bg-purple-50' : 'text-slate-500 hover:text-purple-brand hover:bg-slate-50'
               }`}
             >
               {link.name}
@@ -74,7 +77,7 @@ const Header: React.FC = () => {
             href="https://openlifebrasil.classbuild.com/login"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center space-x-1 text-xs font-medium text-slate-400 hover:text-purple-brand transition-colors"
+            className={`flex items-center space-x-1 text-xs font-medium transition-colors ${isHomeHero ? 'text-white/70 hover:text-white' : 'text-slate-400 hover:text-purple-brand'}`}
           >
             <span>Plataforma</span>
             <ExternalLink size={12} />
@@ -83,7 +86,7 @@ const Header: React.FC = () => {
             href={CTA_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-purple-brand text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-purple-900 transition-all shadow-sm hover:shadow-purple-brand/20"
+            className="bg-orange-brand text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-orange-500 transition-all shadow-sm"
           >
             Agendar Aula Grátis
           </a>
@@ -91,7 +94,7 @@ const Header: React.FC = () => {
 
         {/* Mobile Toggle */}
         <button
-          className="md:hidden p-2 rounded-lg text-slate-500 hover:bg-slate-100 transition-colors"
+          className={`md:hidden p-2 rounded-lg transition-colors ${isHomeHero ? 'text-white hover:bg-white/10' : 'text-slate-500 hover:bg-slate-100'}`}
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? 'Fechar menu' : 'Abrir menu'}
         >

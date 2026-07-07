@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import { ChevronDown, ArrowRight, MapPin } from 'lucide-react';
 
@@ -12,21 +12,9 @@ const faqs = [
 ];
 
 const destinations = [
-  {
-    city: 'Londres',
-    country: 'Reino Unido',
-    img: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
-    city: 'Nova York',
-    country: 'Estados Unidos',
-    img: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=1200&auto=format&fit=crop',
-  },
-  {
-    city: 'Cambridge',
-    country: 'Reino Unido',
-    img: 'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?q=80&w=1200&auto=format&fit=crop',
-  },
+  { city: 'Londres', country: 'Reino Unido', img: 'https://images.unsplash.com/photo-1529655683826-aba9b3e77383?q=80&w=1200&auto=format&fit=crop' },
+  { city: 'Nova York', country: 'Estados Unidos', img: 'https://images.unsplash.com/photo-1485738422979-f5c462d49f74?q=80&w=1200&auto=format&fit=crop' },
+  { city: 'Cambridge', country: 'Reino Unido', img: 'https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?q=80&w=1200&auto=format&fit=crop' },
 ];
 
 const students = [
@@ -35,23 +23,76 @@ const students = [
   { name: 'Fernanda L.', city: 'Bagé, RS', text: 'Consegui tirar o IELTS com 7.5 após concluir o curso. A preparação foi excepcional.', photo: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=400&auto=format&fit=crop' },
 ];
 
-const Home: React.FC = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+const stats = [
+  { value: 18, suffix: '', label: 'meses para a fluência' },
+  { value: 500, suffix: 'h', label: 'de conteúdo imersivo' },
+  { value: 4, suffix: 'x', label: 'mais rápido que outros cursos' },
+  { value: 21, suffix: '+', label: 'anos de experiência' },
+];
+
+/** Mecanismo 1: contador animado ao entrar na viewport */
+const CountUp: React.FC<{ value: number; suffix: string }> = ({ value, suffix }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef<HTMLParagraphElement>(null);
+  const started = useRef(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !started.current) {
+        started.current = true;
+        const duration = 1200;
+        const start = performance.now();
+        const tick = (now: number) => {
+          const progress = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setCount(Math.round(eased * value));
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }
+    }, { threshold: 0.4 });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [value]);
 
   return (
-    <div className="-mt-20 overflow-x-hidden">
+    <p ref={ref} className="text-5xl font-black text-purple-brand leading-none">
+      {count}<span className="text-orange-brand text-3xl">{suffix}</span>
+    </p>
+  );
+};
 
-      {/* HERO — campus estilo Cambridge com pessoas reais */}
+/** Mecanismo 2: parallax suave no background da hero */
+const useParallax = () => {
+  const [offset, setOffset] = useState(0);
+  useEffect(() => {
+    const onScroll = () => setOffset(window.scrollY * 0.35);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+  return offset;
+};
+
+const Home: React.FC = () => {
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const parallax = useParallax();
+
+  return (
+    <div className="-mt-20 overflow-x-hidden bg-white">
+
+      {/* HERO — campus de Cambridge visível atrás do roxo, com parallax */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-20 overflow-hidden">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" style={{ transform: `translateY(${parallax}px)`, height: '130%' }}>
           <img
-            src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=2000&auto=format&fit=crop"
-            alt="Estudantes em campus universitário internacional"
+            src="https://images.unsplash.com/photo-1526129318478-62ed807ebdf9?q=80&w=2000&auto=format&fit=crop"
+            alt="Campus de Cambridge"
             className="w-full h-full object-cover"
           />
           <div
             className="absolute inset-0"
-            style={{ background: 'linear-gradient(160deg, rgba(59,7,100,0.92) 0%, rgba(107,45,139,0.85) 45%, rgba(168,85,247,0.55) 80%, rgba(243,232,255,0.35) 100%)' }}
+            style={{ background: 'linear-gradient(160deg, rgba(107,45,139,0.82) 0%, rgba(107,45,139,0.65) 45%, rgba(168,85,247,0.45) 80%, rgba(255,255,255,0.25) 100%)' }}
           />
         </div>
 
@@ -62,7 +103,7 @@ const Home: React.FC = () => {
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] mb-8 text-white">
             Sinta-se em<br />Cambridge,<br />todos os dias.
           </h1>
-          <p className="text-lg md:text-2xl mb-10 max-w-xl mx-auto leading-relaxed text-white/85">
+          <p className="text-lg md:text-2xl mb-10 max-w-xl mx-auto leading-relaxed text-white/90">
             Imersão total no inglês, sem sair do Brasil.<br />Do zero ao avançado em 18 meses.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -71,39 +112,52 @@ const Home: React.FC = () => {
               Agendar Aula Grátis
             </a>
             <Link to="/cursos"
-              className="text-white border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-semibold text-sm hover:bg-white/20 transition-all">
+              className="text-white border border-white/50 bg-white/10 backdrop-blur-sm px-8 py-4 rounded-full font-semibold text-sm hover:bg-white/20 transition-all">
               Conhecer os Cursos
             </Link>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-70 z-10">
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 opacity-80 z-10">
           <ChevronDown size={20} className="animate-bounce text-white" />
         </div>
       </section>
 
+      {/* MECANISMO 3: marquee infinito de destinos/idiomas */}
+      <div className="bg-purple-brand py-3 overflow-hidden whitespace-nowrap">
+        <div className="inline-flex animate-marquee gap-12">
+          {[...Array(2)].map((_, rep) => (
+            <div key={rep} className="inline-flex gap-12 shrink-0">
+              {['🇬🇧 Londres', '🇺🇸 Nova York', '🎓 Cambridge', '🗽 Estátua da Liberdade', '⏰ Big Ben', '🇨🇦 Toronto', '🇦🇺 Sydney'].map((item, i) => (
+                <span key={i} className="text-white/90 text-sm font-semibold tracking-wide">{item}</span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* DESTINOS — Big Ben, Estátua da Liberdade, Cambridge */}
       <section className="bg-white py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-gray-400 text-xs font-bold tracking-[0.25em] uppercase mb-3">Alcance global</p>
-          <h2 className="text-center text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
+          <p className="text-center text-purple-brand/60 text-xs font-bold tracking-[0.25em] uppercase mb-3">Alcance global</p>
+          <h2 className="text-center text-4xl md:text-5xl font-black text-purple-brand mb-4 tracking-tight">
             Seu inglês vai te levar<br />a qualquer lugar do mundo.
           </h2>
-          <p className="text-center text-gray-500 max-w-xl mx-auto mb-12 leading-relaxed">
+          <p className="text-center text-slate-500 max-w-xl mx-auto mb-12 leading-relaxed">
             Fluência real para estudar, trabalhar e viver em qualquer país de língua inglesa.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {destinations.map((d, i) => (
-              <div key={i} className="relative rounded-3xl overflow-hidden group h-80">
+              <div key={i} className="relative rounded-3xl overflow-hidden group h-80 shadow-lg">
                 <img
                   src={d.img}
                   alt={d.city}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(59,7,100,0.85) 0%, rgba(59,7,100,0.1) 55%, transparent 100%)' }} />
+                <div className="absolute inset-0" style={{ background: 'linear-gradient(0deg, rgba(107,45,139,0.9) 0%, rgba(107,45,139,0.15) 55%, transparent 100%)' }} />
                 <div className="absolute bottom-0 left-0 right-0 p-6 text-left">
-                  <p className="text-white/70 text-xs font-bold tracking-[0.15em] uppercase flex items-center gap-1.5">
+                  <p className="text-white/80 text-xs font-bold tracking-[0.15em] uppercase flex items-center gap-1.5">
                     <MapPin size={12} /> {d.country}
                   </p>
                   <p className="text-white text-2xl font-black mt-1">{d.city}</p>
@@ -114,56 +168,61 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* BENTO GRID — cursos */}
-      <section className="bg-[#f5f5f7] py-24 px-4 sm:px-6">
+      {/* BENTO GRID — cursos, tons de roxo e laranja */}
+      <section className="bg-purple-50/40 py-24 px-4 sm:px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-gray-400 text-xs font-bold tracking-[0.25em] uppercase mb-3">Nossos Cursos</p>
-          <h2 className="text-center text-4xl md:text-5xl font-black text-slate-900 mb-12 tracking-tight">
+          <p className="text-center text-purple-brand/60 text-xs font-bold tracking-[0.25em] uppercase mb-3">Nossos Cursos</p>
+          <h2 className="text-center text-4xl md:text-5xl font-black text-purple-brand mb-12 tracking-tight">
             Sua jornada rumo à fluência.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300"
-              style={{ background: 'linear-gradient(135deg, #3b0764 0%, #6B2D8B 100%)' }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300 shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #6B2D8B 0%, #9333ea 100%)' }}>
               <div>
-                <span className="text-white/50 font-bold text-xs tracking-[0.2em] uppercase">Journey 1</span>
+                <span className="text-white/60 font-bold text-xs tracking-[0.2em] uppercase">Journey 1</span>
                 <h3 className="text-white text-3xl md:text-4xl font-black mt-3 leading-tight">Básico ao<br />Intermediário</h3>
               </div>
               <div>
-                <p className="text-white/60 text-sm mb-5 leading-relaxed">Fundamentos sólidos com imersão ESL. Uma aula ao vivo por semana + atividades diárias.</p>
-                <Link to="/cursos" className="text-orange-brand font-semibold text-sm flex items-center gap-1.5 group">
-                  Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
-                </Link>
-              </div>
-            </div>
-            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300"
-              style={{ background: 'linear-gradient(135deg, #6B2D8B 0%, #9333ea 100%)' }}>
-              <div>
-                <span className="text-white/50 font-bold text-xs tracking-[0.2em] uppercase">Journey 2 & 3</span>
-                <h3 className="text-white text-3xl md:text-4xl font-black mt-3 leading-tight">Intermediário<br />ao Avançado</h3>
-              </div>
-              <div>
-                <p className="text-white/60 text-sm mb-5 leading-relaxed">De duas a três aulas semanais de 50 minutos. Imersão total na língua inglesa.</p>
+                <p className="text-white/70 text-sm mb-5 leading-relaxed">Fundamentos sólidos com imersão ESL. Uma aula ao vivo por semana + atividades diárias.</p>
                 <Link to="/cursos" className="text-white font-semibold text-sm flex items-center gap-1.5 group">
                   Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </div>
-            <div className="bg-white rounded-3xl p-10 flex flex-col justify-center min-h-72 shadow-sm">
-              <div className="grid grid-cols-2 gap-x-8 gap-y-10">
-                <div><p className="text-5xl font-black text-slate-900 leading-none">18</p><p className="text-gray-400 text-sm mt-2">meses para a fluência</p></div>
-                <div><p className="text-5xl font-black text-slate-900 leading-none">500<span className="text-orange-brand text-3xl">h</span></p><p className="text-gray-400 text-sm mt-2">de conteúdo imersivo</p></div>
-                <div><p className="text-5xl font-black text-slate-900 leading-none">4<span className="text-orange-brand text-3xl">x</span></p><p className="text-gray-400 text-sm mt-2">mais rápido que outros cursos</p></div>
-                <div><p className="text-5xl font-black text-slate-900 leading-none">21<span className="text-orange-brand text-2xl">+</span></p><p className="text-gray-400 text-sm mt-2">anos de experiência</p></div>
+            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300 shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #a855f7 0%, #6B2D8B 100%)' }}>
+              <div>
+                <span className="text-white/60 font-bold text-xs tracking-[0.2em] uppercase">Journey 2 & 3</span>
+                <h3 className="text-white text-3xl md:text-4xl font-black mt-3 leading-tight">Intermediário<br />ao Avançado</h3>
+              </div>
+              <div>
+                <p className="text-white/70 text-sm mb-5 leading-relaxed">De duas a três aulas semanais de 50 minutos. Imersão total na língua inglesa.</p>
+                <Link to="/cursos" className="text-white font-semibold text-sm flex items-center gap-1.5 group">
+                  Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
               </div>
             </div>
-            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300"
-              style={{ background: 'linear-gradient(135deg, #7c2d12 0%, #F57C20 100%)' }}>
+
+            {/* Card branco com CountUp animado */}
+            <div className="bg-white rounded-3xl p-10 flex flex-col justify-center min-h-72 shadow-lg border border-purple-100">
+              <div className="grid grid-cols-2 gap-x-8 gap-y-10">
+                {stats.map((s, i) => (
+                  <div key={i}>
+                    <CountUp value={s.value} suffix={s.suffix} />
+                    <p className="text-slate-500 text-sm mt-2">{s.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-3xl p-10 flex flex-col justify-between min-h-72 hover:scale-[1.01] transition-transform duration-300 shadow-lg"
+              style={{ background: 'linear-gradient(135deg, #F57C20 0%, #fb923c 100%)' }}>
               <div>
-                <span className="text-white/60 font-bold text-xs tracking-[0.2em] uppercase">Journey for Life</span>
+                <span className="text-white/70 font-bold text-xs tracking-[0.2em] uppercase">Journey for Life</span>
                 <h3 className="text-white text-3xl md:text-4xl font-black mt-3 leading-tight">Nível<br />C1 / C2</h3>
               </div>
               <div>
-                <p className="text-white/70 text-sm mb-5 leading-relaxed">Preparação para o exame EF da Cambridge University. Certificação reconhecida mundialmente.</p>
+                <p className="text-white/80 text-sm mb-5 leading-relaxed">Preparação para o exame EF da Cambridge University. Certificação reconhecida mundialmente.</p>
                 <Link to="/cursos" className="text-white font-semibold text-sm flex items-center gap-1.5 group">
                   Saiba mais <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
@@ -173,59 +232,60 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* METODOLOGIA — com foto de sala de aula real */}
-      <section className="relative text-white py-28 px-6 overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2000&auto=format&fit=crop"
-            alt="Grupo diverso de alunos estudando juntos"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, rgba(107,45,139,0.93) 0%, rgba(59,7,100,0.95) 100%)' }} />
-        </div>
+      {/* METODOLOGIA — fundo claro com foto real de alunos */}
+      <section className="bg-white py-28 px-6">
+        <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-5">Metodologia ESL</p>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6 leading-[1.05] text-purple-brand">
+              Aprenda inglês<br />como quem vive<br />no exterior.
+            </h2>
+            <p className="text-slate-500 text-lg mb-8 leading-relaxed">
+              Nossa metodologia ESL simula imersão total — com professores reais e colegas de verdade.
+            </p>
+            <Link to="/metodologia" className="inline-flex items-center gap-2 text-orange-brand font-semibold group mb-10">
+              Conheça a metodologia <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
 
-        <div className="relative z-10 max-w-5xl mx-auto text-center">
-          <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-5">Metodologia ESL</p>
-          <h2 className="text-5xl sm:text-6xl md:text-7xl font-black tracking-tight mb-8 leading-[0.95] text-white">
-            Aprenda inglês<br />como quem vive<br />no exterior.
-          </h2>
-          <p className="text-white/75 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
-            Nossa metodologia ESL simula imersão total — com professores reais e colegas de verdade.
-          </p>
-          <Link to="/metodologia" className="inline-flex items-center gap-2 text-orange-brand font-semibold group">
-            Conheça a metodologia <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-          </Link>
-        </div>
-
-        <div className="relative z-10 max-w-5xl mx-auto mt-16 grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {[
-            { title: 'Aulas ao Vivo', desc: 'Professores ESL reais, grupos reduzidos de até 8 alunos.' },
-            { title: 'Material Exclusivo', desc: 'Plataforma + app iOS/Android com conteúdo em tempo real.' },
-            { title: 'Flexibilidade Total', desc: 'Agende de segunda a sábado. Sem horário fixo.' },
-          ].map((f, i) => (
-            <div key={i} className="bg-white/10 border border-white/20 rounded-2xl p-6 text-left backdrop-blur-sm">
-              <p className="text-white font-bold mb-2">{f.title}</p>
-              <p className="text-white/65 text-sm leading-relaxed">{f.desc}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { title: 'Aulas ao Vivo', desc: 'Professores ESL reais, grupos de até 8 alunos.' },
+                { title: 'Material Exclusivo', desc: 'Plataforma + app iOS/Android em tempo real.' },
+              ].map((f, i) => (
+                <div key={i} className="bg-purple-50/60 border border-purple-100 rounded-2xl p-5 text-left">
+                  <p className="text-purple-brand font-bold mb-1 text-sm">{f.title}</p>
+                  <p className="text-slate-500 text-xs leading-relaxed">{f.desc}</p>
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="relative rounded-3xl overflow-hidden shadow-2xl h-96 lg:h-[480px]">
+            <img
+              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1400&auto=format&fit=crop"
+              alt="Grupo diverso de alunos estudando juntos"
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: 'linear-gradient(180deg, transparent 60%, rgba(107,45,139,0.55) 100%)' }} />
+          </div>
         </div>
       </section>
 
       {/* DEPOIMENTOS — com fotos reais de alunos */}
-      <section className="bg-white py-24 px-6">
+      <section className="bg-purple-50/40 py-24 px-6">
         <div className="max-w-6xl mx-auto">
-          <p className="text-center text-gray-400 text-xs font-bold tracking-[0.25em] uppercase mb-3">Alunos</p>
-          <h2 className="text-center text-4xl md:text-5xl font-black text-slate-900 mb-12 tracking-tight">
+          <p className="text-center text-purple-brand/60 text-xs font-bold tracking-[0.25em] uppercase mb-3">Alunos</p>
+          <h2 className="text-center text-4xl md:text-5xl font-black text-purple-brand mb-12 tracking-tight">
             Quem já transformou<br />seu inglês.
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {students.map((t, i) => (
-              <div key={i} className="bg-[#f5f5f7] rounded-3xl p-8 flex flex-col gap-4">
+              <div key={i} className="bg-white rounded-3xl p-8 flex flex-col gap-4 shadow-sm border border-purple-100">
                 <div className="flex items-center gap-3">
                   <img src={t.photo} alt={t.name} className="w-12 h-12 rounded-full object-cover" />
                   <div>
-                    <p className="font-bold text-slate-900 text-sm">{t.name}</p>
-                    <p className="text-gray-400 text-xs">{t.city}</p>
+                    <p className="font-bold text-purple-brand text-sm">{t.name}</p>
+                    <p className="text-slate-400 text-xs">{t.city}</p>
                   </div>
                 </div>
                 <div className="flex gap-0.5">
@@ -243,53 +303,46 @@ const Home: React.FC = () => {
       </section>
 
       {/* FAQ */}
-      <section className="bg-[#f5f5f7] py-24 px-6">
+      <section className="bg-white py-24 px-6">
         <div className="max-w-3xl mx-auto">
-          <p className="text-center text-gray-400 text-xs font-bold tracking-[0.25em] uppercase mb-3">Dúvidas</p>
-          <h2 className="text-center text-4xl md:text-5xl font-black text-slate-900 mb-12 tracking-tight">
+          <p className="text-center text-purple-brand/60 text-xs font-bold tracking-[0.25em] uppercase mb-3">Dúvidas</p>
+          <h2 className="text-center text-4xl md:text-5xl font-black text-purple-brand mb-12 tracking-tight">
             Perguntas<br />frequentes.
           </h2>
           <div className="space-y-2">
             {faqs.map((faq, i) => (
-              <div key={i} className="bg-white rounded-2xl overflow-hidden shadow-sm">
+              <div key={i} className="bg-purple-50/50 rounded-2xl overflow-hidden border border-purple-100">
                 <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
                   className="w-full flex items-center justify-between px-6 py-5 text-left">
-                  <span className="font-semibold text-slate-900 pr-4 text-sm">{faq.q}</span>
-                  <ChevronDown size={16} className={"shrink-0 text-gray-400 transition-transform duration-300 " + (openFaq === i ? 'rotate-180' : '')} />
+                  <span className="font-semibold text-purple-brand pr-4 text-sm">{faq.q}</span>
+                  <ChevronDown size={16} className={"shrink-0 text-orange-brand transition-transform duration-300 " + (openFaq === i ? 'rotate-180' : '')} />
                 </button>
                 {openFaq === i && (
-                  <div className="px-6 pb-6 text-gray-500 text-sm leading-relaxed border-t border-gray-100 pt-4">{faq.a}</div>
+                  <div className="px-6 pb-6 text-slate-500 text-sm leading-relaxed border-t border-purple-100 pt-4">{faq.a}</div>
                 )}
               </div>
             ))}
           </div>
-          <p className="text-center text-gray-400 text-sm mt-10">
+          <p className="text-center text-slate-400 text-sm mt-10">
             Tem mais dúvidas?{' '}
             <Link to="/contato" className="text-purple-brand font-semibold hover:underline">Fale com a gente</Link>
           </p>
         </div>
       </section>
 
-      {/* CTA FINAL — com foto de pessoas comemorando */}
-      <section className="relative text-white py-28 px-6 text-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=2000&auto=format&fit=crop"
-            alt="Estudantes formandos comemorando"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0" style={{ background: 'linear-gradient(160deg, rgba(107,45,139,0.95) 0%, rgba(59,7,100,0.95) 60%, rgba(30,5,54,0.97) 100%)' }} />
-        </div>
+      {/* CTA FINAL — gradiente roxo/laranja claro, sem escuro */}
+      <section className="relative py-28 px-6 text-center overflow-hidden"
+        style={{ background: 'linear-gradient(135deg, #6B2D8B 0%, #9333ea 60%, #F57C20 140%)' }}>
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-5">Comece agora</p>
+          <p className="text-white/80 font-bold text-xs tracking-[0.25em] uppercase mb-5">Comece agora</p>
           <h2 className="text-5xl md:text-6xl font-black tracking-tight mb-6 leading-tight text-white">
             Pronto para ser<br />fluente em inglês?
           </h2>
-          <p className="text-white/75 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
+          <p className="text-white/85 text-lg mb-10 max-w-lg mx-auto leading-relaxed">
             Agende sua aula grátis e descubra como a OpenLife vai transformar seu inglês em 18 meses.
           </p>
           <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer"
-            className="inline-block bg-orange-brand text-white px-10 py-5 rounded-full font-bold text-base hover:bg-orange-500 transition-all shadow-2xl hover:-translate-y-0.5">
+            className="inline-block bg-white text-purple-brand px-10 py-5 rounded-full font-bold text-base hover:bg-orange-50 transition-all shadow-2xl hover:-translate-y-0.5">
             Agendar Aula Grátis
           </a>
         </div>

@@ -255,6 +255,10 @@ fbq('track', 'PageView');
       /* Smooth animations */
       .animate-in { animation: fadeIn 0.3s ease both; }
       @keyframes fadeIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+
+      /* Marquee infinito — faixa de destinos na Home */
+      .animate-marquee { animation: marquee 22s linear infinite; }
+      @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     </style>
   <script type="importmap">
 {
