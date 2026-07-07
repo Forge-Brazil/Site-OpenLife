@@ -42,16 +42,12 @@ const Header: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
         {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2.5 shrink-0">
+        <Link to="/" className="flex items-center shrink-0">
           <img
-            src="/logomarca-real.png"
+            src="/logomarca-nobg.png"
             alt="OpenLife English School"
-            className="w-11 h-11 object-contain"
+            className="w-20 h-20 object-contain"
           />
-          <div className="leading-tight">
-            <span className={`block text-base font-black tracking-tight transition-colors ${isHomeHero ? 'text-white' : 'text-purple-brand'}`}>OpenLife</span>
-            <span className={`block text-[10px] font-medium tracking-widest uppercase transition-colors ${isHomeHero ? 'text-white/70' : 'text-slate-400'}`}>English School</span>
-          </div>
         </Link>
 
         {/* Desktop Nav */}

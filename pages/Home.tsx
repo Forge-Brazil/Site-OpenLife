@@ -97,9 +97,11 @@ const Home: React.FC = () => {
         </div>
 
         <div className="relative z-10">
-          <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-5">
-            OpenLife English School
-          </p>
+          <img
+            src="/logomarca-nobg.png"
+            alt="OpenLife English School"
+            className="w-40 sm:w-48 md:w-56 h-auto object-contain mx-auto mb-8 drop-shadow-2xl"
+          />
           <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight leading-[0.95] mb-8 text-white">
             Sinta-se em<br />Cambridge,<br />todos os dias.
           </h1>
