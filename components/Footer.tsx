@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
               </a>
               <a href="mailto:contato@openlifebrasil.com" className="flex items-center space-x-2 text-slate-500 hover:text-purple-brand text-xs transition-colors">
                 <Mail size={13} strokeWidth={1.5} className="text-orange-brand shrink-0" />
-                <span>contato@openlifebrasil.com</span>
+                <span>contatoopenlife@gmail.com</span>
               </a>
             </div>
           </div>
