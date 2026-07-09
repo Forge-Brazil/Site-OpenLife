@@ -531,7 +531,458 @@ const FilmesSeriesContent = (
   </div>
 );
 
+const RecessoContent = (
+  <div>
+    {/* Schema JSON-LD — Article + FAQPage */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Praticar inglês no recesso: 7 formas simples de não perder o ritmo",
+          "description": "Guia completo com ideias práticas e leves para praticar inglês no recesso, sem pressão e com foco em evolução real.",
+          "author": { "@type": "Organization", "name": "OpenLife English School" },
+          "publisher": { "@type": "Organization", "name": "OpenLife English School", "logo": { "@type": "ImageObject", "url": "https://openlifebrasil.com.br/2.png" } },
+          "mainEntityOfPage": "https://openlifebrasil.com.br/blog/praticar-ingles-no-recesso",
+          "image": "https://openlifebrasil.com.br/og-image.jpg",
+          "datePublished": "2026-07-09",
+          "dateModified": "2026-07-09"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Como praticar inglês nas férias sem ficar cansado?", "acceptedAnswer": { "@type": "Answer", "text": "Defina um tempo curto por dia, tipo 15 a 30 minutos, e misture atividades leves: podcast, música, séries, leitura e escrita. O objetivo nas férias é manter contato com o idioma, não estudar pesado. Foque em coisas que você gosta e encaixe o inglês na sua rotina normal." } },
+            { "@type": "Question", "name": "É possível melhorar meu inglês mesmo só praticando no recesso?", "acceptedAnswer": { "@type": "Answer", "text": "Sim, se você já tem uma base e usa o recesso para aumentar o contato com o idioma, dá para melhorar vocabulário, listening e confiança. O ideal é combinar prática nas férias com um curso estruturado durante o ano, para garantir evolução contínua e correção de erros." } },
+            { "@type": "Question", "name": "O que fazer se eu esquecer muita coisa depois do recesso?", "acceptedAnswer": { "@type": "Answer", "text": "Isso é normal. Se você praticou um pouco, vai recuperar mais rápido. No retorno às aulas, foque em revisão: relembrar vocabulário, estruturas básicas e ouvir bastante inglês. Um bom professor ou curso ajuda a reorganizar o que você já sabe e retomar o ritmo mais rápido." } },
+            { "@type": "Question", "name": "Qual a melhor forma de praticar speaking sozinho nas férias?", "acceptedAnswer": { "@type": "Answer", "text": "Use o celular para gravar áudios sobre seu dia, repetir frases de filmes e séries, ou descrever o que está fazendo em inglês. Não se preocupe com perfeição. A meta é destravar, acostumar sua boca e mente a formar frases em inglês. Depois, você pode aperfeiçoar com um professor." } },
+            { "@type": "Question", "name": "Vale a pena fazer aula experimental de inglês durante o recesso?", "acceptedAnswer": { "@type": "Answer", "text": "Vale muito. A aula experimental te ajuda a entender seu nível atual, ter orientação sobre o que praticar nas férias e planejar sua evolução para o próximo ano. É um jeito inteligente de usar o recesso para ajustar sua rota e começar o ano seguinte já com um plano claro." } },
+            { "@type": "Question", "name": "Quantos minutos por dia eu preciso para não perder o ritmo?", "acceptedAnswer": { "@type": "Answer", "text": "Para manter o ritmo, 15 a 30 minutos por dia já fazem diferença, desde que seja contato real com o idioma: ouvir, ver, ler, escrever ou falar. Se conseguir mais tempo, ótimo. Se não, foque em consistência: pouco todo dia é melhor que muito só uma vez." } }
+          ]
+        }
+      ]
+    })}} />
+
+    {/* Banner CTA topo */}
+    <div className="rounded-3xl p-8 md:p-12 mb-14 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' }}>
+      <p className="text-xl md:text-2xl font-black leading-snug mb-3">
+        Não deixe seu inglês congelar no recesso
+      </p>
+      <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
+        Práticas rápidas que mantêm seu cérebro no modo inglês — sem virar mais uma obrigação.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-purple-700 text-base transition-all hover:scale-105 shadow-xl"
+        style={{ background: '#fff' }}
+      >
+        Quero manter meu inglês ativo nas férias →
+      </a>
+    </div>
+
+    {/* Conteúdo principal */}
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* Introdução */}
+      <p>
+        Recesso, férias, pausa… tudo que você queria, né? Mas aí bate aquela dúvida:{' '}
+        <strong className="text-slate-800">como praticar inglês no recesso</strong> sem virar "mais uma obrigação"
+        e sem perder tudo o que você já conquistou?
+      </p>
+      <p>
+        A verdade é que você não precisa estudar horas por dia para continuar evoluindo. Pequenas práticas
+        diárias — tipo 10, 15 minutinhos — mantêm seu cérebro em contato com o idioma e fazem você voltar
+        às aulas mais confiante, sem aquela sensação de "travei".
+      </p>
+      <p>
+        Neste artigo, você vai encontrar <strong className="text-slate-800">7 formas simples, práticas e até
+        divertidas</strong> de manter o ritmo de inglês nas férias. Vamos falar de podcasts, músicas, séries,
+        leitura leve, escrita do dia a dia, speaking sozinho e ferramentas para treinar pronúncia. Tudo pensado
+        para jovens e adultos que querem aproveitar o recesso, mas sem abandonar o sonho de falar inglês de verdade.
+      </p>
+
+      {/* H2 — 1 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Por que o recesso é perigoso para o seu inglês (e como virar o jogo)
+      </h2>
+      <p>
+        Quando você para totalmente de praticar inglês por algumas semanas, o cérebro faz o quê? Organiza espaço.
+        O que não é usado vai ficando mais "escondido". Não é que você esquece tudo, mas o acesso fica mais lento.
+      </p>
+      <p>
+        Para jovens e adultos, isso é ainda mais relevante: a rotina é cheia, o tempo é curto e cada pausa longa
+        pode atrasar o plano de aprender inglês para conquistar melhores oportunidades. Para não cair nessa, vale
+        entender três pontos:
+      </p>
+      <ul className="space-y-3 pl-0">
+        {[
+          'Consistência vence intensidade: 15 minutos por dia durante o recesso podem ser mais eficazes do que 2 horas só em um dia.',
+          'Contato diário com o idioma mantém a fluência ativa: ouvir, ver, falar e escrever em inglês, mesmo de forma leve, mantém sua "máquina" ligada.',
+          'Seu objetivo não é avançar loucamente, é não regredir: recesso é período de manutenção inteligente.',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p className="text-sm text-slate-400 italic border-l-4 border-slate-100 pl-4">
+        Estudos sobre aprendizado de idiomas mostram que o "esquecimento" acontece rapidamente sem contato
+        contínuo — conceito da Curva de Esquecimento de Ebbinghaus, amplamente estudado em universidades como Harvard.
+      </p>
+
+      {/* H2 — 2 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">
+        Use o poder do áudio: como ouvir inglês todos os dias sem esforço
+      </h2>
+      <p>
+        Ouvir inglês é uma das formas mais naturais de manter o idioma vivo na sua mente. E o melhor: você pode
+        fazer isso enquanto lava louça, treina na academia ou pega ônibus.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Podcasts curtos para encaixar na rotina</h3>
+      <p>
+        Procure podcasts de 5 a 15 minutos com temas leves ou de aprendizagem. Escolha 1 podcast e ouça um episódio
+        por dia. Sempre que possível, repita o mesmo episódio outra vez, focando em entender mais detalhes.
+      </p>
+      <ul className="space-y-2 pl-0">
+        {[
+          'Podcasts de inglês para iniciantes ou intermediários',
+          'Conteúdos sobre temas que você gosta: tecnologia, viagens, curiosidades',
+          'Episódios que trazem transcrição do áudio (ajuda muito)',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Músicas com letra: diversão que vira estudo</h3>
+      <p>
+        Música é uma maneira excelente de <strong className="text-slate-800">praticar inglês sozinho</strong>. Escolha
+        músicas que você gosta, busque a letra (lyrics), ouça acompanhando e marque expressões interessantes. Cante
+        junto, mesmo que pareça estranho — é treino de speaking!
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Notícias em inglês: conteúdo real e atualizado</h3>
+      <p>
+        Procure notícias curtas (tipo "Breaking News") ou conteúdos em inglês simplificado, como{' '}
+        <a href="https://www.bbc.co.uk/learningenglish" target="_blank" rel="noopener noreferrer" className="text-purple-700 font-bold hover:underline">
+          BBC Learning English
+        </a>{' '}
+        e{' '}
+        <a href="https://learningenglish.voanews.com" target="_blank" rel="noopener noreferrer" className="text-purple-700 font-bold hover:underline">
+          VOA Learning English
+        </a>. Isso ajuda a aprender vocabulário atual e expressões usadas em contextos reais.
+      </p>
+
+      {/* H2 — 3 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">
+        Transforme suas séries e filmes em uma mini aula de inglês
+      </h2>
+      <p>
+        Já que você provavelmente vai maratonar algo no recesso, por que não configurar isso a seu favor? Ver séries
+        e filmes em inglês é uma forma poderosa de manter o ouvido e o vocabulário ativos, sem parecer estudo "formal".
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Legenda em inglês é sua melhor amiga</h3>
+      <p>
+        Se você já entende o básico, troque a legenda em português por legenda em inglês. Isso ajuda a conectar som
+        e escrita, perceber frases inteiras no contexto e identificar a pronúncia real de palavras que você já "conhece"
+        apenas lendo. Para quem está começando, alterne: primeiro em português + áudio em inglês, depois a mesma cena
+        com legenda em inglês.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Técnicas para assistir sem virar só entretenimento</h3>
+      <ul className="space-y-2 pl-0">
+        {[
+          'Pause em trechos com falas interessantes e repita em voz alta',
+          'Anote 3 novas expressões por episódio',
+          'Tente recontar a cena em inglês ("In this scene, they are talking about…")',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+
+      {/* H2 — 4 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">
+        Leitura leve em inglês: 10 minutos que valem ouro
+      </h2>
+      <p>
+        Ler em inglês não significa encarar um livro pesado de 300 páginas. Durante o recesso, foque em leitura
+        curta e constante. Boas opções: artigos curtos de blogs internacionais, notícias em sites como BBC e CNN,
+        pequenos textos sobre temas que você já conhece em português.
+      </p>
+      <p>
+        O segredo é não cair na armadilha da tradução palavra por palavra. Leia um parágrafo inteiro, entenda o
+        sentido geral, e só depois busque palavras-chave que você não conhece. Existem extensões de navegador e apps
+        que mostram tradução ao passar o mouse sobre a palavra, sem tirar você da página.
+      </p>
+    </div>
+
+    {/* CTA intermediário 1 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 border-2 flex flex-col md:flex-row items-center gap-6" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
+      <div className="flex-1">
+        <p className="text-xl font-black text-slate-900 mb-1">Quer transformar sua rotina em treino de inglês?</p>
+        <p className="text-slate-600">A OpenLife te ajuda a criar um plano leve e eficiente.</p>
+      </div>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
+        style={{ background: '#7C3AED' }}
+      >
+        Quero montar meu plano →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 5 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Escrever em inglês no dia a dia: treino silencioso, resultado gigante
+      </h2>
+      <p>
+        Escrever é uma das habilidades que mais consolidam o que você aprende. No recesso, você pode usar a
+        escrita de forma simples, sem parecer tarefa escolar.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Diário em inglês: sua vida, seu vocabulário</h3>
+      <p>
+        Escreva 5 a 10 linhas por dia sobre o que você fez, sentiu, planejou. Não se preocupe em ser perfeito
+        — foque em se expressar. Isso ajuda a fixar estruturas básicas como "Today I woke up late and I…" ou
+        "Next year I want to…".
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Pequenos textos sobre sua rotina e planos</h3>
+      <p>
+        Você pode escrever descrições de lugares que visitou, como foi seu dia ou semana, metas para o próximo
+        ano ("Next year I want to improve my speaking…"). Se quiser subir o nível, tente postar pequenos textos
+        em inglês em uma rede social ou enviar para colegas que também estão aprendendo.
+      </p>
+
+      {/* H2 — 6 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">
+        Speaking sozinho: sim, funciona (e muito)
+      </h2>
+      <p>
+        Muita gente acha que só dá para treinar speaking com outra pessoa. Na prática, dá para começar sozinho —
+        e isso já muda bastante a sua confiança.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Gravar áudios sobre o seu dia</h3>
+      <p>
+        Pegue o celular, abra o gravador e fale em inglês por 2 a 5 minutos sobre como foi seu dia, o que vai
+        fazer amanhã ou o que está achando do recesso. Depois, ouça e perceba onde você travou, quais palavras
+        faltaram e os momentos em que conseguiu falar mais solto.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Repetir frases de filmes e séries (shadowing)</h3>
+      <p>
+        Enquanto assiste a algo em inglês, pause uma frase que achou interessante e repita tentando imitar ritmo
+        e pronúncia. Faça isso com 3 a 5 frases por episódio. Essa técnica é conhecida como{' '}
+        <strong className="text-slate-800">shadowing</strong> e é usada em vários métodos de aprendizagem de idiomas.
+      </p>
+
+      <h3 className="text-xl font-black text-slate-800 pt-4 pb-1">Ferramentas para praticar pronúncia</h3>
+      <p>
+        Use aplicativos que avaliam sua pronúncia (como <strong className="text-slate-800">ELSA Speak</strong> ou{' '}
+        <strong className="text-slate-800">Duolingo</strong>), sites com exercícios de repetição de frases ou recursos
+        com reconhecimento de voz. O objetivo não é ser perfeito — é se acostumar a produzir sons em inglês todo dia.
+      </p>
+    </div>
+
+    {/* CTA intermediário 2 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 border-2 flex flex-col md:flex-row items-center gap-6" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
+      <div className="flex-1">
+        <p className="text-xl font-black text-slate-900 mb-1">Quer companhia guiada para praticar speaking?</p>
+        <p className="text-slate-600">Experimente uma aula de conversação com professores OpenLife.</p>
+      </div>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
+        style={{ background: '#7C3AED' }}
+      >
+        Quero testar uma aula →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 7 (Rotina) */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Montando sua mini rotina de inglês para o recesso
+      </h2>
+      <p>
+        Agora que você viu várias formas de <strong className="text-slate-800">praticar inglês no recesso</strong>,
+        a dúvida é: como organizar isso sem virar uma lista impossível? Uma sugestão de rotina leve para jovens e
+        adultos — <strong className="text-slate-800">30 minutos por dia</strong>:
+      </p>
+    </div>
+
+    {/* Tabela de rotina */}
+    <div className="my-8 overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ backgroundColor: '#1A1033' }}>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest w-28">Dia</th>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest">Atividade</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { dia: 'Segunda', atividade: '10 min de podcast + 20 min de série com legenda em inglês' },
+            { dia: 'Terça', atividade: '15 min de leitura + 15 min de diário em inglês' },
+            { dia: 'Quarta', atividade: '20 min de filme/série + 10 min repetindo frases (shadowing)' },
+            { dia: 'Quinta', atividade: '10 min de música + 20 min escrevendo sobre seu dia' },
+            { dia: 'Sexta', atividade: '15 min de notícias em inglês + 15 min de gravação de áudio' },
+            { dia: 'Fim de semana', atividade: 'Algo mais leve: música + séries, sem pressão' },
+          ].map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-purple-50/40'}>
+              <td className="px-6 py-4 font-black text-slate-900">{row.dia}</td>
+              <td className="px-6 py-4 text-slate-600">{row.atividade}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Adapte esse plano para sua realidade. O mais importante: defina um horário fixo como se fosse um compromisso
+        com você mesmo. Se falhar um dia, não desista — retome no dia seguinte, sem culpa.
+      </p>
+
+      {/* H2 — OpenLife */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">
+        Como a OpenLife pode te ajudar a manter o inglês vivo o ano inteiro
+      </h2>
+      <p>
+        Praticar inglês no recesso é uma parte da jornada. Mas ter uma estrutura durante o ano faz toda diferença
+        para evoluir com segurança. Na <strong className="text-slate-800">OpenLife English School</strong>, jovens
+        e adultos contam com:
+      </p>
+      <ul className="space-y-3 pl-0">
+        {[
+          'Cursos imersivos com foco em comunicação real (Journey 18 meses, Teens e Keep the Fluency)',
+          'Metodologia presencial ou online, pensada para encaixar na sua rotina',
+          'Material interativo e uso de tecnologia para tornar o contato com o idioma constante',
+          'Horários flexíveis, para que estudar inglês não seja um peso, e sim parte natural do seu dia',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Durante o recesso, nossa equipe também pode orientar o que você pode fazer para manter seu nível ou se
+        preparar para subir de nível no próximo ciclo.{' '}
+        <a href="/#/cursos" className="text-purple-700 font-bold hover:underline">Conheça nossos cursos</a> e{' '}
+        <a href="/#/contato" className="text-purple-700 font-bold hover:underline">agende uma conversa sem compromisso</a>.
+      </p>
+
+      {/* Conclusão */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-10 pb-2">Conclusão</h2>
+      <p>
+        Recesso não precisa ser sinônimo de "pausa total" no seu inglês. Com práticas simples — ouvir, assistir,
+        ler, escrever e falar um pouco todos os dias — você mantém o idioma vivo, chega no próximo ano mais
+        preparado e transforma seu aprendizado em algo contínuo, não em altos e baixos.
+      </p>
+      <p>
+        O segredo é encaixar o inglês no seu dia a dia, do jeito que funciona para você. Se quiser uma orientação
+        mais estruturada, com plano de estudos e acompanhamento próximo, a OpenLife está pronta para caminhar ao
+        seu lado nessa jornada. Transforme essas ideias em ação — faça do seu recesso um aliado do seu inglês,
+        não um inimigo.
+      </p>
+    </div>
+
+    {/* FAQ */}
+    <div className="mt-16 space-y-4">
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-8">
+        Perguntas frequentes sobre praticar inglês no recesso
+      </h2>
+      {[
+        {
+          q: 'Como praticar inglês nas férias sem ficar cansado?',
+          a: 'Defina um tempo curto por dia, tipo 15 a 30 minutos, e misture atividades leves: podcast, música, séries, leitura e escrita. O objetivo nas férias é manter contato com o idioma, não estudar pesado. Foque em coisas que você gosta e encaixe o inglês na sua rotina normal.',
+        },
+        {
+          q: 'É possível melhorar meu inglês mesmo só praticando no recesso?',
+          a: 'Sim, se você já tem uma base e usa o recesso para aumentar o contato com o idioma, dá para melhorar vocabulário, listening e confiança. O ideal é combinar prática nas férias com um curso estruturado durante o ano, para garantir evolução contínua e correção de erros.',
+        },
+        {
+          q: 'O que fazer se eu esquecer muita coisa depois do recesso?',
+          a: 'Isso é normal. Se você praticou um pouco, vai recuperar mais rápido. No retorno às aulas, foque em revisão: relembrar vocabulário, estruturas básicas e ouvir bastante inglês. Um bom professor ou curso ajuda a reorganizar o que você já sabe e retomar o ritmo mais rápido.',
+        },
+        {
+          q: 'Qual a melhor forma de praticar speaking sozinho nas férias?',
+          a: 'Use o celular para gravar áudios sobre seu dia, repetir frases de filmes e séries, ou descrever o que está fazendo em inglês. Não se preocupe com perfeição. A meta é destravar, acostumar sua boca e mente a formar frases em inglês. Depois, você pode aperfeiçoar com um professor.',
+        },
+        {
+          q: 'Vale a pena fazer aula experimental de inglês durante o recesso?',
+          a: 'Vale muito. A aula experimental te ajuda a entender seu nível atual, ter orientação sobre o que praticar nas férias e planejar sua evolução para o próximo ano. É um jeito inteligente de usar o recesso para ajustar sua rota e começar o ano seguinte já com um plano claro.',
+        },
+        {
+          q: 'Quantos minutos por dia eu preciso para não perder o ritmo?',
+          a: 'Para manter o ritmo, 15 a 30 minutos por dia já fazem diferença, desde que seja contato real com o idioma: ouvir, ver, ler, escrever ou falar. Se conseguir mais tempo, ótimo. Se não, foque em consistência: pouco todo dia é melhor que muito só uma vez.',
+        },
+      ].map((item, i) => (
+        <div key={i} className="rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden">
+          <details className="group">
+            <summary className="flex items-center justify-between cursor-pointer px-6 py-5 font-black text-slate-900 text-base list-none select-none hover:bg-purple-50/50 transition-colors">
+              <span>{item.q}</span>
+              <span className="ml-4 flex-shrink-0 text-purple-700 text-xl font-light group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+              {item.a}
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+
+    {/* Artigos relacionados */}
+    <div className="mt-16 pt-12 border-t border-slate-100">
+      <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Continue aprendendo</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { title: 'Como aprender inglês rápido com imersão total', tag: 'Aprender Inglês' },
+          { title: 'Melhores filmes e séries para aprender inglês', tag: 'Séries e Filmes' },
+          { title: 'Inglês para negócios: expressões essenciais', tag: 'Business' },
+        ].map((art, i) => (
+          <div key={i} className="p-5 rounded-2xl border border-slate-100 bg-white hover:border-purple-200 hover:shadow-sm transition-all">
+            <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#7C3AED' }}>{art.tag}</span>
+            <p className="mt-2 font-black text-slate-900 text-sm leading-snug">{art.title}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 export const MOCK_POSTS: Post[] = [
+  // RECESSO ESCOLAR — Post rico (mais recente)
+  {
+    id: 'recesso-ingles-2026',
+    title: 'Praticar inglês no recesso: 7 formas simples de não perder o ritmo',
+    excerpt: 'Praticar inglês no recesso é fácil: veja 7 ideias simples, diárias e divertidas para manter o ritmo e evoluir sem pressão.',
+    content: '',
+    contentNode: RecessoContent,
+    category: 'Aprender Inglês',
+    tags: ['Aprender Inglês', 'Dicas', 'Férias', 'Speaking', 'Listening'],
+    date: '09/07/2026',
+    image: 'https://images.unsplash.com/photo-1513258496099-48168024aec0?auto=format&fit=crop&q=80&w=1200',
+    slug: 'praticar-ingles-no-recesso',
+  },
   // SÉRIES E FILMES — Post rico
   {
     id: 'movies-series-guide-1',
