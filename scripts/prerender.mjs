@@ -46,7 +46,7 @@ const template = fs.readFileSync(path.join(clientDir, 'index.html'), 'utf-8');
 const { render } = await import(pathToFileURL(serverEntry).href);
 
 for (const route of ROUTES) {
-  const { html: appHtml, meta } = render(route);
+  const { html: appHtml, meta, schema } = render(route);
 
   let page = template
     .replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
@@ -87,6 +87,12 @@ for (const route of ROUTES) {
       `</title>\n    <link rel="canonical" href="${meta.canonical}" />`
     );
   }
+
+  const schemaTag = `<script type="application/ld+json">${JSON.stringify(schema)}</script>`;
+  page = page.replace(
+    '<!-- Schema.org JSON-LD é injetado por rota no build (data/schema.ts + scripts/prerender.mjs) -->',
+    schemaTag
+  );
 
   const outDir = route === '/' ? clientDir : path.join(clientDir, route);
   fs.mkdirSync(outDir, { recursive: true });

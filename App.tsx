@@ -1,6 +1,10 @@
 import React, { useEffect } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 
+// Os types do react-router via esm.sh não declaram a prop especial `key`
+// em RouteProps — alias tipado para uso dentro de .map().
+const CityRoute = Route as React.FC<React.ComponentProps<typeof Route> & { key?: React.Key }>;
+
 // Components
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -167,7 +171,7 @@ const AppShell: React.FC = () => {
             <Route path="/ingles-para-negocios" element={<InglesNegocios />} />
             {/* Páginas locais por cidade */}
             {CITIES.map((city) => (
-              <Route
+              <CityRoute
                 key={city.slug}
                 path={`/curso-de-ingles-${city.slug}`}
                 element={<CursoInglesCidade city={city} />}

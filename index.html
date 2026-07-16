@@ -72,166 +72,92 @@ fbq('track', 'PageView');
     <meta name="twitter:image" content="https://openlifebrasil.com.br/og-image.jpg">
 
     <!-- Schema.org: EducationalOrganization nacional + WebSite -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "EducationalOrganization",
-          "@id": "https://openlifebrasil.com.br/#organization",
-          "name": "OpenLife English School",
-          "alternateName": "OpenLife",
-          "url": "https://openlifebrasil.com.br",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://openlifebrasil.com.br/2.png",
-            "width": 400,
-            "height": 400
-          },
-          "image": "https://openlifebrasil.com.br/og-image.jpg",
-          "description": "Escola de inglês com método ESL imersivo. Fluência garantida em 18 meses para adultos, jovens e executivos. Online e presencial em todo o Brasil. +66 mil alunos formados.",
-          "foundingDate": "2003",
-          "areaServed": {"@type": "Country", "name": "Brasil"},
-          "email": "contato@openlifebrasil.com",
-          "telephone": "+55-53-99965-6216",
-          "sameAs": [
-            "https://www.instagram.com/openlifebrasil/",
-            "https://www.linkedin.com/in/openlife-english-school-bage/"
-          ],
-          "hasOfferCatalog": {
-            "@type": "OfferCatalog",
-            "name": "Cursos de Inglês",
-            "itemListElement": [
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Course",
-                  "name": "Journey 18 Meses",
-                  "description": "Curso de inglês imersivo do A1 ao C1 em 18 meses com certificação CEFR. Para adultos, universitários e executivos.",
-                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"},
-                  "educationalLevel": "A1 ao C1 (CEFR)",
-                  "timeRequired": "P18M",
-                  "url": "https://openlifebrasil.com.br/cursos"
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Course",
-                  "name": "OpenLife Kids",
-                  "description": "Inglês para crianças de 6 a 9 anos com bilinguismo precoce e método lúdico.",
-                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Course",
-                  "name": "OpenLife Teens",
-                  "description": "Inglês para adolescentes de 10 a 17 anos com gamificação e prep para intercâmbio.",
-                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
-                }
-              },
-              {
-                "@type": "Offer",
-                "itemOffered": {
-                  "@type": "Course",
-                  "name": "Inglês para Negócios",
-                  "description": "Business English para executivos e profissionais. Reuniões, negociações e apresentações internacionais.",
-                  "provider": {"@id": "https://openlifebrasil.com.br/#organization"}
-                }
-              }
-            ]
-          },
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "5.0",
-            "reviewCount": "847",
-            "bestRating": "5",
-            "worstRating": "1"
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://openlifebrasil.com.br/#website",
-          "url": "https://openlifebrasil.com.br",
-          "name": "OpenLife English School",
-          "description": "Curso de inglês online e presencial com método ESL imersivo. Fluência em 18 meses.",
-          "publisher": {"@id": "https://openlifebrasil.com.br/#organization"},
-          "inLanguage": "pt-BR"
-        }
-      ]
-    }
-    </script>
+    <!-- Schema.org JSON-LD é injetado por rota no build (data/schema.ts + scripts/prerender.mjs) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&display=swap" rel="stylesheet">
     <style>
       /* ─── Base ──────────────────────────────────────────── */
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
-        background-color: #F6F4FC;   /* roxo clarinho — tom de página */
+        background-color: #F8F5EF;   /* creme papel — tom de página premium */
       }
 
-      /* ─── Brand: Roxo vivo (primário) ───────────────────── */
+      /* Display serif — headlines editoriais (rebranding OpenLife) */
+      .font-display {
+        font-family: 'Fraunces', Georgia, serif;
+        letter-spacing: -0.015em;
+      }
+
+      /* ─── Brand: Índigo premium (primário) ──────────────── */
       :root {
-        --purple: #7C3AED;
-        --purple-dark: #5B21B6;
-        --purple-deep: #1A1033;
-        --orange: #F57C20;
-        --orange-dark: #EA580C;
-        --page-bg: #F6F4FC;
+        --indigo: #2D1B4E;
+        --indigo-soft: #4A3470;
+        --gold: #C9A961;
+        --gold-soft: #E8D9B5;
+        --cream: #F8F5EF;
+        --graphite: #2A2724;
+        --page-bg: #F8F5EF;
       }
 
-      .bg-purple-brand         { background-color: #7C3AED; }
-      .text-purple-brand       { color: #7C3AED; }
-      .border-purple-brand     { border-color: #7C3AED; }
-      .ring-purple-brand       { --tw-ring-color: #7C3AED; }
+      .bg-purple-brand         { background-color: #2D1B4E !important; }
+      .text-purple-brand       { color: #2D1B4E !important; }
+      .border-purple-brand     { border-color: #2D1B4E !important; }
+      .ring-purple-brand       { --tw-ring-color: #2D1B4E; }
 
-      .hover\:bg-purple-brand:hover       { background-color: #7C3AED; }
-      .hover\:bg-purple-900:hover         { background-color: #4C1D95; }
-      .hover\:text-purple-brand:hover     { color: #7C3AED; }
-      .hover\:border-purple-brand:hover   { border-color: #7C3AED; }
-      .focus\:ring-purple-brand:focus     { box-shadow: 0 0 0 3px rgba(124,58,237,0.25); }
+      .hover\:bg-purple-brand:hover       { background-color: #2D1B4E !important; }
+      .hover\:bg-purple-900:hover         { background-color: #1E1235 !important; }
+      .hover\:text-purple-brand:hover     { color: #2D1B4E !important; }
+      .hover\:border-purple-brand:hover   { border-color: #2D1B4E !important; }
+      .focus\:ring-purple-brand:focus     { box-shadow: 0 0 0 3px rgba(45,27,78,0.25); }
 
-      /* Purple gradient */
-      .from-purple-brand  { --tw-gradient-from: #7C3AED; }
-      .to-purple-brand    { --tw-gradient-to: #7C3AED; }
-      .via-purple-brand   { --tw-gradient-via: #7C3AED; }
+      /* Indigo gradient */
+      .from-purple-brand  { --tw-gradient-from: #2D1B4E; }
+      .to-purple-brand    { --tw-gradient-to: #2D1B4E; }
+      .via-purple-brand   { --tw-gradient-via: #2D1B4E; }
 
-      /* Purple shadow utility */
-      .shadow-purple-brand\/20  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.20); }
-      .shadow-purple-brand\/40  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.40); }
+      /* Indigo shadow utility */
+      .shadow-purple-brand\/20  { box-shadow: 0 8px 24px -4px rgba(45,27,78,0.20); }
+      .shadow-purple-brand\/40  { box-shadow: 0 8px 24px -4px rgba(45,27,78,0.40); }
 
-      /* Bg tints */
-      .bg-purple-50  { background-color: #F5F3FF; }
-      .bg-purple-100 { background-color: #EDE9FE; }
-      .bg-purple-900 { background-color: #4C1D95; }
-      .text-purple-100 { color: #EDE9FE; }
-      .text-purple-200 { color: #DDD6FE; }
-      .text-purple-300 { color: #C4B5FD; }
-      .border-purple-100 { border-color: #EDE9FE; }
-      .border-purple-200 { border-color: #DDD6FE; }
-      .hover\:bg-purple-50:hover { background-color: #F5F3FF; }
+      /* Bg tints — derivados do índigo sobre creme */
+      .bg-purple-50  { background-color: #F3F0F7 !important; }
+      .bg-purple-100 { background-color: #E7E1EF !important; }
+      .bg-purple-900 { background-color: #1E1235 !important; }
+      .text-purple-100 { color: #E7E1EF !important; }
+      .text-purple-200 { color: #CFC5DE !important; }
+      .text-purple-300 { color: #B0A1C9 !important; }
+      .border-purple-100 { border-color: #E7E1EF !important; }
+      .border-purple-200 { border-color: #CFC5DE !important; }
+      .hover\:bg-purple-50:hover { background-color: #F3F0F7 !important; }
 
-      /* ─── Brand: Laranja (acento / detalhe) ─────────────── */
-      .bg-orange-brand         { background-color: #F57C20; }
-      .text-orange-brand       { color: #F57C20; }
-      .border-orange-brand     { border-color: #F57C20; }
+      /* ─── Brand: Dourado champagne (acento / conquista) ─── */
+      /* Botões dourados usam texto índigo — nunca branco (contraste). */
+      .bg-orange-brand         { background-color: #C9A961 !important; color: #2D1B4E !important; }
+      .text-orange-brand       { color: #A98435 !important; }
+      .border-orange-brand     { border-color: #C9A961 !important; }
 
-      .hover\:bg-orange-brand:hover   { background-color: #F57C20; }
-      .hover\:bg-orange-600:hover     { background-color: #EA580C; }
-      .hover\:text-orange-brand:hover { color: #F57C20; }
-      .hover\:text-orange-400:hover   { color: #FB923C; }
+      .hover\:bg-orange-brand:hover   { background-color: #C9A961 !important; color: #2D1B4E !important; }
+      .hover\:bg-orange-500:hover     { background-color: #B8944A !important; color: #2D1B4E !important; }
+      .hover\:bg-orange-600:hover     { background-color: #B8944A !important; color: #2D1B4E !important; }
+      .hover\:text-orange-brand:hover { color: #A98435 !important; }
+      .hover\:text-orange-400:hover   { color: #C9A961 !important; }
+      .hover\:text-orange-500:hover   { color: #A98435 !important; }
 
-      .bg-orange-50  { background-color: #FFF7ED; }
-      .bg-orange-100 { background-color: #FFEDD5; }
-      .text-orange-100 { color: #FFEDD5; }
-      .text-orange-200 { color: #FED7AA; }
-      .border-orange-200 { border-color: #FED7AA; }
+      .bg-orange-50  { background-color: #F5EEDD !important; }
+      .bg-orange-100 { background-color: #E8D9B5 !important; }
+      .text-orange-100 { color: #F5EEDD !important; }
+      .text-orange-200 { color: #E8D9B5 !important; }
+      .border-orange-200 { border-color: #E8D9B5 !important; }
 
-      .from-orange-brand { --tw-gradient-from: #F57C20; }
-      .to-orange-600     { --tw-gradient-to: #EA580C; }
+      .from-orange-brand { --tw-gradient-from: #C9A961; }
+      .to-orange-600     { --tw-gradient-to: #B8944A; }
+
+      /* Acentos por linha de produto */
+      .text-kids  { color: #FF8E72; }
+      .text-teens { color: #4FB3A9; }
+      .bg-kids-soft  { background-color: #FFEDE8; }
+      .bg-teens-soft { background-color: #E5F3F1; }
 
       /* ─── Ícones finos (global Lucide) ──────────────────── */
       main svg,
@@ -241,9 +167,10 @@ fbq('track', 'PageView');
       }
 
       /* ─── Utilitários extras ─────────────────────────────── */
-      .bg-page       { background-color: #F6F4FC; }
-      .bg-deep-purple { background-color: #1A1033; }
-      .text-deep-purple { color: #1A1033; }
+      .bg-page       { background-color: #F8F5EF; }
+      .bg-cream      { background-color: #F8F5EF; }
+      .bg-deep-purple { background-color: #1E1235; }
+      .text-deep-purple { color: #1E1235; }
 
       /* Pílula — rounded-full para CTAs principais */
       .rounded-full { border-radius: 9999px; }
