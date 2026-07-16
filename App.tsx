@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 
 // Components
 import Header from './components/Header';
@@ -28,8 +28,8 @@ import InglesCriancas from './pages/InglesCriancas';
 import InglesAdolescentes from './pages/InglesAdolescentes';
 import InglesNegocios from './pages/InglesNegocios';
 
-// SEO metadata por rota — atualizado dinamicamente no cliente
-const SEO_META: Record<string, { title: string; description: string; canonical: string }> = {
+// SEO metadata por rota — usado no SSG (build) e como fallback no cliente
+export const SEO_META: Record<string, { title: string; description: string; canonical: string }> = {
   '/': {
     title: 'Curso de Inglês Online | Fluência em 18 Meses com Método ESL | OpenLife',
     description: 'Aprenda inglês com método ESL imersivo da OpenLife. Fluência em 18 meses. Para adultos, jovens e executivos. Online e presencial em todo o Brasil.',
@@ -124,9 +124,9 @@ const SEOUpdater: React.FC = () => {
   return null;
 };
 
-const App: React.FC = () => {
+const AppShell: React.FC = () => {
   return (
-    <Router>
+    <>
       <SEOUpdater />
       <div className="flex flex-col min-h-screen">
         <Header />
@@ -156,8 +156,8 @@ const App: React.FC = () => {
         <Footer />
         <Chatbot />
       </div>
-    </Router>
+    </>
   );
 };
 
-export default App;
+export default AppShell;
