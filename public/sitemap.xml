@@ -68,6 +68,18 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Páginas locais por cidade (SEO local) -->
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-sao-paulo</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-rio-de-janeiro</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-belo-horizonte</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-brasilia</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-curitiba</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-porto-alegre</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-salvador</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-fortaleza</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-recife</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://openlifebrasil.com.br/curso-de-ingles-campinas</loc><lastmod>2026-07-16</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
   <!-- Blog -->
   <url>
     <loc>https://openlifebrasil.com.br/blog</loc>

@@ -28,6 +28,10 @@ import InglesCriancas from './pages/InglesCriancas';
 import InglesAdolescentes from './pages/InglesAdolescentes';
 import InglesNegocios from './pages/InglesNegocios';
 
+// Páginas locais por cidade (SEO local)
+import CursoInglesCidade from './pages/CursoInglesCidade';
+import { CITIES } from './data/cities';
+
 // SEO metadata por rota — usado no SSG (build) e como fallback no cliente
 export const SEO_META: Record<string, { title: string; description: string; canonical: string }> = {
   '/': {
@@ -92,6 +96,16 @@ export const SEO_META: Record<string, { title: string; description: string; cano
   },
 };
 
+// SEO local — gerado automaticamente para cada cidade em data/cities.ts
+CITIES.forEach((city) => {
+  const path = `/curso-de-ingles-${city.slug}`;
+  SEO_META[path] = {
+    title: `Curso de Inglês em ${city.name} | Método ESL Online | OpenLife`,
+    description: `Aulas de inglês ao vivo para quem mora em ${city.name}. Método ESL imersivo, turmas reduzidas, fluência em 18 meses. Agende sua aula experimental gratuita.`,
+    canonical: `https://openlifebrasil.com.br${path}`,
+  };
+});
+
 const SEOUpdater: React.FC = () => {
   const location = useLocation();
 
@@ -151,6 +165,14 @@ const AppShell: React.FC = () => {
             <Route path="/ingles-para-criancas" element={<InglesCriancas />} />
             <Route path="/ingles-para-adolescentes" element={<InglesAdolescentes />} />
             <Route path="/ingles-para-negocios" element={<InglesNegocios />} />
+            {/* Páginas locais por cidade */}
+            {CITIES.map((city) => (
+              <Route
+                key={city.slug}
+                path={`/curso-de-ingles-${city.slug}`}
+                element={<CursoInglesCidade city={city} />}
+              />
+            ))}
           </Routes>
         </main>
         <Footer />

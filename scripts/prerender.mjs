@@ -7,6 +7,20 @@ const root = path.resolve(__dirname, '..');
 const clientDir = path.join(root, 'dist/client');
 const serverEntry = path.join(root, 'dist/server/entry-server.js');
 
+// Mantido em sincronia manual com data/cities.ts (slugs das cidades)
+const CITY_SLUGS = [
+  'sao-paulo',
+  'rio-de-janeiro',
+  'belo-horizonte',
+  'brasilia',
+  'curitiba',
+  'porto-alegre',
+  'salvador',
+  'fortaleza',
+  'recife',
+  'campinas',
+];
+
 const ROUTES = [
   '/',
   '/cursos',
@@ -25,6 +39,7 @@ const ROUTES = [
   '/cookies',
   '/reels',
   '/openstore',
+  ...CITY_SLUGS.map((slug) => `/curso-de-ingles-${slug}`),
 ];
 
 const template = fs.readFileSync(path.join(clientDir, 'index.html'), 'utf-8');

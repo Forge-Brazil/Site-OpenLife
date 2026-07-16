@@ -82,12 +82,16 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-semibold uppercase tracking-widest text-purple-brand/60 mb-4">Cidades</h4>
             <ul className="space-y-3 text-xs">
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em São Paulo</Link></li>
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês no Rio de Janeiro</Link></li>
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Curitiba</Link></li>
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Porto Alegre</Link></li>
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em BH</Link></li>
-              <li><Link to="/contato" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Brasília</Link></li>
+              <li><Link to="/curso-de-ingles-sao-paulo" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em São Paulo</Link></li>
+              <li><Link to="/curso-de-ingles-rio-de-janeiro" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês no Rio de Janeiro</Link></li>
+              <li><Link to="/curso-de-ingles-curitiba" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Curitiba</Link></li>
+              <li><Link to="/curso-de-ingles-porto-alegre" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Porto Alegre</Link></li>
+              <li><Link to="/curso-de-ingles-belo-horizonte" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em BH</Link></li>
+              <li><Link to="/curso-de-ingles-brasilia" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Brasília</Link></li>
+              <li><Link to="/curso-de-ingles-salvador" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Salvador</Link></li>
+              <li><Link to="/curso-de-ingles-fortaleza" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Fortaleza</Link></li>
+              <li><Link to="/curso-de-ingles-recife" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Recife</Link></li>
+              <li><Link to="/curso-de-ingles-campinas" className="text-slate-500 hover:text-purple-brand transition-colors">Inglês em Campinas</Link></li>
               <li>
                 <a href="https://share.google/egMmZSfXSk33Uj1rN" target="_blank" rel="noopener noreferrer"
                   className="flex items-center text-slate-500 hover:text-purple-brand transition-colors">
