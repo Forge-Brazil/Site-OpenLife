@@ -58,9 +58,9 @@ const Footer: React.FC = () => {
                 <Phone size={13} strokeWidth={1.5} className="text-orange-brand shrink-0" />
                 <span>+55 (53) 99965-6216</span>
               </a>
-              <a href="mailto:contato@openlifebrasil.com" className="flex items-center space-x-2 text-slate-500 hover:text-purple-brand text-xs transition-colors">
+              <a href="mailto:contatoopenlife@gmail.com" className="flex items-center space-x-2 text-slate-500 hover:text-purple-brand text-xs transition-colors">
                 <Mail size={13} strokeWidth={1.5} className="text-orange-brand shrink-0" />
-                <span>contato@openlifebrasil.com</span>
+                <span>contatoopenlife@gmail.com</span>
               </a>
             </div>
           </div>
