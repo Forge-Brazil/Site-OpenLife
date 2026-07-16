@@ -1,6 +1,7 @@
 User-agent: *
 Allow: /
 Disallow: /admin
+Disallow: /*?utm_
 
 Sitemap: https://openlifebrasil.com.br/sitemap.xml
 
@@ -8,11 +9,20 @@ Sitemap: https://openlifebrasil.com.br/sitemap.xml
 User-agent: GPTBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
 Allow: /
 
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: anthropic-ai
+User-agent: Google-Extended
+Allow: /
+
+User-agent: CCBot
 Allow: /
