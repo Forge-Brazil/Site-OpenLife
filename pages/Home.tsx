@@ -1,277 +1,241 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, ArrowRight, Check, X as XIcon, Sparkles, Users, Award, Globe } from 'lucide-react';
-import { HOME_FAQS as faqs } from '../data/faq';
+import {
+  Users, Star, Play, CheckCircle2, Clock,
+  MessageCircle, Globe, Zap, ArrowRight, MapPin, Award,
+  ChevronDown, ChevronUp, List,
+} from 'lucide-react';
+import { COURSES } from '../constants';
+import { HOME_FAQ_CATEGORIES as faqData } from '../data/faq';
+import NewsletterBox from '../components/NewsletterBox';
 
 const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
-const stats = [
-  { value: '21', label: 'anos de método comprovado' },
-  { value: '18', label: 'meses até a fluência' },
-  { value: 'C1/C2', label: 'certificação internacional CEFR' },
-  { value: '100%', label: 'em inglês desde o dia 1' },
-];
-
-const journeys = [
-  {
-    tag: 'OpenLife Kids', age: '6 a 9 anos', accent: '#F57C20', soft: '#FFF4EB',
-    desc: 'Bilinguismo precoce com aulas lúdicas — o inglês entra na vida da criança como brincadeira, não como matéria.',
-    link: '/ingles-para-criancas',
-  },
-  {
-    tag: 'Journey For Teens', age: '10 a 13 anos', accent: '#9333EA', soft: '#F5F3FF',
-    desc: 'Cultura pop, gamificação e speaking de verdade — inglês conectado ao mundo em que o adolescente já vive.',
-    link: '/ingles-para-adolescentes',
-  },
-  {
-    tag: 'Journey 13+', age: 'Adolescentes e adultos', accent: '#6D28D9', soft: '#EDE9FE',
-    desc: 'Nossa jornada principal: do básico à fluência em 18 meses, com imersão ESL total e certificação internacional.',
-    link: '/ingles-para-adultos',
-  },
-  {
-    tag: 'Keep the Fluency', age: 'Fluentes', accent: '#EA6A0A', soft: '#FFE6D0',
-    desc: 'Debates de alto nível, networking e comunidade — para quem conquistou a fluência e não pretende perdê-la.',
-    link: '/cursos',
-  },
-];
-
-const methodSteps = [
-  {
-    icon: Globe, title: 'Imersão desde o dia 1',
-    desc: 'Aulas 100% em inglês desde a primeira palavra. Você adquire o idioma como quem vive no exterior — sem tradução mental.',
-  },
-  {
-    icon: Users, title: 'Turmas reduzidas, professores reais',
-    desc: 'Você fala em todas as aulas, não só escuta. Acompanhamento próximo de quem conhece seu nome e seu objetivo.',
-  },
-  {
-    icon: Sparkles, title: 'Método ESL comprovado',
-    desc: 'A mesma metodologia usada em países de língua inglesa, aplicada há 21 anos no Brasil com resultado documentado.',
-  },
-  {
-    icon: Award, title: 'Certificação internacional',
-    desc: 'Você se forma no nível C1/C2 do CEFR, preparado para exames internacionais, entrevistas e o mercado global.',
-  },
-];
-
-const timeline = [
-  { phase: 'Meses 1–4', level: 'Fundação', desc: 'Você entende e responde em inglês em situações do dia a dia. O bloqueio de falar começa a cair.' },
-  { phase: 'Meses 5–10', level: 'Conversação', desc: 'Conversas reais sem tradução mental. Séries e músicas passam a fazer sentido sem legenda.' },
-  { phase: 'Meses 11–15', level: 'Autonomia', desc: 'Reuniões, viagens e entrevistas em inglês deixam de assustar. Você pensa no idioma.' },
-  { phase: 'Meses 16–18', level: 'Fluência C1/C2', desc: 'Certificação internacional e fluência plena — pronta para o mercado global.' },
-];
-
-const compare = {
-  apps: [
-    'Você aprende palavras soltas',
-    'Ninguém corrige sua pronúncia',
-    'Sequências infinitas, zero conversação',
-    'Anos de streak, travado na primeira conversa',
-  ],
-  openlife: [
-    'Você conversa desde a primeira aula',
-    'Professores reais acompanham sua evolução',
-    'Imersão total: pensar em inglês vira hábito',
-    '18 meses com certificação internacional C1/C2',
-  ],
+// Cada curso do carrossel manda para a página de SEO dedicada quando ela
+// existe; senão cai no catálogo geral.
+const COURSE_LINKS: Record<string, string> = {
+  kids: '/ingles-para-criancas',
+  teens: '/ingles-para-adolescentes',
+  journey: '/ingles-para-adultos',
+  keep: '/cursos',
 };
 
+const CATEGORY_ICON: Record<string, React.ReactNode> = {
+  list: <List size={24} />,
+  mapPin: <MapPin size={24} />,
+  award: <Award size={24} />,
+};
+
+const benefits = [
+  { icon: <Clock />, title: 'Fluência em 18 meses', desc: 'Resultados reais e consistentes, não em 5 anos como no método tradicional.' },
+  { icon: <Award />, title: 'Certificação Internacional', desc: 'Formação com foco nos padrões internacionais de proficiência (CEFR C1/C2).' },
+  { icon: <MessageCircle />, title: 'Contato Diário', desc: 'Aulas dinâmicas aliadas a uma plataforma gamificada para prática diária.' },
+  { icon: <Zap />, title: 'Metodologia ESL', desc: 'Aprenda a pensar direto em inglês, eliminando a tradução mental para sempre.' },
+  { icon: <Users />, title: 'Turmas Pequenas', desc: 'Máximo aproveitamento com média de 4 alunos por turma para atenção total.' },
+  { icon: <Clock />, title: 'Horários Flexíveis', desc: 'Estude de segunda a sábado, adaptando o curso à sua rotina profissional.' },
+  { icon: <Globe />, title: 'Ambiente 100% Inglês', desc: 'Imersão total desde a recepção da escola para uma experiência autêntica.' },
+  { icon: <Globe />, title: 'Suporte Intercâmbio', desc: 'Preparação completa para intercâmbio acadêmico, profissional e turístico.' },
+];
+
 const Home: React.FC = () => {
-  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [expandedCategory, setExpandedCategory] = useState<number | null>(1);
+  const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
 
   return (
-    <div className="-mt-20 bg-cream">
+    <div className="overflow-hidden -mt-20">
 
-      {/* HERO — gradiente violeta, no estilo dos posts do Instagram da OpenLife */}
-      <section className="bg-brand-gradient relative overflow-hidden min-h-[92vh] flex flex-col items-center justify-center text-center px-6 pt-36 pb-20">
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 70% 45% at 50% 0%, rgba(245,124,32,0.18), transparent 70%)' }} />
-        <div aria-hidden="true" className="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-white/[0.04] blur-3xl pointer-events-none" />
+      {/* Hero */}
+      <section className="relative pt-32 pb-20 md:pt-40 md:pb-40 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div className="space-y-8">
+              <div className="inline-flex items-center space-x-2 bg-orange-100 text-orange-brand px-4 py-1.5 rounded-full text-sm font-bold">
+                <Zap size={16} />
+                <span>Inglês rápido e sem tradução</span>
+              </div>
+              <h1 className="text-5xl md:text-7xl font-black text-purple-brand leading-tight">
+                Fale inglês em <span className="text-orange-brand">18 meses!</span>
+              </h1>
+              <p className="text-xl text-slate-600 leading-relaxed max-w-lg">
+                A melhor escola de idiomas de Bagé e região, com metodologia imersiva, horários
+                flexíveis e aulas 100% em inglês desde o primeiro dia. Online ou presencial.
+                Certificação internacional.
+              </p>
+              <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+                  className="bg-orange-brand text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20 flex items-center justify-center group">
+                  Quero ser fluente com a OpenLife
+                  <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
 
-        <p className="relative inline-flex items-center gap-2 border border-white/30 text-white text-[11px] tracking-[0.22em] uppercase font-semibold px-4 py-1.5 rounded-full mb-8 bg-white/10">
-          <Sparkles size={12} /> 20 anos transformando vidas
-        </p>
+              {/* Prova Social */}
+              <div className="flex items-center space-x-8 pt-4">
+                <div className="flex flex-col">
+                  <span className="text-2xl font-black text-slate-900">+66k</span>
+                  <span className="text-xs text-slate-500 uppercase font-bold">Alunos Fluentes</span>
+                </div>
+                <div className="h-10 w-px bg-slate-200" />
+                <div className="flex flex-col">
+                  <div className="flex text-orange-400">
+                    {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={16} fill="currentColor" />)}
+                  </div>
+                  <span className="text-xs text-slate-500 uppercase font-bold mt-1">5/5 Estrelas (Google)</span>
+                </div>
+              </div>
 
-        <h1 className="relative font-display text-4xl sm:text-5xl md:text-[4.2rem] font-extrabold leading-[1.08] mb-6 text-white max-w-4xl">
-          Fale inglês de verdade<br />
-          <span className="highlight-pill text-lavender">em 18 meses.</span>
-        </h1>
-
-        <p className="relative text-base md:text-lg mb-10 max-w-xl mx-auto text-white/85 leading-relaxed">
-          Imersão 100% em inglês desde o primeiro dia, turmas reduzidas e certificação
-          internacional. Presencial em Bagé ou online para todo o Brasil.
-        </p>
-
-        <div className="relative flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
-            className="bg-orange-brand text-white px-9 py-4 rounded-full font-bold text-sm hover:bg-orange-500 transition-colors shadow-lg shadow-black/20">
-            Agendar Aula Experimental Grátis
-          </a>
-          <Link to="/metodologia"
-            className="text-white border border-white/40 px-9 py-4 rounded-full font-semibold text-sm hover:bg-white/10 transition-colors">
-            Como funciona o método
-          </Link>
-        </div>
-
-        {/* Stats — prova imediata */}
-        <div className="relative grid grid-cols-2 md:grid-cols-4 gap-x-12 gap-y-8 mt-16 pt-10 border-t border-white/15 w-full max-w-3xl">
-          {stats.map((s) => (
-            <div key={s.label}>
-              <p className="font-display text-3xl md:text-4xl font-extrabold text-white">{s.value}</p>
-              <p className="text-white/65 text-xs mt-1.5 leading-snug">{s.label}</p>
+              <div className="flex items-center space-x-4 text-slate-400 text-sm font-medium">
+                <MapPin size={16} className="text-purple-brand" />
+                <span>Sede em Bagé/RS · Online para todo o Brasil</span>
+              </div>
             </div>
-          ))}
+
+            <div className="relative">
+              <div className="absolute -inset-4 bg-purple-brand/10 rounded-full blur-3xl" />
+              <div className="relative rounded-3xl overflow-hidden shadow-2xl transform lg:rotate-3 hover:rotate-0 transition-transform duration-500">
+                <img
+                  src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&q=80&w=1200"
+                  alt="Melhor escola de idiomas em Bagé e região"
+                  loading="eager"
+                  className="w-full h-[500px] object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-8">
+                  <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 border border-white/20 w-full flex items-center justify-between">
+                    <div>
+                      <p className="text-white text-sm font-bold">Imersão Total ESL</p>
+                      <p className="text-white/70 text-xs">Aulas 100% em inglês desde o dia 1</p>
+                    </div>
+                    <div className="w-12 h-12 bg-orange-brand text-white rounded-full flex items-center justify-center">
+                      <Play fill="currentColor" size={20} className="ml-1" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* MÉTODO ESL */}
-      <section className="bg-cream py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Metodologia ESL</p>
-            <h2 className="font-display text-3xl md:text-[2.6rem] font-extrabold text-purple-brand leading-tight mb-5">
-              Existe diferença entre estudar inglês e falar inglês.
+      {/* Atenção */}
+      <section className="py-12 md:py-20 bg-white text-center overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4">
+          <p className="text-slate-600 text-base md:text-xl font-medium mb-2">
+            Este <span className="font-bold">não</span> é um curso de inglês tradicional
+          </p>
+          <div className="relative inline-block">
+            <h2 className="text-7xl md:text-[160px] font-black text-purple-brand uppercase tracking-tighter leading-none select-none">
+              ATENÇÃO
             </h2>
-            <p className="text-slate-600 leading-relaxed">
-              Em 20 anos ensinando inglês, descobrimos por que brasileiros travam na hora de
-              conversar — e como a imersão ESL corrige isso desde a primeira aula.
+            <div className="absolute top-1/2 left-0 w-[110%] h-1.5 md:h-3 bg-orange-brand -translate-y-1/2 -ml-[5%] rounded-full opacity-90" />
+          </div>
+        </div>
+      </section>
+
+      {/* Benefícios */}
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+              <span className="text-orange-brand">Diferenciais</span>{' '}
+              <span className="text-purple-brand">que aceleram sua</span>{' '}
+              <span className="text-orange-brand">fluência.</span>
+            </h2>
+            <p className="text-lg text-slate-500 max-w-2xl mx-auto">
+              Curso de inglês em Bagé com metodologia ESL: comunicação, imersão e resultados reais em 18 meses.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {methodSteps.map((step, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-purple-100 hover:shadow-lg hover:shadow-purple-brand/10 transition-shadow">
-                <div className="w-11 h-11 rounded-xl bg-brand-gradient flex items-center justify-center mb-5">
-                  <step.icon size={20} className="text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {benefits.map((b, i) => (
+              <div key={i} className="bg-white p-8 rounded-2xl shadow-soft border border-gray-100 hover:shadow-hover hover:-translate-y-2 transition-all group">
+                <div className="w-12 h-12 bg-purple-brand/10 text-purple-brand rounded-xl flex items-center justify-center mb-6 group-hover:bg-orange-brand group-hover:text-white transition-colors">
+                  {b.icon}
                 </div>
-                <h3 className="font-display text-xl font-bold text-purple-brand mb-2.5">{step.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{step.desc}</p>
+                <h3 className="text-xl font-bold text-orange-brand mb-3">{b.title}</h3>
+                <p className="text-slate-500 text-sm leading-relaxed">{b.desc}</p>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-10">
-            <Link to="/metodologia" className="inline-flex items-center gap-2 text-purple-brand font-bold text-sm hover:text-orange-brand transition-colors">
-              Conheça a metodologia completa <ArrowRight size={16} />
+      {/* Cursos Preview */}
+      <section className="py-24 bg-bgsoft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mb-16 space-y-4">
+            <h2 className="text-3xl md:text-5xl font-black text-purple-brand mb-4">
+              Conheça o curso ideal que vai transformar o seu inglês!
+            </h2>
+            <p className="text-slate-500">Curso de inglês online e presencial com metodologia validada por 66 mil alunos.</p>
+            <Link to="/cursos" className="text-orange-brand font-bold inline-flex items-center hover:text-purple-brand transition-colors">
+              Ver todos os programas <ChevronDown className="ml-1 -rotate-90" size={16} />
             </Link>
           </div>
-        </div>
-      </section>
 
-      {/* JORNADA 18 MESES — timeline */}
-      <section className="bg-brand-gradient py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-white/80 font-bold text-xs tracking-[0.25em] uppercase mb-4">Sua Jornada</p>
-            <h2 className="font-display text-3xl md:text-[2.6rem] font-extrabold text-white leading-tight">
-              Do zero à fluência, mês a mês.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
-            {timeline.map((t, i) => (
-              <div key={i} className="relative bg-white/10 border border-white/15 rounded-2xl p-6">
-                <p className="text-white text-[11px] font-bold tracking-[0.18em] uppercase mb-2 bg-white/15 inline-block px-2.5 py-1 rounded-full">{t.phase}</p>
-                <h3 className="font-display text-lg font-bold text-white mb-2.5 mt-3">{t.level}</h3>
-                <p className="text-white/70 text-[13px] leading-relaxed">{t.desc}</p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
-              className="inline-block bg-orange-brand text-white px-9 py-4 rounded-full font-bold text-sm hover:bg-orange-500 transition-colors">
-              Começar minha jornada
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* CURSOS POR JORNADA DE VIDA */}
-      <section className="bg-cream py-24 px-6">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Cursos</p>
-            <h2 className="font-display text-3xl md:text-[2.6rem] font-extrabold text-purple-brand leading-tight">
-              Uma jornada para cada fase da vida.
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {journeys.map((j) => (
-              <Link key={j.tag} to={j.link}
-                className="group bg-white rounded-2xl p-8 border border-purple-100 hover:border-purple-brand hover:shadow-lg hover:shadow-purple-brand/10 transition-all">
-                <div className="flex items-center justify-between mb-4">
-                  <span className="text-[11px] font-bold tracking-[0.16em] uppercase px-3 py-1.5 rounded-full"
-                    style={{ color: j.accent, backgroundColor: j.soft }}>
-                    {j.tag}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left">
+            {COURSES.map((course) => (
+              <Link key={course.id} to={COURSE_LINKS[course.id] ?? '/cursos'}
+                className="group relative bg-slate-100 rounded-3xl overflow-hidden aspect-[3/4]">
+                <img src={course.image} alt={course.title} loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent p-6 flex flex-col justify-end">
+                  <span className="text-orange-brand font-bold text-xs uppercase tracking-widest mb-2">{course.focus}</span>
+                  <h3 className="text-white text-2xl font-black mb-1">{course.title}</h3>
+                  <p className="text-white/70 text-xs mb-4">{course.age}</p>
+                  <span className="bg-white text-slate-900 text-center py-2.5 rounded-lg text-sm font-bold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Saiba Mais
                   </span>
-                  <span className="text-slate-400 text-xs">{j.age}</span>
                 </div>
-                <p className="text-slate-600 text-sm leading-relaxed mb-5">{j.desc}</p>
-                <span className="inline-flex items-center gap-1.5 text-purple-brand font-bold text-sm group-hover:gap-2.5 transition-all">
-                  Conhecer a jornada <ArrowRight size={14} />
-                </span>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* APP vs OPENLIFE */}
-      <section className="bg-white py-24 px-6 border-y border-purple-100">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-14">
-            <h2 className="font-display text-3xl md:text-[2.6rem] font-extrabold text-purple-brand leading-tight mb-4">
-              O aplicativo te ensina palavras.<br />Nós te ensinamos a conversar.
-            </h2>
-            <p className="text-slate-600 leading-relaxed">
-              Se você tem anos de streak e continua travando numa conversa real, o problema não é você — é o formato.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            <div className="rounded-2xl border border-slate-200 bg-slate-50 p-8">
-              <p className="font-bold text-slate-400 text-xs tracking-[0.18em] uppercase mb-5">Estudar sozinho no app</p>
-              <ul className="space-y-3.5">
-                {compare.apps.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-slate-500">
-                    <XIcon size={16} className="text-slate-300 shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="rounded-2xl bg-brand-gradient p-8 shadow-purple-brand/20">
-              <p className="font-bold text-white text-xs tracking-[0.18em] uppercase mb-5">Imersão ESL na OpenLife</p>
-              <ul className="space-y-3.5">
-                {compare.openlife.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm text-white/90">
-                    <Check size={16} className="text-orange-200 shrink-0 mt-0.5" /> {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ */}
-      <section className="bg-cream py-24 px-6">
-        <div className="max-w-2xl mx-auto">
-          <h2 className="text-center font-display text-3xl md:text-[2.6rem] font-extrabold text-purple-brand mb-12">
-            Perguntas frequentes
-          </h2>
-          <div className="space-y-2.5">
-            {faqs.map((faq, i) => (
-              <div key={i} className="bg-white border border-purple-100 rounded-xl overflow-hidden">
-                <button onClick={() => setOpenFaq(openFaq === i ? null : i)}
-                  aria-expanded={openFaq === i}
-                  className="w-full flex items-center justify-between px-6 py-4 text-left gap-4">
-                  <span className="font-bold text-purple-brand text-sm">{faq.q}</span>
-                  <ChevronDown size={16} className={"shrink-0 text-orange-brand transition-transform " + (openFaq === i ? 'rotate-180' : '')} />
+      <section className="py-24 bg-white">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-14">
+            <h2 className="text-3xl md:text-5xl font-black text-purple-brand mb-4">Perguntas frequentes</h2>
+            <p className="text-slate-500">Tudo o que você precisa saber antes de começar.</p>
+          </div>
+          <div className="space-y-6">
+            {faqData.map((cat) => (
+              <div key={cat.id} className={`rounded-[32px] overflow-hidden transition-all duration-300 bg-purple-brand ${expandedCategory === cat.id ? 'pb-6' : ''}`}>
+                <button
+                  onClick={() => setExpandedCategory(expandedCategory === cat.id ? null : cat.id)}
+                  className="w-full flex items-center justify-between p-6 text-white text-left"
+                  aria-expanded={expandedCategory === cat.id}
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="p-2 border border-white/20 rounded-xl">
+                      {CATEGORY_ICON[cat.icon]}
+                    </div>
+                    <span className="text-xl md:text-2xl font-bold tracking-tight">{cat.category}</span>
+                  </div>
+                  {expandedCategory === cat.id ? <ChevronUp size={28} /> : <ChevronDown size={28} />}
                 </button>
-                {openFaq === i && (
-                  <div className="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-purple-100 pt-3.5">{faq.a}</div>
+
+                {expandedCategory === cat.id && (
+                  <div className="px-6 space-y-2 animate-in">
+                    {cat.questions.map((item) => (
+                      <div key={item.q} className="bg-white/10 rounded-2xl overflow-hidden">
+                        <button
+                          onClick={() => setExpandedQuestion(expandedQuestion === item.q ? null : item.q)}
+                          className="w-full flex items-center justify-between p-5 text-white text-left hover:bg-white/20 transition-colors"
+                          aria-expanded={expandedQuestion === item.q}
+                        >
+                          <span className="font-bold pr-4">{item.q}</span>
+                          <ChevronDown size={20} className={`shrink-0 transition-transform ${expandedQuestion === item.q ? 'rotate-180' : ''}`} />
+                        </button>
+                        {expandedQuestion === item.q && (
+                          <div className="p-5 pt-0 text-white/90 text-sm leading-relaxed whitespace-pre-line border-t border-white/5 animate-in">
+                            {item.a}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
                 )}
               </div>
             ))}
@@ -279,25 +243,36 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA FINAL */}
-      <section className="bg-brand-gradient relative overflow-hidden py-24 px-6 text-center">
-        <div aria-hidden="true" className="absolute inset-0 pointer-events-none"
-          style={{ background: 'radial-gradient(ellipse 60% 55% at 50% 100%, rgba(245,124,32,0.16), transparent 70%)' }} />
-        <div className="relative max-w-2xl mx-auto">
-          <h2 className="font-display text-3xl md:text-[2.6rem] font-extrabold text-white mb-5 leading-tight">
-            18 meses. Fluência real.<br />Certificação internacional.
-          </h2>
-          <p className="text-white/80 mb-10 leading-relaxed">
-            Agende sua aula experimental gratuita — 45 minutos que mostram por que o método funciona.
-          </p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
-            className="inline-block bg-orange-brand text-white px-10 py-4 rounded-full font-bold text-sm hover:bg-orange-500 transition-colors shadow-lg shadow-black/20">
-            Agendar Aula Experimental Grátis
-          </a>
-          <p className="text-white/50 text-xs mt-6">Presencial em Bagé/RS · Online para todo o Brasil · Sem compromisso</p>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <NewsletterBox />
+      </div>
+
+      {/* CTA Final */}
+      <section className="py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-purple-brand rounded-[40px] overflow-hidden relative p-12 md:p-24 text-center">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-orange-brand/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+            <div className="relative z-10 max-w-3xl mx-auto space-y-8">
+              <h2 className="text-4xl md:text-6xl font-black text-white">Comece agora sua jornada rumo à fluência.</h2>
+              <p className="text-purple-100 text-xl">
+                Agende sua aula experimental com um de nossos professores certificados. Atendimento imediato via WhatsApp.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+                  className="w-full sm:w-auto bg-orange-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20 flex items-center justify-center">
+                  Agendar Aula Grátis Agora
+                </a>
+                <div className="flex items-center space-x-2 text-white/80">
+                  <CheckCircle2 className="text-orange-brand" size={24} />
+                  <span className="font-medium">Vagas Limitadas</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
-
     </div>
   );
 };

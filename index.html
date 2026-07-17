@@ -74,104 +74,61 @@ fbq('track', 'PageView');
     <!-- Schema.org: EducationalOrganization nacional + WebSite -->
     <!-- Schema.org JSON-LD é injetado por rota no build (data/schema.ts + scripts/prerender.mjs) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+      // Design system oficial OpenLife — roxo #6B2D8B + laranja #F57C20,
+      // a identidade original da marca (Poppins/Inter). Definido nativamente
+      // no Tailwind para que bg-purple-brand, text-orange-brand, shadow-purple-brand/20
+      // etc. funcionem em qualquer tom sem precisar de CSS manual por classe.
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'purple-brand': '#6B2D8B',
+              'orange-brand': '#F57C20',
+              primary: { DEFAULT: '#6B2D8B', dark: '#52206B' },
+              accent: { DEFAULT: '#F57C20', light: '#FFA057' },
+              bgsoft: '#F6F4FF',
+              textmuted: '#6B6B6B',
+              borderlite: '#E5E5E5',
+              purple: { 50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE', 300: '#C4B5FD', 900: '#4C1D95' },
+              orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 400: '#FB923C', 500: '#EA580C', 600: '#D45F0A' },
+            },
+            fontFamily: {
+              heading: ['Poppins', 'sans-serif'],
+              body: ['Inter', 'sans-serif'],
+            },
+            boxShadow: {
+              soft: '0 4px 12px rgba(0,0,0,0.05)',
+              hover: '0 8px 24px rgba(0,0,0,0.08)',
+            },
+          },
+        },
+      };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
       /* ─── Base ──────────────────────────────────────────── */
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
-        background-color: #FAF8FF;   /* lilás quase-branco — tom de página */
+        background-color: #F6F4FF;
+      }
+      h1, h2, h3, h4, .font-display, .font-heading {
+        font-family: 'Poppins', sans-serif;
       }
 
-      /* Display — sans arredondada bold (identidade Instagram OpenLife) */
-      .font-display {
-        font-family: 'Nunito', 'Inter', sans-serif;
-        letter-spacing: -0.01em;
-      }
-
-      /* ─── Brand: Violeta vibrante (identidade real do Instagram) ── */
-      :root {
-        --violet-deep: #4C1D95;
-        --violet: #7C3AED;
-        --violet-bright: #A855F7;
-        --lavender: #C4B5FD;
-        --orange: #F57C20;
-        --page-bg: #FAF8FF;
-      }
-
-      .bg-purple-brand         { background: linear-gradient(135deg, #4C1D95 0%, #7C3AED 55%, #9333EA 100%) !important; }
-      .text-purple-brand       { color: #6D28D9 !important; }
-      .border-purple-brand     { border-color: #7C3AED !important; }
-      .ring-purple-brand       { --tw-ring-color: #7C3AED; }
-
-      .hover\:bg-purple-brand:hover       { background: #6D28D9 !important; }
-      .hover\:bg-purple-900:hover         { background-color: #4C1D95 !important; }
-      .hover\:text-purple-brand:hover     { color: #6D28D9 !important; }
-      .hover\:border-purple-brand:hover   { border-color: #7C3AED !important; }
-      .focus\:ring-purple-brand:focus     { box-shadow: 0 0 0 3px rgba(124,58,237,0.25); }
-
-      /* Gradiente da marca — hero e seções escuras */
-      .bg-brand-gradient { background: linear-gradient(135deg, #4C1D95 0%, #6D28D9 40%, #9333EA 100%); }
-      .bg-brand-gradient-soft { background: linear-gradient(160deg, #7C3AED 0%, #A855F7 100%); }
-      .from-purple-brand  { --tw-gradient-from: #7C3AED; }
-      .to-purple-brand    { --tw-gradient-to: #7C3AED; }
-      .via-purple-brand   { --tw-gradient-via: #7C3AED; }
-
-      .shadow-purple-brand\/20  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.20); }
-      .shadow-purple-brand\/40  { box-shadow: 0 8px 24px -4px rgba(124,58,237,0.40); }
-
-      /* Tints violeta */
-      .bg-purple-50  { background-color: #F5F3FF !important; }
-      .bg-purple-100 { background-color: #EDE9FE !important; }
-      .bg-purple-900 { background-color: #4C1D95 !important; }
-      .text-purple-100 { color: #EDE9FE !important; }
-      .text-purple-200 { color: #DDD6FE !important; }
-      .text-purple-300 { color: #C4B5FD !important; }
-      .border-purple-100 { border-color: #EDE9FE !important; }
-      .border-purple-200 { border-color: #DDD6FE !important; }
-      .hover\:bg-purple-50:hover { background-color: #F5F3FF !important; }
-
-      /* Palavra destacada em lavanda — assinatura visual dos posts */
-      .text-lavender { color: #C4B5FD; }
-      .highlight-pill {
-        background: rgba(196,181,253,0.25);
-        border-radius: 0.5em;
-        padding: 0 0.18em;
-      }
-
-      /* ─── Brand: Laranja do logo (CTA / energia) ────────── */
-      .bg-orange-brand         { background-color: #F57C20 !important; }
-      .text-orange-brand       { color: #EA6A0A !important; }
-      .border-orange-brand     { border-color: #F57C20 !important; }
-
-      .hover\:bg-orange-brand:hover   { background-color: #F57C20 !important; }
-      .hover\:bg-orange-500:hover     { background-color: #E06A10 !important; }
-      .hover\:bg-orange-600:hover     { background-color: #D45F0A !important; }
-      .hover\:text-orange-brand:hover { color: #EA6A0A !important; }
-      .hover\:text-orange-400:hover   { color: #FB923C !important; }
-      .hover\:text-orange-500:hover   { color: #EA6A0A !important; }
-
-      .bg-orange-50  { background-color: #FFF4EB !important; }
-      .bg-orange-100 { background-color: #FFE6D0 !important; }
-      .text-orange-100 { color: #FFE6D0 !important; }
-      .text-orange-200 { color: #FED7AA !important; }
-      .border-orange-200 { border-color: #FED7AA !important; }
-
-      .from-orange-brand { --tw-gradient-from: #F57C20; }
-      .to-orange-600     { --tw-gradient-to: #D45F0A; }
+      /* Compatibilidade retroativa — classes usadas na Home e na página Kids,
+         recoloridas para o roxo/laranja oficial em vez de removidas por página. */
+      .bg-brand-gradient      { background: linear-gradient(135deg, #6B2D8B 0%, #52206B 100%); }
+      .bg-brand-gradient-soft { background: linear-gradient(160deg, #6B2D8B 0%, #8B3FAF 100%); }
+      .text-lavender          { color: #FFD9B3; }
+      .highlight-pill         { background: rgba(245,124,32,0.22); border-radius: 0.5em; padding: 0 0.18em; }
+      .bg-page, .bg-cream     { background-color: #F6F4FF; }
+      .bg-deep-purple         { background-color: #52206B; }
+      .text-deep-purple       { color: #52206B; }
 
       /* ─── Ícones finos (global Lucide) ──────────────────── */
-      main svg,
-      header svg,
-      footer svg {
-        stroke-width: 1.5;
-      }
-
-      /* ─── Utilitários extras ─────────────────────────────── */
-      .bg-page       { background-color: #FAF8FF; }
-      .bg-cream      { background-color: #FAF8FF; }
-      .bg-deep-purple { background-color: #4C1D95; }
-      .text-deep-purple { color: #4C1D95; }
+      main svg, header svg, footer svg { stroke-width: 1.5; }
 
       /* Pílula — rounded-full para CTAs principais */
       .rounded-full { border-radius: 9999px; }
