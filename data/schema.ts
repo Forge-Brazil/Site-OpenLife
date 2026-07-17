@@ -1,5 +1,6 @@
 import { SEO_META } from '../App';
 import { HOME_FAQS } from './faq';
+import { KIDS_FAQS } from './kidsFaq';
 import { CITIES } from './cities';
 
 const ORG_ID = 'https://openlifebrasil.com.br/#organization';
@@ -94,6 +95,9 @@ export function buildSchema(path: string): object {
   } else if (COURSE_PAGES[path]) {
     const meta = SEO_META[path];
     graph.push(courseSchema(path, COURSE_PAGES[path], meta?.description ?? COURSE_PAGES[path]));
+    if (path === '/ingles-para-criancas') {
+      graph.push(faqPageSchema(KIDS_FAQS));
+    }
   } else {
     const city = CITIES.find((c) => path === `/curso-de-ingles-${c.slug}`);
     if (city) {

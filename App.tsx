@@ -59,8 +59,8 @@ export const SEO_META: Record<string, { title: string; description: string; cano
     canonical: 'https://openlifebrasil.com.br/ingles-para-adultos',
   },
   '/ingles-para-criancas': {
-    title: 'Inglês para Crianças desde os 6 Anos | OpenLife Kids',
-    description: 'Curso de inglês para crianças de 6 a 9 anos com método imersivo OpenLife Kids. Bilinguismo precoce, gamificação e professores especializados.',
+    title: 'Curso de Inglês Kids em Bagé | OpenLife Kids',
+    description: 'Escola de idiomas kids em Bagé com método lúdico e imersivo para crianças a partir de 6 anos. Bilinguismo precoce, preparação para intercâmbio. Presencial ou online.',
     canonical: 'https://openlifebrasil.com.br/ingles-para-criancas',
   },
   '/ingles-para-adolescentes': {
