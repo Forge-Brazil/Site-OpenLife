@@ -4,10 +4,31 @@ import { Menu, X, ExternalLink } from 'lucide-react';
 
 const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
+// Rotas cujo topo da página é roxo/escuro (hero colorido) — enquanto o
+// header estiver transparente sobre elas, a logomarca precisa ser a
+// versão branca para manter contraste. Nas demais (fundo branco), usa
+// a versão colorida normal.
+const DARK_HERO_PATHS = new Set([
+  '/ingles-online',
+  '/ingles-para-adultos',
+  '/ingles-para-adolescentes',
+  '/ingles-para-negocios',
+  '/ingles-para-criancas',
+  '/metodologia',
+  '/sobre',
+  '/franquia',
+  '/blog',
+  '/openstore',
+  '/reels',
+]);
+
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
+
+  const isDarkHero = DARK_HERO_PATHS.has(location.pathname) || location.pathname.startsWith('/curso-de-ingles-');
+  const useWhiteLogo = isDarkHero && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -32,10 +53,13 @@ const Header: React.FC = () => {
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white shadow-md py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
 
-        {/* Logo */}
-        <Link to="/" className="flex items-center space-x-2 shrink-0">
-          <img src="/logomarca-nobg.png" alt="OpenLife English School" className="w-16 h-16 object-contain" />
-          <span className="text-xl font-bold tracking-tight text-purple-brand font-heading">OpenLife</span>
+        {/* Logo — branca sobre hero roxo/escuro, colorida sobre fundo branco */}
+        <Link to="/" className="flex items-center shrink-0">
+          <img
+            src={useWhiteLogo ? '/logomarca-branca.png' : '/logomarca-nobg.png'}
+            alt="OpenLife English School"
+            className="w-24 h-24 object-contain"
+          />
         </Link>
 
         {/* Desktop Nav */}

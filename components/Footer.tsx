@@ -12,9 +12,9 @@ const Footer: React.FC = () => {
 
           {/* Brand — spans 2 */}
           <div className="col-span-2 space-y-5">
-            <Link to="/" className="flex items-center space-x-2">
-              <img src="/logomarca-nobg.png" alt="OpenLife English School" className="w-16 h-16 object-contain" />
-              <span className="text-xl font-bold font-heading">OpenLife</span>
+            {/* Fundo do rodapé é sempre roxo, então usa a versão branca da logomarca */}
+            <Link to="/" className="flex items-center">
+              <img src="/logomarca-branca.png" alt="OpenLife English School" className="w-24 h-24 object-contain" />
             </Link>
             <p className="text-purple-100 text-sm leading-relaxed max-w-xs">
               Transformando vidas através da fluência em inglês há mais de 21 anos.
