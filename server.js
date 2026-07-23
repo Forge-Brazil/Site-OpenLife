@@ -33,6 +33,84 @@ app.use(express.json());
 app.use(cors());
 
 // ── API: newsletter ──────────────────────────────────────────
+// Encaminha pro ERP (gestão de conteúdo/frequência/inscritos na aba Marketing)
+// via endpoint público protegido por chave secreta, mesmo padrão de registerLead()
+// abaixo. Se o ERP estiver fora do ar, cai pro Supabase local do site como rede
+// de segurança e manda o e-mail de boas-vindas fixo direto por aqui.
+async function registerNewsletterSubscriber({ email }) {
+  if (process.env.ERP_API_URL && process.env.SITE_SHARED_SECRET) {
+    try {
+      const erpResponse = await fetch(`${process.env.ERP_API_URL}/api/newsletter/site`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Site-Key': process.env.SITE_SHARED_SECRET,
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (erpResponse.ok) {
+        return { ok: true };
+      }
+      const errText = await erpResponse.text();
+      console.error('ERP newsletter endpoint returned error status:', erpResponse.status, errText);
+      if (erpResponse.status === 400) {
+        return { ok: false, error: 'E-mail inválido.' };
+      }
+    } catch (err) {
+      console.error('Failed to forward newsletter subscriber to ERP:', err);
+    }
+  } else {
+    console.warn('ERP_API_URL/SITE_SHARED_SECRET não configurados — assinante não foi enviado ao ERP.');
+  }
+
+  // Fallback: ERP indisponível ou não configurado — salva localmente e manda
+  // o e-mail de boas-vindas fixo por aqui mesmo, pra não perder o assinante.
+  let databaseStored = false;
+  if (supabase) {
+    const { error: dbError } = await supabase.from('subscribers').insert([{ email, source: 'newsletter_footer' }]);
+    if (!dbError) databaseStored = true;
+    else if (dbError.code !== '23505') console.error('DB Error:', dbError);
+  }
+
+  let emailSent = false;
+  let emailError = null;
+  if (resend) {
+    try {
+      const data = await resend.emails.send({
+        from: 'OpenLife <newsletter@openlifebrasil.com>',
+        to: email,
+        subject: 'Bem-vindo à Newsletter da OpenLife!',
+        html: `
+          <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 12px; overflow: hidden;">
+            <div style="background-color: #6B2D8B; padding: 40px; text-align: center;">
+              <img src="https://openlifebrasil.com.br/logomarca-nobg.png" width="120" alt="OpenLife" />
+            </div>
+            <div style="padding: 40px; color: #333;">
+              <h1 style="color: #6B2D8B; font-size: 24px; margin-bottom: 20px;">Você está dentro! 🚀</h1>
+              <p style="font-size: 16px; line-height: 1.6;">Olá!</p>
+              <p style="font-size: 16px; line-height: 1.6;">Ficamos muito felizes em ter você na nossa comunidade. A partir de agora, você receberá dicas exclusivas para destravar seu inglês, novidades da escola e conteúdos estratégicos diretamente no seu e-mail.</p>
+              <p style="margin-top: 30px; font-size: 16px; color: #333;">Até breve,<br /><strong>Equipe OpenLife</strong></p>
+            </div>
+            <div style="background-color: #F57C20; padding: 20px; text-align: center; color: white; font-size: 12px;">
+              © ${new Date().getFullYear()} OpenLife English School. Todos os direitos reservados.
+            </div>
+          </div>
+        `,
+      });
+      if (data.error) emailError = data.error.message;
+      else emailSent = true;
+    } catch (err) {
+      console.error('Resend Exception:', err);
+      emailError = err.message;
+    }
+  } else {
+    emailError = 'Newsletter ainda não configurada no servidor.';
+  }
+
+  return { ok: true, databaseStored, emailSent, emailError };
+}
+
 app.post('/api/newsletter/subscribe', async (req, res) => {
   const { email } = req.body || {};
   if (!email || !email.includes('@')) {
@@ -40,49 +118,12 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
   }
 
   try {
-    let databaseStored = false;
-    if (supabase) {
-      const { error: dbError } = await supabase.from('subscribers').insert([{ email, source: 'newsletter_footer' }]);
-      if (!dbError) databaseStored = true;
-      else if (dbError.code !== '23505') console.error('DB Error:', dbError);
-    }
-
-    let emailSent = false;
-    let emailError = null;
-    if (resend) {
-      try {
-        const data = await resend.emails.send({
-          from: 'OpenLife <newsletter@openlifebrasil.com>',
-          to: email,
-          subject: 'Bem-vindo à Newsletter da OpenLife!',
-          html: `
-            <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; border: 1px solid #eee; border-radius: 12px; overflow: hidden;">
-              <div style="background-color: #6B2D8B; padding: 40px; text-align: center;">
-                <img src="https://openlifebrasil.com.br/logomarca-nobg.png" width="120" alt="OpenLife" />
-              </div>
-              <div style="padding: 40px; color: #333;">
-                <h1 style="color: #6B2D8B; font-size: 24px; margin-bottom: 20px;">Você está dentro! 🚀</h1>
-                <p style="font-size: 16px; line-height: 1.6;">Olá!</p>
-                <p style="font-size: 16px; line-height: 1.6;">Ficamos muito felizes em ter você na nossa comunidade. A partir de agora, você receberá dicas exclusivas para destravar seu inglês, novidades da escola e conteúdos estratégicos diretamente no seu e-mail.</p>
-                <p style="margin-top: 30px; font-size: 16px; color: #333;">Até breve,<br /><strong>Equipe OpenLife</strong></p>
-              </div>
-              <div style="background-color: #F57C20; padding: 20px; text-align: center; color: white; font-size: 12px;">
-                © ${new Date().getFullYear()} OpenLife English School. Todos os direitos reservados.
-              </div>
-            </div>
-          `,
-        });
-        if (data.error) emailError = data.error.message;
-        else emailSent = true;
-      } catch (err) {
-        console.error('Resend Exception:', err);
-        emailError = err.message;
-      }
+    const result = await registerNewsletterSubscriber({ email });
+    if (result.ok) {
+      res.status(200).json({ message: 'Inscrito com sucesso!', emailSent: result.emailSent, databaseStored: result.databaseStored, emailError: result.emailError });
     } else {
-      emailError = 'Newsletter ainda não configurada no servidor.';
+      res.status(400).json({ error: result.error || 'Erro ao processar sua inscrição' });
     }
-
-    res.status(200).json({ message: 'Inscrito com sucesso!', emailSent, databaseStored, emailError });
   } catch (error) {
     console.error('Subscription process error:', error);
     res.status(500).json({ error: 'Erro ao processar sua inscrição. Tente novamente mais tarde.' });
