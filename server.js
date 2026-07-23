@@ -5,6 +5,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Resend } from 'resend';
 import { createClient } from '@supabase/supabase-js';
+import { GoogleGenAI, Type } from '@google/genai';
 
 dotenv.config();
 
@@ -89,21 +90,15 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
   }
 });
 
-// ── API: leads ────────────────────────────────────────────────
-// Encaminha o cadastro pro ERP (CRM real) via endpoint público protegido por
+// ── Leads: encaminha pro ERP (CRM real) via endpoint público protegido por
 // chave secreta. O ERP cuida de: salvar no CRM, mandar e-mail de confirmação
 // (com PDF de cursos anexado) e notificar Diretor/CEO/Owner.
 // Se o ERP estiver fora do ar, cai pro Supabase local do site como rede de
 // segurança, pra não perder o lead — o visitante nunca vê esse detalhe.
-app.post('/api/leads/register', async (req, res) => {
-  const { name, email, phone, message, source, website } = req.body || {};
+// Usada tanto pelo formulário de contato quanto pela Alice (chat).
+async function registerLead({ name, email, phone, message, source }) {
   if (!email || !name) {
-    return res.status(400).json({ error: 'Nome e e-mail são obrigatórios' });
-  }
-
-  // Honeypot: bots preenchem esse campo invisível, humanos não.
-  if (website) {
-    return res.status(200).json({ message: 'Lead registrado com sucesso!' });
+    return { ok: false, error: 'Nome e e-mail são obrigatórios' };
   }
 
   if (process.env.ERP_API_URL && process.env.SITE_SHARED_SECRET) {
@@ -118,9 +113,13 @@ app.post('/api/leads/register', async (req, res) => {
       });
 
       if (erpResponse.ok) {
-        return res.status(200).json({ message: 'Lead registrado com sucesso!' });
+        return { ok: true };
       }
-      console.error('ERP lead endpoint returned error status:', erpResponse.status, await erpResponse.text());
+      const errText = await erpResponse.text();
+      console.error('ERP lead endpoint returned error status:', erpResponse.status, errText);
+      if (erpResponse.status === 400) {
+        return { ok: false, error: 'Confira o e-mail e o telefone informados.' };
+      }
     } catch (err) {
       console.error('Failed to forward lead to ERP:', err);
     }
@@ -136,10 +135,109 @@ app.post('/api/leads/register', async (req, res) => {
       if (!dbError) databaseStored = true;
       else console.error('Lead fallback DB Error:', dbError);
     }
-    res.status(200).json({ message: 'Lead registrado com sucesso!', databaseStored });
+    return { ok: true, databaseStored };
   } catch (error) {
     console.error('Lead registration error:', error);
-    res.status(500).json({ error: 'Erro interno ao salvar lead' });
+    return { ok: false, error: 'Erro interno ao salvar lead' };
+  }
+}
+
+// ── API: leads (formulário de contato) ──────────────────────────
+app.post('/api/leads/register', async (req, res) => {
+  const { name, email, phone, message, source, website } = req.body || {};
+
+  // Honeypot: bots preenchem esse campo invisível, humanos não.
+  if (website) {
+    return res.status(200).json({ message: 'Lead registrado com sucesso!' });
+  }
+
+  const result = await registerLead({ name, email, phone, message, source: source || 'site_contato' });
+  if (result.ok) {
+    res.status(200).json({ message: 'Lead registrado com sucesso!', databaseStored: result.databaseStored });
+  } else {
+    res.status(400).json({ error: result.error || 'Erro ao registrar lead' });
+  }
+});
+
+// ── API: Alice (chat consultivo com IA) ──────────────────────────
+const registrarLeadDeclaration = {
+  name: 'registrar_lead',
+  description: 'Registra o cadastro da pessoa no CRM da escola quando já se sabe nome completo, contato (telefone/WhatsApp) e e-mail.',
+  parameters: {
+    type: Type.OBJECT,
+    properties: {
+      nome: { type: Type.STRING, description: 'Nome completo da pessoa' },
+      contato: { type: Type.STRING, description: 'Telefone ou WhatsApp com DDD' },
+      email: { type: Type.STRING, description: 'E-mail da pessoa' },
+      descricao: { type: Type.STRING, description: 'Resumo do que a pessoa procura ou seu objetivo com o inglês' },
+    },
+    required: ['nome', 'contato', 'email'],
+  },
+};
+
+const ALICE_SYSTEM_INSTRUCTION = `
+Você é a Alice, consultora de admissões da OpenLife English School, atendendo pelo chat do site. Você NÃO é uma assistente virtual genérica — fale como uma pessoa real, calorosa, atenciosa e profissional, uma consultora de verdade puxando papo com um visitante interessado.
+
+Informações da escola:
+- Metodologia: ESL (English as a Second Language), foco em falar sem tradução mental.
+- Promessa: fluência em 18 meses.
+- Cursos: Kids (6-9 anos), Teens (10-12 anos), Journey (13+ anos, carro-chefe), Keep the Fluency (manutenção/avançado).
+- História: 21 anos no mercado, mais de 66.000 alunos.
+
+Seu objetivo na conversa: entender o que a pessoa procura e coletar, de forma natural e SEM parecer um formulário/interrogatório (uma pergunta por vez, dentro do fluxo da conversa):
+1. Nome completo
+2. Telefone/WhatsApp com DDD
+3. E-mail
+4. O que ela procura (curso, faixa etária, objetivo) — incentive, mas não é bloqueante.
+
+Antes de registrar, confirme rapidamente os dados coletados com a pessoa (ex: "confirma que seu WhatsApp é (11) 99999-9999 e e-mail joao@email.com?"). Só depois de confirmado, chame a função registrar_lead com nome, contato e email (obrigatórios) e descricao (se houver). Chame essa função no máximo uma vez por conversa — se o lead já foi registrado, não chame de novo, mesmo que a pessoa continue conversando.
+
+Depois de registrar, agradeça e diga que a equipe vai entrar em contato em breve; não repita palavra por palavra o e-mail de confirmação que ela já vai receber. Se ela só quiser tirar dúvidas sobre os cursos, responda normalmente sem forçar o cadastro. Responda sempre em português, de forma breve e natural (chat, não e-mail).
+`;
+
+app.post('/api/alice/chat', async (req, res) => {
+  const { messages, leadRegistered } = req.body || {};
+  if (!Array.isArray(messages) || messages.length === 0) {
+    return res.status(400).json({ error: 'messages é obrigatório' });
+  }
+  if (!process.env.API_KEY) {
+    return res.json({ reply: 'Estou com uma instabilidade agora, mas você pode nos chamar no WhatsApp!' });
+  }
+
+  try {
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    const contents = messages.map((m) => ({
+      role: m.role === 'assistant' ? 'model' : 'user',
+      parts: [{ text: String(m.content || '') }],
+    }));
+
+    const response = await ai.models.generateContent({
+      model: 'gemini-3-flash-preview',
+      contents,
+      config: {
+        systemInstruction: ALICE_SYSTEM_INSTRUCTION,
+        temperature: 0.7,
+        ...(leadRegistered ? {} : { tools: [{ functionDeclarations: [registrarLeadDeclaration] }] }),
+      },
+    });
+
+    const call = response.functionCalls?.find((f) => f.name === 'registrar_lead');
+    if (call) {
+      const { nome, contato, email, descricao } = call.args || {};
+      const result = await registerLead({ name: nome, email, phone: contato, message: descricao, source: 'site_alice' });
+      if (result.ok) {
+        return res.json({
+          reply: response.text?.trim() || `Perfeito, ${nome}! Já registrei seus dados por aqui e nossa equipe vai entrar em contato em breve. 😊`,
+          leadRegistered: true,
+        });
+      }
+      return res.json({ reply: `Hmm, não consegui confirmar seus dados (${result.error || 'erro ao registrar'}). Pode conferir o e-mail e o telefone pra mim?` });
+    }
+
+    res.json({ reply: response.text || 'Desculpe, tive um problema ao processar sua resposta. Tente novamente!' });
+  } catch (error) {
+    console.error('Alice chat error:', error);
+    res.json({ reply: 'Estou com um pouco de instabilidade agora, mas você pode nos chamar no WhatsApp!' });
   }
 });
 

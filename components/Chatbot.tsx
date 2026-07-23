@@ -1,20 +1,28 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, Send, X, Bot, User } from 'lucide-react';
-import { chatWithGemini } from '../services/geminiService';
+import { MessageSquare, Send, X, Sparkles } from 'lucide-react';
+import { chatWithAlice, AliceMessage } from '../services/geminiService';
 
-interface Message {
-  role: 'user' | 'assistant';
-  content: string;
+function greetingByHour(): string {
+  const hour = new Date().getHours();
+  if (hour >= 5 && hour < 12) return 'Bom dia';
+  if (hour >= 12 && hour < 18) return 'Boa tarde';
+  return 'Boa noite';
+}
+
+function buildInitialMessage(): AliceMessage {
+  return {
+    role: 'assistant',
+    content: `${greetingByHour()}! Eu sou a Alice, consultora da OpenLife English School. 😊 Me conta, o que você está buscando: aula pra você, pro seu filho, ou quer saber mais sobre nossos cursos?`,
+  };
 }
 
 const Chatbot: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Olá! Sou a Assistente Virtual da OpenLife. Como posso te ajudar hoje?' }
-  ]);
+  const [messages, setMessages] = useState<AliceMessage[]>([buildInitialMessage()]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [leadRegistered, setLeadRegistered] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,11 +36,13 @@ const Chatbot: React.FC = () => {
 
     const userMsg = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMsg }]);
+    const nextMessages: AliceMessage[] = [...messages, { role: 'user', content: userMsg }];
+    setMessages(nextMessages);
     setIsLoading(true);
 
-    const response = await chatWithGemini(userMsg);
-    setMessages(prev => [...prev, { role: 'assistant', content: response }]);
+    const response = await chatWithAlice(nextMessages, leadRegistered);
+    setMessages(prev => [...prev, { role: 'assistant', content: response.reply }]);
+    if (response.leadRegistered) setLeadRegistered(true);
     setIsLoading(false);
   };
 
@@ -52,13 +62,13 @@ const Chatbot: React.FC = () => {
           {/* Header */}
           <div className="bg-purple-brand p-4 flex items-center space-x-3">
             <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-              <Bot className="text-white" size={24} />
+              <Sparkles className="text-white" size={22} />
             </div>
             <div>
-              <h3 className="text-white font-bold text-sm">Suporte OpenLife</h3>
+              <h3 className="text-white font-bold text-sm">Alice</h3>
               <div className="flex items-center space-x-1">
                 <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <span className="text-purple-100 text-[10px] uppercase font-bold">Online</span>
+                <span className="text-purple-100 text-[10px] uppercase font-bold">Consultora OpenLife</span>
               </div>
             </div>
           </div>
@@ -68,8 +78,8 @@ const Chatbot: React.FC = () => {
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
-                  m.role === 'user' 
-                    ? 'bg-orange-brand text-white rounded-tr-none' 
+                  m.role === 'user'
+                    ? 'bg-orange-brand text-white rounded-tr-none'
                     : 'bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none'
                 }`}>
                   {m.content}
@@ -92,13 +102,13 @@ const Chatbot: React.FC = () => {
             <div className="flex items-center space-x-2 bg-gray-100 rounded-full px-4 py-2">
               <input
                 type="text"
-                placeholder="Digite sua dúvida..."
+                placeholder="Digite sua mensagem..."
                 className="bg-transparent border-none outline-none flex-grow text-sm py-1"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               />
-              <button 
+              <button
                 onClick={handleSend}
                 disabled={isLoading}
                 className="text-purple-brand hover:text-orange-brand disabled:opacity-50 transition-colors"
