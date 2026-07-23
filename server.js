@@ -14,9 +14,19 @@ const PORT = Number(process.env.PORT) || 3000;
 
 const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL || '';
-const supabaseKey = process.env.VITE_SUPABASE_ANON_KEY || '';
-const supabase = supabaseUrl && supabaseKey ? createClient(supabaseUrl, supabaseKey) : null;
+// Supabase é opcional aqui (só usado pela newsletter e pelo fallback local de
+// leads, caso o ERP esteja indisponível). Uma URL ausente/mal configurada
+// nunca deve derrubar o servidor inteiro — só desativa essas duas partes.
+const supabaseUrl = (process.env.VITE_SUPABASE_URL || '').trim();
+const supabaseKey = (process.env.VITE_SUPABASE_ANON_KEY || '').trim();
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey);
+  } catch (err) {
+    console.error('Failed to initialize Supabase client (check VITE_SUPABASE_URL/VITE_SUPABASE_ANON_KEY):', err.message);
+  }
+}
 
 const app = express();
 app.use(express.json());
