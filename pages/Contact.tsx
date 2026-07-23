@@ -1,5 +1,6 @@
 import React from 'react';
-import { Mail, Phone, MapPin, Instagram, Youtube, ExternalLink, MessageCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Instagram, Youtube } from 'lucide-react';
+import LeadForm from '../components/LeadForm';
 
 const Contact: React.FC = () => {
   return (
@@ -59,27 +60,15 @@ const Contact: React.FC = () => {
               </div>
             </div>
 
-            {/* CTA instead of form */}
-            <div className="bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-gray-100 flex flex-col items-center text-center justify-center space-y-8 min-h-[450px]">
-              <div className="w-20 h-20 bg-purple-50 text-purple-brand rounded-3xl flex items-center justify-center">
-                <MessageCircle size={40} />
-              </div>
-              <div className="space-y-4">
+            {/* Formulário de contato */}
+            <div className="bg-white p-8 md:p-12 rounded-[40px] shadow-2xl border border-gray-100 space-y-6">
+              <div className="space-y-3 text-center">
                 <h2 className="text-3xl font-black text-slate-900 leading-tight">Agende sua Aula Experimental Gratuita</h2>
                 <p className="text-slate-500 text-lg">
-                  Clique no botão abaixo para preencher nosso formulário oficial e iniciar sua jornada rumo à fluência em 18 meses.
+                  Preencha o formulário abaixo e nossa equipe entra em contato com você.
                 </p>
               </div>
-              <a 
-                href="https://form.respondi.app/5HvbxD84" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="w-full bg-purple-brand text-white py-5 rounded-full font-bold text-xl hover:bg-purple-700 transition-all flex items-center justify-center space-x-3 shadow-xl shadow-purple-brand/20 group"
-              >
-                <span>Quero Começar Agora</span>
-                <ExternalLink size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </a>
-              <p className="text-xs text-slate-400 font-medium italic">Você será redirecionado para o nosso portal de agendamento oficial.</p>
+              <LeadForm />
             </div>
           </div>
         </div>

@@ -80,33 +80,52 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
 });
 
 // ── API: leads ────────────────────────────────────────────────
+// Encaminha o cadastro pro ERP (CRM real) via endpoint público protegido por
+// chave secreta. O ERP cuida de: salvar no CRM, mandar e-mail de confirmação
+// (com PDF de cursos anexado) e notificar Diretor/CEO/Owner.
+// Se o ERP estiver fora do ar, cai pro Supabase local do site como rede de
+// segurança, pra não perder o lead — o visitante nunca vê esse detalhe.
 app.post('/api/leads/register', async (req, res) => {
-  const { name, email, phone, city, type, source, metadata } = req.body || {};
+  const { name, email, phone, message, source, website } = req.body || {};
   if (!email || !name) {
     return res.status(400).json({ error: 'Nome e e-mail são obrigatórios' });
   }
 
+  // Honeypot: bots preenchem esse campo invisível, humanos não.
+  if (website) {
+    return res.status(200).json({ message: 'Lead registrado com sucesso!' });
+  }
+
+  if (process.env.ERP_API_URL && process.env.SITE_SHARED_SECRET) {
+    try {
+      const erpResponse = await fetch(`${process.env.ERP_API_URL}/api/leads/site`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Site-Key': process.env.SITE_SHARED_SECRET,
+        },
+        body: JSON.stringify({ nome: name, email, telefone: phone, descricao: message }),
+      });
+
+      if (erpResponse.ok) {
+        return res.status(200).json({ message: 'Lead registrado com sucesso!' });
+      }
+      console.error('ERP lead endpoint returned error status:', erpResponse.status, await erpResponse.text());
+    } catch (err) {
+      console.error('Failed to forward lead to ERP:', err);
+    }
+  } else {
+    console.warn('ERP_API_URL/SITE_SHARED_SECRET não configurados — lead não foi enviado ao CRM.');
+  }
+
+  // Fallback: ERP indisponível ou não configurado — salva localmente pra não perder o lead.
   try {
     let databaseStored = false;
     if (supabase) {
-      const { error: dbError } = await supabase.from('leads').insert([{ name, email, phone, city, type, source, metadata: metadata || {} }]);
+      const { error: dbError } = await supabase.from('leads').insert([{ name, email, phone, type: 'contact', source, metadata: { message } }]);
       if (!dbError) databaseStored = true;
-      else console.error('Lead DB Error:', dbError);
+      else console.error('Lead fallback DB Error:', dbError);
     }
-
-    if (resend && process.env.ADMIN_EMAIL) {
-      try {
-        await resend.emails.send({
-          from: 'OpenLife CRM <crm@openlifebrasil.com>',
-          to: process.env.ADMIN_EMAIL,
-          subject: `Novo Lead: ${name} (${source})`,
-          html: `<p>Novo lead cadastrado no site:</p><ul><li>Nome: ${name}</li><li>Email: ${email}</li><li>Telefone: ${phone}</li><li>Origem: ${source}</li></ul>`,
-        });
-      } catch (e) {
-        console.error('Admin notification failed:', e);
-      }
-    }
-
     res.status(200).json({ message: 'Lead registrado com sucesso!', databaseStored });
   } catch (error) {
     console.error('Lead registration error:', error);
