@@ -5,7 +5,6 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Resend } from 'resend';
 import { createClient } from '@supabase/supabase-js';
-import { GoogleGenAI, Type } from '@google/genai';
 
 dotenv.config();
 
@@ -159,19 +158,24 @@ app.post('/api/leads/register', async (req, res) => {
   }
 });
 
-// ── API: Alice (chat consultivo com IA) ──────────────────────────
-const registrarLeadDeclaration = {
-  name: 'registrar_lead',
-  description: 'Registra o cadastro da pessoa no CRM da escola quando já se sabe nome completo, contato (telefone/WhatsApp) e e-mail.',
-  parameters: {
-    type: Type.OBJECT,
-    properties: {
-      nome: { type: Type.STRING, description: 'Nome completo da pessoa' },
-      contato: { type: Type.STRING, description: 'Telefone ou WhatsApp com DDD' },
-      email: { type: Type.STRING, description: 'E-mail da pessoa' },
-      descricao: { type: Type.STRING, description: 'Resumo do que a pessoa procura ou seu objetivo com o inglês' },
+// ── API: Alice (chat consultivo com IA, via Groq) ─────────────────
+const GROQ_MODEL = 'llama-3.3-70b-versatile';
+
+const registrarLeadTool = {
+  type: 'function',
+  function: {
+    name: 'registrar_lead',
+    description: 'Registra o cadastro da pessoa no CRM da escola quando já se sabe nome completo, contato (telefone/WhatsApp) e e-mail.',
+    parameters: {
+      type: 'object',
+      properties: {
+        nome: { type: 'string', description: 'Nome completo da pessoa' },
+        contato: { type: 'string', description: 'Telefone ou WhatsApp com DDD' },
+        email: { type: 'string', description: 'E-mail da pessoa' },
+        descricao: { type: 'string', description: 'Resumo do que a pessoa procura ou seu objetivo com o inglês' },
+      },
+      required: ['nome', 'contato', 'email'],
     },
-    required: ['nome', 'contato', 'email'],
   },
 };
 
@@ -200,41 +204,54 @@ app.post('/api/alice/chat', async (req, res) => {
   if (!Array.isArray(messages) || messages.length === 0) {
     return res.status(400).json({ error: 'messages é obrigatório' });
   }
-  if (!process.env.API_KEY) {
+  if (!process.env.GROQ_API_KEY) {
     return res.json({ reply: 'Estou com uma instabilidade agora, mas você pode nos chamar no WhatsApp!' });
   }
 
   try {
-    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-    const contents = messages.map((m) => ({
-      role: m.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: String(m.content || '') }],
-    }));
+    const groqMessages = [
+      { role: 'system', content: ALICE_SYSTEM_INSTRUCTION },
+      ...messages.map((m) => ({ role: m.role === 'assistant' ? 'assistant' : 'user', content: String(m.content || '') })),
+    ];
 
-    const response = await ai.models.generateContent({
-      model: 'gemini-3-flash-preview',
-      contents,
-      config: {
-        systemInstruction: ALICE_SYSTEM_INSTRUCTION,
-        temperature: 0.7,
-        ...(leadRegistered ? {} : { tools: [{ functionDeclarations: [registrarLeadDeclaration] }] }),
+    const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.GROQ_API_KEY}`,
       },
+      body: JSON.stringify({
+        model: GROQ_MODEL,
+        messages: groqMessages,
+        temperature: 0.7,
+        ...(leadRegistered ? {} : { tools: [registrarLeadTool] }),
+      }),
     });
 
-    const call = response.functionCalls?.find((f) => f.name === 'registrar_lead');
-    if (call) {
-      const { nome, contato, email, descricao } = call.args || {};
+    if (!groqResponse.ok) {
+      console.error('Groq API error:', groqResponse.status, await groqResponse.text());
+      return res.json({ reply: 'Estou com um pouco de instabilidade agora, mas você pode nos chamar no WhatsApp!' });
+    }
+
+    const data = await groqResponse.json();
+    const message = data.choices?.[0]?.message || {};
+    const toolCall = message.tool_calls?.find((t) => t.function?.name === 'registrar_lead');
+
+    if (toolCall) {
+      let args = {};
+      try { args = JSON.parse(toolCall.function.arguments || '{}'); } catch { /* ignora argumentos malformados */ }
+      const { nome, contato, email, descricao } = args;
       const result = await registerLead({ name: nome, email, phone: contato, message: descricao, source: 'site_alice' });
       if (result.ok) {
         return res.json({
-          reply: response.text?.trim() || `Perfeito, ${nome}! Já registrei seus dados por aqui e nossa equipe vai entrar em contato em breve. 😊`,
+          reply: message.content?.trim() || `Perfeito, ${nome}! Já registrei seus dados por aqui e nossa equipe vai entrar em contato em breve. 😊`,
           leadRegistered: true,
         });
       }
       return res.json({ reply: `Hmm, não consegui confirmar seus dados (${result.error || 'erro ao registrar'}). Pode conferir o e-mail e o telefone pra mim?` });
     }
 
-    res.json({ reply: response.text || 'Desculpe, tive um problema ao processar sua resposta. Tente novamente!' });
+    res.json({ reply: message.content || 'Desculpe, tive um problema ao processar sua resposta. Tente novamente!' });
   } catch (error) {
     console.error('Alice chat error:', error);
     res.json({ reply: 'Estou com um pouco de instabilidade agora, mas você pode nos chamar no WhatsApp!' });
