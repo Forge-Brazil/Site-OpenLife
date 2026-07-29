@@ -1512,8 +1512,516 @@ const ListeningContent = (
   </div>
 );
 
+const SeriesContent = (
+  <div>
+    {/* Schema JSON-LD — Article + FAQPage */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Melhores Séries Para Aprender Inglês Por Nível: O Guia Definitivo (A1 a C2)",
+          "description": "Descubra as melhores séries para aprender inglês por nível, do A1 ao C2, com o método certo para transformar Netflix em fluência real.",
+          "url": "https://openlifebrasil.com.br/blog/melhores-series-para-aprender-ingles-por-nivel",
+          "datePublished": "2026-07-28",
+          "dateModified": "2026-07-28",
+          "author": { "@type": "Organization", "name": "OpenLife English School" },
+          "publisher": { "@type": "Organization", "name": "OpenLife English School", "logo": { "@type": "ImageObject", "url": "https://openlifebrasil.com.br/2.png" } },
+          "image": { "@type": "ImageObject", "url": "https://openlifebrasil.com.br/og-image.jpg" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Quais são as melhores séries para aprender inglês para iniciantes?", "acceptedAnswer": { "@type": "Answer", "text": "Para iniciantes (A1–A2), as melhores opções são Peppa Pig, Extra English, Friends, Young Sheldon e Heartstopper. Todas têm diálogos simples, ritmo mais lento e temas do cotidiano. O ideal é assistir com legenda em inglês, focando em entender a ideia geral, e não cada palavra." } },
+            { "@type": "Question", "name": "Posso aprender inglês só assistindo séries?", "acceptedAnswer": { "@type": "Answer", "text": "Séries são uma ferramenta poderosa de imersão, mas sozinhas não geram fluência. Elas constroem compreensão auditiva e vocabulário, mas não corrigem erros nem levam à produção oral. Para falar com confiança, combine séries com prática de conversação e feedback com um professor. Série potencializa o método, não substitui." } },
+            { "@type": "Question", "name": "Devo assistir séries com legenda em português ou em inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Sempre em inglês, ou sem legenda quando conseguir. Legenda em português treina sua leitura em português, não o seu ouvido em inglês. A legenda em inglês conecta o som à palavra escrita e acelera o aprendizado. Conforme evolui, reassista cenas sem legenda para medir quanto você já capta sozinho." } },
+            { "@type": "Question", "name": "Como escolher a série certa para o meu nível de inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Escolha um conteúdo levemente acima do seu nível: desafiador o bastante para te esticar, mas fácil o suficiente para acompanhar pelo contexto. No básico, prefira sitcoms leves; no intermediário, comédias e dramas variados; no avançado, séries com falas rápidas e sotaques diversos. Interesse pelo tema garante que você termine em inglês." } },
+            { "@type": "Question", "name": "Quais séries são boas para aprender inglês para o trabalho?", "acceptedAnswer": { "@type": "Answer", "text": "Para inglês profissional, Suits (jurídico e corporativo), The Office (ambiente de trabalho), Silicon Valley (startups e tecnologia) e Mad Men (publicidade) entregam vocabulário de reunião, negociação e liderança. São ótimas para quem mira multinacionais, mas para negociar de verdade em inglês é preciso praticar produção oral com correção." } }
+          ]
+        }
+      ]
+    })}} />
+
+    {/* Banner CTA topo */}
+    <div className="rounded-3xl p-8 md:p-12 mb-14 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' }}>
+      <p className="text-xl md:text-2xl font-black leading-snug mb-3">
+        Assiste série o dia todo e o inglês não sai?
+      </p>
+      <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
+        O problema não é a série. É o método. Descubra o que muda tudo.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
+        style={{ background: '#F97316' }}
+      >
+        Quero minha aula experimental grátis →
+      </a>
+    </div>
+
+    {/* Conteúdo principal */}
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* Introdução */}
+      <p>
+        Você já terminou uma temporada inteira em inglês e, no fim, sentiu que aprendeu... quase nada? Pois é. O
+        problema quase nunca é a série — é a forma como você assiste.
+      </p>
+      <p>
+        Escolher as <strong className="text-slate-800">melhores séries para aprender inglês por nível</strong> é o
+        primeiro passo de uma estratégia que realmente funciona. A série certa, no nível certo, com o método certo,
+        vira uma das ferramentas mais poderosas — e mais gostosas — de imersão que existe.
+      </p>
+      <p>
+        Neste guia você vai descobrir seu nível, receber recomendações testadas do A1 ao C2 (incluindo séries
+        perfeitas para quem quer inglês para carreira) e — o mais importante — aprender o método que transforma
+        "maratona" em fluência de verdade. Dá o play.
+      </p>
+
+      {/* H2 — 1 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Por que série é uma das melhores ferramentas para aprender inglês (e a armadilha que quase todo mundo cai)
+      </h2>
+      <p>
+        Série é imersão pura. Você ouve inglês real, com sotaques, gírias, ritmo e emoção — tudo aquilo que os
+        áudios de livro nunca entregam. Seu cérebro capta entonação, expressões e contexto cultural sem perceber
+        que está "estudando".
+      </p>
+      <p>
+        Só que tem um detalhe que muita gente ignora: assistir por prazer, sozinho, é um treino incompleto. Você
+        relaxa, lê a legenda em português e o inglês passa direto, sem grudar em lugar nenhum. A literatura de
+        ensino de línguas é honesta sobre isso: séries usadas sem foco viram "listening for pleasure" — divertido,
+        mas pobre em aprendizado real.
+      </p>
+      <p>
+        O poder aparece quando você adiciona intenção e método ao que assiste. É a diferença entre <em>ver</em> uma
+        série e <em>usar</em> uma série. E se você quer a base sólida da compreensão auditiva, vale ler antes o
+        nosso{' '}
+        <a href="/#/blog" className="text-purple-700 font-bold hover:underline">
+          guia de como melhorar o listening em inglês
+        </a>.
+      </p>
+
+      <div className="my-4 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
+        <p className="text-slate-700 font-bold italic">
+          A verdade que ninguém te conta: série não substitui método. Ela potencializa quem já treina com
+          estratégia — e desperdiça o tempo de quem só clica em "próximo episódio".
+        </p>
+      </div>
+
+      {/* H2 — 2 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Descubra seu nível antes de escolher a série
+      </h2>
+      <p>
+        Escolher uma série muito acima do seu nível gera frustração. Muito abaixo, tédio. O ponto ideal é aquele
+        conteúdo <strong className="text-slate-800">levemente difícil demais</strong> — onde você entende a maior
+        parte pelo contexto, mas ainda é desafiado. Para se localizar rápido, use este mapa dos níveis CEFR:
+      </p>
+    </div>
+
+    {/* Tabela de níveis CEFR */}
+    <div className="my-8 overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ backgroundColor: '#1A1033' }}>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest">Nível</th>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest">O que você já consegue</th>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest">Tipo de série ideal</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { nivel: 'A1–A2 (básico)', consegue: 'Frases simples, temas do dia a dia', serie: 'Sitcoms leves, infantis, diálogos curtos' },
+            { nivel: 'B1–B2 (intermediário)', consegue: 'Acompanha conversas, entende a ideia geral', serie: 'Comédias, dramas, temas variados' },
+            { nivel: 'C1–C2 (avançado)', consegue: 'Entende nuance, humor e sotaques', serie: 'Diálogos rápidos, gírias, temas complexos' },
+          ].map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-purple-50/40'}>
+              <td className="px-6 py-4 font-black text-slate-900">{row.nivel}</td>
+              <td className="px-6 py-4 text-slate-600">{row.consegue}</td>
+              <td className="px-6 py-4 text-slate-600">{row.serie}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Não sabe em qual caixa você está? Teste: assista 5 minutos de uma série adulta sem legenda. Se pegou a
+        ideia geral, você está no intermediário. Se travou logo, comece pelo básico. Descobrir seu nível com
+        precisão é parte do processo de qualquer curso sério — e é o que garante que você não perca tempo com
+        material errado. Veja como funciona o{' '}
+        <a href="/#/metodologia" className="text-purple-700 font-bold hover:underline">
+          método imersivo da OpenLife
+        </a>.
+      </p>
+
+      {/* H2 — 3 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Séries para iniciantes (A1–A2): comece por aqui sem frustração
+      </h2>
+      <p>
+        No começo, a regra é ouro: diálogos simples, ritmo mais lento e temas do cotidiano. O objetivo aqui não
+        é entender tudo — é <strong className="text-slate-800">acostumar o ouvido e ganhar confiança</strong>.
+        Estas são as melhores portas de entrada:
+      </p>
+    </div>
+
+    {/* Cards de séries — Básico */}
+    <div className="my-8 space-y-3">
+      {[
+        { nome: 'Peppa Pig', nivel: 'A1', desc: 'Pode rir, mas é ouro. Inglês pausado, vocabulário do dia a dia e frases curtas. Perfeito para treinar o ouvido sem esforço.' },
+        { nome: 'Extra English', nivel: 'A1–A2', desc: 'A sitcom clássica feita sob medida para aprendizes, com inglês controlado e situações do cotidiano.' },
+        { nome: 'Friends', nivel: 'A2', desc: 'Diálogos compreensíveis, temas leves e humor universal. A série favorita de gerações de estudantes, e por bons motivos.' },
+        { nome: 'Young Sheldon', nivel: 'A2–B1', desc: 'Falas simples com um tempero de vocabulário científico — ideal para quem está subindo do A2 para o B1.' },
+        { nome: 'Heartstopper', nivel: 'A2', desc: 'Drama teen recente, inglês claro, ritmo devagar e sem expressões complicadas. Ótimo motivador.' },
+      ].map((s, i) => (
+        <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-purple-200 hover:shadow-sm transition-all">
+          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#7C3AED' }}>{s.nivel}</span>
+          <div>
+            <p className="font-black text-slate-900">{s.nome}</p>
+            <p className="text-slate-500 text-sm leading-relaxed mt-0.5">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Comece com <strong className="text-slate-800">legenda em inglês</strong> (nunca em português — já explico
+        o porquê mais abaixo). E não tente decorar nada: nesta fase, entender a ideia geral já é uma grande vitória.
+      </p>
+    </div>
+
+    {/* CTA Intermediário 1 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' }}>
+      <p className="text-xl font-black mb-2">Série sozinha te leva só até metade do caminho</p>
+      <p className="text-purple-200 mb-6 leading-relaxed">
+        Na OpenLife você junta imersão com professores humanos e feedback real — o combo que destrava a fluência.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-purple-700 bg-white text-base transition-all hover:scale-105 shadow-lg"
+      >
+        Quero destravar meu inglês com método →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 4 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Séries para nível intermediário (B1–B2): o ponto onde o inglês destrava
+      </h2>
+      <p>
+        Aqui é onde a mágica acontece. No intermediário, você já acompanha a história e começa a captar gírias,
+        expressões idiomáticas e diferentes sotaques. É a hora de variar os temas e desafiar o ouvido. Estas
+        séries entregam o equilíbrio perfeito entre desafio e diversão:
+      </p>
+    </div>
+
+    {/* Cards de séries — Intermediário */}
+    <div className="my-8 space-y-3">
+      {[
+        { nome: 'Modern Family', nivel: 'B1', desc: 'Formato "falso documentário" com personagens falando direto para a câmera. Cheia de inglês conversacional, gírias e situações do dia a dia.' },
+        { nome: 'Stranger Things', nivel: 'B1–B2', desc: 'Nostalgia dos anos 80, trama viciante e inglês americano acessível. Motivação garantida para não parar.' },
+        { nome: 'The Big Bang Theory', nivel: 'B1–B2', desc: 'Comédia com vocabulário variado e sotaques diferentes (inclusive o britânico-indiano do Raj).' },
+        { nome: 'The Crown', nivel: 'B2', desc: 'Para quem prefere o "inglês da Rainha": sotaque britânico formal, claro e elegante, com o bônus de aprender história.' },
+        { nome: 'This Is Us', nivel: 'B1–B2', desc: 'Conversas emocionais e ricas sobre família e vida. Ótimo para vocabulário do cotidiano e das relações.' },
+      ].map((s, i) => (
+        <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-purple-200 hover:shadow-sm transition-all">
+          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#5B21B6' }}>{s.nivel}</span>
+          <div>
+            <p className="font-black text-slate-900">{s.nome}</p>
+            <p className="text-slate-500 text-sm leading-relaxed mt-0.5">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <p>
+        A dica de ouro deste nível: escolha temas que conversem com a sua vida. Interesse mantém a motivação
+        alta — e é isso que faz você terminar a temporada em inglês. Se você sente que empacou justamente nessa
+        fase, temos um guia inteiro sobre como{' '}
+        <a href="/#/blog" className="text-purple-700 font-bold hover:underline">
+          sair do plateau no inglês intermediário
+        </a>.
+      </p>
+
+      {/* H2 — 5 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Séries para nível avançado (C1–C2): o desafio que te deixa fluente
+      </h2>
+      <p>
+        No avançado, é hora de largar o conteúdo "para aprendizes" e encarar o inglês real, sem freios. Falas
+        rápidas, humor sutil, referências culturais e sotaques desafiadores são exatamente o que vai lapidar
+        sua fluência. Estas séries são o ginásio de alta performance do seu inglês:
+      </p>
+    </div>
+
+    {/* Cards de séries — Avançado */}
+    <div className="my-8 space-y-3">
+      {[
+        { nome: 'Sherlock', nivel: 'C1', desc: 'Diálogos velozes e articulados, especialmente do próprio Sherlock. Treino perfeito para acompanhar raciocínios complexos em ritmo nativo.' },
+        { nome: 'The Marvelous Mrs. Maisel', nivel: 'C1', desc: 'Ritmo acelerado, humor refinado e um mar de referências culturais americanas para decifrar.' },
+        { nome: 'Killing Eve', nivel: 'C1–C2', desc: 'Inglês falado em alto nível, com vocabulário rico de psicologia, política e cultura internacional.' },
+        { nome: 'Peaky Blinders', nivel: 'C1–C2', desc: 'O desafio dos desafios: o sotaque forte de Birmingham vai testar (e turbinar) seu ouvido de verdade.' },
+        { nome: 'Black Mirror', nivel: 'C1–C2', desc: 'Formato antologia (escolha episódios avulsos), sotaques britânicos e americanos, discussões densas sobre tecnologia e ética.' },
+      ].map((s, i) => (
+        <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-purple-200 hover:shadow-sm transition-all">
+          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#1A1033' }}>{s.nivel}</span>
+          <div>
+            <p className="font-black text-slate-900">{s.nome}</p>
+            <p className="text-slate-500 text-sm leading-relaxed mt-0.5">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Aqui o segredo é <strong className="text-slate-800">abandonar a legenda sempre que possível</strong>. No
+        C1–C2, você não está mais "aprendendo palavras" — está aprendendo a viver em inglês. É assim que o ouvido
+        para de traduzir e passa a simplesmente entender.
+      </p>
+
+      {/* H2 — 6 (Bônus carreira) */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Bônus: séries para quem quer inglês para a carreira
+      </h2>
+      <p>
+        Se o seu objetivo é multinacional, Big Tech ou uma vaga internacional, dá para alinhar o entretenimento
+        com o inglês que realmente cai no trabalho. Séries de contexto profissional entregam vocabulário de
+        reunião, negociação e liderança de bandeja:
+      </p>
+    </div>
+
+    {/* Cards de séries — Carreira */}
+    <div className="my-8 space-y-3">
+      {[
+        { nome: 'Suits', area: 'Jurídico & Corporativo', desc: 'Inglês jurídico e corporativo afiado, negociações e vocabulário de escritório que impressiona.' },
+        { nome: 'The Office (US)', area: 'Ambiente de Trabalho', desc: 'Comédia cheia de expressões de reunião, e-mail e convivência corporativa — inglês informal de escritório.' },
+        { nome: 'Silicon Valley', area: 'Startups & Tech', desc: 'Perfeita para o mundo startup e tech: pitch, investidor, produto, jargão de founder.' },
+        { nome: 'Mad Men', area: 'Publicidade & Marketing', desc: 'Universo da publicidade e do marketing, com inglês elegante e persuasivo.' },
+      ].map((s, i) => (
+        <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-purple-200 hover:shadow-sm transition-all">
+          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#F97316' }}>{s.area}</span>
+          <div>
+            <p className="font-black text-slate-900">{s.nome}</p>
+            <p className="text-slate-500 text-sm leading-relaxed mt-0.5">{s.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Um alerta honesto: assistir a Suits não vai te fazer negociar em inglês numa reunião real — isso exige
+        prática de produção com correção. Mas constrói um repertório valioso. Se carreira é o seu foco, veja
+        também o nosso guia de{' '}
+        <a href="/#/blog" className="text-purple-700 font-bold hover:underline">
+          inglês para trabalhar em multinacional
+        </a>.
+      </p>
+    </div>
+
+    {/* CTA Intermediário 2 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)' }}>
+      <p className="text-xl font-black mb-2">Inglês para carreira não se aprende só no sofá</p>
+      <p className="text-purple-200 mb-6 leading-relaxed">
+        Junte suas séries favoritas a um método focado em resultado profissional e feedback em tempo real.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
+        style={{ background: '#F97316' }}
+      >
+        Quero acelerar meu inglês agora →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 7 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Como assistir do jeito certo: o método que transforma série em fluência
+      </h2>
+      <p>
+        Chegamos na parte mais importante do guia. Escolher a série é só 20% do resultado — os outros 80% estão
+        em <strong className="text-slate-800">como você assiste</strong>. Aqui vai o método que separa quem
+        aprende de quem só se diverte.
+      </p>
+      <p>Siga esta progressão com a legenda e você extrai o máximo de cada episódio:</p>
+      <ul className="space-y-4 pl-0">
+        {[
+          { n: '1', titulo: 'Legenda em inglês — nunca em português.', desc: 'Português treina sua leitura em português, não seu ouvido em inglês. Essa troca simples já muda tudo.' },
+          { n: '2', titulo: 'Reveja cenas sem legenda nenhuma.', desc: 'Veja quanto seu ouvido já capta sozinho. Cada revisão vai revelar mais detalhes.' },
+          { n: '3', titulo: 'Repita em voz alta uma fala que gostou.', desc: 'Isso se chama shadowing e turbina pronúncia e ouvido ao mesmo tempo — uma das técnicas mais eficazes que existe.' },
+          { n: '4', titulo: 'Ative o modo detetive de expressões.', desc: 'Toda vez que aparecer uma frase que "soa nativa", anote e reuse no dia seguinte. Série vira dicionário vivo.' },
+        ].map((step, i) => (
+          <li key={i} className="flex items-start gap-4">
+            <span className="flex-shrink-0 w-8 h-8 rounded-full font-black text-white flex items-center justify-center text-sm mt-0.5" style={{ background: '#7C3AED' }}>{step.n}</span>
+            <div>
+              <p className="font-black text-slate-900">{step.titulo}</p>
+              <p className="text-slate-500 text-base leading-relaxed mt-0.5">{step.desc}</p>
+            </div>
+          </li>
+        ))}
+      </ul>
+      <p>
+        E uma referência de autoridade para ir mais fundo:{' '}
+        <a
+          href="https://learnenglish.britishcouncil.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-700 font-bold hover:underline"
+        >
+          British Council LearnEnglish
+        </a>{' '}
+        tem exercícios de listening e vídeos com progressão estruturada por nível — recurso gratuito e globalmente reconhecido.
+      </p>
+
+      {/* H2 — 8 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Os erros que fazem você assistir muito e aprender pouco
+      </h2>
+      <p>
+        Alguns hábitos parecem inofensivos, mas transformam horas de série em zero de progresso. Corte cada um
+        deles a partir de hoje:
+      </p>
+    </div>
+
+    {/* Tabela de erros */}
+    <div className="my-8 overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ backgroundColor: '#1A1033' }}>
+            <th className="text-left px-6 py-4 font-black text-red-300 uppercase tracking-widest">❌ O que sabota</th>
+            <th className="text-left px-6 py-4 font-black text-green-300 uppercase tracking-widest">✅ O que funciona</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { erro: 'Legenda em português', certo: 'Legenda em inglês — ou nenhuma. Essa troca é a mais poderosa.' },
+            { erro: 'Assistir 100% no modo passivo', certo: 'Reserve sessões de escuta ativa com pausa, repetição e anotação.' },
+            { erro: 'Escolher séries acima do nível', certo: 'Respeite o "levemente difícil demais" — desafio sem frustração.' },
+            { erro: 'Nunca reassistir o mesmo conteúdo', certo: 'Rever revela entonações e detalhes que passaram batido na primeira vez.' },
+            { erro: 'Assistir sem nunca falar', certo: 'Compreensão sem produção não vira fluência. Abra a boca com quem te corrige.' },
+          ].map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+              <td className="px-6 py-4 text-slate-600">{row.erro}</td>
+              <td className="px-6 py-4 text-slate-700 font-medium">{row.certo}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Esse último ponto é o divisor de águas. Série constrói o input; a fluência nasce quando você produz,
+        erra, é corrigido e tenta de novo. É aí que um método com gente de verdade faz toda a diferença.
+      </p>
+
+      {/* Conclusão */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">Conclusão</h2>
+      <p>
+        Aprender inglês com séries funciona — desde que você escolha o nível certo e use o método certo. Comece
+        no seu ponto, suba a régua com coragem e troque o "assistir por acaso" pelo "assistir com intenção".
+      </p>
+      <p>
+        Você agora tem o mapa completo: séries do A1 ao C2, opções para carreira, a progressão certa de legenda
+        e os erros que travam o progresso. É muito mais do que uma lista — é uma estratégia. Só que série entrega
+        metade do caminho. A outra metade — conversação, correção e uma progressão garantida de nível — vem de
+        um método imersivo com professores humanos do seu lado. E é exatamente isso que a OpenLife foi feita
+        para entregar.
+      </p>
+    </div>
+
+    {/* FAQ */}
+    <div className="mt-16 space-y-4">
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-8">
+        Perguntas frequentes sobre séries para aprender inglês
+      </h2>
+      {[
+        {
+          q: 'Quais são as melhores séries para aprender inglês para iniciantes?',
+          a: 'Para iniciantes (A1–A2), as melhores opções são Peppa Pig, Extra English, Friends, Young Sheldon e Heartstopper. Todas têm diálogos simples, ritmo mais lento e temas do cotidiano, o que reduz a frustração e acostuma o ouvido. O ideal é assistir com legenda em inglês, focando em entender a ideia geral, não cada palavra.',
+        },
+        {
+          q: 'Posso aprender inglês só assistindo séries?',
+          a: 'Séries são uma ferramenta poderosa de imersão, mas sozinhas não geram fluência. Elas constroem compreensão auditiva e vocabulário, mas não corrigem seus erros nem te levam à produção oral. Para falar com confiança, combine séries com prática de conversação e feedback, de preferência com um professor. Série potencializa o método, não substitui.',
+        },
+        {
+          q: 'Devo assistir séries com legenda em português ou em inglês?',
+          a: 'Sempre em inglês, ou sem legenda quando conseguir. Legenda em português treina sua leitura em português, não o seu ouvido em inglês. A legenda em inglês conecta o som à palavra escrita e acelera muito o aprendizado. Conforme evolui, reassista cenas sem legenda para medir quanto você já capta sozinho.',
+        },
+        {
+          q: 'Como escolher a série certa para o meu nível de inglês?',
+          a: 'Escolha um conteúdo levemente acima do seu nível: desafiador o bastante para te esticar, mas fácil o suficiente para acompanhar pelo contexto. No básico, prefira sitcoms leves e diálogos curtos; no intermediário, comédias e dramas variados; no avançado, séries com falas rápidas e sotaques diversos. Interesse pelo tema é o que garante que você termine em inglês.',
+        },
+        {
+          q: 'Quais séries são boas para aprender inglês para o trabalho?',
+          a: 'Para inglês profissional, Suits (jurídico e corporativo), The Office (ambiente de trabalho), Silicon Valley (startups e tecnologia) e Mad Men (publicidade) entregam vocabulário de reunião, negociação e liderança. São ótimas para quem mira multinacionais e Big Techs, mas lembre-se: para negociar de verdade em inglês, é preciso praticar produção oral com correção.',
+        },
+      ].map((item, i) => (
+        <div key={i} className="rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden">
+          <details className="group">
+            <summary className="flex items-center justify-between cursor-pointer px-6 py-5 font-black text-slate-900 text-base list-none select-none hover:bg-purple-50/50 transition-colors">
+              <span>{item.q}</span>
+              <span className="ml-4 flex-shrink-0 text-purple-700 text-xl font-light group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+              {item.a}
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+
+    {/* Artigos relacionados */}
+    <div className="mt-16 pt-12 border-t border-slate-100">
+      <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Continue aprendendo</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { title: 'Como Melhorar o Listening em Inglês: Guia Completo', tag: 'Aprender Inglês', desc: 'A base da compreensão auditiva: métodos, podcasts e rotina para entender inglês falado de verdade.' },
+          { title: 'Plateau no Inglês: Por Que Você Travou no Intermediário e Como Sair', tag: 'Fluência', desc: 'Entenda por que o inglês empaca no B2 e o plano prático para voltar a evoluir rápido.' },
+          { title: 'Inglês para Negócios: expressões essenciais para reuniões', tag: 'Business', desc: 'O inglês que abre portas em Big Techs e multinacionais — e como se preparar para ele.' },
+        ].map((art, i) => (
+          <div key={i} className="p-5 rounded-2xl border border-slate-100 bg-white hover:border-purple-200 hover:shadow-sm transition-all">
+            <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#7C3AED' }}>{art.tag}</span>
+            <p className="mt-2 font-black text-slate-900 text-sm leading-snug mb-2">{art.title}</p>
+            <p className="text-xs text-slate-500 leading-relaxed">{art.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 export const MOCK_POSTS: Post[] = [
-  // LISTENING — Post rico (mais recente)
+  // SÉRIES POR NÍVEL — Post rico (mais recente)
+  {
+    id: 'series-aprender-ingles-nivel-2026',
+    title: 'Melhores Séries Para Aprender Inglês Por Nível: O Guia Definitivo (A1 a C2)',
+    excerpt: 'Descubra as melhores séries para aprender inglês por nível, do A1 ao C2, com o método certo para transformar Netflix em fluência real.',
+    content: '',
+    contentNode: SeriesContent,
+    category: 'Séries e Filmes',
+    tags: ['Séries e Filmes', 'Aprender Inglês', 'Listening', 'Dicas', 'Fluência'],
+    date: '28/07/2026',
+    image: 'https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?auto=format&fit=crop&q=80&w=1200',
+    slug: 'melhores-series-para-aprender-ingles-por-nivel',
+  },
+  // LISTENING — Post rico
   {
     id: 'listening-guia-completo-2026',
     title: 'Como Melhorar o Listening em Inglês: O Guia Completo Para Destravar Sua Compreensão Auditiva',
