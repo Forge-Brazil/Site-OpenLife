@@ -969,8 +969,564 @@ const RecessoContent = (
   </div>
 );
 
+const ListeningContent = (
+  <div>
+    {/* Schema JSON-LD — Article + FAQPage */}
+    <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Article",
+          "headline": "Como Melhorar o Listening em Inglês: O Guia Completo Para Destravar Sua Compreensão Auditiva",
+          "description": "Aprenda como melhorar o listening em inglês com métodos que funcionam, rotina prática e os melhores podcasts e vídeos para treinar hoje.",
+          "url": "https://openlifebrasil.com.br/blog/como-melhorar-listening-ingles",
+          "datePublished": "2026-07-28",
+          "dateModified": "2026-07-28",
+          "author": { "@type": "Organization", "name": "OpenLife English School" },
+          "publisher": { "@type": "Organization", "name": "OpenLife English School", "logo": { "@type": "ImageObject", "url": "https://openlifebrasil.com.br/2.png" } },
+          "image": { "@type": "ImageObject", "url": "https://openlifebrasil.com.br/og-image.jpg" }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            { "@type": "Question", "name": "Quanto tempo por dia preciso treinar para melhorar o listening em inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Entre 10 e 20 minutos de escuta ativa e focada por dia já geram progresso real e consistente. Consistência importa mais que intensidade: pouco todos os dias supera uma maratona no fim de semana. Some momentos de escuta passiva (podcast de fundo no trânsito ou na academia) para acostumar o ouvido ao ritmo da língua." } },
+            { "@type": "Question", "name": "Devo assistir séries com legenda em português para treinar o listening?", "acceptedAnswer": { "@type": "Answer", "text": "Não. Legenda em português treina sua leitura em português, não seu ouvido em inglês. O ideal é usar legenda em inglês para conectar o som à palavra escrita. Conforme evolui, reassista cenas sem legenda nenhuma para medir quanto seu ouvido já capta sozinho." } },
+            { "@type": "Question", "name": "É normal não entender tudo o que ouço em inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Totalmente normal, inclusive para avançados. Ninguém recupera um áudio de forma 100% completa, nem em português. O cérebro preenche lacunas pelo contexto. Foque na ideia geral primeiro; os detalhes vêm com repetição. Exigir perfeição aumenta a ansiedade e trava o aprendizado." } },
+            { "@type": "Question", "name": "Quais são os melhores podcasts para aprender inglês do zero?", "acceptedAnswer": { "@type": "Answer", "text": "Para iniciantes, o BBC Learning English (com o 6 Minute English) é a melhor porta de entrada gratuita, junto com Simple English Listening e Espresso English. Todos usam linguagem controlada e episódios curtos. Conforme avança, migre para All Ears English e Thinking in English." } },
+            { "@type": "Question", "name": "Consigo ficar fluente só ouvindo podcasts em inglês?", "acceptedAnswer": { "@type": "Answer", "text": "Podcast é a ferramenta mais rápida para fechar o gap de compreensão, mas sozinho não gera fluência. Ele constrói o input, não a produção. Para falar com confiança, combine escuta diária com prática de conversação e correção, de preferência com um professor que dá feedback em tempo real." } }
+          ]
+        }
+      ]
+    })}} />
+
+    {/* Banner CTA topo */}
+    <div className="rounded-3xl p-8 md:p-12 mb-14 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' }}>
+      <p className="text-xl md:text-2xl font-black leading-snug mb-3">
+        Cansado de depender da legenda para entender inglês?
+      </p>
+      <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
+        Treine seu ouvido com método, progressão real e feedback humano — não com sorte.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
+        style={{ background: '#F97316' }}
+      >
+        Quero minha aula experimental grátis →
+      </a>
+    </div>
+
+    {/* Conteúdo principal */}
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* Introdução */}
+      <p>
+        Você entende inglês quando lê, mas trava quando alguém fala rápido? Você não está sozinho — e o problema
+        quase nunca é o seu ouvido.
+      </p>
+      <p>
+        Saber <strong className="text-slate-800">como melhorar o listening em inglês</strong> é o passo que separa
+        quem "estuda inglês" de quem realmente vive o idioma. É a habilidade que faz você entender uma reunião com
+        clientes gringos, seguir uma série sem legenda e responder na hora certa numa entrevista internacional.
+      </p>
+      <p>
+        A boa notícia: listening não é dom. É treino guiado, com estratégia. Neste guia você vai entender por que
+        trava, o que os melhores métodos fazem de diferente, onde treinar de graça e como montar uma rotina que
+        cabe na sua vida real. Bora destravar isso de vez.
+      </p>
+
+      {/* H2 — 1 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Por que o listening é a habilidade que destrava todas as outras
+      </h2>
+      <p>
+        Tem uma ordem natural no aprendizado de qualquer língua, e ela começa pelo ouvido. Antes de falar, o bebê
+        passa meses só escutando. Com você não é diferente.
+      </p>
+      <p>
+        Pesquisadores da aquisição de segunda língua colocam a escuta como o precursor natural da fala. Os estágios
+        iniciais de qualquer idioma dependem primeiro da escuta — é ela que abastece tudo o que vem depois.
+      </p>
+      <p>
+        Ou seja: seu listening não é uma habilidade isolada. Ele alimenta seu speaking, sua leitura e até sua
+        escrita. Quando o ouvido melhora, a fluência inteira acelera junto.
+      </p>
+
+      {/* Destaque */}
+      <div className="my-4 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
+        <p className="text-slate-700 font-bold italic">
+          A verdade que ninguém te conta: falar bem inglês começa por ouvir bem. Quem pula essa etapa fala travado
+          e inseguro para sempre.
+        </p>
+      </div>
+
+      {/* H2 — 2 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        O erro nº 1 de quem tenta treinar listening (e como parar de cometê-lo)
+      </h2>
+      <p>
+        Aqui está o maior sabotador silencioso: tentar entender 100% do que ouve. Você trava em uma palavra, perde
+        as três seguintes e desiste achando que "não sabe inglês".
+      </p>
+      <p>
+        A literatura pedagógica é direta: até o aluno mais avançado não consegue recapitular um áudio de forma
+        completa e precisa — e isso é totalmente normal. Seu cérebro foi feito para preencher lacunas. Você faz
+        isso em português o tempo todo, num áudio de WhatsApp cortado ou numa ligação com ruído.
+      </p>
+      <p>Para tirar a pressão do seu ombro, adote esta mentalidade a partir de hoje:</p>
+      <ul className="space-y-3 pl-0">
+        {[
+          'Entender a ideia geral primeiro já é vitória — detalhe vem depois.',
+          'Palavra desconhecida não é fracasso, é conteúdo novo entrando.',
+          'Errar faz parte. Erro é o som do seu ouvido calibrando.',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Quando você para de exigir perfeição, o filtro afetivo cai — e o inglês entra muito mais fácil.
+      </p>
+
+      {/* H2 — 3 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Top-down: como seu cérebro realmente processa o que ouve
+      </h2>
+      <p>
+        Existe uma técnica que muda tudo, e ela se chama <strong className="text-slate-800">top-down</strong>. Em
+        vez de tentar decodificar palavra por palavra (o famoso e ineficiente "bottom-up"), você parte do contexto
+        para dentro.
+      </p>
+      <p>
+        Funciona assim: antes de ouvir algo sobre viagens, seu cérebro já ativa tudo que você sabe sobre
+        aeroportos, check-in, passaporte. Esse conhecimento prévio vira um andaime que segura a compreensão.
+        Ativar o conhecimento de mundo e aplicá-lo ao novo input facilita enormemente o processamento da língua.
+      </p>
+      <p>
+        Na prática, antes de dar play em qualquer áudio, pergunte-se: <em>sobre o que provavelmente é isso? Que
+        palavras eu já esperaria ouvir?</em> Esse pré-aquecimento mental é metade da batalha vencida. Confira também{' '}
+        <a href="/#/metodologia" className="text-purple-700 font-bold hover:underline">
+          como o método imersivo da OpenLife trabalha essa progressão
+        </a>.
+      </p>
+    </div>
+
+    {/* CTA Intermediário 1 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)' }}>
+      <p className="text-xl font-black mb-2">Seu ouvido precisa de treino guiado, não de sorte</p>
+      <p className="text-purple-200 mb-6 leading-relaxed">
+        Na OpenLife você treina listening com método, feedback humano e progressão real de nível.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-purple-700 text-base transition-all hover:scale-105 shadow-lg bg-white"
+      >
+        Quero treinar listening com método →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 4 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Como aproveitar ao máximo suas aulas de listening
+      </h2>
+      <p>
+        Uma aula de listening bem feita não é "escutar e responder perguntas". É uma sequência pensada para te
+        levar de ouvinte passivo a ativo. Conhecer essa estrutura faz você extrair muito mais de cada aula.
+      </p>
+      <p>
+        O método que usamos segue <strong className="text-slate-800">cinco etapas</strong>, cada uma com um papel claro:
+      </p>
+    </div>
+
+    {/* Tabela das 5 etapas */}
+    <div className="my-8 overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ backgroundColor: '#1A1033' }}>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest w-12">#</th>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest w-48">Etapa</th>
+            <th className="text-left px-6 py-4 font-black text-purple-200 uppercase tracking-widest">O que acontece</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { n: '1', etapa: 'Warm-up', desc: 'O professor traz o tópico à tona e ativa vocabulário que você já tem.' },
+            { n: '2', etapa: 'Pre-listening', desc: 'Você prepara a estrutura e as palavras-chave que vão aparecer no áudio.' },
+            { n: '3', etapa: 'Compreensão oral', desc: 'O áudio roda duas vezes: 1ª para a ideia geral, 2ª para detalhes.' },
+            { n: '4', etapa: 'Prática controlada', desc: 'Você aplica o que ouviu em exercícios guiados.' },
+            { n: '5', etapa: 'Atividade aberta', desc: 'Você usa aquilo numa conversa real, em pares — o output fecha o ciclo.' },
+          ].map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-purple-50/40'}>
+              <td className="px-6 py-4 font-black text-purple-700">{row.n}</td>
+              <td className="px-6 py-4 font-black text-slate-900">{row.etapa}</td>
+              <td className="px-6 py-4 text-slate-600">{row.desc}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+      <p>
+        <strong className="text-slate-800">O segredo do áudio tocado duas vezes:</strong> na primeira, relaxe e
+        capte o quê, onde, quando. Só na segunda vá atrás dos detalhes. Não tente fazer tudo de uma vez. Veja mais
+        sobre{' '}
+        <a href="/#/cursos" className="text-purple-700 font-bold hover:underline">
+          como funciona o método imersivo da OpenLife
+        </a>{' '}
+        e como essa progressão é aplicada em cada módulo do curso.
+      </p>
+
+      {/* H2 — 5 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        A regra de ouro: input "levemente difícil demais"
+      </h2>
+      <p>
+        Se você guardar uma única coisa deste guia, guarde esta. O melhor material de listening é aquele um
+        pouquinho acima do seu nível atual — desafiador o suficiente para te esticar, fácil o suficiente para
+        você acompanhar pelo contexto.
+      </p>
+      <p>
+        Áudio fácil demais parece produtivo, mas não constrói nada. Áudio difícil demais só gera frustração.
+        O ponto ideal — o que a ciência da aquisição chama de{' '}
+        <strong className="text-slate-800">input compreensível</strong> — fica no meio: entender cerca de 70% a
+        80% sem esforço extremo. Esse é o seu ponto de crescimento.
+      </p>
+
+      <div className="my-4 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#F97316', background: '#FFF7ED' }}>
+        <p className="text-slate-700 font-bold italic">
+          E há um detalhe que multiplica resultado: escolha temas que você AMA. Conteúdo que te interessa mantém
+          a atenção lá em cima e a ansiedade lá embaixo — e é exatamente nesse estado que o inglês gruda.
+        </p>
+      </div>
+
+      {/* H2 — 6 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Onde treinar listening fora da sala de aula: os melhores podcasts
+      </h2>
+      <p>
+        Aqui está o que você veio buscar: onde treinar de verdade, de graça, todo dia. Podcast é a ferramenta
+        número um — cabe no ônibus, na academia, na louça. Escolha por nível:
+      </p>
+    </div>
+
+    {/* Cards de podcasts por nível */}
+    <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
+      {[
+        {
+          nivel: 'Básico — Intermediário',
+          cefr: 'A2 – B1',
+          color: '#7C3AED',
+          podcasts: [
+            { nome: 'BBC Learning English', desc: '6 Minute English: episódios curtos, tema único, linguagem controlada.' },
+            { nome: 'Simple English Listening', desc: 'Histórias em inglês mais devagar, feitos para intermediários.' },
+            { nome: 'Espresso English Podcast', desc: 'Lições curtas e práticas, ótimas para encaixar na rotina.' },
+          ],
+        },
+        {
+          nivel: 'Intermediário — Avançado',
+          cefr: 'B1 – B2',
+          color: '#5B21B6',
+          podcasts: [
+            { nome: 'All Ears English', desc: 'Conversa real entre americanas, foco em comunicação e conexão.' },
+            { nome: 'Thinking in English', desc: 'Política, história, filosofia: você aprende em inglês, não sobre inglês.' },
+            { nome: 'Leonardo English', desc: 'Temas fascinantes com transcrição interativa na velocidade certa.' },
+          ],
+        },
+        {
+          nivel: 'Avançado',
+          cefr: 'C1 – C2',
+          color: '#1A1033',
+          podcasts: [
+            { nome: "Luke's English Podcast", desc: 'Inglês britânico com humor, episódios longos e envolventes.' },
+            { nome: 'The Daily (NY Times)', desc: 'Notícias em ritmo nativo, vocabulário rico, inglês do mundo real.' },
+            { nome: 'Podcasts nativos', desc: 'Qualquer podcast que você ouviria em português — agora em inglês.' },
+          ],
+        },
+      ].map((grupo, i) => (
+        <div key={i} className="rounded-3xl overflow-hidden shadow-sm border border-slate-100">
+          <div className="px-6 py-4 text-white" style={{ backgroundColor: grupo.color }}>
+            <p className="font-black text-sm uppercase tracking-widest">{grupo.nivel}</p>
+            <p className="text-white/70 text-xs font-bold mt-1">{grupo.cefr}</p>
+          </div>
+          <div className="p-6 space-y-4 bg-white">
+            {grupo.podcasts.map((p, j) => (
+              <div key={j}>
+                <p className="font-black text-slate-900 text-sm">{p.nome}</p>
+                <p className="text-slate-500 text-xs leading-relaxed mt-0.5">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-4 text-lg text-slate-600 leading-relaxed">
+      <div className="my-2 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
+        <p className="text-slate-700 font-bold">
+          Regra prática: 10 a 20 minutos de escuta focada por dia rendem mais que uma maratona de 2 horas no fim de semana.
+        </p>
+      </div>
+    </div>
+
+    {/* CTA Intermediário 2 */}
+    <div className="my-12 rounded-3xl p-8 md:p-10 text-white" style={{ background: 'linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%)' }}>
+      <p className="text-xl font-black mb-2">Podcast sozinho não te leva à fluência</p>
+      <p className="text-purple-200 mb-6 leading-relaxed">
+        Junte input diário com aulas, correção e conversação de verdade. Esse é o combo que destrava o inglês.
+      </p>
+      <a
+        href="https://form.respondi.app/5HvbxD84"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
+        style={{ background: '#F97316' }}
+      >
+        Quero começar minha jornada agora →
+      </a>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+
+      {/* H2 — 7 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-4 pb-2">
+        Vídeos, séries e YouTube: como usar do jeito certo
+      </h2>
+      <p>
+        Vídeo tem uma vantagem enorme sobre áudio puro: você lê o rosto, os gestos e o contexto visual. Isso é
+        andaime de graça para o seu ouvido. Mas tem jeito certo de usar.
+      </p>
+      <p>
+        O recurso mais poderoso e gratuito são as{' '}
+        <strong className="text-slate-800">TED Talks</strong>. Palestrantes do TED estão entre os falantes mais
+        articulados do mundo, e os vídeos vêm com transcrição. Use o método dos três passos:
+      </p>
+      <ul className="space-y-3 pl-0">
+        {[
+          '1ª assistida: sem ler nada — só para captar a ideia e treinar o ouvido cru.',
+          '2ª assistida: lendo a transcrição — agora você conecta som e palavra.',
+          '3ª assistida: sem ler — e sinta quanto a mais você entende.',
+        ].map((item, i) => (
+          <li key={i} className="flex items-start gap-3">
+            <span className="mt-2 w-2 h-2 rounded-full flex-shrink-0" style={{ background: '#7C3AED' }} />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+      <p>
+        Para tirar proveito real das suas séries favoritas, siga esta ordem: comece com legenda em inglês (nunca
+        em português — isso só treina leitura). Reassista cenas que você amou sem legenda. E repita em voz alta
+        uma fala que gostou — isso se chama <strong className="text-slate-800">shadowing</strong> e turbina
+        pronúncia e ouvido juntos.
+      </p>
+      <p>
+        Confira nossa lista de{' '}
+        <a href="/#/blog" className="text-purple-700 font-bold hover:underline">
+          melhores séries para aprender inglês por nível
+        </a>{' '}
+        e o guia completo no blog. Para materiais extras com áudio autêntico e exercícios estruturados, o{' '}
+        <a
+          href="https://learnenglish.britishcouncil.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-purple-700 font-bold hover:underline"
+        >
+          British Council LearnEnglish
+        </a>{' '}
+        é referência global gratuita.
+      </p>
+
+      {/* H2 — 8 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Sua rotina de listening: o que realmente funciona no dia a dia
+      </h2>
+      <p>
+        Consistência ganha de intensidade, sempre. Vinte minutos por dia constroem mais ouvido do que quatro horas
+        num domingo isolado, porque o cérebro precisa de exposição espaçada para fixar padrões de som.
+      </p>
+      <p>
+        Existe uma diferença que muda tudo: <strong className="text-slate-800">escuta ativa versus escuta passiva</strong>.
+        As duas têm valor, mas fazem coisas diferentes:
+      </p>
+    </div>
+
+    {/* Comparativo ativa vs passiva */}
+    <div className="my-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+      {[
+        {
+          tipo: 'Escuta ativa',
+          tempo: '10–15 min/dia',
+          cor: '#7C3AED',
+          bg: '#F5F3FF',
+          desc: 'Fones, atenção total, talvez com transcrição. É aqui que você cresce de nível — foco, intenção e análise.',
+        },
+        {
+          tipo: 'Escuta passiva',
+          tempo: 'o resto do dia',
+          cor: '#1A1033',
+          bg: '#F8F7FF',
+          desc: 'Podcast de fundo na academia, no trânsito, cozinhando. Mantém o ouvido ligado e acostuma o cérebro à melodia da língua.',
+        },
+      ].map((item, i) => (
+        <div key={i} className="rounded-3xl border p-6" style={{ borderColor: item.cor, background: item.bg }}>
+          <p className="font-black text-lg mb-1" style={{ color: item.cor }}>{item.tipo}</p>
+          <p className="text-xs font-black uppercase tracking-widest mb-3 text-slate-400">{item.tempo}</p>
+          <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+        </div>
+      ))}
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+      <p>
+        <strong className="text-slate-800">Dica de ouro para profissionais ocupados:</strong> troque um hábito que
+        já existe. Aquele tempo de scroll no Instagram vira um episódio de podcast. O trajeto de carro vira imersão.
+        Você não precisa de mais tempo — precisa realocar o que já tem.
+      </p>
+      <p>
+        E marque seu progresso: a cada duas semanas, reouça um áudio que era difícil no começo. Ver o quanto ficou
+        mais fácil é o combustível que te mantém no jogo.
+      </p>
+
+      {/* H2 — 9 */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">
+        Os erros que travam seu progresso (e que quase todo mundo comete)
+      </h2>
+      <p>
+        Alguns hábitos parecem inofensivos, mas sabotam seu listening por meses. Reconheça cada um — e substitua
+        agora:
+      </p>
+    </div>
+
+    {/* Tabela de erros */}
+    <div className="my-8 overflow-x-auto rounded-3xl border border-slate-100 shadow-sm">
+      <table className="w-full text-sm">
+        <thead>
+          <tr style={{ backgroundColor: '#1A1033' }}>
+            <th className="text-left px-6 py-4 font-black text-red-300 uppercase tracking-widest">❌ O que você faz</th>
+            <th className="text-left px-6 py-4 font-black text-green-300 uppercase tracking-widest">✅ O que fazer em vez disso</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[
+            { erro: 'Traduzir palavra por palavra enquanto ouve', certo: 'Deixe o sentido geral fluir — contexto primeiro, tradução nunca.' },
+            { erro: 'Usar legenda em português', certo: 'Troque para legenda em inglês ou nenhuma — treine o ouvido, não a leitura.' },
+            { erro: 'Escutar só material fácil demais', certo: 'Suba a régua: escolha áudio em que você entende ~70% sem esforço extremo.' },
+            { erro: 'Parar no primeiro "não entendi"', certo: 'Continue — seu cérebro vai preencher as lacunas pelo contexto.' },
+            { erro: 'Estudar sem feedback de ninguém', certo: 'Combine podcast com aulas: só um professor corrige você em tempo real.' },
+          ].map((row, i) => (
+            <tr key={i} className={i % 2 === 0 ? 'bg-white' : 'bg-slate-50'}>
+              <td className="px-6 py-4 text-slate-600">{row.erro}</td>
+              <td className="px-6 py-4 text-slate-700 font-medium">{row.certo}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
+      <p>
+        Esse último ponto é o divisor de águas. Apps e podcasts constroem compreensão, mas não te corrigem em
+        tempo real nem te empurram para a produção — e é a produção que fecha o ciclo da fluência.
+      </p>
+
+      {/* Conclusão */}
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 pt-8 pb-2">Conclusão</h2>
+      <p>
+        Melhorar o listening não é questão de talento nem de "ter facilidade com idiomas". É seguir a ordem natural
+        da língua: ouvir primeiro, com estratégia, sem exigir perfeição e com input um pouco acima do seu nível.
+      </p>
+      <p>
+        Você agora tem o mapa completo — o erro a evitar, a técnica top-down, a estrutura das aulas, a regra do
+        input ideal, os melhores podcasts por nível e a rotina que cabe na sua vida real. Só falta um detalhe:
+        ferramenta gratuita constrói metade do caminho. A outra metade — correção, conversação e progressão
+        garantida — vem de um método com gente de verdade do seu lado. E é exatamente isso que a OpenLife entrega.
+      </p>
+    </div>
+
+    {/* FAQ */}
+    <div className="mt-16 space-y-4">
+      <h2 className="text-2xl md:text-3xl font-black text-slate-900 mb-8">
+        Perguntas frequentes sobre como melhorar o listening em inglês
+      </h2>
+      {[
+        {
+          q: 'Quanto tempo por dia preciso treinar para melhorar o listening em inglês?',
+          a: 'Entre 10 e 20 minutos de escuta ativa e focada por dia já geram progresso real e consistente. Consistência importa muito mais que intensidade: pouco todos os dias supera uma maratona no fim de semana. Some a isso momentos de escuta passiva (podcast de fundo no trânsito ou na academia) para acostumar o ouvido ao ritmo da língua.',
+        },
+        {
+          q: 'Devo assistir séries com legenda em português para treinar o listening?',
+          a: 'Não. Legenda em português treina sua leitura em português, não seu ouvido em inglês. O ideal é usar legenda em inglês — assim você conecta o som à palavra escrita. Conforme evolui, reassista cenas sem legenda nenhuma para medir quanto seu ouvido já capta sozinho.',
+        },
+        {
+          q: 'É normal não entender tudo o que ouço em inglês?',
+          a: 'Totalmente normal, inclusive para quem já é avançado. Ninguém recupera um áudio de forma 100% completa, nem em português. Seu cérebro foi feito para preencher lacunas pelo contexto. Foque na ideia geral primeiro; os detalhes vêm com repetição e prática. Exigir perfeição só aumenta a ansiedade e trava o aprendizado.',
+        },
+        {
+          q: 'Quais são os melhores podcasts para aprender inglês do zero?',
+          a: 'Para quem está começando, o BBC Learning English (com o 6 Minute English) é a melhor porta de entrada gratuita, junto com Simple English Listening e Espresso English. Todos usam linguagem controlada e episódios curtos. Conforme avança, migre para All Ears English e Thinking in English.',
+        },
+        {
+          q: 'Consigo ficar fluente só ouvindo podcasts em inglês?',
+          a: 'Podcast é a ferramenta mais rápida para fechar o gap de compreensão, mas sozinho não gera fluência. Ele constrói o input, não a produção. Para falar com confiança você precisa combinar escuta diária com prática de conversação e correção — de preferência com um professor que te dá feedback em tempo real.',
+        },
+      ].map((item, i) => (
+        <div key={i} className="rounded-2xl border border-slate-100 bg-white shadow-sm overflow-hidden">
+          <details className="group">
+            <summary className="flex items-center justify-between cursor-pointer px-6 py-5 font-black text-slate-900 text-base list-none select-none hover:bg-purple-50/50 transition-colors">
+              <span>{item.q}</span>
+              <span className="ml-4 flex-shrink-0 text-purple-700 text-xl font-light group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div className="px-6 pb-6 text-slate-600 leading-relaxed border-t border-slate-50 pt-4">
+              {item.a}
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+
+    {/* Artigos relacionados */}
+    <div className="mt-16 pt-12 border-t border-slate-100">
+      <p className="text-xs font-black text-slate-400 uppercase tracking-widest mb-6">Continue aprendendo</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        {[
+          { title: 'Como destravar o speaking e parar de ter medo de falar', tag: 'Fluência', desc: 'Guia prático para vencer o bloqueio e ganhar confiança em inglês de verdade.' },
+          { title: 'Melhores séries para aprender inglês por nível', tag: 'Séries e Filmes', desc: 'Lista com método para treinar listening e vocabulário assistindo o que você ama.' },
+          { title: 'Inglês para negócios: expressões essenciais para reuniões', tag: 'Business', desc: 'O inglês que abre portas em multinacionais — e como se preparar para ele.' },
+        ].map((art, i) => (
+          <div key={i} className="p-5 rounded-2xl border border-slate-100 bg-white hover:border-purple-200 hover:shadow-sm transition-all">
+            <span className="text-xs font-black uppercase tracking-widest" style={{ color: '#7C3AED' }}>{art.tag}</span>
+            <p className="mt-2 font-black text-slate-900 text-sm leading-snug mb-2">{art.title}</p>
+            <p className="text-xs text-slate-500 leading-relaxed">{art.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+);
+
 export const MOCK_POSTS: Post[] = [
-  // RECESSO ESCOLAR — Post rico (mais recente)
+  // LISTENING — Post rico (mais recente)
+  {
+    id: 'listening-guia-completo-2026',
+    title: 'Como Melhorar o Listening em Inglês: O Guia Completo Para Destravar Sua Compreensão Auditiva',
+    excerpt: 'Aprenda como melhorar o listening em inglês com métodos que funcionam, rotina prática e os melhores podcasts e vídeos para treinar hoje.',
+    content: '',
+    contentNode: ListeningContent,
+    category: 'Aprender Inglês',
+    tags: ['Aprender Inglês', 'Listening', 'Dicas', 'Podcasts', 'Fluência'],
+    date: '28/07/2026',
+    image: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=1200',
+    slug: 'como-melhorar-listening-ingles',
+  },
+  // RECESSO ESCOLAR — Post rico
   {
     id: 'recesso-ingles-2026',
     title: 'Praticar inglês no recesso: 7 formas simples de não perder o ritmo',
