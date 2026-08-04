@@ -74,7 +74,7 @@ const Header: React.FC = () => {
             </Link>
           ))}
           <a
-            href="https://openlifebrasil.classbuild.com/login"
+            href="https://erp.openlifebrasil.com.br/login"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-semibold text-slate-400 hover:text-slate-600 flex items-center"
@@ -116,7 +116,7 @@ const Header: React.FC = () => {
             ))}
             <div className="pt-4 border-t border-gray-100 flex flex-col space-y-3">
               <a
-                href="https://openlifebrasil.classbuild.com/login"
+                href="https://erp.openlifebrasil.com.br/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-center py-3 font-medium text-slate-600"

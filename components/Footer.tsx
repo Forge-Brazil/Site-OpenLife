@@ -104,7 +104,7 @@ const Footer: React.FC = () => {
               <li><Link to="/franquia" className="text-purple-100 hover:text-white transition-colors font-bold text-orange-brand">Seja Franqueado</Link></li>
               <li><Link to="/contato" className="text-purple-100 hover:text-white transition-colors">Contato</Link></li>
               <li>
-                <a href="https://openlifebrasil.classbuild.com/login" target="_blank" rel="noopener noreferrer"
+                <a href="https://erp.openlifebrasil.com.br/login" target="_blank" rel="noopener noreferrer"
                   className="flex items-center text-purple-100 hover:text-white transition-colors">
                   Plataforma <ExternalLink size={11} strokeWidth={1.5} className="ml-1.5" />
                 </a>
