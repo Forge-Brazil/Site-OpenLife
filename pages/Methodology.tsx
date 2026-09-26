@@ -18,7 +18,7 @@ const Methodology: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="py-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-24 text-center text-white relative overflow-hidden bg-purple-deep">
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-10">
           <div className="w-[120%] h-[120%] bg-gradient-to-br from-purple-brand via-purple-800 to-purple-900 blur-3xl rounded-full"></div>
         </div>
@@ -142,7 +142,7 @@ const Methodology: React.FC = () => {
       </section>
 
       {/* Bloco 4 – Resultados Comprovados */}
-      <section className="py-24 text-white overflow-hidden relative" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-24 text-white overflow-hidden relative bg-purple-deep">
         <div className="absolute top-0 right-0 p-20 opacity-10">
           <Quote size={200} />
         </div>
@@ -219,7 +219,7 @@ const Methodology: React.FC = () => {
             <table className="w-full border-collapse table-fixed">
               <thead>
                 <tr className="text-white text-center">
-                  <th className="p-6 md:p-8 text-lg font-black w-1/3" style={{ backgroundColor: '#1A1033' }}>Característica</th>
+                  <th className="p-6 md:p-8 text-lg font-black w-1/3 bg-purple-deep">Característica</th>
                   <th className="p-6 md:p-8 text-lg font-black bg-slate-500 w-1/3 border-x border-white/10">Método Tradicional</th>
                   <th className="p-6 md:p-8 text-lg font-black bg-purple-brand w-1/3">Método OpenLife</th>
                 </tr>
@@ -238,7 +238,7 @@ const Methodology: React.FC = () => {
                     </td>
                     <td className="p-6 md:p-8 text-slate-900 font-bold text-center bg-purple-50/20">
                       <div className="flex flex-col items-center justify-center space-y-2">
-                        <Check className="text-green-500" size={24} />
+                        <Check className="text-purple-brand" size={24} />
                         <span className="text-sm">{row.open}</span>
                       </div>
                     </td>
@@ -262,7 +262,7 @@ const Methodology: React.FC = () => {
               { title: "Writing", desc: "Escreva e-mails, relatórios e textos com clareza" }
             ].map((skill, i) => (
               <div key={i} className="flex items-start space-x-4 bg-white p-6 rounded-3xl shadow-sm">
-                <CheckCircle2 className="text-green-500 shrink-0" size={24} />
+                <CheckCircle2 className="text-purple-brand shrink-0" size={24} />
                 <div>
                   <h4 className="font-black text-slate-900 text-xl">{skill.title}</h4>
                   <p className="text-slate-500">{skill.desc}</p>
@@ -276,7 +276,7 @@ const Methodology: React.FC = () => {
       {/* Bloco 8 – Chamada à Ação (CTA) */}
       <section className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
+          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden bg-purple-deep">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
               <h2 className="text-4xl md:text-6xl font-black">Pronto para transformar sua carreira com o inglês?</h2>

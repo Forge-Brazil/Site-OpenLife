@@ -9,7 +9,7 @@ const InglesAdolescentes: React.FC = () => {
     <div className="bg-white">
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-indigo-700 to-purple-brand text-white py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-purple-deep to-purple-brand text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-brand/10 rounded-full blur-3xl"></div>
@@ -23,7 +23,7 @@ const InglesAdolescentes: React.FC = () => {
             Inglês para Adolescentes —{' '}
             <span className="text-orange-brand">Fluência antes dos 18</span>
           </h1>
-          <p className="text-xl text-indigo-100 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
             Método ESL imersivo com foco em intercâmbio, SAT, vestibular e carreira global.
             Seu filho fluente antes de entrar na faculdade.
           </p>
@@ -39,7 +39,7 @@ const InglesAdolescentes: React.FC = () => {
             {[{ n: '13-17', l: 'Faixa etária' }, { n: 'C1', l: 'Nível final CEFR' }, { n: '18 m', l: 'Tempo ao fluente' }].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="text-2xl font-black">{s.n}</p>
-                <p className="text-xs text-indigo-200 uppercase tracking-wider">{s.l}</p>
+                <p className="text-xs text-purple-200 uppercase tracking-wider">{s.l}</p>
               </div>
             ))}
           </div>
@@ -125,7 +125,7 @@ const InglesAdolescentes: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-20 bg-purple-deep text-white text-center px-4">
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">O futuro do seu filho começa agora.</h2>
           <p className="text-purple-200">Fluência antes dos 18 é a vantagem competitiva mais valiosa que você pode dar.</p>

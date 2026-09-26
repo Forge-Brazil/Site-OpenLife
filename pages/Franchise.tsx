@@ -23,7 +23,7 @@ const Franchise: React.FC = () => {
   return (
     <div className="bg-white min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden text-white" style={{ backgroundColor: '#1A1033' }}>
+      <section className="relative py-24 overflow-hidden text-white bg-purple-deep">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
@@ -104,7 +104,7 @@ const Franchise: React.FC = () => {
       </section>
 
       {/* Por que ser um franqueado? */}
-      <section className="py-24 text-white overflow-hidden relative" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-24 text-white overflow-hidden relative bg-purple-deep">
         <div className="absolute top-0 right-0 p-20 opacity-5">
           <Globe size={400} />
         </div>
@@ -145,7 +145,7 @@ const Franchise: React.FC = () => {
               <ul className="space-y-3">
                 {["Alta recorrência de receita", "Baixa inadimplência", "Atração orgânica de alunos"].map((item, i) => (
                   <li key={i} className="flex items-center space-x-3 text-sm font-bold text-slate-700">
-                    <CheckCircle2 className="text-green-500" size={18} />
+                    <CheckCircle2 className="text-purple-brand" size={18} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -159,7 +159,7 @@ const Franchise: React.FC = () => {
               <ul className="space-y-3">
                 {["Modelo Presencial", "Modelo Híbrido", "Estrutura enxuta e eficiente"].map((item, i) => (
                   <li key={i} className="flex items-center space-x-3 text-sm font-bold text-slate-700">
-                    <CheckCircle2 className="text-green-500" size={18} />
+                    <CheckCircle2 className="text-purple-brand" size={18} />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -210,7 +210,7 @@ const Franchise: React.FC = () => {
       <section id="contato-franquia" className="py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-[60px] shadow-2xl overflow-hidden border border-gray-100 flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 p-12 md:p-20 text-white flex flex-col justify-center space-y-8" style={{ backgroundColor: '#1A1033' }}>
+            <div className="lg:w-1/2 p-12 md:p-20 text-white flex flex-col justify-center space-y-8 bg-purple-deep">
               <h2 className="text-4xl md:text-5xl font-black leading-tight">Vamos construir o <span className="text-purple-200">seu futuro</span> juntos?</h2>
               <p className="text-xl text-purple-100">
                 Preencha o formulário e receba em primeira mão a apresentação completa da nossa franquia.

@@ -8,7 +8,7 @@ const About: React.FC = () => {
   return (
     <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative py-24 overflow-hidden text-white" style={{ backgroundColor: '#1A1033' }}>
+      <section className="relative py-24 overflow-hidden text-white bg-purple-deep">
         <div className="absolute inset-0 opacity-10 pointer-events-none">
            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
         </div>
@@ -129,7 +129,7 @@ const About: React.FC = () => {
       {/* CTA Section */}
       <section className="py-24 bg-page">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden" style={{ backgroundColor: '#1A1033' }}>
+          <div className="rounded-[50px] p-12 md:p-24 text-center text-white relative overflow-hidden bg-purple-deep">
             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
             <div className="relative z-10 max-w-3xl mx-auto space-y-8">
               <h2 className="text-4xl md:text-6xl font-black">Faça parte da nossa história.</h2>

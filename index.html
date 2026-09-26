@@ -75,23 +75,23 @@ fbq('track', 'PageView');
     <!-- Schema.org JSON-LD é injetado por rota no build (data/schema.ts + scripts/prerender.mjs) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Design system oficial OpenLife — roxo #6B2D8B + laranja #F57C20,
-      // a identidade original da marca (Poppins/Inter). Definido nativamente
-      // no Tailwind para que bg-purple-brand, text-orange-brand, shadow-purple-brand/20
-      // etc. funcionem em qualquer tom sem precisar de CSS manual por classe.
+      // Design system oficial OpenLife — roxo #7C3AED (violet-600) primário,
+      // laranja #F97316 (orange-500) exclusivo para CTAs, fundo branco #FFFFFF.
+      // Regras completas em CLAUDE.md na raiz do projeto.
       tailwind.config = {
         theme: {
           extend: {
             colors: {
-              'purple-brand': '#6B2D8B',
-              'orange-brand': '#F57C20',
-              primary: { DEFAULT: '#6B2D8B', dark: '#52206B' },
-              accent: { DEFAULT: '#F57C20', light: '#FFA057' },
-              bgsoft: '#F6F4FF',
-              textmuted: '#6B6B6B',
-              borderlite: '#E5E5E5',
+              'purple-brand': '#7C3AED',
+              'purple-deep':  '#4C1D95',
+              'orange-brand': '#F97316',
+              primary: { DEFAULT: '#7C3AED', dark: '#4C1D95' },
+              accent: { DEFAULT: '#F97316', light: '#FB923C' },
+              bgsoft: '#F8F8FF',
+              textmuted: '#64748B',
+              borderlite: '#E2D9F3',
               purple: { 50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE', 300: '#C4B5FD', 900: '#4C1D95' },
-              orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 400: '#FB923C', 500: '#EA580C', 600: '#D45F0A' },
+              orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 400: '#FB923C', 500: '#F97316', 600: '#EA580C' },
             },
             fontFamily: {
               heading: ['Poppins', 'sans-serif'],
@@ -111,7 +111,7 @@ fbq('track', 'PageView');
       body {
         font-family: 'Inter', sans-serif;
         scroll-behavior: smooth;
-        background-color: #F6F4FF;
+        background-color: #FFFFFF;
       }
       h1, h2, h3, h4, .font-display, .font-heading {
         font-family: 'Poppins', sans-serif;
@@ -119,13 +119,13 @@ fbq('track', 'PageView');
 
       /* Compatibilidade retroativa — classes usadas na Home e na página Kids,
          recoloridas para o roxo/laranja oficial em vez de removidas por página. */
-      .bg-brand-gradient      { background: linear-gradient(135deg, #6B2D8B 0%, #52206B 100%); }
-      .bg-brand-gradient-soft { background: linear-gradient(160deg, #6B2D8B 0%, #8B3FAF 100%); }
-      .text-lavender          { color: #FFD9B3; }
-      .highlight-pill         { background: rgba(245,124,32,0.22); border-radius: 0.5em; padding: 0 0.18em; }
-      .bg-page, .bg-cream     { background-color: #F6F4FF; }
-      .bg-deep-purple         { background-color: #52206B; }
-      .text-deep-purple       { color: #52206B; }
+      .bg-brand-gradient      { background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%); }
+      .bg-brand-gradient-soft { background: linear-gradient(160deg, #7C3AED 0%, #6D28D9 100%); }
+      .text-lavender          { color: #EDE9FE; }
+      .highlight-pill         { background: rgba(249,115,22,0.18); border-radius: 0.5em; padding: 0 0.18em; }
+      .bg-page, .bg-cream     { background-color: #FFFFFF; }
+      .bg-deep-purple         { background-color: #4C1D95; }
+      .text-deep-purple       { color: #4C1D95; }
 
       /* ─── Ícones finos (global Lucide) ──────────────────── */
       main svg, header svg, footer svg { stroke-width: 1.5; }

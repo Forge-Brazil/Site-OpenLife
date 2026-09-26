@@ -9,7 +9,7 @@ const InglesNegocios: React.FC = () => {
     <div className="bg-white">
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 to-slate-800 text-white py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-purple-deep to-purple-brand text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-brand/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-brand/10 rounded-full blur-3xl"></div>
@@ -23,7 +23,7 @@ const InglesNegocios: React.FC = () => {
             Inglês para Negócios{' '}
             <span className="text-orange-brand">para Executivos</span>
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
             Reuniões internacionais, negociações, apresentações para boards e LinkedIn global.
             Business English com método ESL — do zero ao fluente em 18 meses.
           </p>
@@ -31,7 +31,7 @@ const InglesNegocios: React.FC = () => {
             <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Agendar aula experimental grátis <ArrowRight className="ml-2" size={20} />
             </a>
-            <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-slate-600 text-slate-300 px-8 py-4 rounded-xl font-bold text-lg hover:border-white hover:text-white transition-all">
+            <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
               Conhecer metodologia
             </Link>
           </div>
@@ -124,7 +124,7 @@ const InglesNegocios: React.FC = () => {
       </section>
 
       {/* Testimonial */}
-      <section className="py-20 text-white" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-20 bg-purple-deep text-white">
         <div className="max-w-4xl mx-auto px-4 text-center space-y-8">
           <blockquote className="text-xl md:text-2xl font-bold italic leading-relaxed text-slate-200">
             "Em 14 meses comecei a conduzir reuniões com o time da matriz dos EUA sozinho. Antes eu precisava de um intérprete. A OpenLife mudou a trajetória da minha carreira."
@@ -158,7 +158,7 @@ const InglesNegocios: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-20 bg-purple-deep text-white text-center px-4">
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Seu próximo nível na carreira começa com inglês.</h2>
           <p className="text-purple-200">Aula experimental gratuita com um de nossos especialistas em Business English.</p>

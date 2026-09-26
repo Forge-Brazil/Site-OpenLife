@@ -9,7 +9,7 @@ const InglesOnline: React.FC = () => {
     <div className="bg-white">
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-purple-brand to-indigo-900 text-white py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-purple-brand to-purple-deep text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
           <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-brand/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
@@ -145,7 +145,7 @@ const InglesOnline: React.FC = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20 text-white text-center px-4" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-20 bg-purple-deep text-white text-center px-4">
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Comece hoje. Do seu sofá.</h2>
           <p className="text-purple-200">Aula experimental gratuita. Sem compromisso. Online agora.</p>

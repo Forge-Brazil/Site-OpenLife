@@ -26,7 +26,7 @@ const IOSModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
       onClick={e => e.stopPropagation()}
     >
       {/* Header */}
-      <div className="bg-[#6B2D8B] px-6 py-5 flex items-center justify-between">
+      <div className="bg-purple-brand px-6 py-5 flex items-center justify-between">
         <div className="flex items-center gap-3">
           <AppleIcon className="text-white" />
           <h3 className="text-lg font-black text-white">Instalar no iPhone / iPad</h3>
@@ -57,7 +57,7 @@ const IOSModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           href={PWA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 flex items-center justify-center gap-2 bg-[#F57C20] text-white w-full py-4 rounded-2xl font-bold text-base hover:bg-orange-600 transition-colors"
+          className="mt-6 flex items-center justify-center gap-2 bg-orange-brand text-white w-full py-4 rounded-2xl font-bold text-base hover:bg-orange-600 transition-colors"
         >
           Abrir o app no Safari
           <ChevronRight size={18} />
@@ -70,7 +70,7 @@ const IOSModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
 
 const ModalStep: React.FC<{ number: number; title: string; children: React.ReactNode }> = ({ number, title, children }) => (
   <div className="flex gap-4 items-start">
-    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#6B2D8B] text-white flex items-center justify-center font-black text-sm">
+    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-purple-brand text-white flex items-center justify-center font-black text-sm">
       {number}
     </div>
     <div>
@@ -124,7 +124,7 @@ const OpenStore: React.FC = () => {
       {iosModal && <IOSModal onClose={() => setIosModal(false)} />}
 
       {/* ── Hero ── */}
-      <section className="bg-[#6B2D8B] px-4 pt-12 pb-16">
+      <section className="bg-purple-brand px-4 pt-12 pb-16">
         <div className="max-w-3xl mx-auto">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/20 border border-white/30 rounded-full px-4 py-1.5 mb-8">
@@ -144,7 +144,7 @@ const OpenStore: React.FC = () => {
               <p className="text-white/70 text-sm mt-0.5">Escola de Inglês · Educação</p>
               <div className="flex items-center gap-1 mt-2">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} size={13} fill="#F57C20" className="text-[#F57C20]" />
+                  <Star key={i} size={13} fill="#F97316" className="text-orange-brand" />
                 ))}
                 <span className="text-white/60 text-xs ml-1">5.0 · Google</span>
               </div>
@@ -153,7 +153,7 @@ const OpenStore: React.FC = () => {
 
           {/* Headline */}
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3 leading-snug">
-            Seu inglês na <span className="text-[#F57C20]">palma da mão</span>
+            Seu inglês na <span className="text-orange-brand">palma da mão</span>
           </h2>
           <p className="text-white/80 text-base mb-8 max-w-xl">
             Acesse aulas, materiais e pratique inglês a qualquer hora. Grátis, sem App Store, funciona como app nativo.
@@ -165,8 +165,8 @@ const OpenStore: React.FC = () => {
               onClick={() => onInstall('android')}
               className={`flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-base transition-all ${
                 platform === 'android'
-                  ? 'bg-[#F57C20] text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
-                  : 'bg-white text-[#6B2D8B] hover:bg-gray-100'
+                  ? 'bg-orange-brand text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
+                  : 'bg-white text-purple-brand hover:bg-gray-100'
               }`}
             >
               <AndroidIcon />
@@ -177,7 +177,7 @@ const OpenStore: React.FC = () => {
               onClick={() => onInstall('ios')}
               className={`flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-base transition-all ${
                 platform === 'ios'
-                  ? 'bg-[#F57C20] text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
+                  ? 'bg-orange-brand text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
                   : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
               }`}
             >
@@ -207,7 +207,7 @@ const OpenStore: React.FC = () => {
               { step: '3', title: 'Adicione à tela', desc: 'Confirme a instalação. O app aparece como qualquer outro na tela inicial.' },
             ].map(({ step, title, desc }) => (
               <div key={step} className="flex flex-col items-center text-center gap-3">
-                <div className="w-12 h-12 rounded-full bg-[#6B2D8B] text-white flex items-center justify-center font-black text-xl flex-shrink-0">
+                <div className="w-12 h-12 rounded-full bg-purple-brand text-white flex items-center justify-center font-black text-xl flex-shrink-0">
                   {step}
                 </div>
                 <div>
@@ -224,12 +224,12 @@ const OpenStore: React.FC = () => {
       <section className="px-4 py-14 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-xl font-black text-slate-900 mb-8 text-center">
-            Tudo que você precisa para <span className="text-[#F57C20]">aprender inglês</span>
+            Tudo que você precisa para <span className="text-orange-brand">aprender inglês</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {features.map((f, i) => (
               <div key={i} className="bg-white flex gap-4 p-5 rounded-2xl border border-gray-200 shadow-sm">
-                <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-[#6B2D8B]/10 text-[#6B2D8B] flex items-center justify-center">
+                <div className="flex-shrink-0 w-11 h-11 rounded-xl bg-purple-brand/10 text-purple-brand flex items-center justify-center">
                   {f.icon}
                 </div>
                 <div>
@@ -252,7 +252,7 @@ const OpenStore: React.FC = () => {
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             {['Gratuito', 'Sem App Store', 'Sem Google Play', 'Funciona Offline', 'Seguro', 'Leve'].map(tag => (
               <div key={tag} className="flex items-center gap-2 bg-slate-50 border border-slate-200 rounded-xl px-4 py-3">
-                <CheckCircle2 size={16} className="text-[#6B2D8B] flex-shrink-0" />
+                <CheckCircle2 size={16} className="text-purple-brand flex-shrink-0" />
                 <span className="text-slate-700 text-sm font-semibold">{tag}</span>
               </div>
             ))}
@@ -263,13 +263,13 @@ const OpenStore: React.FC = () => {
       {/* ── CTA Final ── */}
       <section className="px-4 py-14 bg-slate-50 border-t border-gray-100">
         <div className="max-w-md mx-auto text-center">
-          <Download size={36} className="text-[#F57C20] mx-auto mb-4" />
+          <Download size={36} className="text-orange-brand mx-auto mb-4" />
           <h3 className="text-2xl font-black text-slate-900 mb-2">Pronto para instalar?</h3>
           <p className="text-slate-500 text-sm mb-6">Escolha seu sistema e tenha o OpenLife na sua tela inicial em menos de 1 minuto.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <button
               onClick={() => onInstall('android')}
-              className="flex items-center justify-center gap-2 bg-[#6B2D8B] text-white px-6 py-4 rounded-2xl font-bold hover:bg-purple-800 transition-colors shadow-md"
+              className="flex items-center justify-center gap-2 bg-purple-brand text-white px-6 py-4 rounded-2xl font-bold hover:bg-purple-deep transition-colors shadow-md"
             >
               <AndroidIcon /> Android
             </button>

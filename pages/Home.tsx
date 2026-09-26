@@ -77,7 +77,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="h-10 w-px bg-slate-200" />
                 <div className="flex flex-col">
-                  <div className="flex text-orange-400">
+                  <div className="flex text-orange-brand">
                     {[1, 2, 3, 4, 5].map((i) => <Star key={i} size={16} fill="currentColor" />)}
                   </div>
                   <span className="text-xs text-slate-500 uppercase font-bold mt-1">5/5 Estrelas (Google)</span>

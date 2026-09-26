@@ -46,7 +46,7 @@ const Blog: React.FC = () => {
         </div>
 
         {/* Minimalist Hero Section */}
-        <section className="text-white py-16 md:py-24" style={{ backgroundColor: '#1A1033' }}>
+        <section className="text-white py-16 md:py-24 bg-purple-deep">
           <div className="max-w-6xl mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
               <div className="lg:col-span-7 space-y-6">
@@ -111,7 +111,7 @@ const Blog: React.FC = () => {
               )}
 
               {/* CTA Section - Integrated and Standardized */}
-              <div className="mt-20 p-10 md:p-16 rounded-[40px] text-white relative overflow-hidden shadow-2xl" style={{ backgroundColor: '#1A1033' }}>
+              <div className="mt-20 p-10 md:p-16 rounded-[40px] text-white relative overflow-hidden shadow-2xl bg-purple-deep">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
                 <div className="relative z-10 space-y-8 text-center">
                   <h2 className="text-3xl md:text-4xl font-black m-0 leading-tight">Domine o inglês de forma técnica e definitiva</h2>

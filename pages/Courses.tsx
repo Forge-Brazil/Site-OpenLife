@@ -80,7 +80,7 @@ const CoursesPage: React.FC = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20" style={{ backgroundColor: '#1A1033' }}>
+      <section className="py-20 bg-purple-deep">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
           <div className="flex justify-center">
             <span className="inline-block w-8 h-1 bg-orange-brand rounded-full"></span>

@@ -42,7 +42,7 @@ const Cookies: React.FC = () => {
 
         <div className="space-y-6">
           {sections.map((section, idx) => (
-            <div key={idx} className={`rounded-[32px] overflow-hidden transition-all duration-300 bg-[#6B2D8B] ${expandedSection === idx ? 'pb-6 shadow-xl' : 'hover:bg-purple-700'}`}>
+            <div key={idx} className={`rounded-[32px] overflow-hidden transition-all duration-300 bg-purple-brand ${expandedSection === idx ? 'pb-6 shadow-xl' : 'hover:bg-purple-deep'}`}>
               <button 
                 onClick={() => setExpandedSection(expandedSection === idx ? null : idx)}
                 className="w-full flex items-center justify-between p-6 text-white text-left focus:outline-none"

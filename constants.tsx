@@ -3,8 +3,8 @@ import React from 'react';
 import { Course, Post, LevelQuestion } from './types';
 
 export const COLORS = {
-  purple: '#6B2D8B',
-  orange: '#F57C20',
+  purple: '#7C3AED',
+  orange: '#F97316',
 };
 
 export const COURSES: Course[] = [

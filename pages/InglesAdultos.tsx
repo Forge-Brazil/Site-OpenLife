@@ -9,7 +9,7 @@ const InglesAdultos: React.FC = () => {
     <div className="bg-white">
 
       {/* Hero */}
-      <section className="relative bg-gradient-to-br from-slate-900 to-purple-brand text-white py-24 md:py-36 overflow-hidden">
+      <section className="relative bg-gradient-to-br from-purple-deep to-purple-brand text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-brand/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
         </div>
@@ -23,7 +23,7 @@ const InglesAdultos: React.FC = () => {
             <span className="text-orange-brand">do Zero ao Fluente</span>{' '}
             em 18 Meses
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
             Método ESL imersivo com horários que se adaptam à sua rotina.
             Presencial ou online. Certificação internacional CEFR C1.
           </p>
@@ -71,7 +71,7 @@ const InglesAdultos: React.FC = () => {
                   'Online ou presencial em todo o Brasil',
                 ].map((item, i) => (
                   <div key={i} className="flex items-start space-x-3">
-                    <CheckCircle2 size={20} className="text-emerald-500 shrink-0 mt-0.5" />
+                    <CheckCircle2 size={20} className="text-purple-brand shrink-0 mt-0.5" />
                     <span className="text-slate-700 text-sm">{item}</span>
                   </div>
                 ))}
@@ -129,7 +129,7 @@ const InglesAdultos: React.FC = () => {
           <div className="grid grid-cols-5 gap-2">
             {['A1→A2', 'A2→B1', 'B1→B2', 'B2→C1', 'C1→C2'].map((level, i) => (
               <div key={i} className="flex flex-col items-center space-y-2">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-xs ${i === 4 ? 'bg-emerald-500' : 'bg-purple-brand'}`}>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-xs ${i === 4 ? 'bg-orange-brand' : 'bg-purple-brand'}`}>
                   M{i + 1}
                 </div>
                 <div className="h-1 bg-purple-brand/20 w-full hidden sm:block"></div>
