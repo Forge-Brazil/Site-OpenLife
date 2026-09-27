@@ -38,3 +38,41 @@ CREATE POLICY "Allow authenticated read" ON subscribers
 
 CREATE POLICY "Allow authenticated read leads" ON leads
   FOR SELECT TO authenticated USING (true);
+
+-- ── Tabela: smartform_leads ──────────────────────────────────────────────────
+-- Captura progressiva do SmartForm (Épico 2).
+-- Cada visita ao site cria um registro ao 1° toque (persona); os campos são
+-- preenchidos progressivamente até o /complete, que envia ao ERP CRM.
+
+CREATE TABLE smartform_leads (
+  id              UUID    DEFAULT gen_random_uuid() PRIMARY KEY,
+  pagina_origem   TEXT,
+  persona         TEXT,
+  nivel           TEXT,
+  urgencia        TEXT,
+  nome            TEXT,
+  whatsapp        TEXT,
+  email           TEXT,
+  campos          JSONB,
+  status          TEXT    DEFAULT 'iniciado',
+  consentimento_lgpd JSONB,
+  erp_enviado     BOOLEAN DEFAULT FALSE,
+  utm_source      TEXT,
+  utm_medium      TEXT,
+  utm_campaign    TEXT,
+  utm_term        TEXT,
+  utm_content     TEXT,
+  created_at      TIMESTAMPTZ DEFAULT NOW(),
+  updated_at      TIMESTAMPTZ DEFAULT NOW()
+);
+
+ALTER TABLE smartform_leads ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow anonymous insert smartform" ON smartform_leads
+  FOR INSERT WITH CHECK (true);
+
+CREATE POLICY "Allow anonymous update smartform" ON smartform_leads
+  FOR UPDATE USING (true);
+
+CREATE POLICY "Allow authenticated read smartform" ON smartform_leads
+  FOR SELECT TO authenticated USING (true);

@@ -199,6 +199,131 @@ app.post('/api/leads/register', async (req, res) => {
   }
 });
 
+// ── SmartForm — captura progressiva (Épico 2) ────────────────────────────────
+// Três endpoints que implementam o fluxo de 4 etapas do SmartForm:
+//   POST  /api/lead/start          → cria lead parcial ao 1° toque (Persona)
+//   PATCH /api/lead/:id            → autosave com debounce (Nível / Urgência)
+//   PATCH /api/lead/:id/complete   → finaliza e envia ao ERP CRM (Contato)
+
+const PERSONA_LABELS = {
+  universitario: 'Universitário (intercâmbio/carreira global)',
+  profissional:  'Profissional em ascensão',
+  executivo:     'Executivo/C-Level',
+  empreendedor:  'Empreendedor',
+  kids_teens:    'Kids & Teens',
+  viajante:      'Viajante',
+};
+const NIVEL_LABELS = {
+  zero:          'Zero absoluto',
+  basico:        'Básico',
+  intermediario: 'Intermediário',
+  avancado:      'Avançado',
+};
+const URGENCIA_LABELS = {
+  urgente:    'Preciso agora (1–3 meses)',
+  planejando: 'Planejando (6–12 meses)',
+  explorando: 'Só explorando',
+};
+
+// Cria lead parcial ao 1° toque — retorna sempre um id (graceful degradation)
+app.post('/api/lead/start', async (req, res) => {
+  const { pagina_origem, persona, status, utm_source, utm_medium, utm_campaign, utm_term, utm_content } = req.body || {};
+
+  try {
+    if (supabase) {
+      const { data, error } = await supabase.from('smartform_leads').insert([{
+        pagina_origem: pagina_origem || '/',
+        persona,
+        status: status || 'iniciado',
+        utm_source, utm_medium, utm_campaign, utm_term, utm_content,
+      }]).select('id').single();
+
+      if (!error && data?.id) return res.status(201).json({ id: data.id });
+      console.error('SmartForm start insert error:', error);
+    }
+  } catch (err) {
+    console.error('SmartForm /api/lead/start error:', err);
+  }
+
+  // Fallback: sem Supabase ou erro — retorna ID local (lead não será autossalvo,
+  // mas o /complete ainda enviará ao ERP quando o visitante terminar o form)
+  res.status(201).json({ id: `local_${Date.now()}_${Math.random().toString(36).slice(2, 8)}` });
+});
+
+// Autosave progressivo (700ms debounce no frontend)
+app.patch('/api/lead/:id', async (req, res) => {
+  const { id } = req.params;
+  const patch = req.body || {};
+
+  if (!id.startsWith('local_')) {
+    try {
+      if (supabase) {
+        const updateData = { updated_at: new Date().toISOString() };
+        if (patch.nivel)    updateData.nivel    = patch.nivel;
+        if (patch.urgencia) updateData.urgencia = patch.urgencia;
+        if (patch.campos)   updateData.campos   = patch.campos;
+
+        const { error } = await supabase.from('smartform_leads').update(updateData).eq('id', id);
+        if (error) console.error('SmartForm autosave error:', error);
+      }
+    } catch (err) {
+      console.error('SmartForm PATCH error:', err);
+    }
+  }
+
+  res.json({ ok: true });
+});
+
+// Finaliza o lead: persiste no Supabase e envia ao ERP CRM
+app.patch('/api/lead/:id/complete', async (req, res) => {
+  const { id } = req.params;
+  const { pagina_origem, persona, nivel, urgencia, campos = {}, consentimento_lgpd } = req.body || {};
+  const { nome, whatsapp, email } = campos;
+
+  const descricao = [
+    `Persona: ${PERSONA_LABELS[persona] || persona || '—'}`,
+    `Nível: ${NIVEL_LABELS[nivel] || nivel || '—'}`,
+    `Urgência: ${URGENCIA_LABELS[urgencia] || urgencia || '—'}`,
+    `Origem: ${pagina_origem || '/'}`,
+  ].join(' | ');
+
+  // 1. Envia ao ERP CRM (caminho principal; fallback local dentro de registerLead)
+  const erpResult = await registerLead({
+    name:    nome,
+    email,
+    phone:   whatsapp,
+    message: descricao,
+    source:  'smartform',
+  });
+
+  // 2. Persiste/atualiza no Supabase
+  try {
+    if (supabase) {
+      const record = {
+        pagina_origem: pagina_origem || '/',
+        persona, nivel, urgencia,
+        nome, whatsapp, email,
+        campos,
+        status: 'concluido',
+        consentimento_lgpd: consentimento_lgpd || null,
+        erp_enviado: erpResult.ok,
+        updated_at: new Date().toISOString(),
+      };
+
+      if (id.startsWith('local_')) {
+        // Lead criado offline (sem Supabase no momento do start) → insere agora
+        await supabase.from('smartform_leads').insert([record]);
+      } else {
+        await supabase.from('smartform_leads').update(record).eq('id', id);
+      }
+    }
+  } catch (err) {
+    console.error('SmartForm complete persistence error:', err);
+  }
+
+  res.json({ ok: true, erp_enviado: erpResult.ok });
+});
+
 // ── API: Alice (chat consultivo com IA, via Groq) ─────────────────
 const GROQ_MODEL = 'llama-3.3-70b-versatile';
 
