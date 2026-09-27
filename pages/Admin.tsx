@@ -18,7 +18,7 @@ const Admin: React.FC = () => {
       <aside className="w-64 bg-slate-900 text-white flex flex-col fixed inset-y-0 left-0 pt-20">
         <div className="px-6 py-8">
           <div className="flex items-center space-x-3 mb-10">
-            <div className="w-10 h-10 bg-orange-brand rounded-xl flex items-center justify-center font-black">AD</div>
+            <div className="w-10 h-10 bg-purple-brand rounded-xl flex items-center justify-center font-black">AD</div>
             <div>
               <p className="font-bold text-sm">Admin OpenLife</p>
               <p className="text-xs text-slate-400">Portal de Gestão</p>
@@ -28,14 +28,14 @@ const Admin: React.FC = () => {
           <nav className="space-y-2">
             <button 
               onClick={() => setActiveTab('leads')}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'leads' ? 'bg-orange-brand text-white' : 'text-slate-400 hover:bg-slate-800'}`}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'leads' ? 'bg-purple-brand text-white' : 'text-slate-400 hover:bg-slate-800'}`}
             >
               <Users size={20} />
               <span className="font-bold">Leads</span>
             </button>
             <button 
               onClick={() => setActiveTab('posts')}
-              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'posts' ? 'bg-orange-brand text-white' : 'text-slate-400 hover:bg-slate-800'}`}
+              className={`w-full flex items-center space-x-3 px-4 py-3 rounded-xl transition-colors ${activeTab === 'posts' ? 'bg-purple-brand text-white' : 'text-slate-400 hover:bg-slate-800'}`}
             >
               <FileText size={20} />
               <span className="font-bold">Blog Posts</span>

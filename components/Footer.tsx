@@ -21,24 +21,24 @@ const Footer: React.FC = () => {
             </p>
             <div className="flex space-x-2.5">
               <a href="https://www.instagram.com/openlifebrasil/" target="_blank" rel="noopener noreferrer"
-                className="p-2.5 bg-white/10 rounded-full hover:bg-orange-brand transition-colors">
+                className="p-2.5 bg-white/10 rounded-full hover:bg-purple-700 transition-colors">
                 <Instagram size={16} strokeWidth={1.5} />
               </a>
-              <a href="#" className="p-2.5 bg-white/10 rounded-full hover:bg-orange-brand transition-colors">
+              <a href="#" className="p-2.5 bg-white/10 rounded-full hover:bg-purple-700 transition-colors">
                 <Youtube size={16} strokeWidth={1.5} />
               </a>
               <a href="https://www.linkedin.com/in/openlife-english-school-bage/" target="_blank" rel="noopener noreferrer"
-                className="p-2.5 bg-white/10 rounded-full hover:bg-orange-brand transition-colors">
+                className="p-2.5 bg-white/10 rounded-full hover:bg-purple-700 transition-colors">
                 <Linkedin size={16} strokeWidth={1.5} />
               </a>
             </div>
             <div className="space-y-2 pt-1">
               <a href="tel:+5553999656216" className="flex items-center space-x-2 text-purple-100 hover:text-white text-xs transition-colors">
-                <Phone size={13} strokeWidth={1.5} className="text-orange-brand shrink-0" />
+                <Phone size={13} strokeWidth={1.5} className="text-purple-200 shrink-0" />
                 <span>+55 (53) 99965-6216</span>
               </a>
               <a href="mailto:contato@openlifebrasil.com" className="flex items-center space-x-2 text-purple-100 hover:text-white text-xs transition-colors">
-                <Mail size={13} strokeWidth={1.5} className="text-orange-brand shrink-0" />
+                <Mail size={13} strokeWidth={1.5} className="text-purple-200 shrink-0" />
                 <span>contato@openlifebrasil.com</span>
               </a>
             </div>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
               <li><Link to="/ingles-para-criancas" className="text-purple-100 hover:text-white transition-colors">Inglês para Crianças</Link></li>
               <li><Link to="/ingles-para-adolescentes" className="text-purple-100 hover:text-white transition-colors">Inglês para Adolescentes</Link></li>
               <li><Link to="/ingles-para-negocios" className="text-purple-100 hover:text-white transition-colors">Inglês para Negócios</Link></li>
-              <li><Link to="/cursos" className="text-orange-brand font-semibold hover:text-white transition-colors">Ver todos →</Link></li>
+              <li><Link to="/cursos" className="text-purple-200 font-semibold hover:text-white transition-colors">Ver todos →</Link></li>
             </ul>
           </div>
 
@@ -74,7 +74,7 @@ const Footer: React.FC = () => {
               <li>
                 <a href="https://share.google/egMmZSfXSk33Uj1rN" target="_blank" rel="noopener noreferrer"
                   className="flex items-center text-purple-100 hover:text-white transition-colors">
-                  <MapPin size={11} strokeWidth={1.5} className="mr-1.5 text-orange-brand" /> Bagé/RS (sede)
+                  <MapPin size={11} strokeWidth={1.5} className="mr-1.5 text-purple-300" /> Bagé/RS (sede)
                 </a>
               </li>
             </ul>
@@ -100,7 +100,7 @@ const Footer: React.FC = () => {
               <li><Link to="/sobre" className="text-purple-100 hover:text-white transition-colors">Nossa História</Link></li>
               <li><Link to="/metodologia" className="text-purple-100 hover:text-white transition-colors">Metodologia ESL</Link></li>
               <li><Link to="/blog" className="text-purple-100 hover:text-white transition-colors">Blog</Link></li>
-              <li><Link to="/franquia" className="text-purple-100 hover:text-white transition-colors font-bold text-orange-brand">Seja Franqueado</Link></li>
+              <li><Link to="/franquia" className="text-white font-bold hover:text-purple-200 transition-colors">Seja Franqueado</Link></li>
               <li><Link to="/contato" className="text-purple-100 hover:text-white transition-colors">Contato</Link></li>
               <li>
                 <a href="https://erp.openlifebrasil.com.br/login" target="_blank" rel="noopener noreferrer"
@@ -119,7 +119,7 @@ const Footer: React.FC = () => {
             <p className="text-purple-100 text-sm">Aula experimental 100% gratuita. Sem compromisso.</p>
           </div>
           <button onClick={() => openSmartForm()}
-            className="shrink-0 inline-flex items-center bg-orange-brand text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-orange-600 transition-all shadow-xl shadow-black/20">
+            className="shrink-0 inline-flex items-center bg-white text-purple-brand px-8 py-3.5 rounded-full font-bold text-sm hover:bg-purple-50 transition-all shadow-xl shadow-black/20">
             Agendar Aula Grátis
           </button>
         </div>

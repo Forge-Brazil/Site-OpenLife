@@ -67,7 +67,7 @@ const Header: React.FC = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`text-sm font-medium transition-colors hover:text-orange-brand ${isActive(link.path) ? 'text-orange-brand' : 'text-slate-600'}`}
+              className={`text-sm font-medium transition-colors hover:text-purple-brand ${isActive(link.path) ? 'text-purple-brand' : 'text-slate-600'}`}
             >
               {link.name}
             </Link>
@@ -82,7 +82,7 @@ const Header: React.FC = () => {
           </a>
           <button
             onClick={() => openSmartForm()}
-            className="bg-orange-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-brand/20"
+            className="bg-purple-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-purple-700 transition-all shadow-lg shadow-purple-brand/20"
           >
             Agendar Aula Grátis
           </button>
@@ -106,7 +106,7 @@ const Header: React.FC = () => {
               <Link
                 key={link.path}
                 to={link.path}
-                className={`block px-3 py-4 text-base font-medium rounded-lg ${isActive(link.path) ? 'text-orange-brand bg-orange-50' : 'text-slate-700 hover:bg-gray-50'}`}
+                className={`block px-3 py-4 text-base font-medium rounded-lg ${isActive(link.path) ? 'text-purple-brand bg-violet-50' : 'text-slate-700 hover:bg-gray-50'}`}
               >
                 {link.name}
               </Link>
@@ -122,7 +122,7 @@ const Header: React.FC = () => {
               </a>
               <button
                 onClick={() => openSmartForm()}
-                className="bg-orange-brand text-white text-center py-4 rounded-xl font-bold w-full"
+                className="bg-purple-brand text-white text-center py-4 rounded-xl font-bold w-full hover:bg-purple-700 transition-colors"
               >
                 Agendar Aula Grátis
               </button>

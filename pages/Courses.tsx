@@ -46,7 +46,7 @@ const CoursesPage: React.FC = () => {
 
                 <div className="flex-1 space-y-6 bg-white rounded-2xl p-8 border border-slate-100 shadow-sm">
                   <div className="space-y-3">
-                    <span className="inline-block bg-orange-50 text-orange-brand border border-orange-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3 py-0.5 rounded-full">{course.focus}</span>
+                    <span className="inline-block bg-violet-50 text-purple-brand border border-violet-200 text-[11px] font-bold uppercase tracking-[0.15em] px-3 py-0.5 rounded-full">{course.focus}</span>
                     <h2 className="text-3xl md:text-4xl font-black text-slate-900">{course.title}</h2>
                     <p className="text-slate-400 leading-relaxed">{course.description}</p>
                   </div>
@@ -81,7 +81,7 @@ const CoursesPage: React.FC = () => {
       <section className="py-20 bg-purple-deep">
         <div className="max-w-3xl mx-auto px-4 text-center space-y-6">
           <div className="flex justify-center">
-            <span className="inline-block w-8 h-1 bg-orange-brand rounded-full"></span>
+            <span className="inline-block w-8 h-1 bg-purple-brand rounded-full"></span>
           </div>
           <h2 className="text-3xl md:text-4xl font-black text-white">Não sabe por onde começar?</h2>
           <p className="text-slate-400">

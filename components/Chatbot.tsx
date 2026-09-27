@@ -79,7 +79,7 @@ const Chatbot: React.FC = () => {
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                 <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
                   m.role === 'user'
-                    ? 'bg-orange-brand text-white rounded-tr-none'
+                    ? 'bg-purple-brand text-white rounded-tr-none'
                     : 'bg-white text-slate-700 shadow-sm border border-gray-100 rounded-tl-none'
                 }`}>
                   {m.content}
@@ -111,7 +111,7 @@ const Chatbot: React.FC = () => {
               <button
                 onClick={handleSend}
                 disabled={isLoading}
-                className="text-purple-brand hover:text-orange-brand disabled:opacity-50 transition-colors"
+                className="text-purple-brand hover:text-purple-700 disabled:opacity-50 transition-colors"
               >
                 <Send size={20} />
               </button>

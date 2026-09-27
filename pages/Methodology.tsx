@@ -158,7 +158,7 @@ const Methodology: React.FC = () => {
                 “Em 18 meses, eu saí do básico para fazer entrevistas em inglês com empresas da Europa.”
               </p>
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-orange-brand rounded-full"></div>
+                <div className="w-12 h-12 bg-purple-brand rounded-full"></div>
                 <div>
                   <p className="font-bold">Lucas A., 27 anos</p>
                   <p className="text-sm text-purple-200">Desenvolvedor de Software</p>
@@ -170,7 +170,7 @@ const Methodology: React.FC = () => {
                 “Hoje, dou palestras em inglês e lidero reuniões com clientes internacionais.”
               </p>
               <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-orange-brand rounded-full"></div>
+                <div className="w-12 h-12 bg-purple-brand rounded-full"></div>
                 <div>
                   <p className="font-bold">Renata M., 35 anos</p>
                   <p className="text-sm text-purple-200">Executiva de Marketing</p>

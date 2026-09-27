@@ -41,7 +41,7 @@ const LevelTest: React.FC = () => {
         
         {step === 'intro' && (
           <div className="p-12 text-center space-y-8">
-            <div className="w-20 h-20 bg-orange-100 text-orange-brand rounded-2xl flex items-center justify-center mx-auto">
+            <div className="w-20 h-20 bg-violet-100 text-purple-brand rounded-2xl flex items-center justify-center mx-auto">
               <Brain size={40} />
             </div>
             <div className="space-y-4">
@@ -68,7 +68,7 @@ const LevelTest: React.FC = () => {
               </div>
               <div className="w-full h-2 bg-gray-100 rounded-full overflow-hidden">
                 <div 
-                  className="h-full bg-orange-brand transition-all duration-300" 
+                  className="h-full bg-purple-brand transition-all duration-300"
                   style={{ width: `${((currentQuestion + 1) / LEVEL_QUESTIONS.length) * 100}%` }}
                 ></div>
               </div>
@@ -136,7 +136,7 @@ const LevelTest: React.FC = () => {
               </div>
               <button 
                 type="submit"
-                className="w-full bg-orange-brand text-white py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20"
+                className="w-full bg-purple-brand text-white py-5 rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all shadow-xl shadow-purple-brand/20"
               >
                 Ver Meu Resultado
               </button>
@@ -168,7 +168,7 @@ const LevelTest: React.FC = () => {
             </div>
 
             <div className="flex flex-col space-y-4 pt-4">
-              <button className="w-full bg-orange-brand text-white py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20">
+              <button className="w-full bg-purple-brand text-white py-5 rounded-2xl font-bold text-xl hover:bg-purple-700 transition-all shadow-xl shadow-purple-brand/20">
                 Agendar Aula Grátis
               </button>
               <button onClick={() => window.location.href = '/'} className="text-slate-500 font-bold hover:text-slate-700">

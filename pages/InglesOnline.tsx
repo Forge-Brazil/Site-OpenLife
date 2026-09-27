@@ -12,7 +12,7 @@ const InglesOnline: React.FC = () => {
       <section className="relative bg-gradient-to-br from-purple-brand to-purple-deep text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-brand/10 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-deep/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
         </div>
         <div className="max-w-5xl mx-auto px-4 relative z-10 text-center space-y-8">
           <div className="inline-flex items-center space-x-2 bg-white/10 border border-white/20 px-4 py-1.5 rounded-full text-sm font-bold">
@@ -21,7 +21,7 @@ const InglesOnline: React.FC = () => {
           </div>
           <h1 className="text-4xl md:text-6xl font-black leading-tight">
             Curso de Inglês Online{' '}
-            <span className="text-orange-brand">com Aulas ao Vivo</span>
+            <span className="text-purple-200">com Aulas ao Vivo</span>
           </h1>
           <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
             Aprenda inglês de qualquer lugar do Brasil com professores certificados,

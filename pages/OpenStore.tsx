@@ -57,7 +57,7 @@ const IOSModal: React.FC<{ onClose: () => void }> = ({ onClose }) => (
           href={PWA_URL}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-6 flex items-center justify-center gap-2 bg-orange-brand text-white w-full py-4 rounded-2xl font-bold text-base hover:bg-orange-600 transition-colors"
+          className="mt-6 flex items-center justify-center gap-2 bg-purple-brand text-white w-full py-4 rounded-2xl font-bold text-base hover:bg-purple-700 transition-colors"
         >
           Abrir o app no Safari
           <ChevronRight size={18} />
@@ -144,7 +144,7 @@ const OpenStore: React.FC = () => {
               <p className="text-white/70 text-sm mt-0.5">Escola de Inglês · Educação</p>
               <div className="flex items-center gap-1 mt-2">
                 {[1,2,3,4,5].map(i => (
-                  <Star key={i} size={13} fill="#F97316" className="text-orange-brand" />
+                  <Star key={i} size={13} fill="#7C3AED" className="text-purple-brand" />
                 ))}
                 <span className="text-white/60 text-xs ml-1">5.0 · Google</span>
               </div>
@@ -153,7 +153,7 @@ const OpenStore: React.FC = () => {
 
           {/* Headline */}
           <h2 className="text-3xl md:text-4xl font-black text-white mb-3 leading-snug">
-            Seu inglês na <span className="text-orange-brand">palma da mão</span>
+            Seu inglês na <span className="text-purple-brand">palma da mão</span>
           </h2>
           <p className="text-white/80 text-base mb-8 max-w-xl">
             Acesse aulas, materiais e pratique inglês a qualquer hora. Grátis, sem App Store, funciona como app nativo.
@@ -165,7 +165,7 @@ const OpenStore: React.FC = () => {
               onClick={() => onInstall('android')}
               className={`flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-base transition-all ${
                 platform === 'android'
-                  ? 'bg-orange-brand text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
+                  ? 'bg-purple-brand text-white shadow-lg shadow-purple-brand/30 hover:bg-purple-700'
                   : 'bg-white text-purple-brand hover:bg-gray-100'
               }`}
             >
@@ -177,7 +177,7 @@ const OpenStore: React.FC = () => {
               onClick={() => onInstall('ios')}
               className={`flex items-center justify-center gap-3 px-6 py-4 rounded-2xl font-bold text-base transition-all ${
                 platform === 'ios'
-                  ? 'bg-orange-brand text-white shadow-lg shadow-orange-500/30 hover:bg-orange-600'
+                  ? 'bg-purple-brand text-white shadow-lg shadow-purple-brand/30 hover:bg-purple-700'
                   : 'bg-white/15 border border-white/30 text-white hover:bg-white/25'
               }`}
             >
@@ -224,7 +224,7 @@ const OpenStore: React.FC = () => {
       <section className="px-4 py-14 bg-slate-50">
         <div className="max-w-3xl mx-auto">
           <h3 className="text-xl font-black text-slate-900 mb-8 text-center">
-            Tudo que você precisa para <span className="text-orange-brand">aprender inglês</span>
+            Tudo que você precisa para <span className="text-purple-brand">aprender inglês</span>
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {features.map((f, i) => (
@@ -263,7 +263,7 @@ const OpenStore: React.FC = () => {
       {/* ── CTA Final ── */}
       <section className="px-4 py-14 bg-slate-50 border-t border-gray-100">
         <div className="max-w-md mx-auto text-center">
-          <Download size={36} className="text-orange-brand mx-auto mb-4" />
+          <Download size={36} className="text-purple-brand mx-auto mb-4" />
           <h3 className="text-2xl font-black text-slate-900 mb-2">Pronto para instalar?</h3>
           <p className="text-slate-500 text-sm mb-6">Escolha seu sistema e tenha o OpenLife na sua tela inicial em menos de 1 minuto.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

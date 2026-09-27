@@ -5,7 +5,7 @@ import { openSmartForm } from './components/SmartForm';
 
 export const COLORS = {
   purple: '#7C3AED',
-  orange: '#F97316',
+  orange: '#7C3AED',
 };
 
 export const COURSES: Course[] = [
@@ -74,7 +74,7 @@ const FilmesSeriesContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-white text-base transition-all hover:scale-105 shadow-xl"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Quero minha aula grátis agora →
       </button>
@@ -240,7 +240,7 @@ const FilmesSeriesContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-black text-white text-sm transition-all hover:scale-105"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Experimentar o método OpenLife →
       </button>
@@ -329,7 +329,7 @@ const FilmesSeriesContent = (
           { title: 'The Maze Runner', where: 'Prime Video/Disney+', desc: 'Ficção científica jovem com vocabulário de ação' },
         ].map(({ title, where, desc }, i) => (
           <div key={i} className="flex gap-4 p-4 bg-white border border-gray-100 rounded-2xl shadow-sm">
-            <span className="font-black text-lg w-8 text-center flex-shrink-0" style={{ color: '#F97316' }}>{i + 1}</span>
+            <span className="font-black text-lg w-8 text-center flex-shrink-0" style={{ color: '#7C3AED' }}>{i + 1}</span>
             <div>
               <span className="font-black text-slate-900">{title}</span>
               <span className="text-xs font-bold ml-2 px-2 py-0.5 rounded-full bg-orange-50 text-orange-700">{where}</span>
@@ -353,7 +353,7 @@ const FilmesSeriesContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-black text-white text-sm transition-all hover:scale-105"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Garantir a vaga do meu filho agora →
       </button>
@@ -453,7 +453,7 @@ const FilmesSeriesContent = (
           <button
             onClick={() => openSmartForm()}
             className="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-2xl font-black text-white text-lg transition-all hover:scale-105 shadow-xl"
-            style={{ background: '#F97316' }}
+            style={{ background: '#7C3AED' }}
           >
             Quero minha aula grátis agora
           </button>
@@ -997,7 +997,7 @@ const ListeningContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Quero minha aula experimental grátis →
       </button>
@@ -1184,7 +1184,7 @@ const ListeningContent = (
         80% sem esforço extremo. Esse é o seu ponto de crescimento.
       </p>
 
-      <div className="my-4 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#F97316', background: '#FFF7ED' }}>
+      <div className="my-4 pl-6 border-l-4 py-2 rounded-r-xl" style={{ borderColor: '#7C3AED', background: '#F5F3FF' }}>
         <p className="text-slate-700 font-bold italic">
           E há um detalhe que multiplica resultado: escolha temas que você AMA. Conteúdo que te interessa mantém
           a atenção lá em cima e a ansiedade lá embaixo — e é exatamente nesse estado que o inglês gruda.
@@ -1269,7 +1269,7 @@ const ListeningContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Quero começar minha jornada agora →
       </button>
@@ -1534,7 +1534,7 @@ const SeriesContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Quero minha aula experimental grátis →
       </button>
@@ -1788,7 +1788,7 @@ const SeriesContent = (
         { nome: 'Mad Men', area: 'Publicidade & Marketing', desc: 'Universo da publicidade e do marketing, com inglês elegante e persuasivo.' },
       ].map((s, i) => (
         <div key={i} className="flex items-start gap-4 p-5 rounded-2xl bg-white border border-slate-100 hover:border-purple-200 hover:shadow-sm transition-all">
-          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#F97316' }}>{s.area}</span>
+          <span className="flex-shrink-0 text-xs font-black px-3 py-1 rounded-full text-white mt-0.5" style={{ background: '#7C3AED' }}>{s.area}</span>
           <div>
             <p className="font-black text-slate-900">{s.nome}</p>
             <p className="text-slate-500 text-sm leading-relaxed mt-0.5">{s.desc}</p>
@@ -1817,7 +1817,7 @@ const SeriesContent = (
       <button
         onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
-        style={{ background: '#F97316' }}
+        style={{ background: '#7C3AED' }}
       >
         Quero acelerar meu inglês agora →
       </button>

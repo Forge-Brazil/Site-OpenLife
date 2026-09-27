@@ -75,8 +75,8 @@ fbq('track', 'PageView');
     <!-- Schema.org JSON-LD é injetado por rota no build (data/schema.ts + scripts/prerender.mjs) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Design system oficial OpenLife — roxo #7C3AED (violet-600) primário,
-      // laranja #F97316 (orange-500) exclusivo para CTAs, fundo branco #FFFFFF.
+      // Design system oficial OpenLife — roxo #7C3AED (violet-600) primário.
+      // Paleta Forge: branco/off-white + roxo como única cor de marca.
       // Regras completas em CLAUDE.md na raiz do projeto.
       tailwind.config = {
         theme: {
@@ -84,14 +84,21 @@ fbq('track', 'PageView');
             colors: {
               'purple-brand': '#7C3AED',
               'purple-deep':  '#4C1D95',
-              'orange-brand': '#F97316',
+              'purple-mid':   '#6D28D9',
               primary: { DEFAULT: '#7C3AED', dark: '#4C1D95' },
-              accent: { DEFAULT: '#F97316', light: '#FB923C' },
               bgsoft: '#F8F8FF',
               textmuted: '#64748B',
               borderlite: '#E2D9F3',
-              purple: { 50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE', 300: '#C4B5FD', 900: '#4C1D95' },
-              orange: { 50: '#FFF7ED', 100: '#FFEDD5', 200: '#FED7AA', 400: '#FB923C', 500: '#F97316', 600: '#EA580C' },
+              purple: {
+                50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE',
+                300: '#C4B5FD', 400: '#A78BFA', 500: '#8B5CF6',
+                600: '#7C3AED', 700: '#6D28D9', 800: '#5B21B6', 900: '#4C1D95'
+              },
+              violet: {
+                50: '#F5F3FF', 100: '#EDE9FE', 200: '#DDD6FE',
+                300: '#C4B5FD', 400: '#A78BFA', 500: '#8B5CF6',
+                600: '#7C3AED', 700: '#6D28D9', 800: '#5B21B6', 900: '#4C1D95'
+              },
             },
             fontFamily: {
               heading: ['Poppins', 'sans-serif'],
@@ -122,10 +129,17 @@ fbq('track', 'PageView');
       .bg-brand-gradient      { background: linear-gradient(135deg, #7C3AED 0%, #4C1D95 100%); }
       .bg-brand-gradient-soft { background: linear-gradient(160deg, #7C3AED 0%, #6D28D9 100%); }
       .text-lavender          { color: #EDE9FE; }
-      .highlight-pill         { background: rgba(249,115,22,0.18); border-radius: 0.5em; padding: 0 0.18em; }
+      .highlight-pill         { background: rgba(124,58,237,0.12); border-radius: 0.5em; padding: 0 0.18em; }
       .bg-page, .bg-cream     { background-color: #FFFFFF; }
       .bg-deep-purple         { background-color: #4C1D95; }
       .text-deep-purple       { color: #4C1D95; }
+
+      /* Mobile safe areas */
+      .safe-bottom { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .safe-top    { padding-top: env(safe-area-inset-top, 0px); }
+
+      /* Orb glow effect */
+      .orb-glow { box-shadow: 0 0 80px 20px rgba(124,58,237,0.35), inset 0 0 40px 10px rgba(255,255,255,0.08); }
 
       /* ─── Ícones finos (global Lucide) ──────────────────── */
       main svg, header svg, footer svg { stroke-width: 1.5; }

@@ -11,7 +11,7 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
 
       {/* HERO */}
       <section className="bg-purple-brand min-h-[70vh] flex flex-col items-center justify-center text-center px-6 pt-32 pb-16">
-        <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">
+        <p className="text-purple-200 font-bold text-xs tracking-[0.25em] uppercase mb-4">
           Curso de Inglês em {city.name}
         </p>
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight mb-6 text-white max-w-3xl">
@@ -23,7 +23,7 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <button onClick={() => openSmartForm()}
-            className="bg-orange-brand text-white px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-orange-500 transition-colors">
+            className="bg-white text-purple-brand px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-50 transition-colors">
             Agendar Aula Grátis
           </button>
           <Link to="/ingles-online"
@@ -78,7 +78,7 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
               `Professores certificados e metodologia validada há mais de 20 anos`,
             ].map((item, i) => (
               <li key={i} className="flex items-start gap-3 bg-white rounded-xl p-4">
-                <CheckCircle2 size={20} className="text-orange-brand shrink-0 mt-0.5" />
+                <CheckCircle2 size={20} className="text-purple-brand shrink-0 mt-0.5" />
                 <span className="text-slate-600 text-sm">{item}</span>
               </li>
             ))}
@@ -87,7 +87,7 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
       </section>
 
       {/* CTA FINAL */}
-      <section className="bg-orange-brand py-20 px-6 text-center">
+      <section className="bg-purple-brand py-20 px-6 text-center">
         <div className="max-w-2xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
             Comece hoje seu inglês em {city.name}
@@ -96,7 +96,7 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
             Agende sua aula experimental gratuita e conheça o método na prática.
           </p>
           <button onClick={() => openSmartForm()}
-            className="inline-flex items-center gap-2 bg-white text-orange-brand px-8 py-3.5 rounded-full font-bold text-sm hover:bg-purple-50 transition-colors">
+            className="inline-flex items-center gap-2 bg-white text-purple-brand px-8 py-3.5 rounded-full font-bold text-sm hover:bg-purple-50 transition-colors">
             Agendar Aula Grátis <ArrowRight size={16} />
           </button>
         </div>

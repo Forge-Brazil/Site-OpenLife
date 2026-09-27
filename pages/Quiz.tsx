@@ -76,17 +76,17 @@ function ChoiceOption({ id, label, emoji, index, selected, onSelect }: ChoiceOpt
       onClick={onSelect}
       className={`w-full text-left flex items-center gap-3 px-4 py-4 rounded-2xl border-2 transition-all active:scale-[0.99] ${
         selected
-          ? 'border-orange-brand bg-orange-50 shadow-sm'
+          ? 'border-purple-brand bg-violet-50 shadow-sm'
           : 'border-gray-200 bg-white hover:border-purple-200 hover:bg-purple-50'
       }`}
     >
       <span className={`w-8 h-8 rounded-full flex-shrink-0 flex items-center justify-center text-sm font-black transition-all ${
-        selected ? 'bg-orange-brand text-white' : 'bg-gray-100 text-gray-500'
+        selected ? 'bg-purple-brand text-white' : 'bg-gray-100 text-gray-500'
       }`}>
         {LETTERS[index]}
       </span>
       {emoji && <span className="text-xl leading-none">{emoji}</span>}
-      <span className={`font-semibold text-sm leading-snug flex-1 ${selected ? 'text-orange-700' : 'text-slate-700'}`}>
+      <span className={`font-semibold text-sm leading-snug flex-1 ${selected ? 'text-purple-700' : 'text-slate-700'}`}>
         {label}
       </span>
     </button>
@@ -265,7 +265,7 @@ const Quiz: React.FC = () => {
       {/* ── Barra de progresso colorida ──────────────────────────────── */}
       <div className="h-1.5 bg-gray-100 flex-shrink-0">
         <div
-          className="h-full bg-gradient-to-r from-purple-brand to-orange-brand transition-all duration-500 ease-out"
+          className="h-full bg-gradient-to-r from-purple-deep to-purple-brand transition-all duration-500 ease-out"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -326,7 +326,7 @@ const Quiz: React.FC = () => {
                 Borá! 🚀
               </button>
               <div className="flex items-center justify-center gap-2 pt-1">
-                <span className="text-orange-brand text-sm">★★★★★</span>
+                <span className="text-purple-brand text-sm">★★★★★</span>
                 <span className="text-sm text-slate-400">+66k alunos formados · OpenLife Brasil</span>
               </div>
             </div>
@@ -336,7 +336,7 @@ const Quiz: React.FC = () => {
           {screen === 1 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 1 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 1 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual o seu nome completo? ✍️
                 </h2>
@@ -356,7 +356,7 @@ const Quiz: React.FC = () => {
           {screen === 2 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 2 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 2 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual é o seu melhor e-mail? 📧
                 </h2>
@@ -378,7 +378,7 @@ const Quiz: React.FC = () => {
           {screen === 3 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 3 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 3 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   E o número do seu WhatsApp? 📱
                 </h2>
@@ -406,7 +406,7 @@ const Quiz: React.FC = () => {
           {screen === 4 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 4 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 4 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual é a idade do futuro aluno? 🎂
                 </h2>
@@ -428,7 +428,7 @@ const Quiz: React.FC = () => {
           {screen === 5 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 5 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 5 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Em qual cidade você mora? 📍
                 </h2>
@@ -448,7 +448,7 @@ const Quiz: React.FC = () => {
           {screen === 6 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 6 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 6 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual curso você está buscando? 🎓
                 </h2>
@@ -470,7 +470,7 @@ const Quiz: React.FC = () => {
           {screen === 7 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 7 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 7 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Já teve contato com o inglês antes? 🎓
                 </h2>
@@ -492,7 +492,7 @@ const Quiz: React.FC = () => {
           {screen === 8 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 8 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 8 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   O que mais te motiva a aprender inglês? 💡
                 </h2>
@@ -514,7 +514,7 @@ const Quiz: React.FC = () => {
           {screen === 9 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-orange-brand uppercase tracking-wider">Pergunta 9 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 9 de 9</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Como você conheceu a OpenLife? 📣
                 </h2>

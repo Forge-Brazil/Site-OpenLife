@@ -12,16 +12,16 @@ const InglesNegocios: React.FC = () => {
       <section className="relative bg-gradient-to-br from-purple-deep to-purple-brand text-white py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-purple-brand/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/4"></div>
-          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-orange-brand/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-purple-deep/20 rounded-full blur-3xl"></div>
         </div>
         <div className="max-w-5xl mx-auto px-4 relative z-10 text-center space-y-8">
-          <div className="inline-flex items-center space-x-2 bg-orange-brand/20 border border-orange-brand/30 text-orange-brand px-4 py-1.5 rounded-full text-sm font-bold">
+          <div className="inline-flex items-center space-x-2 bg-white/15 border border-white/25 text-white px-4 py-1.5 rounded-full text-sm font-bold">
             <Briefcase size={14} />
             <span>Business English — Executivos & Profissionais</span>
           </div>
           <h1 className="text-4xl md:text-6xl font-black leading-tight">
             Inglês para Negócios{' '}
-            <span className="text-orange-brand">para Executivos</span>
+            <span className="text-purple-200">para Executivos</span>
           </h1>
           <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
             Reuniões internacionais, negociações, apresentações para boards e LinkedIn global.
@@ -56,7 +56,7 @@ const InglesNegocios: React.FC = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-black text-slate-900">
-                Quantas oportunidades você já perdeu por <span className="text-orange-brand">não falar inglês?</span>
+                Quantas oportunidades você já perdeu por <span className="text-purple-brand">não falar inglês?</span>
               </h2>
               <p className="text-slate-600 leading-relaxed">
                 Uma promoção. Um contrato. Uma reunião com a matriz americana onde você não conseguiu se expressar.

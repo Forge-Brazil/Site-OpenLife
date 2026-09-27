@@ -260,7 +260,7 @@ const ReelItem: React.FC<{ reel: Reel; isActive: boolean }> = ({ reel, isActive 
           <p className="text-white text-sm mb-4">Não foi possível carregar este vídeo.</p>
           <button 
             onClick={() => { setVideoError(false); if(videoRef.current) videoRef.current.load(); }}
-            className="text-xs text-orange-brand underline"
+            className="text-xs text-purple-brand underline"
           >
             Tentar novamente
           </button>
@@ -390,7 +390,7 @@ const Reels: React.FC = () => {
     <div className="min-h-[calc(100vh-80px)] bg-white py-12">
       <div className="max-w-7xl mx-auto px-4 mb-12 text-center">
         <h2 className="text-4xl md:text-5xl font-black text-purple-brand mb-4">
-          OpenLife <span className="text-orange-brand">Reels</span>
+          OpenLife <span className="text-purple-brand">Reels</span>
         </h2>
         <p className="text-slate-600 max-w-2xl mx-auto text-lg">
           Dicas rápidas, bastidores e muito inglês em formato dinâmico. Arraste para o lado para ver mais!
@@ -450,11 +450,11 @@ const Reels: React.FC = () => {
           <p className="text-xs text-slate-400 uppercase font-bold tracking-widest mt-1">Seguidores</p>
         </div>
         <div className="bg-slate-50 p-6 rounded-2xl text-center border border-slate-100">
-          <p className="text-3xl font-black text-orange-brand">500+</p>
+          <p className="text-3xl font-black text-purple-brand">500+</p>
           <p className="text-xs text-slate-400 uppercase font-bold tracking-widest mt-1">Vídeos</p>
         </div>
         <div className="bg-slate-50 p-6 rounded-2xl text-center border border-slate-100">
-          <a href="https://instagram.com/openlife_english" target="_blank" rel="noopener noreferrer" className="h-full flex items-center justify-center font-bold text-purple-brand hover:text-orange-brand transition-colors">
+          <a href="https://instagram.com/openlife_english" target="_blank" rel="noopener noreferrer" className="h-full flex items-center justify-center font-bold text-purple-brand hover:text-purple-700 transition-colors">
             Ver no Instagram →
           </a>
         </div>

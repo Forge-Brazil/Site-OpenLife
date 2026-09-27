@@ -144,7 +144,7 @@ const InglesCriancas: React.FC = () => {
             />
           </div>
           <div>
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Antes dos 12</p>
+            <p className="text-purple-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Antes dos 12</p>
             <h2 className="font-display text-3xl md:text-[2.4rem] font-extrabold text-purple-brand leading-tight mb-5">
               Para o seu filho, inglês não é matéria. É descoberta.
             </h2>
@@ -194,7 +194,7 @@ const InglesCriancas: React.FC = () => {
       <section className="bg-cream py-24 px-6">
         <Reveal className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Dentro da sala</p>
+            <p className="text-purple-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Dentro da sala</p>
             <h2 className="font-display text-3xl md:text-[2.4rem] font-extrabold text-purple-brand leading-tight">
               O que acontece numa aula OpenLife Kids
             </h2>
@@ -218,7 +218,7 @@ const InglesCriancas: React.FC = () => {
       <section className="bg-white py-24 px-6 border-y border-purple-100">
         <Reveal className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Vivência cultural</p>
+            <p className="text-purple-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Vivência cultural</p>
             <h2 className="font-display text-3xl md:text-[2.4rem] font-extrabold text-purple-brand leading-tight mb-4">
               Cada aula é uma pequena viagem
             </h2>
@@ -264,7 +264,7 @@ const InglesCriancas: React.FC = () => {
       <section className="bg-cream py-24 px-6">
         <Reveal className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
-            <p className="text-orange-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Quem já vive isso</p>
+            <p className="text-purple-brand font-bold text-xs tracking-[0.25em] uppercase mb-4">Quem já vive isso</p>
             <h2 className="font-display text-3xl md:text-[2.4rem] font-extrabold text-purple-brand leading-tight">
               O que os pais contam
             </h2>
@@ -273,7 +273,7 @@ const InglesCriancas: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((t) => (
               <div key={t.name} className="bg-white rounded-2xl p-7 border border-purple-100">
-                <div className="flex gap-0.5 text-orange-brand mb-4">
+                <div className="flex gap-0.5 text-purple-brand mb-4">
                   {Array.from({ length: 5 }).map((_, i) => <Star key={i} size={14} fill="currentColor" strokeWidth={0} />)}
                 </div>
                 <p className="text-slate-600 text-sm leading-relaxed mb-5">"{t.quote}"</p>
@@ -300,7 +300,7 @@ const InglesCriancas: React.FC = () => {
                   aria-expanded={openFaq === i}
                   className="w-full flex items-center justify-between px-6 py-4 text-left gap-4">
                   <span className="font-bold text-purple-brand text-sm">{faq.q}</span>
-                  <ChevronDown size={16} className={"shrink-0 text-orange-brand transition-transform " + (openFaq === i ? 'rotate-180' : '')} />
+                  <ChevronDown size={16} className={"shrink-0 text-purple-brand transition-transform " + (openFaq === i ? 'rotate-180' : '')} />
                 </button>
                 {openFaq === i && (
                   <div className="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-purple-100 pt-3.5">{faq.a}</div>
@@ -326,7 +326,7 @@ const InglesCriancas: React.FC = () => {
             Aula experimental gratuita, sem compromisso — venha sentir o método OpenLife Kids na prática.
           </p>
           <button onClick={() => openSmartForm()}
-            className="inline-block bg-orange-brand text-white px-10 py-4 rounded-full font-bold text-sm hover:bg-orange-500 transition-colors shadow-lg shadow-black/20">
+            className="inline-block bg-purple-brand text-white px-10 py-4 rounded-full font-bold text-sm hover:bg-purple-700 transition-colors shadow-lg shadow-purple-brand/20">
             Agendar aula experimental gratuita
           </button>
           <p className="text-white/50 text-xs mt-6">

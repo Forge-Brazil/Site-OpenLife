@@ -20,7 +20,7 @@ const InglesAdultos: React.FC = () => {
           </div>
           <h1 className="text-4xl md:text-6xl font-black leading-tight">
             Inglês para Adultos{' '}
-            <span className="text-orange-brand">do Zero ao Fluente</span>{' '}
+            <span className="text-purple-200">do Zero ao Fluente</span>{' '}
             em 18 Meses
           </h1>
           <p className="text-xl text-purple-100 max-w-2xl mx-auto leading-relaxed">
@@ -129,7 +129,7 @@ const InglesAdultos: React.FC = () => {
           <div className="grid grid-cols-5 gap-2">
             {['A1→A2', 'A2→B1', 'B1→B2', 'B2→C1', 'C1→C2'].map((level, i) => (
               <div key={i} className="flex flex-col items-center space-y-2">
-                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-xs ${i === 4 ? 'bg-orange-brand' : 'bg-purple-brand'}`}>
+                <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-black text-xs ${i === 4 ? 'bg-purple-deep' : 'bg-purple-brand'}`}>
                   M{i + 1}
                 </div>
                 <div className="h-1 bg-purple-brand/20 w-full hidden sm:block"></div>

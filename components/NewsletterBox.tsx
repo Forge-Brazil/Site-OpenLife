@@ -43,7 +43,7 @@ const NewsletterBox = () => {
 
   return (
     <div className="mt-16 bg-white border border-gray-100 rounded-[32px] p-8 md:p-12 shadow-soft text-center max-w-4xl mx-auto flex flex-col items-center">
-      <div className="w-16 h-16 bg-orange-50 text-orange-brand rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+      <div className="w-16 h-16 bg-violet-50 text-purple-brand rounded-2xl flex items-center justify-center mb-6 shadow-sm">
         {status === 'success' ? <CheckCircle2 size={32} className="text-green-500" /> : <MessageCircle size={32} />}
       </div>
       
@@ -69,7 +69,7 @@ const NewsletterBox = () => {
           <button 
             type="submit" 
             disabled={status === 'loading'}
-            className="bg-orange-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-orange-brand/90 transition-all shadow-md flex items-center justify-center space-x-2 min-w-[140px] disabled:opacity-70"
+            className="bg-purple-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-700 transition-all shadow-md flex items-center justify-center space-x-2 min-w-[140px] disabled:opacity-70"
           >
             {status === 'loading' ? (
               <Loader2 size={20} className="animate-spin" />
