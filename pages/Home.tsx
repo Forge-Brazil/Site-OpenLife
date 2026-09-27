@@ -8,6 +8,7 @@ import {
 import { COURSES } from '../constants';
 import { HOME_FAQ_CATEGORIES as faqData } from '../data/faq';
 import NewsletterBox from '../components/NewsletterBox';
+import { openSmartForm } from '../components/SmartForm';
 
 
 // Cada curso do carrossel manda para a página de SEO dedicada quando ela

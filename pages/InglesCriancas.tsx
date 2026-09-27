@@ -5,6 +5,7 @@ import {
   MessagesSquare, HeartHandshake, ChevronDown, ArrowRight, Plane,
 } from 'lucide-react';
 import { KIDS_FAQS as faqs } from '../data/kidsFaq';
+import { openSmartForm } from '../components/SmartForm';
 
 
 /** Revela a seção com fade + subida suave assim que ela entra na viewport —

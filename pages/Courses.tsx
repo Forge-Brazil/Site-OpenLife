@@ -63,7 +63,7 @@ const CoursesPage: React.FC = () => {
                     </ul>
                   </div>
 
-                  <a
+                  <button
                     onClick={() => openSmartForm()}
                     className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
                   >
@@ -87,7 +87,7 @@ const CoursesPage: React.FC = () => {
           <p className="text-slate-400">
             Agende uma aula experimental gratuita e descubra qual curso é o ideal para o seu momento.
           </p>
-          <a
+          <button
             onClick={() => openSmartForm()}
             className="inline-flex items-center bg-purple-brand text-white px-9 py-4 rounded-full font-semibold text-base hover:bg-purple-900 transition-all shadow-sm group"
           >
