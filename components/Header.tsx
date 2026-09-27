@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ExternalLink } from 'lucide-react';
-
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
+import { openSmartForm } from './SmartForm';
 
 // Rotas cujo topo da página é roxo/escuro (hero colorido) — enquanto o
 // header estiver transparente sobre elas, a logomarca precisa ser a
@@ -81,14 +80,12 @@ const Header: React.FC = () => {
           >
             Acesso à Plataforma <ExternalLink size={12} className="ml-1" />
           </a>
-          <a
-            href={CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => openSmartForm()}
             className="bg-orange-brand text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-orange-600 transition-all shadow-lg hover:shadow-orange-brand/20"
           >
             Agendar Aula Grátis
-          </a>
+          </button>
         </nav>
 
         {/* Mobile Toggle */}
@@ -123,14 +120,12 @@ const Header: React.FC = () => {
               >
                 Acesso à Plataforma
               </a>
-              <a
-                href={CTA_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="bg-orange-brand text-white text-center py-4 rounded-xl font-bold"
+              <button
+                onClick={() => openSmartForm()}
+                className="bg-orange-brand text-white text-center py-4 rounded-xl font-bold w-full"
               >
                 Agendar Aula Grátis
-              </a>
+              </button>
             </div>
           </div>
         </div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Course, Post, LevelQuestion } from './types';
+import { openSmartForm } from './components/SmartForm';
 
 export const COLORS = {
   purple: '#7C3AED',
@@ -70,15 +71,13 @@ const FilmesSeriesContent = (
       <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
         Aprenda o método certo e transforme entretenimento em fluência de verdade.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-black text-white text-base transition-all hover:scale-105 shadow-xl"
         style={{ background: '#F97316' }}
       >
         Quero minha aula grátis agora →
-      </a>
+      </button>
     </div>
 
     {/* Opening */}
@@ -238,15 +237,13 @@ const FilmesSeriesContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         O método OpenLife combina imersão com prática real orientada por professores humanos.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-black text-white text-sm transition-all hover:scale-105"
         style={{ background: '#F97316' }}
       >
         Experimentar o método OpenLife →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -353,15 +350,13 @@ const FilmesSeriesContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         O método imersivo OpenLife prepara kids e teens para falar inglês com confiança — em até 18 meses.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-3.5 rounded-xl font-black text-white text-sm transition-all hover:scale-105"
         style={{ background: '#F97316' }}
       >
         Garantir a vaga do meu filho agora →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -455,15 +450,13 @@ const FilmesSeriesContent = (
           fluente em até 18 meses.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-          <a
-            href="https://form.respondi.app/5HvbxD84"
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => openSmartForm()}
             className="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-2xl font-black text-white text-lg transition-all hover:scale-105 shadow-xl"
             style={{ background: '#F97316' }}
           >
             Quero minha aula grátis agora
-          </a>
+          </button>
           <a
             href="/metodologia"
             className="inline-flex items-center justify-center gap-2 px-10 py-5 rounded-2xl font-black text-white text-lg border-2 border-white/30 hover:bg-white/10 transition-all"
@@ -570,15 +563,13 @@ const RecessoContent = (
       <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
         Práticas rápidas que mantêm seu cérebro no modo inglês — sem virar mais uma obrigação.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-purple-700 text-base transition-all hover:scale-105 shadow-xl"
         style={{ background: '#fff' }}
       >
         Quero manter meu inglês ativo nas férias →
-      </a>
+      </button>
     </div>
 
     {/* Conteúdo principal */}
@@ -731,15 +722,13 @@ const RecessoContent = (
         <p className="text-xl font-black text-slate-900 mb-1">Quer transformar sua rotina em treino de inglês?</p>
         <p className="text-slate-600">A OpenLife te ajuda a criar um plano leve e eficiente.</p>
       </div>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
         style={{ background: '#7C3AED' }}
       >
         Quero montar meu plano →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -804,15 +793,13 @@ const RecessoContent = (
         <p className="text-xl font-black text-slate-900 mb-1">Quer companhia guiada para praticar speaking?</p>
         <p className="text-slate-600">Experimente uma aula de conversação com professores OpenLife.</p>
       </div>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="flex-shrink-0 inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
         style={{ background: '#7C3AED' }}
       >
         Quero testar uma aula →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -1007,15 +994,13 @@ const ListeningContent = (
       <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
         Treine seu ouvido com método, progressão real e feedback humano — não com sorte.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
         style={{ background: '#F97316' }}
       >
         Quero minha aula experimental grátis →
-      </a>
+      </button>
     </div>
 
     {/* Conteúdo principal */}
@@ -1121,14 +1106,12 @@ const ListeningContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         Na OpenLife você treina listening com método, feedback humano e progressão real de nível.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-purple-700 text-base transition-all hover:scale-105 shadow-lg bg-white"
       >
         Quero treinar listening com método →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -1283,15 +1266,13 @@ const ListeningContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         Junte input diário com aulas, correção e conversação de verdade. Esse é o combo que destrava o inglês.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
         style={{ background: '#F97316' }}
       >
         Quero começar minha jornada agora →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -1550,15 +1531,13 @@ const SeriesContent = (
       <p className="text-purple-200 text-base md:text-lg font-medium mb-8 leading-relaxed">
         O problema não é a série. É o método. Descubra o que muda tudo.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-xl"
         style={{ background: '#F97316' }}
       >
         Quero minha aula experimental grátis →
-      </a>
+      </button>
     </div>
 
     {/* Conteúdo principal */}
@@ -1702,14 +1681,12 @@ const SeriesContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         Na OpenLife você junta imersão com professores humanos e feedback real — o combo que destrava a fluência.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-purple-700 bg-white text-base transition-all hover:scale-105 shadow-lg"
       >
         Quero destravar meu inglês com método →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">
@@ -1837,15 +1814,13 @@ const SeriesContent = (
       <p className="text-purple-200 mb-6 leading-relaxed">
         Junte suas séries favoritas a um método focado em resultado profissional e feedback em tempo real.
       </p>
-      <a
-        href="https://form.respondi.app/5HvbxD84"
-        target="_blank"
-        rel="noopener noreferrer"
+      <button
+        onClick={() => openSmartForm()}
         className="inline-flex items-center gap-2 px-7 py-4 rounded-full font-black text-white text-base transition-all hover:scale-105 shadow-lg"
         style={{ background: '#F97316' }}
       >
         Quero acelerar meu inglês agora →
-      </a>
+      </button>
     </div>
 
     <div className="space-y-6 text-lg text-slate-600 leading-relaxed">

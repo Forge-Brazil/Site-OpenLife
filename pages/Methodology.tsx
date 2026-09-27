@@ -1,9 +1,10 @@
 import React from 'react';
-import { 
-  Target, Zap, MessageSquare, Repeat, Check, X, 
-  Users, GraduationCap, Briefcase, Globe, Smartphone, 
-  CheckCircle2, ArrowRight, Star, Quote 
+import {
+  Target, Zap, MessageSquare, Repeat, Check, X,
+  Users, GraduationCap, Briefcase, Globe, Smartphone,
+  CheckCircle2, ArrowRight, Star, Quote
 } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
 const Methodology: React.FC = () => {
   const comparisonData = [
@@ -32,10 +33,10 @@ const Methodology: React.FC = () => {
             Aprenda inglês de forma natural, sem tradução mental, com contato diário e foco em comunicação real. Uma experiência imersiva que transforma sua carreira e sua vida.
           </p>
           <div className="pt-6">
-            <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl inline-flex items-center group">
+            <button onClick={() => openSmartForm()} className="bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl inline-flex items-center group">
               Quero aprender com a metodologia OpenLife
               <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </a>
+            </button>
           </div>
         </div>
       </section>
@@ -284,9 +285,9 @@ const Methodology: React.FC = () => {
                 Faça o teste de nível gratuito e agende sua aula experimental com um de nossos consultores.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
+                <button onClick={() => openSmartForm()} className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
                   Quero aprender com a metodologia OpenLife
-                </a>
+                </button>
               </div>
               <div className="pt-8">
                 <p className="text-sm text-purple-200 font-bold uppercase tracking-widest mb-4">Unidades Presenciais e Online</p>

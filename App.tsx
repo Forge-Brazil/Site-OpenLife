@@ -9,6 +9,7 @@ const CityRoute = Route as React.FC<React.ComponentProps<typeof Route> & { key?:
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
+import SmartForm from './components/SmartForm';
 
 // Pages — existentes
 import Home from './pages/Home';
@@ -181,6 +182,7 @@ const AppShell: React.FC = () => {
         </main>
         <Footer />
         <Chatbot />
+        <SmartForm />
       </div>
     </>
   );

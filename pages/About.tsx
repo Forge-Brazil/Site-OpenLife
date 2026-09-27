@@ -3,6 +3,7 @@ import React from 'react';
 // Import Link from react-router-dom to fix the "Cannot find name 'Link'" error on lines 104 and 106
 import { Link } from 'react-router-dom';
 import { Target, Heart, Award, Users, Camera, Globe, History, Sparkles, ArrowRight } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
 const About: React.FC = () => {
   return (
@@ -137,9 +138,9 @@ const About: React.FC = () => {
                 Junte-se a milhares de alunos que já transformaram suas vidas com o Sistema Natural OpenLife.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-6">
-                <a href="https://form.respondi.app/5HvbxD84" target="_blank" rel="noopener noreferrer" className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
+                <button onClick={() => openSmartForm()} className="bg-white text-purple-brand px-12 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all shadow-2xl transform hover:scale-105">
                   Agendar Aula Grátis
-                </a>
+                </button>
               </div>
             </div>
           </div>

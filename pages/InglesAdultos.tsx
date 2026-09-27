@@ -1,8 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Clock, Award, Briefcase, Target, TrendingUp, ArrowRight, Users } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const InglesAdultos: React.FC = () => {
   return (
@@ -28,9 +28,9 @@ const InglesAdultos: React.FC = () => {
             Presencial ou online. Certificação internacional CEFR C1.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
+            <button onClick={() => openSmartForm()} className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Agendar aula experimental grátis <ArrowRight className="ml-2" size={20} />
-            </a>
+            </button>
             <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
               Conhecer a metodologia
             </Link>
@@ -76,9 +76,9 @@ const InglesAdultos: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-900 transition-all">
+              <button onClick={() => openSmartForm()} className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold hover:bg-purple-900 transition-all">
                 Começar agora <ArrowRight className="ml-2" size={18} />
-              </a>
+              </button>
             </div>
             <div className="relative">
               <img
@@ -137,9 +137,9 @@ const InglesAdultos: React.FC = () => {
               </div>
             ))}
           </div>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
+          <button onClick={() => openSmartForm()} className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Começar minha jornada <ArrowRight className="ml-3" size={22} />
-          </a>
+          </button>
         </div>
       </section>
 

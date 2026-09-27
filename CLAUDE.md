@@ -16,7 +16,7 @@ Domínio definitivo: **openlifebrasil.com.br**
 - Laranja como accent secundário — exclusivo para botões CTA primários
 
 **2ª/3ª Opção — Uso pontual e específico:**
-- Fundo roxo profundo (#4C1D95 / purple-brand) para seções de fechamento, hero alternativo e footer
+- Fundo roxo profundo (#4C1D95 / purple-deep) para seções de fechamento, hero alternativo e footer
 - Fundo escuro/preto: **NUNCA usar como tema principal da página**
 
 > ⛔ Background preto como tema do site: PROIBIDO
@@ -39,9 +39,10 @@ Preto texto:     #0F172A  (slate-900 — headlines)
 
 ### Tokens Tailwind (tailwind.config)
 ```
-colors.purple-brand = #4C1D95
+colors.purple-brand = #7C3AED   (roxo primário — violet-600)
+colors.purple-deep  = #4C1D95   (roxo profundo — violet-900, footer/hero)
 colors.orange-brand = #F97316
-colors.bgsoft      = #F8F8FF
+colors.bgsoft       = #F8F8FF
 ```
 
 ### Tipografia
@@ -86,13 +87,18 @@ Outline:             border-2 border-purple-brand text-purple-brand
 
 ---
 
-## SmartForm — Motor de Captura
+## SmartForm — Motor de Captura (Épico 2 — CONCLUÍDO)
 
+- Componente: `components/SmartForm.tsx` — modal 4 etapas (Persona → Nível → Urgência → Contato)
+- Trigger global: `openSmartForm()` via `window.dispatchEvent(new CustomEvent('openSmartForm', ...))`
+- Substituiu 100% dos links externos `form.respondi.app` em todas as páginas e blog posts
 - Endpoint: `POST /api/lead/start` ao 1° toque em qualquer campo
 - Autosave: `PATCH /api/lead/{id}` com debounce de 700ms
-- Recuperação: `GET /api/lead/{id}` ao retornar ao site
+- Recuperação: `GET /api/lead/{id}` ao retornar ao site (via `localStorage` key `ol_lead_id`)
+- UTMs: capturados no landing e armazenados em `sessionStorage` key `ol_utms`
 - Lead "iniciado" +24h → fila de recuperação no CRM
-- Consentimento LGPD obrigatório em todo lead — salvar data e versão
+- Consentimento LGPD obrigatório em todo lead — salvar data e versão `2026.09`
+- Degradação graciosa: sempre exibe sucesso mesmo se API indisponível
 
 ---
 

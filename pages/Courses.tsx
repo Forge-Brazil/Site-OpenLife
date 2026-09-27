@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { COURSES } from '../constants';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const CoursesPage: React.FC = () => {
   return (
@@ -64,14 +64,12 @@ const CoursesPage: React.FC = () => {
                   </div>
 
                   <a
-                    href={CTA_URL}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    onClick={() => openSmartForm()}
                     className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
                   >
                     <span>Quero saber mais</span>
                     <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
-                  </a>
+                  </button>
                 </div>
               </div>
             ))}
@@ -90,14 +88,12 @@ const CoursesPage: React.FC = () => {
             Agende uma aula experimental gratuita e descubra qual curso é o ideal para o seu momento.
           </p>
           <a
-            href={CTA_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={() => openSmartForm()}
             className="inline-flex items-center bg-purple-brand text-white px-9 py-4 rounded-full font-semibold text-base hover:bg-purple-900 transition-all shadow-sm group"
           >
             Agendar Aula Grátis
             <ArrowRight size={17} strokeWidth={1.5} className="ml-2 group-hover:translate-x-0.5 transition-transform" />
-          </a>
+          </button>
         </div>
       </section>
     </div>

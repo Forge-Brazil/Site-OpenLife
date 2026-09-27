@@ -1,8 +1,8 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, Briefcase, Globe, TrendingUp, Award, MessageCircle, ArrowRight, Users, BarChart2, Linkedin } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const InglesNegocios: React.FC = () => {
   return (
@@ -28,9 +28,9 @@ const InglesNegocios: React.FC = () => {
             Business English com método ESL — do zero ao fluente em 18 meses.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
+            <button onClick={() => openSmartForm()} className="inline-flex items-center justify-center bg-purple-brand text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-900 transition-all shadow-xl">
               Agendar aula experimental grátis <ArrowRight className="ml-2" size={20} />
-            </a>
+            </button>
             <Link to="/metodologia" className="inline-flex items-center justify-center border-2 border-white/30 text-white px-8 py-4 rounded-xl font-bold text-lg hover:bg-white/10 transition-all">
               Conhecer metodologia
             </Link>
@@ -77,9 +77,9 @@ const InglesNegocios: React.FC = () => {
                   </div>
                 ))}
               </div>
-              <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-full font-bold hover:bg-purple-900 transition-all">
+              <button onClick={() => openSmartForm()} className="inline-flex items-center bg-purple-brand text-white px-8 py-4 rounded-full font-bold hover:bg-purple-900 transition-all">
                 Quero falar inglês nos negócios <ArrowRight className="ml-2" size={18} />
-              </a>
+              </button>
             </div>
             <div>
               <img
@@ -162,9 +162,9 @@ const InglesNegocios: React.FC = () => {
         <div className="max-w-2xl mx-auto space-y-6">
           <h2 className="text-3xl md:text-4xl font-black">Seu próximo nível na carreira começa com inglês.</h2>
           <p className="text-purple-200">Aula experimental gratuita com um de nossos especialistas em Business English.</p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
+          <button onClick={() => openSmartForm()} className="inline-flex items-center bg-purple-brand text-white px-10 py-5 rounded-full font-bold text-xl hover:bg-purple-900 transition-all shadow-xl">
             Agendar minha aula grátis <ArrowRight className="ml-3" size={22} />
-          </a>
+          </button>
         </div>
       </section>
     </div>

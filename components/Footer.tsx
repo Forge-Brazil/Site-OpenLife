@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Youtube, Linkedin, Phone, Mail, MapPin, ExternalLink } from 'lucide-react';
-
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
+import { openSmartForm } from './SmartForm';
 
 const Footer: React.FC = () => {
   return (
@@ -119,10 +118,10 @@ const Footer: React.FC = () => {
             <p className="font-bold text-base">Pronto para dominar o inglês em 18 meses?</p>
             <p className="text-purple-100 text-sm">Aula experimental 100% gratuita. Sem compromisso.</p>
           </div>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+          <button onClick={() => openSmartForm()}
             className="shrink-0 inline-flex items-center bg-orange-brand text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:bg-orange-600 transition-all shadow-xl shadow-black/20">
             Agendar Aula Grátis
-          </a>
+          </button>
         </div>
 
         {/* Bottom bar */}

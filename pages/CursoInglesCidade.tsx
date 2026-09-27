@@ -1,9 +1,9 @@
-import React from 'react';
+﻿import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, CheckCircle2, Wifi, Users, Award } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 import type { CityData } from '../data/cities';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
   return (
@@ -22,10 +22,10 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
           Do zero ao avançado em 18 meses.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+          <button onClick={() => openSmartForm()}
             className="bg-orange-brand text-white px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-orange-500 transition-colors">
             Agendar Aula Grátis
-          </a>
+          </button>
           <Link to="/ingles-online"
             className="text-white border border-white/50 px-8 py-3.5 rounded-full font-semibold text-sm hover:bg-white/10 transition-colors">
             Conhecer o Curso Online
@@ -95,10 +95,10 @@ const CursoInglesCidade: React.FC<{ city: CityData }> = ({ city }) => {
           <p className="text-white/90 mb-8">
             Agende sua aula experimental gratuita e conheça o método na prática.
           </p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+          <button onClick={() => openSmartForm()}
             className="inline-flex items-center gap-2 bg-white text-orange-brand px-8 py-3.5 rounded-full font-bold text-sm hover:bg-purple-50 transition-colors">
             Agendar Aula Grátis <ArrowRight size={16} />
-          </a>
+          </button>
         </div>
       </section>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+﻿import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Sparkles, Star, GraduationCap, Globe2, BookOpenText, Music4,
@@ -6,7 +6,6 @@ import {
 } from 'lucide-react';
 import { KIDS_FAQS as faqs } from '../data/kidsFaq';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 /** Revela a seção com fade + subida suave assim que ela entra na viewport —
  * cria a sensação de "funil" em que cada bloco precisa ser visto para
@@ -123,10 +122,10 @@ const InglesCriancas: React.FC = () => {
         </p>
 
         <div className="relative flex flex-col sm:flex-row items-center gap-4">
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+          <button onClick={() => openSmartForm()}
             className="text-white/90 border border-white/30 px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-white/10 hover:text-white transition-colors">
             Conhecer a experiência Kids
-          </a>
+          </button>
         </div>
 
         <ChevronDown size={20} className="relative text-white/50 mt-14 animate-bounce" aria-hidden="true" />
@@ -325,10 +324,10 @@ const InglesCriancas: React.FC = () => {
           <p className="text-white/80 mb-10 leading-relaxed">
             Aula experimental gratuita, sem compromisso — venha sentir o método OpenLife Kids na prática.
           </p>
-          <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+          <button onClick={() => openSmartForm()}
             className="inline-block bg-orange-brand text-white px-10 py-4 rounded-full font-bold text-sm hover:bg-orange-500 transition-colors shadow-lg shadow-black/20">
             Agendar aula experimental gratuita
-          </a>
+          </button>
           <p className="text-white/50 text-xs mt-6">
             Presencial em Bagé/RS · Online para todo o Brasil ·{' '}
             <Link to="/ingles-para-adolescentes" className="underline hover:text-white/80">Conheça também o Teens</Link>

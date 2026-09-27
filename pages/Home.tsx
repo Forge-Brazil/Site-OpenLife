@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Users, Star, Play, CheckCircle2, Clock,
@@ -9,7 +9,6 @@ import { COURSES } from '../constants';
 import { HOME_FAQ_CATEGORIES as faqData } from '../data/faq';
 import NewsletterBox from '../components/NewsletterBox';
 
-const CTA_URL = 'https://form.respondi.app/5HvbxD84';
 
 // Cada curso do carrossel manda para a página de SEO dedicada quando ela
 // existe; senão cai no catálogo geral.
@@ -62,11 +61,11 @@ const Home: React.FC = () => {
                 Certificação internacional.
               </p>
               <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+                <button onClick={() => openSmartForm()}
                   className="bg-orange-brand text-white text-center px-8 py-4 rounded-xl font-bold text-lg hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20 flex items-center justify-center group">
                   Quero ser fluente com a OpenLife
                   <ArrowRight className="ml-2 transition-transform group-hover:translate-x-1" />
-                </a>
+                </button>
               </div>
 
               {/* Prova Social */}
@@ -260,10 +259,10 @@ const Home: React.FC = () => {
                 Agende sua aula experimental com um de nossos professores certificados. Atendimento imediato via WhatsApp.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href={CTA_URL} target="_blank" rel="noopener noreferrer"
+                <button onClick={() => openSmartForm()}
                   className="w-full sm:w-auto bg-orange-brand text-white px-10 py-5 rounded-2xl font-bold text-xl hover:bg-orange-600 transition-all shadow-xl shadow-orange-brand/20 flex items-center justify-center">
                   Agendar Aula Grátis Agora
-                </a>
+                </button>
                 <div className="flex items-center space-x-2 text-white/80">
                   <CheckCircle2 className="text-orange-brand" size={24} />
                   <span className="font-medium">Vagas Limitadas</span>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { MOCK_POSTS } from '../constants';
 import { Post } from '../types';
 import { Search, Calendar, ArrowRight, Tag, ChevronLeft, ChevronRight, MessageCircle, Star, Target, Zap, Quote } from 'lucide-react';
+import { openSmartForm } from '../components/SmartForm';
 
 const Blog: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -119,15 +120,13 @@ const Blog: React.FC = () => {
                     Nossa metodologia ESL é focada em resultados reais para sua carreira e vida acadêmica. Não perca mais tempo com métodos tradicionais lentos.
                   </p>
                   <div className="pt-4">
-                    <a 
-                      href="https://form.respondi.app/5HvbxD84" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
+                    <button
+                      onClick={() => openSmartForm()}
                       className="inline-flex items-center space-x-3 bg-white text-purple-brand px-10 py-5 rounded-full font-black text-xl hover:bg-purple-50 transition-all transform hover:scale-105 shadow-xl"
                     >
                       <span>Agendar Aula Experimental</span>
                       <ArrowRight size={24} />
-                    </a>
+                    </button>
                   </div>
                 </div>
               </div>
