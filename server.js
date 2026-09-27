@@ -136,7 +136,7 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
 // Se o ERP estiver fora do ar, cai pro Supabase local do site como rede de
 // segurança, pra não perder o lead — o visitante nunca vê esse detalhe.
 // Usada tanto pelo formulário de contato quanto pela Alice (chat).
-async function registerLead({ name, email, phone, message, source }) {
+async function registerLead({ name, email, phone, message, source, persona, nivel, urgencia, idade, cidade, curso, nivel_contato, motivacao, como_conheceu }) {
   if (!email || !name) {
     return { ok: false, error: 'Nome e e-mail são obrigatórios' };
   }
@@ -149,7 +149,12 @@ async function registerLead({ name, email, phone, message, source }) {
           'Content-Type': 'application/json',
           'X-Site-Key': process.env.SITE_SHARED_SECRET,
         },
-        body: JSON.stringify({ nome: name, email, telefone: phone, descricao: message }),
+        body: JSON.stringify({
+          nome: name, email, telefone: phone, descricao: message,
+          persona, nivel, urgencia,
+          // Campos do quiz novo
+          idade, cidade, curso, nivel_contato, motivacao, como_conheceu,
+        }),
       });
 
       if (erpResponse.ok) {
@@ -275,43 +280,77 @@ app.patch('/api/lead/:id', async (req, res) => {
 });
 
 // Finaliza o lead: persiste no Supabase e envia ao ERP CRM
+// Aceita tanto o formato novo do quiz (9 perguntas) quanto o formato legado.
 app.patch('/api/lead/:id/complete', async (req, res) => {
   const { id } = req.params;
-  const { pagina_origem, persona, nivel, urgencia, campos = {}, consentimento_lgpd } = req.body || {};
-  const { nome, whatsapp, email } = campos;
+  const {
+    pagina_origem,
+    // Formato novo (quiz de 9 perguntas)
+    nome, email, whatsapp, idade, cidade, curso, nivel_contato, motivacao, como_conheceu,
+    // Persona derivada no frontend
+    persona,
+    // Formato legado (4 etapas antigas — compatibilidade)
+    nivel, urgencia, campos,
+    consentimento_lgpd,
+  } = req.body || {};
 
-  const descricao = [
-    `Persona: ${PERSONA_LABELS[persona] || persona || '—'}`,
-    `Nível: ${NIVEL_LABELS[nivel] || nivel || '—'}`,
-    `Urgência: ${URGENCIA_LABELS[urgencia] || urgencia || '—'}`,
-    `Origem: ${pagina_origem || '/'}`,
-  ].join(' | ');
+  // Resolve campos de contato (novo formato tem no root, legado usa campos{})
+  const resolvedNome     = nome     || campos?.nome     || '';
+  const resolvedEmail    = email    || campos?.email    || '';
+  const resolvedWhatsapp = whatsapp || campos?.whatsapp || '';
+
+  // Monta descrição estruturada com todas as respostas do quiz
+  const linhas = [
+    curso          && `Curso buscado: ${curso}`,
+    nivel_contato  && `Contato com inglês: ${nivel_contato}`,
+    motivacao      && `Motivação: ${motivacao}`,
+    como_conheceu  && `Como conheceu a OpenLife: ${como_conheceu}`,
+    idade          && `Idade: ${idade}`,
+    cidade         && `Cidade: ${cidade}`,
+    // Legado
+    nivel          && `Nível: ${NIVEL_LABELS[nivel] || nivel}`,
+    urgencia       && `Urgência: ${URGENCIA_LABELS[urgencia] || urgencia}`,
+    pagina_origem  && `Origem: ${pagina_origem}`,
+  ].filter(Boolean);
+  const descricao = linhas.join(' | ');
 
   // 1. Envia ao ERP CRM (caminho principal; fallback local dentro de registerLead)
   const erpResult = await registerLead({
-    name:    nome,
-    email,
-    phone:   whatsapp,
+    name:    resolvedNome,
+    email:   resolvedEmail,
+    phone:   resolvedWhatsapp,
     message: descricao,
     source:  'smartform',
+    // Quiz estruturado
+    persona,
+    nivel:   nivel_contato || nivel || '',
+    urgencia: urgencia || 'planejando',
+    // Campos extras do quiz novo
+    idade, cidade, curso, nivel_contato, motivacao, como_conheceu,
   });
 
-  // 2. Persiste/atualiza no Supabase
+  // 2. Persiste/atualiza no Supabase (log local de todos os leads do quiz)
   try {
     if (supabase) {
       const record = {
-        pagina_origem: pagina_origem || '/',
-        persona, nivel, urgencia,
-        nome, whatsapp, email,
-        campos,
-        status: 'concluido',
+        pagina_origem:      pagina_origem || '/',
+        persona:            persona || null,
+        nivel:              nivel_contato || nivel || null,
+        urgencia:           urgencia || null,
+        nome:               resolvedNome,
+        whatsapp:           resolvedWhatsapp,
+        email:              resolvedEmail,
+        campos: {
+          idade, cidade, curso, nivel_contato, motivacao, como_conheceu,
+          ...(campos || {}),
+        },
+        status:             'concluido',
         consentimento_lgpd: consentimento_lgpd || null,
-        erp_enviado: erpResult.ok,
-        updated_at: new Date().toISOString(),
+        erp_enviado:        erpResult.ok,
+        updated_at:         new Date().toISOString(),
       };
 
       if (id.startsWith('local_')) {
-        // Lead criado offline (sem Supabase no momento do start) → insere agora
         await supabase.from('smartform_leads').insert([record]);
       } else {
         await supabase.from('smartform_leads').update(record).eq('id', id);
