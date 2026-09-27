@@ -11,6 +11,9 @@ import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import SmartForm from './components/SmartForm';
 
+// Página de quiz standalone (sem Header/Footer)
+import Quiz from './pages/Quiz';
+
 // Pages — existentes
 import Home from './pages/Home';
 import CoursesPage from './pages/Courses';
@@ -188,4 +191,12 @@ const AppShell: React.FC = () => {
   );
 };
 
-export default AppShell;
+// Raiz do app: /quiz renderiza sem Header/Footer; tudo mais passa pelo AppShell
+const RootApp: React.FC = () => (
+  <Routes>
+    <Route path="/quiz" element={<Quiz />} />
+    <Route path="*" element={<AppShell />} />
+  </Routes>
+);
+
+export default RootApp;
