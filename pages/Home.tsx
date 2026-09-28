@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Star, Play, CheckCircle2, XCircle, Clock,
+  Star, Play, CheckCircle2, Clock,
   MessageCircle, Globe, Zap, ArrowRight, MapPin, Award,
   ChevronDown, ChevronUp, List, Users, Target, TrendingUp,
 } from 'lucide-react';
@@ -58,18 +58,6 @@ const testimonials = [
     text: 'Consegui o IELTS 7.5 para o mestrado no Canadá. O preparo foi intenso, mas o professor sabia exatamente onde eu precisava melhorar.',
     name: 'Lucas Ferreira', role: 'Engenheiro · Belo Horizonte', initials: 'LF', stars: 5,
   },
-];
-
-const qualifiedYes = [
-  'Tem um objetivo claro com o inglês (carreira, viagem, certificação)',
-  'Disposto a se comprometer 30–45 min por dia',
-  'Quer resultado mensurável, não só "aprender um pouco"',
-  'Está pronto para adotar um método que realmente funciona',
-];
-
-const qualifiedNo = [
-  'Quer "fazer inglês" sem metas ou prazo definido',
-  'Acredita que fluência vem de forma passiva, sem disciplina',
 ];
 
 const courseIcons = [<MessageCircle size={22} />, <Zap size={22} />, <Users size={22} />];
@@ -177,136 +165,6 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── PARA QUEM É ──────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-bgsoft">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
-              <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
-              ENGENHARIA COMERCIAL
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
-              A OpenLife <span className="text-purple-brand">não é para todo mundo</span>
-            </h2>
-            <p className="text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed">
-              Selecionamos alunos pelo foco e comprometimento. Quem entra sabe onde quer chegar
-              — e está disposto a trabalhar por isso.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Qualificados */}
-            <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center">
-                  <CheckCircle2 size={20} className="text-green-500" />
-                </div>
-                <h3 className="text-lg font-black text-slate-900">Você está pronto se…</h3>
-              </div>
-              <ul className="space-y-4">
-                {qualifiedYes.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <CheckCircle2 size={18} className="text-green-500 shrink-0 mt-0.5" />
-                    <span className="text-slate-700 text-sm leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Não qualificados + CTA */}
-            <div className="flex flex-col gap-5">
-              <div className="bg-white rounded-3xl p-8 border border-gray-100 shadow-sm">
-                <div className="flex items-center gap-3 mb-6">
-                  <div className="w-10 h-10 rounded-full bg-red-50 flex items-center justify-center">
-                    <XCircle size={20} className="text-red-400" />
-                  </div>
-                  <h3 className="text-lg font-black text-slate-900">Não é para você se…</h3>
-                </div>
-                <ul className="space-y-4">
-                  {qualifiedNo.map((item, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <XCircle size={18} className="text-red-400 shrink-0 mt-0.5" />
-                      <span className="text-slate-500 text-sm leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="bg-purple-brand rounded-3xl p-8 text-white">
-                <TrendingUp size={28} className="mb-4 text-white/80" />
-                <p className="font-black text-xl mb-2">Pronto para ser selecionado?</p>
-                <p className="text-white/80 text-sm mb-5 leading-relaxed">
-                  Nosso quiz identifica em 2 minutos se você está no perfil certo para a OpenLife.
-                </p>
-                <button
-                  onClick={() => openSmartForm()}
-                  className="w-full bg-white text-purple-brand font-bold py-3.5 rounded-2xl hover:bg-purple-50 active:scale-95 transition-all text-sm min-h-[48px] touch-manipulation"
-                >
-                  Comece agora →
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── FOTO REAL + COPY ──────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-white overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-brand/10">
-              <img
-                src="/foto-aula.webp"
-                alt="Aula ao vivo OpenLife English School — método imersivo"
-                className="w-full h-auto object-cover"
-                style={{ aspectRatio: '16/10' }}
-                loading="lazy"
-                decoding="async"
-              />
-              <div className="absolute top-5 left-5 bg-purple-brand text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider">
-                Aula ao vivo
-              </div>
-            </div>
-            <div className="space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
-                <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
-                COMO FUNCIONA NA PRÁTICA
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900">
-                Imersão real.<br />
-                <span className="text-purple-brand">Como um intercâmbio</span><br />
-                sem sair do Brasil.
-              </h2>
-              <p className="text-slate-500 text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Durante o programa, você vive o inglês no dia a dia — situações reais,
-                conversas autênticas, desafios práticos que simulam um intercâmbio.
-                Sem tradução. Sem decoreba.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Professores certificados', icon: <Award size={18} /> },
-                  { label: 'Turmas com no máx. 8 alunos', icon: <Users size={18} /> },
-                  { label: 'Aulas ao vivo toda semana', icon: <Globe size={18} /> },
-                  { label: 'Certificação internacional', icon: <TrendingUp size={18} /> },
-                ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 bg-bgsoft rounded-2xl p-4">
-                    <div className="w-9 h-9 rounded-xl bg-violet-100 text-purple-brand flex items-center justify-center shrink-0">
-                      {item.icon}
-                    </div>
-                    <span className="text-slate-700 text-sm font-semibold leading-tight">{item.label}</span>
-                  </div>
-                ))}
-              </div>
-              <button
-                onClick={() => openSmartForm()}
-                className="inline-flex items-center justify-center gap-2 bg-purple-brand text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 active:scale-95 transition-all shadow-lg shadow-purple-brand/25 min-h-[52px] touch-manipulation"
-              >
-                Quero minha vaga <ArrowRight size={18} />
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── O MÉTODO — 4 PILARES ─────────────────────────────── */}
       <section className="py-16 md:py-24 bg-bgsoft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -339,11 +197,202 @@ const Home: React.FC = () => {
         </div>
       </section>
 
-      {/* ── FOTO TURMA + SOCIAL PROOF ─────────────────────────── */}
+      {/* ── VÍDEOS — LEQUE ROTACIONADO ───────────────────────── */}
+      <section
+        className="py-16 md:py-24 overflow-hidden relative"
+        style={{ background: 'radial-gradient(ellipse at 10% 60%, rgba(139,92,246,0.45) 0%, transparent 45%), radial-gradient(ellipse at 90% 20%, rgba(192,132,252,0.3) 0%, transparent 45%), radial-gradient(ellipse at 55% 110%, rgba(109,40,217,0.5) 0%, transparent 55%), linear-gradient(150deg, #080412 0%, #1a0840 40%, #2d1069 70%, #0f0520 100%)' }}
+      >
+        {/* Orb glow central */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <div style={{ width: '900px', height: '500px', background: 'radial-gradient(ellipse, rgba(124,58,237,0.15) 0%, transparent 70%)', filter: 'blur(60px)' }} />
+        </div>
+
+        {/* Big Ben — upper left */}
+        <div className="absolute hidden lg:flex flex-col items-center gap-1 select-none" style={{ left: '5%', top: '10%', opacity: 0.22, color: '#c4b5fd' }}>
+          <svg width="52" viewBox="0 0 60 140" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            <rect x="22" y="82" width="16" height="48" fill="rgba(196,181,253,0.05)"/>
+            <polygon points="13,82 47,82 41,46 19,46" fill="rgba(196,181,253,0.05)"/>
+            <line x1="30" y1="46" x2="30" y2="16"/>
+            <line x1="20" y1="24" x2="40" y2="24"/>
+            <line x1="18" y1="30" x2="42" y2="30"/>
+            <circle cx="30" cy="67" r="9" fill="rgba(196,181,253,0.08)"/>
+            <line x1="30" y1="58" x2="30" y2="67"/>
+            <line x1="30" y1="67" x2="37" y2="67"/>
+            <line x1="30" y1="82" x2="30" y2="130"/>
+            <line x1="22" y1="100" x2="38" y2="100"/>
+            <line x1="22" y1="115" x2="38" y2="115"/>
+          </svg>
+          <span className="text-[8px] font-black tracking-[0.2em]">REINO UNIDO</span>
+        </div>
+
+        {/* Estátua da Liberdade — left lower */}
+        <div className="absolute hidden lg:flex flex-col items-center gap-1 select-none" style={{ left: '8%', bottom: '12%', opacity: 0.20, color: '#a78bfa' }}>
+          <svg width="46" viewBox="0 0 60 155" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round">
+            <line x1="46" y1="6" x2="36" y2="34"/>
+            <ellipse cx="48" cy="4" rx="4" ry="6" fill="rgba(167,139,250,0.1)"/>
+            <circle cx="28" cy="40" r="10" fill="rgba(167,139,250,0.08)"/>
+            <line x1="28" y1="30" x2="28" y2="20"/>
+            <line x1="21" y1="33" x2="14" y2="24"/>
+            <polygon points="18,50 38,50 43,110 13,110" fill="rgba(167,139,250,0.05)"/>
+            <rect x="8" y="110" width="40" height="12" fill="rgba(167,139,250,0.05)"/>
+            <rect x="4" y="122" width="48" height="11" fill="rgba(167,139,250,0.07)"/>
+            <line x1="13" y1="70" x2="43" y2="70"/>
+            <line x1="11" y1="90" x2="45" y2="90"/>
+          </svg>
+          <span className="text-[8px] font-black tracking-[0.2em]">EUA</span>
+        </div>
+
+        {/* Opera House — center bottom */}
+        <div className="absolute hidden lg:flex flex-col items-center gap-1 select-none" style={{ left: '40%', bottom: '4%', opacity: 0.18, color: '#c4b5fd' }}>
+          <svg width="100" viewBox="0 0 130 75" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <path d="M6,68 Q6,4 65,2 Q124,4 124,68" fill="rgba(196,181,253,0.04)"/>
+            <path d="M20,68 Q20,20 65,16 Q110,20 110,68" fill="rgba(196,181,253,0.04)"/>
+            <path d="M36,68 Q36,36 65,32 Q94,36 94,68" fill="rgba(196,181,253,0.05)"/>
+            <path d="M50,68 Q50,50 65,47 Q80,50 80,68" fill="rgba(196,181,253,0.06)"/>
+            <line x1="2" y1="68" x2="128" y2="68"/>
+            <line x1="2" y1="72" x2="128" y2="72"/>
+          </svg>
+          <span className="text-[8px] font-black tracking-[0.2em]">AUSTRÁLIA</span>
+        </div>
+
+        {/* CN Tower — right upper */}
+        <div className="absolute hidden lg:flex flex-col items-center gap-1 select-none" style={{ right: '6%', top: '8%', opacity: 0.22, color: '#c4b5fd' }}>
+          <svg width="36" viewBox="0 0 42 165" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <line x1="21" y1="2" x2="21" y2="70"/>
+            <ellipse cx="21" cy="77" rx="14" ry="6" fill="rgba(196,181,253,0.08)"/>
+            <ellipse cx="21" cy="83" rx="10" ry="4" fill="rgba(196,181,253,0.06)"/>
+            <rect x="16" y="77" width="10" height="16" fill="rgba(196,181,253,0.05)"/>
+            <path d="M14,93 L17,140 L25,140 L28,93" fill="rgba(196,181,253,0.04)"/>
+            <ellipse cx="21" cy="144" rx="16" ry="6" fill="rgba(196,181,253,0.08)"/>
+            <line x1="14" y1="110" x2="28" y2="110"/>
+            <line x1="13" y1="125" x2="29" y2="125"/>
+          </svg>
+          <span className="text-[8px] font-black tracking-[0.2em]">CANADÁ</span>
+        </div>
+
+        {/* Sky Tower — right lower */}
+        <div className="absolute hidden lg:flex flex-col items-center gap-1 select-none" style={{ right: '7%', bottom: '10%', opacity: 0.18, color: '#a78bfa' }}>
+          <svg width="30" viewBox="0 0 38 175" fill="none" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round">
+            <line x1="19" y1="2" x2="19" y2="88"/>
+            <ellipse cx="19" cy="93" rx="15" ry="6" fill="rgba(167,139,250,0.08)"/>
+            <ellipse cx="19" cy="99" rx="11" ry="4" fill="rgba(167,139,250,0.07)"/>
+            <rect x="15" y="93" width="8" height="14" fill="rgba(167,139,250,0.05)"/>
+            <path d="M11,107 L14,152 L24,152 L27,107" fill="rgba(167,139,250,0.04)"/>
+            <ellipse cx="19" cy="157" rx="15" ry="5" fill="rgba(167,139,250,0.08)"/>
+            <line x1="11" y1="125" x2="27" y2="125"/>
+          </svg>
+          <span className="text-[8px] font-black tracking-[0.2em]">N. ZELÂNDIA</span>
+        </div>
+
+        {/* Cabeçalho */}
+        <div className="relative text-center mb-10 px-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-bold uppercase tracking-widest mb-5"
+            style={{ background: 'rgba(255,255,255,0.07)', borderColor: 'rgba(255,255,255,0.12)', color: '#c4b5fd', backdropFilter: 'blur(8px)' }}>
+            <span className="w-1.5 h-1.5 rounded-full bg-violet-400 inline-block" />
+            VEJA NA PRÁTICA
+          </div>
+          <h2 className="text-4xl md:text-6xl font-black text-white tracking-tight leading-none">
+            Situações Reais
+          </h2>
+          <p className="mt-3 text-sm font-light tracking-[0.35em] uppercase" style={{ color: 'rgba(255,255,255,0.25)' }}>
+            Confira
+          </p>
+        </div>
+
+        {/* DESKTOP — glassmorfismo + leque */}
+        <div className="hidden md:flex items-center justify-center relative px-4" style={{ height: '560px' }}>
+          <div className="relative w-full max-w-5xl"
+            style={{ height: '560px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)', border: '1px solid rgba(255,255,255,0.11)', borderRadius: '44px', boxShadow: '0 0 140px rgba(124,58,237,0.18), 0 0 60px rgba(139,92,246,0.1), inset 0 1px 0 rgba(255,255,255,0.09)' }}>
+
+            <div className="absolute" style={{ left: '5%', top: '50%', transform: 'translateY(-54%) rotate(-11deg)', width: '220px', aspectRatio: '9/16', borderRadius: '20px', overflow: 'hidden', zIndex: 1, boxShadow: '0 24px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.3)' }}>
+              <video src="/video01.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
+            </div>
+
+            <div className="absolute" style={{ left: '50%', top: '50%', transform: 'translateX(-50%) translateY(-50%)', width: '260px', aspectRatio: '9/16', borderRadius: '22px', overflow: 'hidden', zIndex: 3, boxShadow: '0 32px 90px rgba(0,0,0,0.75), 0 0 0 2px rgba(139,92,246,0.55), 0 0 50px rgba(124,58,237,0.25)' }}>
+              <video src="/video02.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
+            </div>
+
+            <div className="absolute" style={{ right: '5%', top: '50%', transform: 'translateY(-54%) rotate(11deg)', width: '220px', aspectRatio: '9/16', borderRadius: '20px', overflow: 'hidden', zIndex: 1, boxShadow: '0 24px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.3)' }}>
+              <video src="/video03.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
+            </div>
+          </div>
+        </div>
+
+        {/* MOBILE — scroll horizontal */}
+        <div className="flex md:hidden overflow-x-auto scrollbar-hide pb-2">
+          <div className="flex gap-4 w-max mx-auto px-6">
+            {['/video01.mp4', '/video02.mp4', '/video03.mp4'].map((src, i) => (
+              <div key={i} className="shrink-0 rounded-2xl overflow-hidden bg-black" style={{ width: 'min(72vw, 240px)', aspectRatio: '9/16', boxShadow: '0 0 0 1px rgba(139,92,246,0.35)' }}>
+                <video src={src} className="w-full h-full object-cover" controls playsInline preload="metadata" />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOTO REAL + COPY ──────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative rounded-3xl overflow-hidden shadow-2xl shadow-purple-brand/10">
+              <img
+                src="/foto-aula.webp"
+                alt="Aula ao vivo OpenLife English School — método imersivo"
+                className="w-full h-auto object-cover"
+                style={{ aspectRatio: '16/10' }}
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="absolute top-5 left-5 bg-purple-brand text-white text-xs font-bold px-4 py-2 rounded-full uppercase tracking-wider">
+                Aula ao vivo
+              </div>
+            </div>
+            <div className="space-y-6 text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
+                <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
+                COMO FUNCIONA NA PRÁTICA
+              </div>
+              <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+                Imersão real.<br />
+                <span className="text-purple-brand">Como um intercâmbio</span><br />
+                sem sair do Brasil.
+              </h2>
+              <p className="text-slate-500 text-lg leading-relaxed max-w-lg mx-auto">
+                Durante o programa, você vive o inglês no dia a dia — situações reais,
+                conversas autênticas, desafios práticos que simulam um intercâmbio.
+                Sem tradução. Sem decoreba.
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { label: 'Professores certificados', icon: <Award size={18} /> },
+                  { label: 'Turmas com no máx. 8 alunos', icon: <Users size={18} /> },
+                  { label: 'Aulas ao vivo toda semana', icon: <Globe size={18} /> },
+                  { label: 'Certificação internacional', icon: <TrendingUp size={18} /> },
+                ].map((item, i) => (
+                  <div key={i} className="flex items-center gap-3 bg-bgsoft rounded-2xl p-4">
+                    <div className="w-9 h-9 rounded-xl bg-violet-100 text-purple-brand flex items-center justify-center shrink-0">
+                      {item.icon}
+                    </div>
+                    <span className="text-slate-700 text-sm font-semibold leading-tight">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+              <button
+                onClick={() => openSmartForm()}
+                className="inline-flex items-center justify-center gap-2 bg-purple-brand text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 active:scale-95 transition-all shadow-lg shadow-purple-brand/25 min-h-[52px] touch-manipulation"
+              >
+                Comece agora <ArrowRight size={18} />
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── FOTO TURMA + COMUNIDADE ───────────────────────────── */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div className="space-y-6 text-center lg:text-left order-2 lg:order-1">
+            <div className="space-y-6 text-center order-2 lg:order-1">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
                 <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
                 COMUNIDADE OPENLIFE
@@ -353,11 +402,11 @@ const Home: React.FC = () => {
                 <span className="text-purple-brand">Uma comunidade</span><br />
                 de alto padrão.
               </h2>
-              <p className="text-slate-500 text-lg leading-relaxed max-w-lg mx-auto lg:mx-0">
+              <p className="text-slate-500 text-lg leading-relaxed max-w-lg mx-auto">
                 Quem estuda na OpenLife faz parte de uma rede de alunos comprometidos.
                 A troca, o incentivo e o ambiente elevam o seu resultado além da sala de aula.
               </p>
-              <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-4 justify-center">
                 {['+66k alunos ativos', '5.0 Google', '21 anos de mercado', 'Certificação IELTS/TOEFL'].map((item, i) => (
                   <div key={i} className="inline-flex items-center gap-2 bg-violet-50 border border-violet-100 text-purple-brand text-sm font-semibold px-4 py-2 rounded-full">
                     <CheckCircle2 size={14} />
@@ -382,6 +431,46 @@ const Home: React.FC = () => {
                 decoding="async"
               />
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── DEPOIMENTOS ───────────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-bgsoft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
+              <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
+              HISTÓRIAS REAIS
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+              Quem se comprometeu <span className="text-purple-brand">chegou lá</span>
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Resultados de quem passou pelo processo de seleção e cumpriu o método.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {testimonials.map((t, i) => (
+              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:-translate-y-1 transition-all">
+                <div className="flex mb-4">
+                  {[...Array(t.stars)].map((_, s) => (
+                    <Star key={s} size={14} className="text-purple-brand" fill="currentColor" />
+                  ))}
+                </div>
+                <p className="text-slate-600 leading-relaxed mb-6 text-sm">"{t.text}"</p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-purple-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
+                    {t.initials}
+                  </div>
+                  <div>
+                    <p className="text-slate-900 font-bold text-sm">{t.name}</p>
+                    <p className="text-slate-400 text-xs">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -489,46 +578,6 @@ const Home: React.FC = () => {
                   </div>
                 </div>
               </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── DEPOIMENTOS ───────────────────────────────────────── */}
-      <section className="py-16 md:py-24 bg-bgsoft">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 space-y-4">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
-              <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
-              HISTÓRIAS REAIS
-            </div>
-            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
-              Quem se comprometeu <span className="text-purple-brand">chegou lá</span>
-            </h2>
-            <p className="text-slate-500 max-w-xl mx-auto">
-              Resultados de quem passou pelo processo de seleção e cumpriu o método.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {testimonials.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:-translate-y-1 transition-all">
-                <div className="flex mb-4">
-                  {[...Array(t.stars)].map((_, s) => (
-                    <Star key={s} size={14} className="text-purple-brand" fill="currentColor" />
-                  ))}
-                </div>
-                <p className="text-slate-600 leading-relaxed mb-6 text-sm">"{t.text}"</p>
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-purple-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
-                    {t.initials}
-                  </div>
-                  <div>
-                    <p className="text-slate-900 font-bold text-sm">{t.name}</p>
-                    <p className="text-slate-400 text-xs">{t.role}</p>
-                  </div>
-                </div>
-              </div>
             ))}
           </div>
         </div>
