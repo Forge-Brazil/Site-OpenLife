@@ -60,7 +60,12 @@ const testimonials = [
   },
 ];
 
-const courseIcons = [<MessageCircle size={22} />, <Zap size={22} />, <Users size={22} />];
+const HOME_COURSES_ORDER = ['teens', 'journey', 'keep'] as const;
+const courseIcons: Record<string, React.ReactNode> = {
+  teens: <Users size={22} />,
+  journey: <Zap size={22} />,
+  keep: <TrendingUp size={22} />,
+};
 
 const FEATURED_CITIES = CITIES.slice(0, 6);
 
@@ -305,11 +310,11 @@ const Home: React.FC = () => {
             style={{ height: '560px', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(48px)', WebkitBackdropFilter: 'blur(48px)', border: '1px solid rgba(255,255,255,0.11)', borderRadius: '44px', boxShadow: '0 0 140px rgba(124,58,237,0.18), 0 0 60px rgba(139,92,246,0.1), inset 0 1px 0 rgba(255,255,255,0.09)' }}>
 
             <div className="absolute" style={{ left: '5%', top: '50%', transform: 'translateY(-54%) rotate(-11deg)', width: '220px', aspectRatio: '9/16', borderRadius: '20px', overflow: 'hidden', zIndex: 1, boxShadow: '0 24px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.3)' }}>
-              <video src="/video01.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
+              <video src="/video02.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
             </div>
 
             <div className="absolute" style={{ left: '50%', top: '50%', transform: 'translateX(-50%) translateY(-50%)', width: '260px', aspectRatio: '9/16', borderRadius: '22px', overflow: 'hidden', zIndex: 3, boxShadow: '0 32px 90px rgba(0,0,0,0.75), 0 0 0 2px rgba(139,92,246,0.55), 0 0 50px rgba(124,58,237,0.25)' }}>
-              <video src="/video02.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
+              <video src="/video01.mp4" className="w-full h-full object-cover" controls playsInline preload="metadata" />
             </div>
 
             <div className="absolute" style={{ right: '5%', top: '50%', transform: 'translateY(-54%) rotate(11deg)', width: '220px', aspectRatio: '9/16', borderRadius: '20px', overflow: 'hidden', zIndex: 1, boxShadow: '0 24px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(139,92,246,0.3)' }}>
@@ -321,7 +326,7 @@ const Home: React.FC = () => {
         {/* MOBILE — scroll horizontal */}
         <div className="flex md:hidden overflow-x-auto scrollbar-hide pb-2">
           <div className="flex gap-4 w-max mx-auto px-6">
-            {['/video01.mp4', '/video02.mp4', '/video03.mp4'].map((src, i) => (
+            {['/video02.mp4', '/video01.mp4', '/video03.mp4'].map((src, i) => (
               <div key={i} className="shrink-0 rounded-2xl overflow-hidden bg-black" style={{ width: 'min(72vw, 240px)', aspectRatio: '9/16', boxShadow: '0 0 0 1px rgba(139,92,246,0.35)' }}>
                 <video src={src} className="w-full h-full object-cover" controls playsInline preload="metadata" />
               </div>
@@ -475,65 +480,120 @@ const Home: React.FC = () => {
         </div>
       </section>
 
+      {/* ── VÍDEOS DEPOIMENTOS ────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-bgsoft">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-10 space-y-4">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
+              <Play size={14} className="fill-purple-brand text-purple-brand" />
+              DEPOIMENTOS EM VÍDEO
+            </div>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+              Ouça de quem <span className="text-purple-brand">já chegou lá</span>
+            </h2>
+            <p className="text-slate-500 max-w-xl mx-auto">
+              Histórias reais de alunos que escolheram sair do "vou aprender inglês" e foram além.
+            </p>
+          </div>
+
+          {/* 6 vídeos em linha única com scroll horizontal no mobile */}
+          <div className="flex gap-3 overflow-x-auto pb-2 md:grid md:grid-cols-6 md:overflow-visible" style={{ scrollbarWidth: 'none' }}>
+            {['/video11.mp4','/video12.mp4','/video13.mp4','/video14.mp4','/video15.mp4','/video16.mp4'].map((src, i) => (
+              <div
+                key={i}
+                className="relative rounded-2xl overflow-hidden cursor-pointer group shrink-0 w-36 md:w-auto"
+                style={{ aspectRatio: '9/16', border: '1px solid #EDE9FE' }}
+                onClick={(e) => {
+                  const vid = e.currentTarget.querySelector('video') as HTMLVideoElement | null;
+                  const overlay = e.currentTarget.querySelector('.play-overlay') as HTMLElement | null;
+                  if (!vid) return;
+                  if (vid.paused) { vid.play(); if (overlay) overlay.style.opacity = '0'; }
+                  else { vid.pause(); if (overlay) overlay.style.opacity = '1'; }
+                }}
+              >
+                <video
+                  src={src}
+                  className="w-full h-full object-cover"
+                  muted
+                  playsInline
+                  loop
+                  preload="metadata"
+                />
+                <div className="play-overlay absolute inset-0 flex items-center justify-center transition-opacity duration-200" style={{ background: 'rgba(124,58,237,0.28)', backdropFilter: 'blur(2px)' }}>
+                  <div className="w-11 h-11 rounded-full bg-white/25 border border-white/50 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Play size={18} className="text-white fill-white ml-0.5" />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── CURSOS & PRODUTOS ─────────────────────────────────── */}
       <section className="py-16 md:py-24 bg-bgsoft">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
-            <div className="space-y-4 text-center md:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
-                <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
-                CURSOS & PRODUTOS
-              </div>
-              <h2 className="text-3xl md:text-5xl font-black text-slate-900">
-                Um caminho para <span className="text-purple-brand">cada objetivo</span>
-              </h2>
-              <p className="text-slate-500 max-w-md mx-auto md:mx-0">
-                Do primeiro contato com o idioma à certificação internacional.
-              </p>
+          <div className="text-center space-y-4 mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
+              <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
+              CURSOS & PRODUTOS
             </div>
-            <Link
-              to="/cursos"
-              className="inline-flex items-center justify-center gap-2 text-purple-brand border border-purple-200 px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-violet-50 active:bg-violet-50 transition-colors shrink-0 self-center md:self-auto min-h-[44px] touch-manipulation"
-            >
-              Ver todos os cursos <ArrowRight size={16} />
-            </Link>
+            <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+              Um caminho para <span className="text-purple-brand">cada objetivo</span>
+            </h2>
+            <p className="text-slate-500 max-w-md mx-auto">
+              Do primeiro contato com o idioma à certificação internacional.
+            </p>
+            <div>
+              <Link
+                to="/cursos"
+                className="inline-flex items-center justify-center gap-2 text-purple-brand border border-purple-200 px-5 py-2.5 rounded-full font-semibold text-sm hover:bg-violet-50 active:bg-violet-50 transition-colors min-h-[44px] touch-manipulation"
+              >
+                Ver todos os cursos <ArrowRight size={16} />
+              </Link>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-            {COURSES.slice(0, 3).map((course, i) => (
-              <Link
-                key={course.id}
-                to={COURSE_LINKS[course.id] ?? '/cursos'}
-                className={`group rounded-2xl overflow-hidden border transition-all hover:-translate-y-1 ${
-                  i === 1
-                    ? 'border-purple-brand shadow-lg shadow-purple-brand/10'
-                    : 'border-gray-100 shadow-sm hover:shadow-md'
-                }`}
-              >
-                {i === 1 && (
-                  <div className="bg-purple-brand text-white text-center text-xs font-bold py-2 tracking-widest uppercase">
-                    Mais popular
+            {HOME_COURSES_ORDER.map((id, i) => {
+              const course = COURSES.find(c => c.id === id);
+              if (!course) return null;
+              const isCenter = i === 1;
+              return (
+                <Link
+                  key={course.id}
+                  to={COURSE_LINKS[course.id] ?? '/cursos'}
+                  className={`group rounded-2xl overflow-hidden border transition-all hover:-translate-y-1 ${
+                    isCenter
+                      ? 'border-purple-brand shadow-lg shadow-purple-brand/10'
+                      : 'border-gray-100 shadow-sm hover:shadow-md'
+                  }`}
+                >
+                  {isCenter && (
+                    <div className="bg-purple-brand text-white text-center text-xs font-bold py-2 tracking-widest uppercase">
+                      Mais popular
+                    </div>
+                  )}
+                  <div className={`p-7 ${isCenter ? 'bg-gradient-to-b from-violet-50 to-white' : 'bg-white'}`}>
+                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${
+                      isCenter ? 'bg-purple-brand text-white' : 'bg-violet-50 text-purple-brand'
+                    }`}>
+                      {courseIcons[course.id]}
+                    </div>
+                    <h3 className="text-xl font-black text-slate-900 mb-1">{course.title}</h3>
+                    <p className="text-purple-brand text-sm font-semibold mb-3">{course.focus}</p>
+                    <p className="text-slate-500 text-sm leading-relaxed">{course.description}</p>
+                    <div className={`mt-6 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
+                      isCenter
+                        ? 'bg-purple-brand text-white'
+                        : 'bg-slate-100 text-slate-600 group-hover:bg-purple-brand group-hover:text-white'
+                    }`}>
+                      <ArrowRight size={16} />
+                    </div>
                   </div>
-                )}
-                <div className={`p-7 ${i === 1 ? 'bg-gradient-to-b from-violet-50 to-white' : 'bg-white'}`}>
-                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-5 ${
-                    i === 1 ? 'bg-purple-brand text-white' : 'bg-violet-50 text-purple-brand'
-                  }`}>
-                    {courseIcons[i]}
-                  </div>
-                  <h3 className="text-xl font-black text-slate-900 mb-1">{course.title}</h3>
-                  <p className="text-purple-brand text-sm font-semibold mb-3">{course.focus}</p>
-                  <p className="text-slate-500 text-sm leading-relaxed">{course.description}</p>
-                  <div className={`mt-6 w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
-                    i === 1
-                      ? 'bg-purple-brand text-white'
-                      : 'bg-slate-100 text-slate-600 group-hover:bg-purple-brand group-hover:text-white'
-                  }`}>
-                    <ArrowRight size={16} />
-                  </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
