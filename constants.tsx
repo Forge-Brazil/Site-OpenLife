@@ -10,13 +10,36 @@ export const COLORS = {
 
 export const COURSES: Course[] = [
   {
-    id: 'kids',
-    title: 'OpenLife Kids',
-    age: '6-9 anos',
-    focus: 'Bilinguismo Precoce',
-    description: 'Focado em bilinguismo precoce e desenvolvimento cognitivo. Um mundo de descobertas onde o inglês faz parte da brincadeira e do crescimento natural.',
-    highlights: ['Aulas lúdicas e interativas', 'Desenvolvimento cognitivo acelerado', 'Professores especializados em alfabetização'],
-    image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80&w=800'
+    id: 'journey',
+    title: 'OpenLife Journey',
+    age: '13+ anos',
+    focus: 'Fluência em 18 Meses',
+    description: 'Fluência em 18 meses com metodologia ESL exclusiva. Nosso curso carro-chefe para quem precisa de resultados rápidos, imersão e comunicação sem tradução.',
+    highlights: [
+      'Metodologia ESL imersiva',
+      'Comunicação sem tradução mental',
+      'Certificação Internacional CEFR C1/C2',
+      'Horários Flexíveis',
+      'Material Interativo',
+      'Ambiente Imersivo',
+      'Eventos Imersivos',
+    ],
+    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800'
+  },
+  {
+    id: 'keep',
+    title: 'Keep the Fluency',
+    age: 'Avançado',
+    focus: 'Comunidade e Desafios',
+    description: 'Mantenha sua fluência com desafios e uma comunidade ativa. Ideal para networking e aprimoramento contínuo do vocabulário avançado.',
+    highlights: [
+      'Horários Flexíveis',
+      'Material Interativo',
+      'Eventos Imersivos',
+      'Debates de alto nível',
+      'Networking internacional',
+    ],
+    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200'
   },
   {
     id: 'teens',
@@ -28,23 +51,14 @@ export const COURSES: Course[] = [
     image: 'https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&q=80&w=800'
   },
   {
-    id: 'journey',
-    title: 'OpenLife Journey',
-    age: '13+ anos',
-    focus: 'Fluência em 18 Meses',
-    description: 'Fluência em 18 meses com metodologia ESL exclusiva. Nosso curso carro-chefe para quem precisa de resultados rápidos, imersão e comunicação sem tradução.',
-    highlights: ['Metodologia ESL imersiva', 'Comunicação sem tradução mental', 'Certificação Internacional CEFR C1/C2'],
-    image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&q=80&w=800'
+    id: 'kids',
+    title: 'OpenLife Kids',
+    age: '6-9 anos',
+    focus: 'Bilinguismo Precoce',
+    description: 'Focado em bilinguismo precoce e desenvolvimento cognitivo. Um mundo de descobertas onde o inglês faz parte da brincadeira e do crescimento natural.',
+    highlights: ['Aulas lúdicas e interativas', 'Desenvolvimento cognitivo acelerado', 'Professores especializados em alfabetização'],
+    image: 'https://images.unsplash.com/photo-1606092195730-5d7b9af1efc5?auto=format&fit=crop&q=80&w=800'
   },
-  {
-    id: 'keep',
-    title: 'Keep the Fluency',
-    age: 'Avançado',
-    focus: 'Comunidade e Desafios',
-    description: 'Mantenha sua fluência com desafios e uma comunidade ativa. Ideal para networking e aprimoramento contínuo do vocabulário avançado.',
-    highlights: ['Debates de alto nível', 'Networking internacional', 'Aperfeiçoamento gramatical fino'],
-    image: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1200'
-  }
 ];
 
 const FilmesSeriesContent = (
