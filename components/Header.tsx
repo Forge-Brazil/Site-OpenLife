@@ -8,6 +8,7 @@ import { openSmartForm } from './SmartForm';
 // versão branca para manter contraste. Nas demais (fundo branco), usa
 // a versão colorida normal.
 const DARK_HERO_PATHS = new Set([
+  '/keep-the-fluency',
   '/ingles-online',
   '/ingles-para-adultos',
   '/ingles-para-adolescentes',

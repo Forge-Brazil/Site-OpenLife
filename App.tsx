@@ -30,6 +30,7 @@ import Reels from './pages/Reels';
 import OpenStore from './pages/OpenStore';
 
 // Pages — novas (SEO nacional)
+import KeepTheFluency from './pages/KeepTheFluency';
 import InglesOnline from './pages/InglesOnline';
 import InglesAdultos from './pages/InglesAdultos';
 import InglesCriancas from './pages/InglesCriancas';
@@ -96,6 +97,11 @@ export const SEO_META: Record<string, { title: string; description: string; cano
     title: 'Contato: Agende sua Aula Grátis | OpenLife',
     description: 'Entre em contato com a OpenLife para agendar sua aula experimental gratuita. Atendimento online ou na sua cidade. Fale conosco agora pelo WhatsApp.',
     canonical: 'https://openlifebrasil.com.br/contato',
+  },
+  '/keep-the-fluency': {
+    title: 'Keep the Fluency: Mantenha seu Inglês Vivo | OpenLife',
+    description: 'Programa de manutenção de fluência para quem já é B2/C1. Aulas de conversação e listening ao vivo, professores experts, turmas de até 4 alunos. Sem pressão, sem cobrança excessiva.',
+    canonical: 'https://openlifebrasil.com.br/keep-the-fluency',
   },
   '/franquia': {
     title: 'Franquia de Escola de Inglês | OpenLife',
@@ -167,6 +173,8 @@ const AppShell: React.FC = () => {
             <Route path="/cookies" element={<Cookies />} />
             <Route path="/reels" element={<Reels />} />
             <Route path="/openstore" element={<OpenStore />} />
+            {/* Produto P1 */}
+            <Route path="/keep-the-fluency" element={<KeepTheFluency />} />
             {/* Novas páginas SEO — alcance nacional */}
             <Route path="/ingles-online" element={<InglesOnline />} />
             <Route path="/ingles-para-adultos" element={<InglesAdultos />} />
