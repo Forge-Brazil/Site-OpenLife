@@ -77,7 +77,7 @@ const FOR_WHO = [
 const COMPARE = [
   { feature: 'Professor especialista ao vivo', keep: true, cambly: false, apps: false, escola: true },
   { feature: 'Turmas pequenas (máx. 4)', keep: true, cambly: false, apps: false, escola: false },
-  { feature: 'Metodologia ESL estruturada', keep: true, cambly: false, apps: false, escola: true },
+  { feature: 'Metodologia ESL estruturada', keep: true, cambly: false, apps: false, escola: false },
   { feature: 'Sem cobrança excessiva', keep: true, cambly: true, apps: true, escola: false },
   { feature: 'Foco em conversação real', keep: true, cambly: true, apps: false, escola: false },
   { feature: 'Ambiente imersivo', keep: true, cambly: false, apps: false, escola: false },
