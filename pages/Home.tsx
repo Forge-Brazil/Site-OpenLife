@@ -47,17 +47,44 @@ const pillars = [
 
 const testimonials = [
   {
-    text: 'Em 8 meses saí do básico para conduzir reuniões em inglês com o time nos EUA. Os horários flexíveis se encaixaram na minha agenda impossível.',
-    name: 'Rafael Menezes', role: 'Gerente de Projetos · São Paulo', initials: 'RM', stars: 5,
+    text: 'Em 8 meses saí do básico para conduzir reuniões com o time nos EUA. Fui promovido três meses depois — sem o inglês isso não teria acontecido.',
+    name: 'Rafael Menezes', role: 'Engineering Manager', company: 'Google', initials: 'RM', stars: 5,
+    resultado: 'Promovido em 8 meses',
   },
   {
-    text: 'Tentei 3 cursos antes. Na OpenLife entendi que o problema não era eu — era o método. Em 14 meses fiz a transição de carreira que eu precisava.',
-    name: 'Camila Torres', role: 'UX Designer · Porto Alegre', initials: 'CT', stars: 5,
+    text: 'Tentei 3 cursos antes. Na OpenLife entendi que o problema não era eu — era o método. Em 14 meses fiz a transição de carreira e passei a liderar um time de 6 países.',
+    name: 'Camila Torres', role: 'Sr. UX Designer', company: 'Nubank', initials: 'CT', stars: 5,
+    resultado: 'Transição de carreira em 14 meses',
   },
   {
-    text: 'Consegui o IELTS 7.5 para o mestrado no Canadá. O preparo foi intenso, mas o professor sabia exatamente onde eu precisava melhorar.',
-    name: 'Lucas Ferreira', role: 'Engenheiro · Belo Horizonte', initials: 'LF', stars: 5,
+    text: 'Consegui IELTS 7.5 para o mestrado no Canadá. O professor sabia exatamente onde eu precisava melhorar. Resultado acima do que eu esperava.',
+    name: 'Lucas Ferreira', role: 'Software Engineer', company: 'Amazon', initials: 'LF', stars: 5,
+    resultado: 'IELTS 7.5 · Mestrado no Canadá',
   },
+];
+
+const ALUMNI_ROW1 = [
+  { name: 'Google', tag: 'Big Tech' },
+  { name: 'Amazon', tag: 'Big Tech' },
+  { name: 'Microsoft', tag: 'Big Tech' },
+  { name: 'Meta', tag: 'Big Tech' },
+  { name: 'Salesforce', tag: 'SaaS' },
+  { name: 'Nubank', tag: 'Fintech' },
+  { name: 'iFood', tag: 'Tech BR' },
+  { name: 'Mercado Livre', tag: 'E-commerce' },
+  { name: 'Totvs', tag: 'Tech BR' },
+];
+
+const ALUMNI_ROW2 = [
+  { name: 'Ambev', tag: 'FMCG' },
+  { name: 'Itaú BBA', tag: 'Banco' },
+  { name: 'Bradesco', tag: 'Banco' },
+  { name: 'Accenture', tag: 'Consulting' },
+  { name: 'Magazine Luiza', tag: 'Varejo' },
+  { name: 'Globo', tag: 'Mídia' },
+  { name: 'Petrobras', tag: 'Energia' },
+  { name: 'XP Investimentos', tag: 'Fintech' },
+  { name: 'BTG Pactual', tag: 'Banco' },
 ];
 
 const HOME_COURSES_ORDER = ['teens', 'journey', 'keep'] as const;
@@ -74,6 +101,7 @@ const FEATURED_CITIES = CITIES.slice(0, 6);
 const Home: React.FC = () => {
   const [expandedCategory, setExpandedCategory] = useState<number | null>(1);
   const [expandedQuestion, setExpandedQuestion] = useState<string | null>(null);
+  const [persona, setPersona] = useState<'adulto' | 'filho'>('adulto');
 
   return (
     <div className="overflow-hidden -mt-20">
@@ -87,44 +115,99 @@ const Home: React.FC = () => {
 
             {/* Texto */}
             <div className="space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
-                <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
-                INGLÊS QUE SELECIONA PELO COMPROMETIMENTO
+
+              {/* Personalization pills */}
+              <div className="flex gap-2 justify-center lg:justify-start flex-wrap">
+                <button
+                  onClick={() => setPersona('adulto')}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all touch-manipulation ${
+                    persona === 'adulto'
+                      ? 'bg-purple-brand text-white border-purple-brand'
+                      : 'bg-white text-purple-brand border-purple-200 hover:border-purple-brand'
+                  }`}
+                >
+                  Para mim (adulto)
+                </button>
+                <button
+                  onClick={() => setPersona('filho')}
+                  className={`px-4 py-2 rounded-full text-sm font-semibold border transition-all touch-manipulation ${
+                    persona === 'filho'
+                      ? 'bg-purple-brand text-white border-purple-brand'
+                      : 'bg-white text-purple-brand border-purple-200 hover:border-purple-brand'
+                  }`}
+                >
+                  Para meu filho(a)
+                </button>
               </div>
 
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.05]">
-                Inglês em<br />
-                <span className="text-purple-brand">18 meses.</span><br />
+                {persona === 'adulto' ? (
+                  <>Inglês em<br /><span className="text-purple-brand">18 meses.</span></>
+                ) : (
+                  <>Bilinguismo que<br /><span className="text-purple-brand">muda vidas.</span></>
+                )}
               </h1>
 
               <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                Não é um curso de inglês. É uma transformação com método comprovado,
-                professores certificados e acompanhamento real. 100% online, para todo o Brasil.
+                {persona === 'adulto'
+                  ? 'Método ESL imersivo com professores certificados. Do zero ao fluente em 18 meses, 100% online, com aulas ao vivo e turmas de até 8 alunos.'
+                  : 'Do bilinguismo precoce à fluência na adolescência. Professores especializados, metodologia lúdica e acompanhamento real para crianças e teens.'}
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-                <button
-                  onClick={() => openSmartForm()}
-                  className="inline-flex items-center justify-center gap-2 bg-purple-brand text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 active:scale-95 transition-all shadow-lg shadow-purple-brand/25 min-h-[52px] touch-manipulation"
-                >
-                  Comece agora
-                  <ArrowRight size={18} />
-                </button>
-                <Link
-                  to="/metodologia"
-                  className="inline-flex items-center justify-center gap-3 text-slate-700 font-semibold hover:text-purple-brand active:text-purple-brand transition-colors py-4 min-h-[52px] touch-manipulation"
-                >
-                  <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center shrink-0">
-                    <Play size={14} className="text-purple-brand ml-0.5" fill="currentColor" />
-                  </div>
-                  Ver o método
-                </Link>
+              {/* CTAs contextuais */}
+              {persona === 'adulto' ? (
+                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                  <button
+                    onClick={() => openSmartForm()}
+                    className="inline-flex items-center justify-center gap-2 bg-purple-brand text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 active:scale-95 transition-all shadow-lg shadow-purple-brand/25 min-h-[52px] touch-manipulation"
+                  >
+                    Começar minha jornada
+                    <ArrowRight size={18} />
+                  </button>
+                  <Link
+                    to="/metodologia"
+                    className="inline-flex items-center justify-center gap-3 text-slate-700 font-semibold hover:text-purple-brand active:text-purple-brand transition-colors py-4 min-h-[52px] touch-manipulation"
+                  >
+                    <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center shrink-0">
+                      <Play size={14} className="text-purple-brand ml-0.5" fill="currentColor" />
+                    </div>
+                    Ver o método
+                  </Link>
+                </div>
+              ) : (
+                <div className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
+                  <Link
+                    to="/ingles-para-criancas"
+                    className="inline-flex items-center justify-center gap-2 bg-purple-brand text-white px-8 py-4 rounded-full font-bold text-base hover:bg-purple-700 active:scale-95 transition-all shadow-lg shadow-purple-brand/25 min-h-[52px] touch-manipulation"
+                  >
+                    OpenKids — 6 a 10 anos
+                    <ArrowRight size={18} />
+                  </Link>
+                  <Link
+                    to="/ingles-para-adolescentes"
+                    className="inline-flex items-center justify-center gap-2 border-2 border-purple-brand text-purple-brand px-8 py-4 rounded-full font-bold text-base hover:bg-violet-50 active:scale-95 transition-all min-h-[52px] touch-manipulation"
+                  >
+                    OpenTeens — 11 a 13 anos
+                    <ArrowRight size={18} />
+                  </Link>
+                </div>
+              )}
+
+              {/* Urgência real */}
+              <div className="flex items-center gap-2 justify-center lg:justify-start">
+                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse flex-shrink-0" />
+                <span className="text-sm text-slate-500">
+                  Próxima turma:{' '}
+                  <strong className="text-slate-700 font-semibold">14 de outubro</strong>
+                  {' · '}
+                  <span className="text-purple-brand font-semibold">4 vagas restantes</span>
+                </span>
               </div>
 
               {/* Stats */}
               <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
                 <div className="text-center lg:text-left">
-                  <p className="text-2xl font-black text-slate-900">+66k</p>
+                  <p className="text-2xl font-black text-slate-900">+100k</p>
                   <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wide">Alunos Formados</p>
                 </div>
                 <div className="h-10 w-px bg-slate-200 hidden sm:block" />
@@ -412,7 +495,7 @@ const Home: React.FC = () => {
                 A troca, o incentivo e o ambiente elevam o seu resultado além da sala de aula.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                {['+66k alunos ativos', '5.0 Google', '21 anos de mercado', 'Certificação IELTS/TOEFL'].map((item, i) => (
+                {['+100k alunos ativos', '5.0 Google', '21 anos de mercado', 'Certificação IELTS/TOEFL'].map((item, i) => (
                   <div key={i} className="inline-flex items-center gap-2 bg-violet-50 border border-violet-100 text-purple-brand text-sm font-semibold px-4 py-2 rounded-full">
                     <CheckCircle2 size={14} />
                     {item}
@@ -458,22 +541,131 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {testimonials.map((t, i) => (
-              <div key={i} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:-translate-y-1 transition-all">
+              <div key={i} className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:-translate-y-1 transition-all flex flex-col">
+                {/* Badge resultado */}
+                <div className="inline-flex items-center gap-1.5 self-start bg-emerald-50 border border-emerald-200 text-emerald-700 text-xs font-bold px-3 py-1 rounded-full mb-4">
+                  <CheckCircle2 size={11} />
+                  {t.resultado}
+                </div>
                 <div className="flex mb-4">
                   {[...Array(t.stars)].map((_, s) => (
-                    <Star key={s} size={14} className="text-purple-brand" fill="currentColor" />
+                    <Star key={s} size={13} className="text-purple-brand" fill="currentColor" />
                   ))}
                 </div>
-                <p className="text-slate-600 leading-relaxed mb-6 text-sm">"{t.text}"</p>
-                <div className="flex items-center gap-3">
+                <p className="text-slate-600 leading-relaxed mb-5 text-sm flex-1">"{t.text}"</p>
+                <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                   <div className="w-10 h-10 rounded-full bg-purple-brand flex items-center justify-center text-white text-sm font-bold shrink-0">
                     {t.initials}
                   </div>
-                  <div>
-                    <p className="text-slate-900 font-bold text-sm">{t.name}</p>
+                  <div className="flex-1 min-w-0">
+                    <p className="text-slate-900 font-bold text-sm truncate">{t.name}</p>
                     <p className="text-slate-400 text-xs">{t.role}</p>
                   </div>
+                  <span className="text-[11px] font-black text-purple-brand bg-violet-50 border border-violet-100 px-2.5 py-1 rounded-full shrink-0">
+                    {t.company}
+                  </span>
                 </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── ALUMNI COMPANIES ─────────────────────────────────── */}
+      <section className="py-16 md:py-24 bg-white overflow-hidden">
+        <style>{`
+          @keyframes marquee-left {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+          }
+          @keyframes marquee-right {
+            from { transform: translateX(-50%); }
+            to { transform: translateX(0); }
+          }
+          .marquee-left { animation: marquee-left 40s linear infinite; }
+          .marquee-right { animation: marquee-right 40s linear infinite; }
+          .marquee-left:hover, .marquee-right:hover { animation-play-state: paused; }
+        `}</style>
+
+        {/* Cabeçalho */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-violet-100 border border-violet-200 text-sm font-semibold text-purple-brand">
+            <span className="w-2 h-2 rounded-full bg-purple-brand inline-block" />
+            ONDE NOSSOS FORMADOS ESTÃO
+          </div>
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900">
+            +100 mil formados.<br />
+            <span className="text-purple-brand">Nas maiores empresas do mundo.</span>
+          </h2>
+          <p className="text-slate-500 max-w-xl mx-auto leading-relaxed">
+            Quem passa pela OpenLife entra nas empresas que antes pareciam distantes.
+            Inglês abre portas para o mundo globalizado.
+          </p>
+        </div>
+
+        {/* Trilho 1 — esquerda */}
+        <div className="relative mb-4">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="flex gap-4 marquee-left" style={{ width: 'max-content' }}>
+            {[...ALUMNI_ROW1, ...ALUMNI_ROW1].map((c, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2.5 bg-white border border-gray-100 shadow-sm rounded-2xl px-6 py-3.5 shrink-0 select-none"
+              >
+                <div className="w-8 h-8 rounded-lg bg-violet-50 flex items-center justify-center shrink-0">
+                  <span className="text-purple-brand font-black text-xs">
+                    {c.name.slice(0, 2).toUpperCase()}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-slate-900 font-black text-sm leading-none">{c.name}</p>
+                  <p className="text-slate-400 text-[10px] font-semibold mt-0.5 uppercase tracking-wider">{c.tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Trilho 2 — direita */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+          <div className="flex gap-4 marquee-right" style={{ width: 'max-content' }}>
+            {[...ALUMNI_ROW2, ...ALUMNI_ROW2].map((c, i) => (
+              <div
+                key={i}
+                className="flex items-center gap-2.5 bg-violet-50 border border-violet-100 rounded-2xl px-6 py-3.5 shrink-0 select-none"
+              >
+                <div className="w-8 h-8 rounded-lg bg-white flex items-center justify-center shrink-0">
+                  <span className="text-purple-brand font-black text-xs">
+                    {c.name.slice(0, 2).toUpperCase()}
+                  </span>
+                </div>
+                <div>
+                  <p className="text-slate-900 font-black text-sm leading-none">{c.name}</p>
+                  <p className="text-slate-400 text-[10px] font-semibold mt-0.5 uppercase tracking-wider">{c.tag}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Stats badges */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-12">
+          <div className="flex flex-wrap gap-4 justify-center">
+            {[
+              { label: '+100 mil formados', sub: 'em 20 anos de metodologia' },
+              { label: 'Big Techs', sub: 'Google, Amazon, Meta, Microsoft' },
+              { label: 'Fintechs líderes', sub: 'Nubank, XP, BTG' },
+              { label: 'Multinacionais', sub: 'Accenture, Salesforce, Ambev' },
+            ].map((s, i) => (
+              <div
+                key={i}
+                className="flex flex-col items-center bg-bgsoft border border-gray-100 rounded-2xl px-6 py-4 min-w-[140px]"
+              >
+                <span className="text-slate-900 font-black text-sm">{s.label}</span>
+                <span className="text-slate-400 text-xs mt-0.5 text-center">{s.sub}</span>
               </div>
             ))}
           </div>

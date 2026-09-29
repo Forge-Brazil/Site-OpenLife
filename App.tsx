@@ -79,12 +79,12 @@ export const SEO_META: Record<string, { title: string; description: string; cano
   },
   '/metodologia': {
     title: 'Método ESL: Fluência em 18 Meses | OpenLife',
-    description: 'Conheça o método ESL imersivo da OpenLife que já formou 66 mil alunos fluentes em 18 meses. 5 módulos progressivos, 500 horas de imersão, CEFR C1.',
+    description: 'Conheça o método ESL imersivo da OpenLife que já formou mais de 100 mil alunos fluentes em 18 meses. 5 módulos progressivos, 500 horas de imersão, CEFR C1.',
     canonical: 'https://openlifebrasil.com.br/metodologia',
   },
   '/sobre': {
     title: 'Sobre a OpenLife: 21 Anos Formando Fluentes',
-    description: 'A OpenLife é uma escola de inglês com mais de 21 anos de história, 66 mil alunos formados e metodologia ESL pioneira no Brasil. Conheça nossa história.',
+    description: 'A OpenLife é uma escola de inglês com mais de 20 anos de história, 100 mil alunos formados e metodologia ESL pioneira no Brasil. Conheça nossa história.',
     canonical: 'https://openlifebrasil.com.br/sobre',
   },
   '/blog': {

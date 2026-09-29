@@ -19,10 +19,10 @@ const captureUTMs = (): Record<string, string> => {
 
 // ─── Dados do quiz ────────────────────────────────────────────────────────────
 const CURSOS = [
-  { id: 'OpenKids (6 a 10 anos)',                                    emoji: '🧒', label: 'OpenKids (6 a 10 anos)' },
-  { id: 'OpenTeens (11 a 13 anos)',                                  emoji: '🧑', label: 'OpenTeens (11 a 13 anos)' },
   { id: 'Journey – Adultos (13+ anos)',                              emoji: '🧑‍💼', label: 'Journey – Adultos (13+ anos)' },
-  { id: 'Keep the Fluency – Já falo, mas quero praticar meu inglês', emoji: '🌍', label: 'Keep the Fluency – Já falo, mas quero praticar meu inglês' },
+  { id: 'Keep the Fluency – Já falo, mas quero praticar meu inglês', emoji: '🌍',  label: 'Keep the Fluency – Já falo e quero praticar' },
+  { id: 'OpenTeens (11 a 13 anos)',                                  emoji: '🧑',  label: 'OpenTeens (11 a 13 anos)' },
+  { id: 'OpenKids (6 a 10 anos)',                                    emoji: '🧒',  label: 'OpenKids (6 a 10 anos)' },
 ];
 
 const NIVEL_CONTATO = [
@@ -36,8 +36,8 @@ const MOTIVACOES = [
   { id: 'Viajar e explorar o mundo',                          emoji: '✈️',  label: 'Viajar e explorar o mundo' },
   { id: 'Construir uma carreira',                             emoji: '💼',  label: 'Construir uma carreira' },
   { id: 'Me desenvolver pessoalmente',                        emoji: '🧠',  label: 'Me desenvolver pessoalmente' },
-  { id: 'Estudar fora e ter mais oportunidades acadêmicas',   emoji: '🎓',  label: 'Estudar fora e ter mais oportunidades acadêmicas' },
-  { id: 'Me comunicar com o mundo com confiança',             emoji: '💬',  label: 'Me comunicar com o mundo com confiança' },
+  { id: 'Estudar fora e ter mais oportunidades acadêmicas',   emoji: '🎓',  label: 'Estudar fora e ter mais oportunidades' },
+  { id: 'Me comunicar com o mundo com confiança',             emoji: '💬',  label: 'Me comunicar com confiança' },
 ];
 
 const COMO_CONHECEU = [
@@ -53,6 +53,47 @@ const LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
 const LGPD_VERSION = '2026.09';
 const LGPD_TEXT = 'Autorizo o uso dos meus dados para contato sobre os produtos da OpenLife Brasil, conforme a LGPD (Lei 13.709/2018).';
 const WA_NUMBER = '5553999656216';
+const TOTAL_QUESTIONS = 8; // telas 1–8
+
+// ─── Conteúdo personalizado por curso ─────────────────────────────────────────
+const SUCCESS_CONFIG: Record<string, { emoji: string; title: string; badge: string; desc: string; waText: string }> = {
+  'Journey – Adultos (13+ anos)': {
+    emoji: '🌍',
+    title: 'Sua jornada de 18 meses começa agora!',
+    badge: '🎯 OpenLife Journey · Fluência em 18 meses',
+    desc: 'Nossa equipe vai entrar em contato pelo WhatsApp para agendar sua aula experimental gratuita.',
+    waText: 'Oi! Acabei de preencher o quiz da OpenLife. Tenho interesse no Journey (18 meses). Quero saber mais! 🚀',
+  },
+  'Keep the Fluency – Já falo, mas quero praticar meu inglês': {
+    emoji: '🔥',
+    title: 'Hora de levar seu inglês ao próximo nível!',
+    badge: '🔥 Keep the Fluency · Prática e fluência avançada',
+    desc: 'Nossa equipe vai entrar em contato para apresentar o programa Keep the Fluency.',
+    waText: 'Oi! Preenchi o quiz da OpenLife. Tenho interesse no Keep the Fluency. Quero saber mais! 🌍',
+  },
+  'OpenTeens (11 a 13 anos)': {
+    emoji: '🧑‍🎓',
+    title: 'Seu filho(a) vai decolar no inglês!',
+    badge: '🧑‍🎓 OpenTeens · 11 a 13 anos',
+    desc: 'Nossa equipe vai entrar em contato para agendar a aula experimental do OpenTeens.',
+    waText: 'Oi! Preenchi o quiz da OpenLife. Tenho interesse no OpenTeens para meu filho(a). Quero saber mais! 🧑‍🎓',
+  },
+  'OpenKids (6 a 10 anos)': {
+    emoji: '🧒',
+    title: 'Seu filho(a) vai adorar o OpenKids!',
+    badge: '🧒 OpenKids · 6 a 10 anos · Bilinguismo precoce',
+    desc: 'Nossa equipe vai entrar em contato para agendar a aula experimental do OpenKids.',
+    waText: 'Oi! Preenchi o quiz da OpenLife. Tenho interesse no OpenKids para meu filho(a). Quero saber mais! 🧒',
+  },
+};
+
+const defaultSuccess = {
+  emoji: '🎉',
+  title: 'Cadastro recebido!',
+  badge: '✅ OpenLife English School',
+  desc: 'Nossa equipe vai entrar em contato pelo WhatsApp em breve.',
+  waText: 'Oi! Acabei de preencher o quiz da OpenLife. Quero saber mais! 🚀',
+};
 
 function derivarPersona(curso: string, motivacao: string): string {
   if (curso.includes('Kids') || curso.includes('Teens')) return 'kids_teens';
@@ -69,7 +110,7 @@ interface ChoiceOptionProps {
   selected: boolean; onSelect: () => void;
 }
 
-function ChoiceOption({ id, label, emoji, index, selected, onSelect }: ChoiceOptionProps) {
+function ChoiceOption({ label, emoji, index, selected, onSelect }: ChoiceOptionProps) {
   return (
     <button
       type="button"
@@ -96,7 +137,8 @@ function ChoiceOption({ id, label, emoji, index, selected, onSelect }: ChoiceOpt
 interface TextInputProps {
   type?: string; placeholder: string; value: string;
   onChange: (v: string) => void; onEnter?: () => void; error?: string;
-  autoFocus?: boolean; prefix?: React.ReactNode; inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
+  autoFocus?: boolean; prefix?: React.ReactNode;
+  inputMode?: React.HTMLAttributes<HTMLInputElement>['inputMode'];
 }
 
 function TextInput({ type = 'text', placeholder, value, onChange, onEnter, error, autoFocus = false, prefix, inputMode }: TextInputProps) {
@@ -124,25 +166,43 @@ function TextInput({ type = 'text', placeholder, value, onChange, onEnter, error
 
 // ─── Tipos ────────────────────────────────────────────────────────────────────
 interface Answers {
-  nome: string; email: string; whatsapp: string; idade: string; cidade: string;
-  curso: string; nivel_contato: string; motivacao: string; como_conheceu: string;
+  curso: string; nome: string; email: string; whatsapp: string;
+  cidade: string; nivel_contato: string; motivacao: string; como_conheceu: string;
 }
 
 const EMPTY_ANSWERS: Answers = {
-  nome: '', email: '', whatsapp: '', idade: '', cidade: '',
-  curso: '', nivel_contato: '', motivacao: '', como_conheceu: '',
+  curso: '', nome: '', email: '', whatsapp: '',
+  cidade: '', nivel_contato: '', motivacao: '', como_conheceu: '',
 };
+
+// fieldOrder para autosave (índice = screen - 1)
+const FIELD_ORDER: (keyof Answers)[] = ['curso', 'nome', 'email', 'whatsapp', 'cidade', 'nivel_contato', 'motivacao', 'como_conheceu'];
 
 // ─── Componente principal ─────────────────────────────────────────────────────
 const Quiz: React.FC = () => {
   const navigate = useNavigate();
-  const [screen, setScreen]   = useState(0);
-  const [answers, setAnswers] = useState<Answers>(EMPTY_ANSWERS);
-  const [lgpd, setLgpd]       = useState(false);
-  const [leadId, setLeadId]   = useState<string | null>(null);
-  const [submitting, setSub]  = useState(false);
-  const [errors, setErrors]   = useState<Record<string, string>>({});
-  const contentRef = useRef<HTMLDivElement>(null);
+  const [screen, setScreen]       = useState(0);
+  const [answers, setAnswers]     = useState<Answers>(EMPTY_ANSWERS);
+  const [lgpd, setLgpd]           = useState(false);
+  const [leadId, setLeadId]       = useState<string | null>(null);
+  const [submitting, setSub]      = useState(false);
+  const [errors, setErrors]       = useState<Record<string, string>>({});
+  const [isReturning, setIsRet]   = useState(false);
+  const contentRef                = useRef<HTMLDivElement>(null);
+
+  // ── Detecta visitante que retorna ─────────────────────────────────────────
+  useEffect(() => {
+    try {
+      const savedId    = localStorage.getItem('ol_lead_id');
+      const savedCurso = localStorage.getItem('ol_lead_curso');
+      if (savedId && savedCurso) {
+        setLeadId(savedId);
+        setAnswers(a => ({ ...a, curso: savedCurso }));
+        setIsRet(true);
+        setScreen(1); // Pula boas-vindas, vai direto para curso
+      }
+    } catch { /* noop */ }
+  }, []);
 
   // Scroll para o topo a cada mudança de tela
   useEffect(() => {
@@ -164,8 +224,8 @@ const Quiz: React.FC = () => {
     } catch { /* noop */ }
   }, []);
 
-  // Cria lead parcial no passo 1 (nome)
-  const startLead = async (nome: string): Promise<string | null> => {
+  // ── Cria lead parcial quando curso é selecionado (1ª resposta qualificadora) ──
+  const startLead = async (curso: string): Promise<void> => {
     try {
       const res = await fetch('/api/lead/start', {
         method: 'POST',
@@ -173,33 +233,33 @@ const Quiz: React.FC = () => {
         body: JSON.stringify({
           pagina_origem: '/quiz',
           status: 'iniciado',
-          campos: { nome },
+          campos: { curso },
           ...captureUTMs(),
         }),
       });
       if (res.ok) {
         const data = await res.json();
         setLeadId(data.id);
-        try { localStorage.setItem('ol_lead_id', data.id); } catch { /* noop */ }
-        return data.id;
+        try {
+          localStorage.setItem('ol_lead_id', data.id);
+          localStorage.setItem('ol_lead_curso', curso);
+        } catch { /* noop */ }
       }
     } catch { /* noop */ }
-    return null;
   };
 
   // ── Validação ────────────────────────────────────────────────────────────
   const validate = (step: number): boolean => {
     const errs: Record<string, string> = {};
-    if (step === 1  && !answers.nome.trim())                                         errs.nome          = 'Informe seu nome completo';
-    if (step === 2  && (!answers.email.includes('@') || !answers.email.includes('.'))) errs.email       = 'E-mail inválido';
-    if (step === 3  && !/^\d{10,11}$/.test(answers.whatsapp.replace(/\D/g, '')))      errs.whatsapp    = 'WhatsApp inválido (com DDD)';
-    if (step === 4  && !answers.idade.trim())                                         errs.idade        = 'Informe a idade';
-    if (step === 5  && !answers.cidade.trim())                                        errs.cidade       = 'Informe sua cidade';
-    if (step === 6  && !answers.curso)                                                errs.curso        = 'Selecione o curso desejado';
-    if (step === 7  && !answers.nivel_contato)                                        errs.nivel_contato = 'Selecione uma opção';
-    if (step === 8  && !answers.motivacao)                                            errs.motivacao    = 'Selecione uma opção';
-    if (step === 9  && !answers.como_conheceu)                                        errs.como_conheceu = 'Selecione uma opção';
-    if (step === 10 && !lgpd)                                                         errs.lgpd         = 'Aceite os termos para continuar';
+    if (step === 1 && !answers.curso)                                                     errs.curso         = 'Selecione o curso desejado';
+    if (step === 2 && !answers.nome.trim())                                               errs.nome          = 'Informe seu nome completo';
+    if (step === 3 && (!answers.email.includes('@') || !answers.email.includes('.')))     errs.email         = 'E-mail inválido';
+    if (step === 4 && !/^\d{10,11}$/.test(answers.whatsapp.replace(/\D/g, '')))          errs.whatsapp      = 'WhatsApp inválido (com DDD)';
+    if (step === 5 && !answers.cidade.trim())                                              errs.cidade        = 'Informe sua cidade';
+    if (step === 6 && !answers.nivel_contato)                                              errs.nivel_contato = 'Selecione uma opção';
+    if (step === 7 && !answers.motivacao)                                                  errs.motivacao     = 'Selecione uma opção';
+    if (step === 8 && !answers.como_conheceu)                                              errs.como_conheceu = 'Selecione uma opção';
+    if (step === 9 && !lgpd)                                                               errs.lgpd          = 'Aceite os termos para continuar';
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -209,17 +269,20 @@ const Quiz: React.FC = () => {
     if (!validate(screen)) return;
     setErrors({});
 
-    if (screen === 10) { await handleSubmit(); return; }
+    if (screen === 9) { await handleSubmit(); return; }
 
     if (screen === 1) {
-      // Cria lead ao capturar o nome
-      startLead(answers.nome);
+      // Curso selecionado — cria lead parcial imediatamente
+      if (!leadId) startLead(answers.curso);
+      else {
+        // Visitante que retornou — atualiza o curso se mudou
+        try { localStorage.setItem('ol_lead_curso', answers.curso); } catch { /* noop */ }
+        autosave(leadId, { curso: answers.curso });
+      }
     } else if (screen >= 2) {
-      // Autosave de cada resposta nova
       const id = leadId || `local_${Date.now()}`;
-      const fieldOrder: (keyof Answers)[] = ['nome', 'email', 'whatsapp', 'idade', 'cidade', 'curso', 'nivel_contato', 'motivacao', 'como_conheceu'];
       const campos: Partial<Answers> = {};
-      fieldOrder.slice(0, screen).forEach(f => { campos[f] = answers[f]; });
+      FIELD_ORDER.slice(0, screen).forEach(f => { campos[f] = answers[f]; });
       autosave(id, campos);
     }
 
@@ -229,6 +292,7 @@ const Quiz: React.FC = () => {
   const back = () => {
     setErrors({});
     if (screen === 0) { navigate('/'); return; }
+    if (screen === 1 && isReturning) { navigate('/'); return; } // retornando → home
     setScreen(s => Math.max(0, s - 1));
   };
 
@@ -236,7 +300,7 @@ const Quiz: React.FC = () => {
   const handleSubmit = async () => {
     setSub(true);
     try {
-      const lid = leadId || `local_${Date.now()}`;
+      const lid     = leadId || `local_${Date.now()}`;
       const persona = derivarPersona(answers.curso, answers.motivacao);
       await fetch(`/api/lead/${lid}/complete`, {
         method: 'PATCH',
@@ -251,13 +315,28 @@ const Quiz: React.FC = () => {
       });
     } catch { /* noop — sempre mostra sucesso */ }
     setSub(false);
-    setScreen(11);
-    try { localStorage.removeItem('ol_lead_id'); } catch { /* noop */ }
+    setScreen(10);
+    try {
+      localStorage.removeItem('ol_lead_id');
+      localStorage.removeItem('ol_lead_curso');
+    } catch { /* noop */ }
   };
 
-  // ── Progress ─────────────────────────────────────────────────────────────
-  const progress = screen === 0 ? 0 : screen >= 11 ? 100 : (screen / 10) * 100;
+  // ── Helpers de apresentação ──────────────────────────────────────────────
+  const progress     = screen === 0 ? 0 : screen >= 10 ? 100 : Math.round((screen / TOTAL_QUESTIONS) * 100);
   const primeiroNome = answers.nome.split(' ')[0];
+  const success      = SUCCESS_CONFIG[answers.curso] ?? defaultSuccess;
+  const isKidsTeen   = answers.curso.includes('Kids') || answers.curso.includes('Teens');
+
+  // Label adaptado da pergunta de nível por público
+  const nivelQuestion = isKidsTeen
+    ? 'Seu filho(a) já teve contato com inglês antes? 🎓'
+    : 'Você já teve contato com inglês antes? 🎓';
+  const motivacaoQuestion = isKidsTeen
+    ? 'O que mais motiva a família na busca pelo inglês? 💡'
+    : 'O que mais te motiva a aprender inglês? 💡';
+
+  const waUrl = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(success.waText)}`;
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
@@ -281,21 +360,17 @@ const Quiz: React.FC = () => {
           <span className="text-sm font-medium hidden sm:inline">Voltar</span>
         </button>
 
-        {/* Logo */}
         <div className="flex items-center gap-2">
           <span className="text-xl">🌍</span>
           <span className="font-black text-purple-brand text-base tracking-tight">OpenLife</span>
         </div>
 
-        {/* Counter */}
-        {screen >= 1 && screen <= 9 && (
+        {screen >= 1 && screen <= TOTAL_QUESTIONS && (
           <span className="text-xs font-bold text-slate-400 tracking-wide">
-            {screen} / 9
+            {screen} / {TOTAL_QUESTIONS}
           </span>
         )}
-        {(screen === 0 || screen === 10 || screen === 11) && (
-          <span className="w-10" />
-        )}
+        {(screen === 0 || screen === 9 || screen === 10) && <span className="w-10" />}
       </header>
 
       {/* ── Corpo principal ──────────────────────────────────────────── */}
@@ -327,16 +402,46 @@ const Quiz: React.FC = () => {
               </button>
               <div className="flex items-center justify-center gap-2 pt-1">
                 <span className="text-purple-brand text-sm">★★★★★</span>
-                <span className="text-sm text-slate-400">+66k alunos formados · OpenLife Brasil</span>
+                <span className="text-sm text-slate-400">+100k alunos formados · OpenLife Brasil</span>
               </div>
             </div>
           )}
 
-          {/* ── Tela 1: Nome ─────────────────────────────────────────── */}
+          {/* ── Tela 1: Curso (PRIMEIRA pergunta qualificadora) ──────────── */}
           {screen === 1 && (
+            <div className="space-y-5">
+              {/* Banner visitante que retorna */}
+              {isReturning && (
+                <div className="flex items-center gap-2 px-4 py-3 bg-violet-50 border border-violet-200 rounded-2xl text-sm text-purple-brand font-semibold">
+                  <span>👋</span>
+                  <span>Bem-vindo(a) de volta! Seu progresso foi salvo.</span>
+                </div>
+              )}
+              <div className="space-y-2">
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 1 de {TOTAL_QUESTIONS}</p>
+                <h2 className="text-2xl font-black text-slate-900 leading-tight">
+                  Qual curso você está buscando? 🎓
+                </h2>
+                <p className="text-slate-400 text-sm">Isso nos ajuda a encontrar o programa ideal para você.</p>
+              </div>
+              <div className="space-y-3">
+                {CURSOS.map((c, i) => (
+                  <ChoiceOption
+                    key={c.id} id={c.id} label={c.label} emoji={c.emoji} index={i}
+                    selected={answers.curso === c.id}
+                    onSelect={() => setAnswer('curso', c.id)}
+                  />
+                ))}
+              </div>
+              {errors.curso && <p className="text-red-400 text-sm">{errors.curso}</p>}
+            </div>
+          )}
+
+          {/* ── Tela 2: Nome ─────────────────────────────────────────── */}
+          {screen === 2 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 1 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 2 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual o seu nome completo? ✍️
                 </h2>
@@ -352,11 +457,11 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 2: E-mail ─────────────────────────────────────────── */}
-          {screen === 2 && (
+          {/* ── Tela 3: E-mail ─────────────────────────────────────────── */}
+          {screen === 3 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 2 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 3 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Qual é o seu melhor e-mail? 📧
                 </h2>
@@ -374,11 +479,11 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 3: WhatsApp ──────────────────────────────────────── */}
-          {screen === 3 && (
+          {/* ── Tela 4: WhatsApp ──────────────────────────────────────── */}
+          {screen === 4 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 3 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 4 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   E o número do seu WhatsApp? 📱
                 </h2>
@@ -402,33 +507,11 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 4: Idade ─────────────────────────────────────────── */}
-          {screen === 4 && (
-            <div className="space-y-6">
-              <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 4 de 9</p>
-                <h2 className="text-2xl font-black text-slate-900 leading-tight">
-                  Qual é a idade do futuro aluno? 🎂
-                </h2>
-              </div>
-              <TextInput
-                type="number"
-                inputMode="numeric"
-                placeholder="Ex: 28"
-                value={answers.idade}
-                onChange={v => setAnswer('idade', v)}
-                onEnter={advance}
-                error={errors.idade}
-                autoFocus
-              />
-            </div>
-          )}
-
           {/* ── Tela 5: Cidade ────────────────────────────────────────── */}
           {screen === 5 && (
             <div className="space-y-6">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 5 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 5 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Em qual cidade você mora? 📍
                 </h2>
@@ -444,35 +527,13 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 6: Curso ─────────────────────────────────────────── */}
+          {/* ── Tela 6: Nível de contato (adapta por curso) ──────────────── */}
           {screen === 6 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 6 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 6 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
-                  Qual curso você está buscando? 🎓
-                </h2>
-              </div>
-              <div className="space-y-3">
-                {CURSOS.map((c, i) => (
-                  <ChoiceOption
-                    key={c.id} id={c.id} label={c.label} emoji={c.emoji} index={i}
-                    selected={answers.curso === c.id}
-                    onSelect={() => setAnswer('curso', c.id)}
-                  />
-                ))}
-              </div>
-              {errors.curso && <p className="text-red-400 text-sm">{errors.curso}</p>}
-            </div>
-          )}
-
-          {/* ── Tela 7: Nível de contato ──────────────────────────────── */}
-          {screen === 7 && (
-            <div className="space-y-5">
-              <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 7 de 9</p>
-                <h2 className="text-2xl font-black text-slate-900 leading-tight">
-                  Já teve contato com o inglês antes? 🎓
+                  {nivelQuestion}
                 </h2>
               </div>
               <div className="space-y-3">
@@ -488,13 +549,13 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 8: Motivação ─────────────────────────────────────── */}
-          {screen === 8 && (
+          {/* ── Tela 7: Motivação (adapta por curso) ──────────────────── */}
+          {screen === 7 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 8 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 7 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
-                  O que mais te motiva a aprender inglês? 💡
+                  {motivacaoQuestion}
                 </h2>
               </div>
               <div className="space-y-3">
@@ -510,11 +571,11 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 9: Como conheceu ─────────────────────────────────── */}
-          {screen === 9 && (
+          {/* ── Tela 8: Como conheceu ─────────────────────────────────── */}
+          {screen === 8 && (
             <div className="space-y-5">
               <div className="space-y-2">
-                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 9 de 9</p>
+                <p className="text-sm font-bold text-purple-brand uppercase tracking-wider">Pergunta 8 de {TOTAL_QUESTIONS}</p>
                 <h2 className="text-2xl font-black text-slate-900 leading-tight">
                   Como você conheceu a OpenLife? 📣
                 </h2>
@@ -532,14 +593,18 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 10: LGPD ─────────────────────────────────────────── */}
-          {screen === 10 && (
+          {/* ── Tela 9: LGPD ─────────────────────────────────────────── */}
+          {screen === 9 && (
             <div className="space-y-6">
               <div className="text-center space-y-3">
                 <div className="text-5xl">✨</div>
                 <h2 className="text-2xl font-black text-slate-900">
                   Quase lá, {primeiroNome || 'você'}!
                 </h2>
+                {/* Badge do curso escolhido */}
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-violet-50 border border-violet-200 rounded-full text-purple-brand text-sm font-bold">
+                  {success.badge}
+                </div>
                 <p className="text-slate-500 text-base">
                   Confirme sua autorização para nossa equipe entrar em contato.
                 </p>
@@ -562,20 +627,24 @@ const Quiz: React.FC = () => {
             </div>
           )}
 
-          {/* ── Tela 11: Sucesso ──────────────────────────────────────── */}
-          {screen === 11 && (
+          {/* ── Tela 10: Sucesso (personalizado por curso) ───────────────── */}
+          {screen === 10 && (
             <div className="text-center space-y-6 py-4">
-              <div className="text-7xl">🎉</div>
+              <div className="text-7xl">{success.emoji}</div>
               <div className="space-y-3">
                 <h2 className="text-3xl font-black text-slate-900 leading-tight">
-                  Parabéns, {primeiroNome || 'você'} deu o primeiro passo!
+                  Parabéns, {primeiroNome || 'você'}!<br />
+                  <span className="text-purple-brand">{success.title}</span>
                 </h2>
                 <p className="text-slate-500 text-base leading-relaxed">
-                  Você está mais perto do seu futuro fluente.
+                  {success.desc}
                 </p>
               </div>
 
               <div className="bg-purple-50 border border-purple-100 rounded-2xl p-6 space-y-3 text-left">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-white border border-violet-200 rounded-full text-purple-brand text-xs font-bold">
+                  {success.badge}
+                </div>
                 <p className="text-slate-700 text-sm leading-relaxed">
                   🎁 Em breve, nossa equipe vai entrar em contato pelo seu WhatsApp.
                 </p>
@@ -587,9 +656,9 @@ const Quiz: React.FC = () => {
                 </p>
               </div>
 
-              {/* Botão WhatsApp */}
+              {/* Botão WhatsApp personalizado */}
               <a
-                href={`https://wa.me/${WA_NUMBER}?text=Oi%2C%20acabei%20de%20preencher%20o%20quiz%20da%20OpenLife!%20Quero%20saber%20mais%20%F0%9F%9A%80`}
+                href={waUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-3 w-full bg-[#25D366] text-white py-5 rounded-2xl font-black text-lg hover:bg-[#1da856] transition-all shadow-lg shadow-green-500/25 active:scale-[0.98]"
@@ -617,8 +686,8 @@ const Quiz: React.FC = () => {
         </div>
       </div>
 
-      {/* ── Botão fixo inferior (telas 1–10) ─────────────────────────── */}
-      {screen >= 1 && screen <= 10 && (
+      {/* ── Botão fixo inferior (telas 1–9) ─────────────────────────── */}
+      {screen >= 1 && screen <= 9 && (
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-5 py-4 z-10">
           <div className="max-w-lg mx-auto">
             <button
@@ -628,7 +697,7 @@ const Quiz: React.FC = () => {
             >
               {submitting ? (
                 <Loader2 size={22} className="animate-spin" />
-              ) : screen === 10 ? (
+              ) : screen === 9 ? (
                 <>Enviar meus dados <ArrowRight size={20} /></>
               ) : (
                 <>Avançar <ArrowRight size={20} /></>

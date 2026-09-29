@@ -53,7 +53,7 @@ const Franchise: React.FC = () => {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
               { label: "Anos de Know-how", value: "+20" },
-              { label: "Alunos Formados", value: "+66k" },
+              { label: "Alunos Formados", value: "+100k" },
               { label: "Satisfação Alunos", value: "95%" },
               { label: "Colaboradores", value: "+600" }
             ].map((stat, i) => (
@@ -112,7 +112,7 @@ const Franchise: React.FC = () => {
           <h2 className="text-4xl md:text-6xl font-black mb-16">Por que ser um <span className="text-purple-200">franqueado OpenLife?</span></h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              { icon: <CheckCircle2 />, title: "Metodologia Exclusiva", desc: "Sistema imersivo validado por 66 mil alunos que garante fluência em 18 meses." },
+              { icon: <CheckCircle2 />, title: "Metodologia Exclusiva", desc: "Sistema imersivo validado por mais de 100 mil alunos que garante fluência em 18 meses." },
               { icon: <Users />, title: "Suporte 360º", desc: "Acompanhamento pedagógico, comercial, marketing e gestão para sua unidade brilhar." },
               { icon: <Zap />, title: "Inovação Tecnológica", desc: "Plataforma gamificada própria e apps que aumentam a retenção e satisfação do aluno." },
               { icon: <Globe />, title: "Marca Consolidada", desc: "Reconhecimento em todo o Sul do Brasil com mais de duas décadas de tradição." },

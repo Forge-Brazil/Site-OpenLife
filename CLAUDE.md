@@ -6,6 +6,15 @@ Domínio definitivo: **openlifebrasil.com.br**
 
 ---
 
+## Regras de Copywriting — OBRIGATÓRIO em todo o site
+
+- **Número de alunos formados:** sempre `+100 mil alunos` (ou `+100k`) — NUNCA usar 66 mil, 66k ou 66.000.
+- **Copy de autoridade:** _"metodologia que formou mais de 100 mil pessoas nos últimos 20 anos"_
+- **Copy de abertura de portas:** _"Inglês abre portas para o mundo globalizado"_ — NUNCA usar "abre portas que currículos não abrem"
+- **Tempo de operação:** 20 anos (não 21)
+
+---
+
 ## Design System — Regras Obrigatórias
 
 ### Hierarquia de Fundos (OBRIGATÓRIO)

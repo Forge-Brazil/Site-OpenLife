@@ -36,7 +36,7 @@ const InglesOnline: React.FC = () => {
             </Link>
           </div>
           <div className="flex justify-center gap-8 pt-4 flex-wrap">
-            {['+66k alunos', '5.0 ★ Google', '18 meses', 'CEFR C1'].map((s, i) => (
+            {['+100k alunos', '5.0 ★ Google', '18 meses', 'CEFR C1'].map((s, i) => (
               <div key={i} className="text-center">
                 <p className="font-black text-lg">{s}</p>
               </div>

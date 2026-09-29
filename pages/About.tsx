@@ -48,7 +48,7 @@ const About: React.FC = () => {
                 A OpenLife English School nasceu em Bagé com a visão de que o ensino de idiomas no Brasil precisava evoluir. Não queríamos apenas ensinar gramática; queríamos dar voz a quem sonha em conquistar o mundo.
               </p>
               <p className="text-lg text-slate-600 leading-relaxed">
-                Ao longo de duas décadas, aperfeiçoamos a metodologia ESL para torná-la a ferramenta mais rápida e eficiente de fluência no país, formando mais de 66.000 alunos que hoje brilham em carreiras globais.
+                Ao longo de duas décadas, aperfeiçoamos a metodologia ESL para torná-la a ferramenta mais rápida e eficiente de fluência no país, formando mais de 100.000 alunos que hoje brilham em carreiras globais.
               </p>
               <div className="flex items-center space-x-6 pt-4">
                 <div className="flex -space-x-4">
@@ -58,7 +58,7 @@ const About: React.FC = () => {
                     </div>
                   ))}
                   <div className="w-12 h-12 rounded-full border-4 border-white bg-purple-brand flex items-center justify-center text-white text-xs font-black">
-                    +66k
+                    +100k
                   </div>
                 </div>
                 <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">Alunos Formados</p>

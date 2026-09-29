@@ -180,7 +180,7 @@ const Methodology: React.FC = () => {
           </div>
           <div className="mt-16 text-center">
             <p className="text-purple-200 text-lg">
-              Com mais de <span className="text-white font-bold">66.000 alunos formados</span>, temos um dos índices de fluência mais altos do Brasil.
+              Com mais de <span className="text-white font-bold">100.000 alunos formados</span>, temos um dos índices de fluência mais altos do Brasil.
             </p>
           </div>
         </div>
