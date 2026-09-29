@@ -51,7 +51,7 @@ const moments = [
   },
   {
     icon: MessagesSquare, title: 'Turmas pequenas, muita fala',
-    desc: 'No máximo 8 crianças por turma — cada uma fala em praticamente todas as aulas.',
+    desc: 'Em média 4 crianças por turma — cada uma fala em praticamente todas as aulas.',
   },
   {
     icon: Star, title: 'Gamificação com recompensas',
@@ -178,7 +178,7 @@ const InglesCriancas: React.FC = () => {
         <Reveal delay={120} className="grid grid-cols-2 md:grid-cols-4 gap-5 max-w-4xl mx-auto mt-14">
           {[
             { v: '6+', l: 'idade mínima recomendada' },
-            { v: '8', l: 'crianças por turma, no máximo' },
+            { v: '~4', l: 'crianças por turma, em média' },
             { v: '20', l: 'anos de método em Bagé' },
             { v: '100%', l: 'das aulas em imersão' },
           ].map((s) => (

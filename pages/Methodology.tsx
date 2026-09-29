@@ -121,7 +121,7 @@ const Methodology: React.FC = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
             {[
-              { title: "Turmas Reduzidas", desc: "Aulas presenciais ou online ao vivo, com máx. 8 alunos para atenção total.", icon: <Users className="text-purple-brand" /> },
+              { title: "Turmas Reduzidas", desc: "Aulas presenciais ou online ao vivo, com média de 4 alunos por turma (máx. 8) para atenção total.", icon: <Users className="text-purple-brand" /> },
               { title: "Plataforma Gamificada", desc: "Atividades diárias com feedback instantâneo para fixação natural.", icon: <Zap className="text-purple-brand" /> },
               { title: "Ambiente 100% Inglês", desc: "Imersão total, inclusive na recepção e em todos os nossos eventos.", icon: <Globe className="text-purple-brand" /> },
               { title: "Eventos Imersivos", desc: "Simulações mensais de situações reais de viagem, trabalho e networking.", icon: <Star className="text-purple-brand" /> },

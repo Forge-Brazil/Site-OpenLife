@@ -150,7 +150,7 @@ const Home: React.FC = () => {
 
               <p className="text-lg md:text-xl text-slate-500 leading-relaxed max-w-lg mx-auto lg:mx-0">
                 {persona === 'adulto'
-                  ? 'Método ESL imersivo com professores certificados. Do zero ao fluente em 18 meses, 100% online, com aulas ao vivo e turmas de até 8 alunos.'
+                  ? 'Método ESL imersivo com professores certificados. Do zero ao fluente em 18 meses, 100% online, com aulas ao vivo e turmas com média de 4 alunos.'
                   : 'Do bilinguismo precoce à fluência na adolescência. Professores especializados, metodologia lúdica e acompanhamento real para crianças e teens.'}
               </p>
 
@@ -453,7 +453,7 @@ const Home: React.FC = () => {
               <div className="grid grid-cols-2 gap-4">
                 {[
                   { label: 'Professores certificados', icon: <Award size={18} /> },
-                  { label: 'Turmas com no máx. 8 alunos', icon: <Users size={18} /> },
+                  { label: 'Média de 4 alunos por turma', icon: <Users size={18} /> },
                   { label: 'Aulas ao vivo toda semana', icon: <Globe size={18} /> },
                   { label: 'Certificação internacional', icon: <TrendingUp size={18} /> },
                 ].map((item, i) => (

@@ -13,6 +13,21 @@ Domínio definitivo: **openlifebrasil.com.br**
 - **Copy de abertura de portas:** _"Inglês abre portas para o mundo globalizado"_ — NUNCA usar "abre portas que currículos não abrem"
 - **Tempo de operação:** 20 anos (não 21)
 
+### Tamanho de Turmas — Regra de Comunicação (OBRIGATÓRIO)
+
+> Válido para **todas as modalidades** (Journey, Keep the Fluency, Kids, Teens, Business, etc.)
+
+| Contexto | Copy obrigatória |
+|---|---|
+| Marketing, hero, benefícios, diferenciais | _"média de 4 alunos por turma"_ ou _"~4 alunos"_ |
+| Tabelas comparativas, stats | _"~4 alunos por turma"_ |
+| FAQ, metodologia, seções de precisão | _"em média 4 alunos por turma, podendo chegar a até 8"_ |
+
+- ✅ CORRETO marketing: "turmas com média de 4 alunos", "média de 4 alunos por turma", "~4 alunos"
+- ✅ CORRETO FAQ/metodologia: "nossas turmas têm em média 4 alunos e podem ter até 8"
+- ⛔ PROIBIDO marketing: "turmas de até 8 alunos", "turmas com no máx. 8 alunos"
+- ⛔ PROIBIDO qualquer lugar: "turmas de até 4 alunos", "máx. 4 alunos" (o máximo real é 8)
+
 ---
 
 ## Design System — Regras Obrigatórias

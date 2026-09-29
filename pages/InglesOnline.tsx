@@ -77,7 +77,7 @@ const InglesOnline: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               { icon: <Globe size={24} />, title: 'Aprenda de qualquer lugar', desc: 'São Paulo, Rio, Curitiba, ou até do exterior. Basta ter internet.' },
-              { icon: <Users size={24} />, title: 'Turmas com 4 alunos', desc: 'Atenção individual garantida. Sem se perder em turmas de 30 pessoas.' },
+              { icon: <Users size={24} />, title: 'Média de 4 alunos por turma', desc: 'Atenção individual garantida. Sem se perder em turmas de 30 pessoas.' },
               { icon: <Clock size={24} />, title: 'Horários flexíveis', desc: 'Agende suas aulas de acordo com sua rotina. Segunda a sábado, 9h às 22h.' },
               { icon: <Award size={24} />, title: 'Professores certificados', desc: 'Todos com formação pedagógica ESL e experiência em ensino online.' },
               { icon: <CheckCircle2 size={24} />, title: 'Plataforma exclusiva', desc: 'Acesso 24/7 ao material interativo, exercícios e comunidade de alunos.' },
@@ -106,7 +106,7 @@ const InglesOnline: React.FC = () => {
             {[
               { n: '01', title: 'Agende sua aula gratuita', desc: 'Preencha o formulário, nosso time entra em contato em até 1h e agenda sua aula experimental grátis.' },
               { n: '02', title: 'Faça o teste de nivelamento', desc: 'Descobrimos seu nível atual (A1-C2) e o módulo ideal do Journey 18 Meses para você.' },
-              { n: '03', title: 'Comece as aulas ao vivo', desc: 'Acesse a plataforma, entre na sua turma (máx. 4 alunos) e comece a imersão desde o primeiro dia.' },
+              { n: '03', title: 'Comece as aulas ao vivo', desc: 'Acesse a plataforma, entre na sua turma (média de 4 alunos) e comece a imersão desde o primeiro dia.' },
               { n: '04', title: 'Fluência em 18 meses', desc: 'Com constância e nosso método ESL, você alcança o C1 em 18 meses e recebe sua certificação internacional.' },
             ].map((step, i) => (
               <div key={i} className="flex gap-5">

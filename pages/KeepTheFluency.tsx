@@ -47,7 +47,7 @@ const DIFFERENTIALS = [
   },
   {
     icon: <Users size={24} />,
-    title: 'Turmas de até 4 alunos',
+    title: 'Média de 4 alunos por turma',
     desc: 'Você realmente fala. Sem ficar esperando sua vez em grupos de 20. Atenção real do professor e tempo de prática em cada aula.',
   },
   {
@@ -76,7 +76,7 @@ const FOR_WHO = [
 
 const COMPARE = [
   { feature: 'Professor especialista ao vivo', keep: true, cambly: false, apps: false, escola: true },
-  { feature: 'Turmas pequenas (máx. 4)', keep: true, cambly: false, apps: false, escola: false },
+  { feature: 'Turmas com ~4 alunos em média', keep: true, cambly: false, apps: false, escola: false },
   { feature: 'Metodologia ESL estruturada', keep: true, cambly: false, apps: false, escola: false },
   { feature: 'Sem cobrança excessiva', keep: true, cambly: true, apps: true, escola: false },
   { feature: 'Foco em conversação real', keep: true, cambly: true, apps: false, escola: false },
@@ -460,7 +460,7 @@ const KeepTheFluency: React.FC = () => {
             Inglês que não se usa,<br />é inglês que some.
           </h2>
           <p className="text-purple-200 text-lg max-w-lg mx-auto leading-relaxed">
-            Metodologia de 20 anos. Professores especialistas. Turmas de até 4 alunos.
+            Metodologia de 20 anos. Professores especialistas. Turmas com média de 4 alunos.
             Uma sessão gratuita para você começar hoje, sem compromisso.
           </p>
           <button
