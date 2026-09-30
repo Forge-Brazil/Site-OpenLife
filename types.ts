@@ -9,6 +9,7 @@ export interface Course {
   description: string;
   highlights: string[];
   image: string;
+  link?: string;
 }
 
 export interface Post {

@@ -63,13 +63,24 @@ const CoursesPage: React.FC = () => {
                     </ul>
                   </div>
 
-                  <button
-                    onClick={() => openSmartForm()}
-                    className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
-                  >
-                    <span>Quero saber mais</span>
-                    <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
-                  </button>
+                  <div className="flex flex-wrap gap-3">
+                    <button
+                      onClick={() => openSmartForm()}
+                      className="inline-flex items-center space-x-2 bg-purple-brand text-white px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-900 transition-all shadow-sm group"
+                    >
+                      <span>Quero saber mais</span>
+                      <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
+                    </button>
+                    {course.link && (
+                      <Link
+                        to={course.link}
+                        className="inline-flex items-center space-x-2 border-2 border-purple-brand text-purple-brand px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-purple-50 transition-all group"
+                      >
+                        <span>Ver programa completo</span>
+                        <ArrowRight size={16} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform" />
+                      </Link>
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
