@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ChevronLeft, Loader2, ArrowRight } from 'lucide-react';
+import { trackLeadCompleto } from '../utils/analytics';
 
 // ─── UTM helpers ──────────────────────────────────────────────────────────────
 const captureUTMs = (): Record<string, string> => {
@@ -314,6 +315,19 @@ const Quiz: React.FC = () => {
         }),
       });
     } catch { /* noop — sempre mostra sucesso */ }
+
+    // Dispara eventos de conversão (Meta Pixel Lead + GA4 generate_lead + GTM)
+    const persona = derivarPersona(answers.curso, answers.motivacao);
+    const utms = captureUTMs();
+    trackLeadCompleto({
+      curso: answers.curso,
+      persona,
+      cidade: answers.cidade,
+      utm_source: utms.utm_source,
+      utm_medium: utms.utm_medium,
+      utm_campaign: utms.utm_campaign,
+    });
+
     setSub(false);
     setScreen(10);
     try {
