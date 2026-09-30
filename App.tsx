@@ -10,6 +10,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Chatbot from './components/Chatbot';
 import SmartForm from './components/SmartForm';
+import ScrollToTop from './components/ScrollToTop';
 
 // Página de quiz standalone (sem Header/Footer)
 import Quiz from './pages/Quiz';
@@ -84,7 +85,7 @@ export const SEO_META: Record<string, { title: string; description: string; cano
     canonical: 'https://openlifebrasil.com.br/metodologia',
   },
   '/sobre': {
-    title: 'Sobre a OpenLife: 21 Anos Formando Fluentes',
+    title: 'Sobre a OpenLife: 20 Anos Formando Fluentes',
     description: 'A OpenLife é uma escola de inglês com mais de 20 anos de história, 100 mil alunos formados e metodologia ESL pioneira no Brasil. Conheça nossa história.',
     canonical: 'https://openlifebrasil.com.br/sobre',
   },
@@ -100,7 +101,7 @@ export const SEO_META: Record<string, { title: string; description: string; cano
   },
   '/keep-the-fluency': {
     title: 'Keep the Fluency: Mantenha seu Inglês Vivo | OpenLife',
-    description: 'Programa de manutenção de fluência para quem já é B2/C1. Aulas de conversação e listening ao vivo, professores experts, turmas de até 4 alunos. Sem pressão, sem cobrança excessiva.',
+    description: 'Programa de manutenção de fluência para quem já é B2/C1. Aulas de conversação e listening ao vivo, professores experts, média de 4 alunos por turma. Sem pressão, sem rotina exaustiva.',
     canonical: 'https://openlifebrasil.com.br/keep-the-fluency',
   },
   '/franquia': {
@@ -156,6 +157,7 @@ const AppShell: React.FC = () => {
   return (
     <>
       <SEOUpdater />
+      <ScrollToTop />
       <div className="flex flex-col min-h-screen">
         <Header />
         <main className="flex-grow pt-20">

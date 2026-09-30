@@ -16,7 +16,7 @@ const Footer: React.FC = () => {
               <img src="/logomarca-branca.png" alt="OpenLife English School" className="w-24 h-24 object-contain" />
             </Link>
             <p className="text-purple-100 text-sm leading-relaxed max-w-xs">
-              Transformando vidas através da fluência em inglês há mais de 21 anos.
+              Transformando vidas através da fluência em inglês há mais de 20 anos.
               Metodologia ESL pioneira com resultados em 18 meses.
             </p>
             <div className="flex space-x-2.5">
@@ -48,11 +48,12 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="text-[10px] font-semibold uppercase tracking-widest text-purple-200 mb-4">Cursos</h4>
             <ul className="space-y-3 text-xs">
-              <li><Link to="/ingles-online" className="text-purple-100 hover:text-white transition-colors">Inglês Online</Link></li>
               <li><Link to="/ingles-para-adultos" className="text-purple-100 hover:text-white transition-colors">Inglês para Adultos</Link></li>
-              <li><Link to="/ingles-para-criancas" className="text-purple-100 hover:text-white transition-colors">Inglês para Crianças</Link></li>
-              <li><Link to="/ingles-para-adolescentes" className="text-purple-100 hover:text-white transition-colors">Inglês para Adolescentes</Link></li>
+              <li><Link to="/keep-the-fluency" className="text-white font-semibold hover:text-purple-200 transition-colors">Keep the Fluency ✦</Link></li>
               <li><Link to="/ingles-para-negocios" className="text-purple-100 hover:text-white transition-colors">Inglês para Negócios</Link></li>
+              <li><Link to="/ingles-online" className="text-purple-100 hover:text-white transition-colors">Inglês Online</Link></li>
+              <li><Link to="/ingles-para-adolescentes" className="text-purple-100 hover:text-white transition-colors">Inglês para Adolescentes</Link></li>
+              <li><Link to="/ingles-para-criancas" className="text-purple-100 hover:text-white transition-colors">Inglês para Crianças</Link></li>
               <li><Link to="/cursos" className="text-purple-200 font-semibold hover:text-white transition-colors">Ver todos →</Link></li>
             </ul>
           </div>
