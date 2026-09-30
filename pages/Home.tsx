@@ -219,7 +219,7 @@ const Home: React.FC = () => {
                 </div>
                 <div className="h-10 w-px bg-slate-200 hidden sm:block" />
                 <div className="text-center lg:text-left">
-                  <p className="text-2xl font-black text-slate-900">21+</p>
+                  <p className="text-2xl font-black text-slate-900">20+</p>
                   <p className="text-[11px] text-slate-500 font-bold uppercase tracking-wide">Anos transformando vidas</p>
                 </div>
               </div>
@@ -495,7 +495,7 @@ const Home: React.FC = () => {
                 A troca, o incentivo e o ambiente elevam o seu resultado além da sala de aula.
               </p>
               <div className="flex flex-wrap gap-4 justify-center">
-                {['+100k alunos ativos', '5.0 Google', '21 anos de mercado', 'Certificação IELTS/TOEFL'].map((item, i) => (
+                {['+100k alunos ativos', '5.0 Google', '20 anos de metodologia', 'Certificação IELTS/TOEFL'].map((item, i) => (
                   <div key={i} className="inline-flex items-center gap-2 bg-violet-50 border border-violet-100 text-purple-brand text-sm font-semibold px-4 py-2 rounded-full">
                     <CheckCircle2 size={14} />
                     {item}

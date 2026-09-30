@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OpenLife — Briefing de Imagens: Home</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root {
+  --purple: #7C3AED;
+  --purple-deep: #4C1D95;
+  --purple-light: #EDE9FE;
+  --purple-mid: #6D28D9;
+  --orange: #F97316;
+  --slate-900: #0F172A;
+  --slate-700: #334155;
+  --slate-500: #64748B;
+  --slate-200: #E2E8F0;
+  --slate-100: #F1F5F9;
+  --white: #FFFFFF;
+  --bgsoft: #F8F8FF;
+  --emerald: #059669;
+  --amber: #D97706;
+  --red: #DC2626;
+  --bg: var(--white);
+  --fg: var(--slate-900);
+  --surface: var(--bgsoft);
+  --border: var(--slate-200);
+  --muted: var(--slate-500);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0D0B17;
+    --fg: #F1F0F8;
+    --surface: #16132A;
+    --border: #2A2640;
+    --muted: #8B89A8;
+    --slate-100: #1E1B35;
+    --slate-200: #2A2640;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0D0B17;
+  --fg: #F1F0F8;
+  --surface: #16132A;
+  --border: #2A2640;
+  --muted: #8B89A8;
+  --slate-100: #1E1B35;
+  --slate-200: #2A2640;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--fg);
+  line-height: 1.6;
+  padding: 0 16px;
+}
+
+/* ── LAYOUT ── */
+.wrapper { max-width: 960px; margin: 0 auto; padding: 48px 0 80px; }
+.page-header { border-bottom: 2px solid var(--purple); padding-bottom: 32px; margin-bottom: 48px; }
+.logo-bar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.logo-chip { background: var(--purple); color: white; font-size: 11px; font-weight: 900; letter-spacing: 0.12em; padding: 5px 12px; border-radius: 100px; }
+.page-title { font-size: clamp(24px, 5vw, 42px); font-weight: 900; color: var(--fg); line-height: 1.1; margin-bottom: 8px; }
+.page-sub { color: var(--muted); font-size: 15px; max-width: 560px; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 64px; }
+.section-header { background: var(--purple-deep); color: white; border-radius: 16px 16px 0 0; padding: 20px 24px; display: flex; align-items: center; gap: 12px; }
+.section-number { font-size: 12px; font-weight: 900; letter-spacing: 0.15em; opacity: 0.5; min-width: 32px; }
+.section-name { font-size: 18px; font-weight: 900; }
+.section-tag { margin-left: auto; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; background: rgba(255,255,255,0.12); padding: 4px 10px; border-radius: 100px; }
+.section-body { background: var(--surface); border: 1px solid var(--border); border-top: none; border-radius: 0 0 16px 16px; overflow: hidden; }
+
+/* ── SLOT ── */
+.slot { border-bottom: 1px solid var(--border); padding: 28px 24px; }
+.slot:last-child { border-bottom: none; }
+.slot-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 20px; }
+.slot-id { background: var(--purple); color: white; font-size: 11px; font-weight: 900; border-radius: 8px; padding: 6px 10px; min-width: 44px; text-align: center; line-height: 1; flex-shrink: 0; }
+.slot-title { font-size: 17px; font-weight: 800; color: var(--fg); }
+.slot-file { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--purple); background: var(--purple-light); padding: 2px 8px; border-radius: 4px; display: inline-block; margin-top: 4px; }
+
+/* ── SPEC GRID ── */
+.spec-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 20px; }
+.spec-item { background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; }
+.spec-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.spec-value { font-size: 14px; font-weight: 700; color: var(--fg); }
+.spec-value.mono { font-family: 'JetBrains Mono', monospace; font-size: 13px; color: var(--purple); }
+
+/* ── SAFE ZONE DIAGRAM ── */
+.diagram-wrap { margin-bottom: 20px; }
+.diagram-label { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin-bottom: 10px; }
+.diagram { position: relative; border: 2px dashed var(--border); border-radius: 12px; overflow: hidden; background: var(--surface); }
+.diagram-image-area { background: linear-gradient(135deg, #c4b5fd22 0%, #7c3aed11 100%); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; }
+.safe-overlay { position: absolute; background: rgba(249, 115, 22, 0.18); border: 2px solid rgba(249, 115, 22, 0.6); display: flex; align-items: center; justify-content: center; }
+.safe-label { font-size: 9px; font-weight: 800; color: #b45309; text-align: center; line-height: 1.2; padding: 2px 4px; }
+.clear-overlay { position: absolute; background: rgba(5, 150, 105, 0.12); border: 2px dashed rgba(5, 150, 105, 0.5); }
+.clear-label { position: absolute; font-size: 9px; font-weight: 800; color: var(--emerald); }
+.text-col { position: absolute; background: rgba(124, 58, 237, 0.08); border: 1px solid rgba(124, 58, 237, 0.2); }
+.text-col-label { position: absolute; font-size: 9px; font-weight: 800; color: var(--purple); }
+
+/* ── LEGEND ── */
+.legend { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+.legend-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--muted); }
+.legend-dot { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+
+/* ── BADGES ── */
+.badge { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; }
+.badge-orange { background: rgba(249,115,22,0.1); color: #c2410c; border: 1px solid rgba(249,115,22,0.25); }
+.badge-green { background: rgba(5,150,105,0.1); color: #065f46; border: 1px solid rgba(5,150,105,0.25); }
+.badge-purple { background: var(--purple-light); color: var(--purple); border: 1px solid #ddd6fe; }
+.badge-slate { background: var(--slate-100); color: var(--slate-700); border: 1px solid var(--slate-200); }
+.badge-red { background: rgba(220,38,38,0.08); color: #991b1b; border: 1px solid rgba(220,38,38,0.2); }
+
+/* ── PROMPT BOX ── */
+.prompt-box { background: #0D0B17; border: 1px solid #2A2640; border-radius: 12px; padding: 20px; margin-top: 16px; }
+.prompt-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.prompt-icon { font-size: 14px; }
+.prompt-title { font-size: 12px; font-weight: 800; letter-spacing: 0.1em; color: #a78bfa; text-transform: uppercase; }
+.prompt-text { font-family: 'JetBrains Mono', monospace; font-size: 12px; line-height: 1.7; color: #e2e8f0; white-space: pre-wrap; word-break: break-word; }
+.prompt-negative { margin-top: 12px; padding-top: 12px; border-top: 1px solid #2A2640; }
+.prompt-negative-label { font-size: 10px; font-weight: 700; letter-spacing: 0.1em; color: #f87171; margin-bottom: 6px; }
+.prompt-negative-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #f87171; opacity: 0.7; }
+
+/* ── MOBILE PREVIEW ── */
+.mobile-note { display: flex; gap: 12px; background: var(--bg); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-top: 12px; }
+.mobile-icon { font-size: 22px; flex-shrink: 0; }
+.mobile-text { font-size: 13px; color: var(--fg); }
+.mobile-text strong { color: var(--purple); }
+
+/* ── TAGS ROW ── */
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0; }
+
+/* ── RULES TABLE ── */
+.rules-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-top: 12px; }
+.rules-table th { background: var(--purple); color: white; padding: 10px 14px; text-align: left; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+.rules-table th:first-child { border-radius: 8px 0 0 0; }
+.rules-table th:last-child { border-radius: 0 8px 0 0; }
+.rules-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.rules-table tr:last-child td { border-bottom: none; }
+.rules-table tr:nth-child(even) td { background: var(--surface); }
+
+/* ── NOTICE ── */
+.notice { border-left: 3px solid var(--orange); background: rgba(249,115,22,0.06); padding: 12px 16px; border-radius: 0 8px 8px 0; font-size: 13px; color: var(--fg); margin: 16px 0; }
+.notice strong { color: #c2410c; }
+
+/* ── TOC ── */
+.toc { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; margin-bottom: 48px; }
+.toc-title { font-size: 12px; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+.toc-list { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+.toc-list a { color: var(--purple); font-weight: 600; font-size: 14px; text-decoration: none; }
+.toc-list a:hover { text-decoration: underline; }
+.toc-count { font-size: 11px; color: var(--muted); margin-left: 6px; font-weight: 400; }
+
+/* ── CHECKLIST ── */
+.checklist { list-style: none; display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.checklist li { display: flex; align-items: flex-start; gap: 8px; font-size: 13px; color: var(--fg); }
+.checklist li::before { content: '☐'; color: var(--purple); font-size: 14px; line-height: 1.4; flex-shrink: 0; }
+.checklist.done li::before { content: '✓'; color: var(--emerald); }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); margin: 32px 0; }
+
+/* ── FOOTER ── */
+.doc-footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- PAGE HEADER -->
+  <div class="page-header">
+    <div class="logo-bar">
+      <span class="logo-chip">OPENLIFE BRASIL</span>
+      <span class="logo-chip" style="background:var(--orange)">BRIEFING DE IMAGENS v1.0</span>
+    </div>
+    <h1 class="page-title">Guia de Imagens<br>para o Designer</h1>
+    <p class="page-sub">Documento técnico de especificação visual — dimensões, zonas seguras, estilo fotográfico, orientações mobile-first e prompts de IA para geração de cada imagem. Documento entregue por seção de página, começando pela Home.</p>
+    <div class="tags" style="margin-top:16px">
+      <span class="badge badge-purple">📄 Página: Home (/)</span>
+      <span class="badge badge-slate">🎯 ICP: Adultos 20–40 anos · Profissionais · Universitários</span>
+      <span class="badge badge-green">✅ Mobile-First</span>
+      <span class="badge badge-orange">⚠️ Kids em 2º plano</span>
+    </div>
+    <div class="notice" style="margin-top:20px">
+      <strong>Personas prioritárias desta página:</strong> Jovens adultos 22–38 anos, profissionais liberais, universitários, pessoas que sonham em trabalhar em Big Techs, startups globais, multinacionais. Produto principal: <strong>Journey (P0)</strong> e <strong>Keep the Fluency (P1)</strong>. Kids e Teens: menção secundária apenas.
+    </div>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <p class="toc-title">Índice de Slots — Home Page</p>
+    <ul class="toc-list">
+      <li><a href="#slot-h1">H1 · Hero Principal — Professora ao Vivo</a><span class="toc-count">560 × 420px · Slot mais crítico</span></li>
+      <li><a href="#slot-h2">H2 · Vídeos "Situações Reais" — 3 Thumbnails de Vídeo</a><span class="toc-count">260 × 462px (central) · Formato 9:16</span></li>
+      <li><a href="#slot-h3">H3 · Foto Imersão — "Como Funciona na Prática"</a><span class="toc-count">560 × 350px · Ratio 16:10</span></li>
+      <li><a href="#slot-h4">H4 · Foto Comunidade — "Mais que uma Escola"</a><span class="toc-count">560 × 420px · Ratio 4:3</span></li>
+      <li><a href="#slot-h5">H5 · Depoimentos em Vídeo — 6 Thumbnails Verticais</a><span class="toc-count">213 × 379px (desktop) · Formato 9:16</span></li>
+    </ul>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- SLOT H1: HERO PRINCIPAL -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section" id="slot-h1">
+    <div class="section-header">
+      <span class="section-number">H1</span>
+      <span class="section-name">Hero Principal — "Professor ao Vivo"</span>
+      <span class="section-tag">SLOT MAIS CRÍTICO · ABOVE THE FOLD</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <div class="slot-header">
+          <div class="slot-id">H1</div>
+          <div>
+            <div class="slot-title">Imagem do Hero — Coluna Direita</div>
+            <div class="slot-file">/public/hero-home.webp</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="badge badge-red">🔴 Prioridade Máxima — P0</span>
+          <span class="badge badge-purple">Humanizada / Realista</span>
+          <span class="badge badge-green">Above the fold</span>
+          <span class="badge badge-slate">Gerada com IA</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">Dimensões (Desktop)</div>
+            <div class="spec-value mono">560 × 420 px</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Aspect Ratio</div>
+            <div class="spec-value mono">4 : 3</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Formato de Entrega</div>
+            <div class="spec-value mono">.webp (máx. 120kb)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Resolução</div>
+            <div class="spec-value mono">1120 × 840 px @2x</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Border-radius (no código)</div>
+            <div class="spec-value mono">rounded-3xl (24px)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Posição (Desktop)</div>
+            <div class="spec-value">Coluna direita — 50% da largura</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Posição (Mobile)</div>
+            <div class="spec-value">Topo da página — 100% largura</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Loading</div>
+            <div class="spec-value mono">eager (LCP crítico)</div>
+          </div>
+        </div>
+
+        <!-- SAFE ZONE DIAGRAM -->
+        <div class="diagram-wrap">
+          <p class="diagram-label">Mapa de Zonas — Desktop (560 × 420 px)</p>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(249,115,22,0.4);border:2px solid rgba(249,115,22,0.7)"></div> Zona ocupada por badge HTML (não colocar rosto/texto)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(5,150,105,0.15);border:2px dashed rgba(5,150,105,0.6)"></div> Área segura para conteúdo principal da foto</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.3)"></div> Área sombreada (shadow-2xl da borda)</div>
+          </div>
+          <div class="diagram" style="width:100%;max-width:560px;aspect-ratio:4/3">
+            <div class="diagram-image-area" style="position:absolute;inset:0">
+              <span style="opacity:0.4;font-size:11px;font-weight:700;letter-spacing:.05em">ÁREA DA FOTO · 560 × 420 px</span>
+            </div>
+            <!-- Green safe area (main subject) -->
+            <div class="clear-overlay" style="inset:5% 5% 28% 5%;border-radius:8px">
+              <span class="clear-label" style="top:6px;left:8px">✓ CONTEÚDO PRINCIPAL — rosto, expressão, ambiente</span>
+            </div>
+            <!-- Orange safe zone badge bottom-left -->
+            <div class="safe-overlay" style="bottom:0;left:0;width:46%;height:26%;border-radius:0 8px 0 24px">
+              <div class="safe-label">⚠️ BADGE FLUTUANTE<br>"Aula 100% ao vivo"<br>~240 × 90px</div>
+            </div>
+            <!-- Bottom-right free zone -->
+            <div style="position:absolute;bottom:0;right:0;width:54%;height:20%;border-radius:8px 0 24px 0;background:rgba(5,150,105,0.08);border:1px dashed rgba(5,150,105,0.3);display:flex;align-items:center;justify-content:center">
+              <span style="font-size:9px;font-weight:700;color:#065f46">ÁREA LIVRE</span>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:8px">⚠️ A região inferior esquerda (≈ 240 × 90 px) fica coberta pelo badge glassmorfismo "Aula 100% ao vivo". Não posicionar elemento essencial (rosto, olho, texto) nessa área.</p>
+        </div>
+
+        <!-- MOBILE NOTE -->
+        <div class="mobile-note">
+          <span class="mobile-icon">📱</span>
+          <div class="mobile-text">
+            <strong>Mobile-First:</strong> Em telas &lt; 1024px, a imagem vai para o topo da página (order-first), com largura 100% e border-radius de 24px. O badge inferior-esquerdo permanece visível. Garantir que o <strong>rosto do professor(a) fique no centro-superior</strong> da imagem, nunca na metade inferior (área do badge). Testar em 375px e 414px de largura.
+          </div>
+        </div>
+
+        <!-- STYLE GUIDE -->
+        <div class="divider"></div>
+        <table class="rules-table">
+          <thead><tr><th>Dimensão Visual</th><th>Orientação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Estilo</strong></td><td>Humanizada e realista. Fotografia editorial de qualidade. Ambiente doméstico ou de home-office sofisticado.</td></tr>
+            <tr><td><strong>Pessoas</strong></td><td>Professora ou professor. Aparência entre 28–42 anos. Expressão confiante, calorosa, engajada. Olhar levemente em direção à câmera (aluno) ou para a tela.</td></tr>
+            <tr><td><strong>Diversidade</strong></td><td>Pode ser de qualquer etnia. O que importa é a credibilidade e simpatia — deve parecer alguém que você confiaria para te ensinar.</td></tr>
+            <tr><td><strong>Ambiente</strong></td><td>Home-office clean: mesa organizada, livros desfocados ao fundo, planta, luz natural pela janela. Ou sala de aula moderna com projetor desfocado.</td></tr>
+            <tr><td><strong>Tecnologia</strong></td><td>Notebook ou monitor visível mostrando uma interface de aula online (Zoom/Meet estilizado). Headset clean ou sem headset.</td></tr>
+            <tr><td><strong>Iluminação</strong></td><td>Luz natural ou softbox frontal. Tom quente-neutro. Fundo levemente desfocado (bokeh). Sem filtros exagerados.</td></tr>
+            <tr><td><strong>Paleta cromática</strong></td><td>Tons neutros predominantes: branco, bege, off-white. Detalhe roxo sutil (caneta, copo, adesivo no notebook) é bem-vindo mas não obrigatório.</td></tr>
+            <tr><td><strong>O que EVITAR</strong></td><td>Foto de banco de imagens genérica. Fundo branco liso (sem profundidade). Professor com expressão rígida ou sisuda. Lousa física (remete a escola tradicional).</td></tr>
+          </tbody>
+        </table>
+
+        <!-- AI PROMPT -->
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-icon">🤖</span>
+            <span class="prompt-title">Prompt para Geração com IA (Midjourney / Flux / Firefly)</span>
+          </div>
+          <div class="prompt-text">A warm and modern online English teacher, Brazilian woman in her early 30s, sitting at a clean home office desk, smiling naturally at the webcam. She wears smart-casual attire in neutral tones. Behind her: softly blurred bookshelf, indoor plant, warm window light. A laptop screen shows a video call interface. Natural editorial photography style, shallow depth of field, warm daylight, 4:3 crop. The composition leaves the bottom-left 40% of the frame intentionally less busy (clear area for badge overlay). Photorealistic, high resolution, Canon 85mm f/1.8 aesthetic.</div>
+          <div class="prompt-negative">
+            <div class="prompt-negative-label">NEGATIVE PROMPT</div>
+            <div class="prompt-negative-text">stock photo look, white seamless background, stiff pose, whiteboard, dark background, heavy makeup, formal suit, AI-looking artifacts, cartoonish, illustration, flat light, heavy filters, extra fingers</div>
+          </div>
+        </div>
+
+        <!-- INTEGRATION CHECKLIST -->
+        <div class="divider"></div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Checklist de Integração</p>
+        <ul class="checklist">
+          <li>Exportar em .webp com qualidade 85%. Tamanho máximo: 120kb</li>
+          <li>Versão @2x (1120×840px) para telas Retina — usar srcset</li>
+          <li>Garantir que nenhum elemento crucial esteja nos 240px inferiores do lado esquerdo (badge sobreposição)</li>
+          <li>Testar display em mobile 375px — rosto deve aparecer visível no centro-superior</li>
+          <li>Alt text: "Professora OpenLife conduzindo aula de inglês online ao vivo"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- SLOT H2: VÍDEOS SITUAÇÕES REAIS -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section" id="slot-h2">
+    <div class="section-header">
+      <span class="section-number">H2</span>
+      <span class="section-name">Vídeos "Situações Reais" — 3 Thumbnails / Capas</span>
+      <span class="section-tag">SEÇÃO DARK · FAN LAYOUT</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <div class="slot-header">
+          <div class="slot-id">H2</div>
+          <div>
+            <div class="slot-title">3 Vídeos Verticais — Cenas de Imersão em Inglês</div>
+            <div class="slot-file">/public/video01.mp4 · video02.mp4 · video03.mp4</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="badge badge-red">🔴 Alta Prioridade</span>
+          <span class="badge badge-purple">Vídeo 9:16 vertical</span>
+          <span class="badge badge-slate">Cenário Real / Dramatizado</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">Vídeo Central (Desktop)</div>
+            <div class="spec-value mono">260 × 462 px</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Vídeos Laterais (Desktop)</div>
+            <div class="spec-value mono">220 × 391 px (rotac. ±11°)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Aspect Ratio</div>
+            <div class="spec-value mono">9 : 16 (Stories)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Formato</div>
+            <div class="spec-value mono">.mp4 H.264 (max 8mb)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Resolução Mínima</div>
+            <div class="spec-value mono">1080 × 1920 px</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Duração</div>
+            <div class="spec-value">15–30 segundos (loop)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Áudio</div>
+            <div class="spec-value">Silenciado por padrão (muted)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Mobile</div>
+            <div class="spec-value mono">min(72vw, 240px) × auto</div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Contexto da seção:</strong> Fundo escuro roxo profundo com monumentos mundiais (Big Ben, Estátua da Liberdade, Opera House). Os vídeos devem representar <strong>situações reais</strong> onde inglês é usado na vida profissional e pessoal — não aulas formais.
+        </div>
+
+        <table class="rules-table">
+          <thead><tr><th>Vídeo</th><th>Cena / Situação</th><th>Tom</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>video01.mp4</strong><br><span style="font-size:11px;color:var(--muted)">Central · destaque</span></td>
+              <td>Profissional brasileiro em reunião de vídeo com time internacional. Falando inglês com segurança. Home-office moderno. Expressão de fluência e conforto.</td>
+              <td>Confiança, profissionalismo, modernidade</td>
+            </tr>
+            <tr>
+              <td><strong>video02.mp4</strong><br><span style="font-size:11px;color:var(--muted)">Lateral esq. -11°</span></td>
+              <td>Jovem assistindo podcast ou série em inglês (Netflix/YouTube) com earphones, reagindo naturalmente — sorrindo, compreendendo, engajado. Ambiente casual.</td>
+              <td>Naturalidade, prazer, cotidiano</td>
+            </tr>
+            <tr>
+              <td><strong>video03.mp4</strong><br><span style="font-size:11px;color:var(--muted)">Lateral dir. +11°</span></td>
+              <td>Estudante universitário lendo artigo em inglês, tomando notas. Ou pessoa apresentando slides em inglês para equipe diversa. Ambiente acadêmico/corporativo.</td>
+              <td>Aspiração, crescimento, conquista</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="mobile-note">
+          <span class="mobile-icon">📱</span>
+          <div class="mobile-text">
+            <strong>Mobile:</strong> Os 3 vídeos ficam em scroll horizontal, cada um com largura de min(72vw, 240px). Garantir que o <strong>elemento principal da cena esteja no centro do frame</strong> — os cards são cortados nas laterais em telas pequenas. Usar object-fit: cover.
+          </div>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-icon">🤖</span>
+            <span class="prompt-title">Prompt — video01 (Central · Reunião Internacional)</span>
+          </div>
+          <div class="prompt-text">Short vertical video (9:16), Brazilian young professional, man or woman aged 28-35, in a modern home office, confidently speaking in a video call with an international team. Multiple screens visible showing diverse colleagues on screen. Natural expression, engaged, articulate. Warm modern interior, clean desk setup. Cinematic handheld feel. Portrait orientation, 1080×1920px. Subtle purple accent in the scene (mug, notebook cover, desk lamp). Photorealistic, not stock-photo aesthetic.</div>
+          <div class="prompt-negative">
+            <div class="prompt-negative-label">NEGATIVE PROMPT</div>
+            <div class="prompt-negative-text">formal suit and tie, white background, stock photo, stiff expression, obvious AI artifacts, text or subtitles, dark moody filter, low quality</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- SLOT H3: FOTO IMERSÃO -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section" id="slot-h3">
+    <div class="section-header">
+      <span class="section-number">H3</span>
+      <span class="section-name">Foto Imersão — "Como Funciona na Prática"</span>
+      <span class="section-tag">SEÇÃO BRANCA · COLUNA ESQUERDA</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <div class="slot-header">
+          <div class="slot-id">H3</div>
+          <div>
+            <div class="slot-title">Foto Aula ao Vivo — Ambiente de Imersão</div>
+            <div class="slot-file">/public/foto-aula.webp</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="badge badge-red">🔴 Alta Prioridade</span>
+          <span class="badge badge-purple">Humanizada / Realista</span>
+          <span class="badge badge-slate">Gerada com IA</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">Dimensões Desktop</div>
+            <div class="spec-value mono">560 × 350 px</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Aspect Ratio</div>
+            <div class="spec-value mono">16 : 10</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Entrega</div>
+            <div class="spec-value mono">.webp (máx. 100kb)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Resolução</div>
+            <div class="spec-value mono">1120 × 700 px @2x</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Border-radius</div>
+            <div class="spec-value mono">rounded-3xl (24px)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Posição</div>
+            <div class="spec-value">Coluna esquerda — 50% largura</div>
+          </div>
+        </div>
+
+        <!-- SAFE ZONE DIAGRAM -->
+        <div class="diagram-wrap">
+          <p class="diagram-label">Mapa de Zonas — Desktop (560 × 350 px · 16:10)</p>
+          <div class="legend">
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(249,115,22,0.4);border:2px solid rgba(249,115,22,0.7)"></div> Badge "Aula ao vivo" (canto superior esq.)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:rgba(5,150,105,0.15);border:2px dashed rgba(5,150,105,0.6)"></div> Área livre para conteúdo principal</div>
+          </div>
+          <div class="diagram" style="width:100%;max-width:560px;aspect-ratio:16/10">
+            <div class="diagram-image-area" style="position:absolute;inset:0">
+              <span style="opacity:0.4;font-size:11px;font-weight:700;letter-spacing:.05em">ÁREA DA FOTO · 560 × 350 px (16:10)</span>
+            </div>
+            <!-- Orange badge top-left -->
+            <div class="safe-overlay" style="top:0;left:0;width:28%;height:20%;border-radius:0 0 8px 0">
+              <div class="safe-label">⚠️ BADGE "AULA AO VIVO"<br>~120 × 36px</div>
+            </div>
+            <!-- Green free zone -->
+            <div class="clear-overlay" style="top:20%;right:5%;bottom:8%;left:30%;border-radius:8px">
+              <span class="clear-label" style="top:6px;left:8px">✓ ÁREA LIVRE — conteúdo principal</span>
+            </div>
+          </div>
+          <p style="font-size:11px;color:var(--muted);margin-top:8px">⚠️ Badge roxo "Aula ao vivo" sobreposto no canto superior esquerdo (≈ 120 × 36px). Evitar colocar rosto ou texto nesse canto.</p>
+        </div>
+
+        <table class="rules-table">
+          <thead><tr><th>Dimensão Visual</th><th>Orientação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Cena</strong></td><td>Tela de computador mostrando uma aula online em progresso. Vemos parcialmente o aluno, a interface da aula, e possivelmente o professor na tela. Ângulo sobre o ombro (over-the-shoulder) ou frontal 3/4.</td></tr>
+            <tr><td><strong>Atmosfera</strong></td><td>Engajamento ativo. Aluno digitando, tomando notas, sorrindo. Sensação de aprendizado real, não rígido. Ambiente doméstico ou cowork moderno.</td></tr>
+            <tr><td><strong>Elementos visuais</strong></td><td>Notebook aberto com interface de aula visível (pode ser levemente pixelada/blur para não precisar ser real). Caderno de notas ao lado. Fone de ouvido clean. Copo de café.</td></tr>
+            <tr><td><strong>Iluminação</strong></td><td>Luz natural lateral. Brilho suave da tela iluminando o rosto. Tom quente e acolhedor.</td></tr>
+            <tr><td><strong>O que EVITAR</strong></td><td>Sala de aula física com carteiras. Lousa verde. Livros didáticos antiquados. Expressão de tédio ou tensão.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-icon">🤖</span>
+            <span class="prompt-title">Prompt para Geração com IA</span>
+          </div>
+          <div class="prompt-text">Over-the-shoulder view of a young Brazilian adult, 25-32 years old, engaged in an online English class on a modern laptop. The laptop screen shows a video call with a teacher visible. Natural notebook and pen on the desk. Warm daylight from the side. Clean home-office or coworking space aesthetic. Shallow depth of field. 16:10 horizontal crop. The top-left 25% of the frame should be relatively clear (sky, wall, or background). Photorealistic, editorial photography style, natural colors, not stock photo.</div>
+          <div class="prompt-negative">
+            <div class="prompt-negative-label">NEGATIVE PROMPT</div>
+            <div class="prompt-negative-text">traditional classroom, blackboard, green chalkboard, school desks, text books, bored expression, dark environment, heavy contrast filter, cartoon, illustration, stock photo look</div>
+          </div>
+        </div>
+
+        <div class="mobile-note">
+          <span class="mobile-icon">📱</span>
+          <div class="mobile-text">
+            <strong>Mobile:</strong> Imagem ocupa 100% da largura. O aspecto 16:10 permanece com object-cover. O badge "Aula ao vivo" do canto superior-esquerdo continua visível em mobile — garantir que o conteúdo principal da foto não seja cortado nessa área em telas 375px.
+          </div>
+        </div>
+
+        <ul class="checklist" style="margin-top:16px">
+          <li>Exportar .webp qualidade 85%, máx. 100kb</li>
+          <li>Canto superior esquerdo deve estar relativamente livre (badge sobreposição)</li>
+          <li>Testar em mobile 375px — verificar se cena principal permanece visível</li>
+          <li>Alt text: "Aluno OpenLife em aula online ao vivo de inglês"</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- SLOT H4: FOTO COMUNIDADE -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section" id="slot-h4">
+    <div class="section-header">
+      <span class="section-number">H4</span>
+      <span class="section-name">Foto Comunidade — "Mais que uma Escola"</span>
+      <span class="section-tag">SEÇÃO BRANCA · COLUNA DIREITA</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <div class="slot-header">
+          <div class="slot-id">H4</div>
+          <div>
+            <div class="slot-title">Foto Turma / Grupo — Senso de Comunidade</div>
+            <div class="slot-file">/public/foto-turma.webp</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="badge badge-red">🔴 Alta Prioridade</span>
+          <span class="badge badge-purple">Humanizada / Realista</span>
+          <span class="badge badge-slate">Gerada com IA</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">Dimensões Desktop</div>
+            <div class="spec-value mono">560 × 420 px</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Aspect Ratio</div>
+            <div class="spec-value mono">4 : 3</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Entrega</div>
+            <div class="spec-value mono">.webp (máx. 120kb)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Resolução</div>
+            <div class="spec-value mono">1120 × 840 px @2x</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Border-radius</div>
+            <div class="spec-value mono">rounded-3xl (24px)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Posição Mobile</div>
+            <div class="spec-value">Acima do texto (order-1)</div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Objetivo emocional:</strong> Esta imagem deve transmitir <strong>pertencimento, conexão e alto padrão</strong>. O viewer precisa sentir: "quero fazer parte desse grupo". Turmas pequenas (3–4 pessoas) em ambiente de colaboração real — online ou híbrido.
+        </div>
+
+        <table class="rules-table">
+          <thead><tr><th>Dimensão Visual</th><th>Orientação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Quantidade de pessoas</strong></td><td>3 a 4 pessoas. Simula a turma reduzida (média 4 alunos). Mistura de etnias, ambos os gêneros, idades entre 22–38 anos.</td></tr>
+            <tr><td><strong>Dinâmica</strong></td><td>Interação ativa: uma pessoa falando, outros ouvindo com atenção, alguém sorrindo. Pode ser tela de videochamada em grupo (grid 2x2 estilo Zoom) com expressões naturais. Ou grupo pequeno em coworking conversando em inglês.</td></tr>
+            <tr><td><strong>Ambiente</strong></td><td>Online (grid de vídeo no monitor) ou coworking moderno. Não sala de aula formal. Ambiente que sugira modernidade e profissionalismo.</td></tr>
+            <tr><td><strong>Tom emocional</strong></td><td>Alegria genuína, conexão, energia positiva. Não forçado ou comercial demais.</td></tr>
+            <tr><td><strong>Sem overlays</strong></td><td>Nenhum badge ou elemento HTML sobrepostor nesta imagem. Pode usar toda a área com conteúdo relevante.</td></tr>
+            <tr><td><strong>O que EVITAR</strong></td><td>Grupo grande (parece escola comum). Sala de aula com lousa. Expressões artificiais ("cheese smile"). Pessoas em trajes muito formais.</td></tr>
+          </tbody>
+        </table>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-icon">🤖</span>
+            <span class="prompt-title">Prompt para Geração com IA</span>
+          </div>
+          <div class="prompt-text">A laptop screen showing a 2x2 video call grid with four young Brazilian adults (ages 22-38, diverse ethnicity, mixed gender), participating in a small online English conversation class. Their expressions are genuine and engaged — one is speaking confidently, others listening and smiling. The room around the laptop is a clean modern home setup. Warm, natural lighting. Editorial photography, shallow depth of field, 4:3 horizontal crop. The mood conveys community, belonging and high achievement. NOT a stock photo look.</div>
+          <div class="prompt-negative">
+            <div class="prompt-negative-label">NEGATIVE PROMPT</div>
+            <div class="prompt-negative-text">large group, traditional classroom, blackboard, forced smiles, corporate formal attire, dark background, heavy saturation, stock photo look, text overlays, cartoonish</div>
+          </div>
+        </div>
+
+        <div class="mobile-note">
+          <span class="mobile-icon">📱</span>
+          <div class="mobile-text">
+            <strong>Mobile:</strong> Em mobile, esta foto fica <strong>acima do texto</strong> (order-1), visível antes de rolar. A 100% da largura. Garantir que os rostos das pessoas estejam visíveis na porção <strong>central-superior</strong> do frame — não cortar cabeças.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- SLOT H5: DEPOIMENTOS EM VÍDEO -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section" id="slot-h5">
+    <div class="section-header">
+      <span class="section-number">H5</span>
+      <span class="section-name">Depoimentos em Vídeo — 6 Thumbnails Verticais</span>
+      <span class="section-tag">GRID 6 COLUNAS (DESKTOP) · SCROLL HORIZONTAL (MOBILE)</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <div class="slot-header">
+          <div class="slot-id">H5</div>
+          <div>
+            <div class="slot-title">6 Vídeos de Depoimento — Formato Stories</div>
+            <div class="slot-file">/public/video11.mp4 a video16.mp4</div>
+          </div>
+        </div>
+
+        <div class="tags">
+          <span class="badge badge-orange">🟠 Prioridade Média</span>
+          <span class="badge badge-purple">Alunos Reais ou Atores</span>
+          <span class="badge badge-slate">9:16 · Stories Format</span>
+          <span class="badge badge-green">Social Proof</span>
+        </div>
+
+        <div class="spec-grid">
+          <div class="spec-item">
+            <div class="spec-label">Dimensões Desktop</div>
+            <div class="spec-value mono">~213 × 379 px cada</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Dimensões Mobile</div>
+            <div class="spec-value mono">144 × 256 px (w-36)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Aspect Ratio</div>
+            <div class="spec-value mono">9 : 16 (Stories)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Formato</div>
+            <div class="spec-value mono">.mp4 (máx. 5mb cada)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Duração</div>
+            <div class="spec-value">30–60 seg · loop</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Áudio</div>
+            <div class="spec-value">Com áudio (play ao clicar)</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Quantidade</div>
+            <div class="spec-value">6 vídeos distintos</div>
+          </div>
+          <div class="spec-item">
+            <div class="spec-label">Borda</div>
+            <div class="spec-value mono">1px solid #EDE9FE (violeta)</div>
+          </div>
+        </div>
+
+        <div class="notice">
+          <strong>Estratégia de conteúdo:</strong> Estes vídeos são o social proof mais poderoso do site. Devem parecer <strong>autênticos</strong> — como um Instagram Story real de um aluno contando sua história. Não parecer comercial ou produzido demais. Legendas em português são recomendadas.
+        </div>
+
+        <table class="rules-table">
+          <thead><tr><th>Vídeo</th><th>Perfil do Depoente</th><th>Mensagem Central</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>video11</strong></td>
+              <td>Homem 28-35 anos, profissional tech, expressão confiante</td>
+              <td>"Consegui a vaga na multinacional por causa do inglês"</td>
+            </tr>
+            <tr>
+              <td><strong>video12</strong></td>
+              <td>Mulher 25-32 anos, área de negócios, carismática</td>
+              <td>"Em 14 meses passei a liderar times internacionais"</td>
+            </tr>
+            <tr>
+              <td><strong>video13</strong></td>
+              <td>Homem 30-38 anos, engenheiro/dev, informal e direto</td>
+              <td>"Nenhum método anterior funcionou. Aqui funcionou."</td>
+            </tr>
+            <tr>
+              <td><strong>video14</strong></td>
+              <td>Mulher 22-28 anos, universitária, animada</td>
+              <td>"Tirei IELTS 7.5 para o mestrado no exterior"</td>
+            </tr>
+            <tr>
+              <td><strong>video15</strong></td>
+              <td>Homem 35-42 anos, executivo, tom sério e convincente</td>
+              <td>"Valeu cada centavo. ROI imediato na carreira."</td>
+            </tr>
+            <tr>
+              <td><strong>video16</strong></td>
+              <td>Mulher 28-35 anos, designer/criativa, entusiasta</td>
+              <td>"A comunidade faz toda a diferença na motivação"</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <table class="rules-table" style="margin-top:12px">
+          <thead><tr><th>Elemento Técnico</th><th>Especificação</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Enquadramento</strong></td><td>Close ao busto (chest-up). Rosto centralizado. Fundo desfocado.</td></tr>
+            <tr><td><strong>Legenda</strong></td><td>Nome + cargo no rodapé do vídeo (burned-in ou HTML overlay)</td></tr>
+            <tr><td><strong>Safe zone vertical</strong></td><td>Não colocar rosto nos 15% superiores e inferiores do frame (botão play e borda do card)</td></tr>
+            <tr><td><strong>Iluminação</strong></td><td>Luz natural ou ring light suave. Sem sombras pesadas.</td></tr>
+            <tr><td><strong>Thumbnail frame</strong></td><td>O frame estático mostrado antes do play deve mostrar rosto + expressão positiva claramente</td></tr>
+          </tbody>
+        </table>
+
+        <div class="mobile-note">
+          <span class="mobile-icon">📱</span>
+          <div class="mobile-text">
+            <strong>Mobile:</strong> Em mobile, os 6 vídeos ficam em scroll horizontal com w-36 (144px). O rosto do depoente deve estar <strong>visível e centralizado</strong> mesmo na versão 144px de largura. Nunca usar fonte muito pequena para legendas — o texto burned-in precisa ter pelo menos 16px equivalente no frame final.
+          </div>
+        </div>
+
+        <div class="prompt-box">
+          <div class="prompt-header">
+            <span class="prompt-icon">🤖</span>
+            <span class="prompt-title">Prompt Base (adaptar para cada perfil)</span>
+          </div>
+          <div class="prompt-text">Vertical video testimonial (9:16, 1080×1920px). Brazilian [man/woman], [age] years old, [profession], sitting comfortably at home or in a casual office. Looking directly at camera, speaking naturally with genuine expression. Chest-up framing. Slightly blurred neutral background. Natural lighting (window or ring light). The mood is authentic and personal — like an Instagram Story, not a corporate ad. No professional studio look. Candid, warm, trustworthy. The subject appears confident and happy about their English fluency achievement.</div>
+          <div class="prompt-negative">
+            <div class="prompt-negative-label">NEGATIVE PROMPT</div>
+            <div class="prompt-negative-text">studio backdrop, corporate stiff, heavy makeup, forced smile, too polished, text on screen, full body shot, dark background, moody lighting, blurry face</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────── -->
+  <!-- RESUMO DE ENTREGÁVEIS -->
+  <!-- ──────────────────────────────────────────── -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-number">✓</span>
+      <span class="section-name">Resumo de Entregáveis — Home Page</span>
+      <span class="section-tag">CHECKLIST FINAL</span>
+    </div>
+    <div class="section-body">
+      <div class="slot">
+        <table class="rules-table">
+          <thead>
+            <tr>
+              <th>Arquivo</th>
+              <th>Dimensão Entrega</th>
+              <th>Formato</th>
+              <th>Peso Máx.</th>
+              <th>Prioridade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>/hero-home.webp</code></td>
+              <td>1120 × 840 px</td>
+              <td>.webp</td>
+              <td>120 kb</td>
+              <td><span class="badge badge-red" style="font-size:10px">P0 · CRÍTICO</span></td>
+            </tr>
+            <tr>
+              <td><code>/video01.mp4</code></td>
+              <td>1080 × 1920 px</td>
+              <td>.mp4 H.264</td>
+              <td>8 mb</td>
+              <td><span class="badge badge-red" style="font-size:10px">P0 · CRÍTICO</span></td>
+            </tr>
+            <tr>
+              <td><code>/video02.mp4</code></td>
+              <td>1080 × 1920 px</td>
+              <td>.mp4 H.264</td>
+              <td>8 mb</td>
+              <td><span class="badge badge-red" style="font-size:10px">P0 · CRÍTICO</span></td>
+            </tr>
+            <tr>
+              <td><code>/video03.mp4</code></td>
+              <td>1080 × 1920 px</td>
+              <td>.mp4 H.264</td>
+              <td>8 mb</td>
+              <td><span class="badge badge-red" style="font-size:10px">P0 · CRÍTICO</span></td>
+            </tr>
+            <tr>
+              <td><code>/foto-aula.webp</code></td>
+              <td>1120 × 700 px</td>
+              <td>.webp</td>
+              <td>100 kb</td>
+              <td><span class="badge badge-orange" style="font-size:10px">P1 · ALTA</span></td>
+            </tr>
+            <tr>
+              <td><code>/foto-turma.webp</code></td>
+              <td>1120 × 840 px</td>
+              <td>.webp</td>
+              <td>120 kb</td>
+              <td><span class="badge badge-orange" style="font-size:10px">P1 · ALTA</span></td>
+            </tr>
+            <tr>
+              <td><code>/video11.mp4 → video16.mp4</code></td>
+              <td>1080 × 1920 px (cada)</td>
+              <td>.mp4 H.264</td>
+              <td>5 mb cada</td>
+              <td><span class="badge badge-slate" style="font-size:10px">P2 · MÉDIA</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="divider"></div>
+        <p style="font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:12px">Regras Globais de Entrega</p>
+        <ul class="checklist">
+          <li>Todos os arquivos salvos em <code>/public/</code> na raiz do projeto</li>
+          <li>Imagens .webp com qualidade 85% — não usar JPEG ou PNG em produção</li>
+          <li>Vídeos com codec H.264 AAC · preload="metadata" configurado no código</li>
+          <li>Nenhuma imagem com fundo branco puro ou estúdio artificial</li>
+          <li>Todas as imagens com pessoas devem representar adultos 20–40 anos (ICP principal)</li>
+          <li>Kids/Teens NÃO devem aparecer na Home (são P3 · segundo plano)</li>
+          <li>Paleta da foto: tons neutros (bege, branco, cinza) com ambiente moderno. Detalhes roxos são permitidos.</li>
+          <li>Todas as imagens passam pelo test: "Isso parece real ou parece banco de imagens?"</li>
+          <li>Versões @2x (dobro da resolução) para telas Retina/HiDPI</li>
+          <li>Alt texts em português descritivos — nunca "img01" ou vazio</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <p><strong>OpenLife Brasil</strong> — Briefing de Imagens v1.0 · Setembro 2026</p>
+    <p style="margin-top:4px">Documento gerado para uso interno — equipe de design e produção de conteúdo</p>
+    <p style="margin-top:4px;color:var(--purple)">Próximas páginas: /ingles-para-adultos (Journey) · /keep-the-fluency · /ingles-para-negocios</p>
+  </div>
+
+</div>
+</body>
+</html>
