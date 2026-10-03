@@ -22,8 +22,21 @@ const Blog: React.FC = () => {
       .slice(0, 3);
   };
 
+  // Link direto para um artigo: /blog?post=<slug> (usado pela newsletter do ERP).
+  useEffect(() => {
+    const slug = new URLSearchParams(window.location.search).get('post');
+    if (!slug) return;
+    const post = MOCK_POSTS.find(p => p.slug === slug);
+    if (post) setSelectedPost(post);
+  }, []);
+
   useEffect(() => {
     window.scrollTo(0, 0);
+    // Mantém o endereço compartilhável: com artigo aberto, ?post=<slug>; na lista, /blog.
+    const url = new URL(window.location.href);
+    if (selectedPost) url.searchParams.set('post', selectedPost.slug);
+    else url.searchParams.delete('post');
+    window.history.replaceState(window.history.state, '', url.pathname + url.search + url.hash);
   }, [selectedPost]);
 
   if (selectedPost) {

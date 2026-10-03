@@ -43,7 +43,11 @@ const ROUTES = [
 ];
 
 const template = fs.readFileSync(path.join(clientDir, 'index.html'), 'utf-8');
-const { render } = await import(pathToFileURL(serverEntry).href);
+const { render, blogPostsCatalog } = await import(pathToFileURL(serverEntry).href);
+
+// Catálogo do blog para o ERP (Marketing › Newsletter anexa artigos às edições).
+fs.writeFileSync(path.join(clientDir, 'blog-posts.json'), JSON.stringify(blogPostsCatalog()), 'utf-8');
+console.log('Catálogo do blog gerado: blog-posts.json');
 
 for (const route of ROUTES) {
   const { html: appHtml, meta, schema } = render(route);

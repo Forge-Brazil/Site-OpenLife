@@ -37,7 +37,7 @@ app.use(cors());
 // via endpoint público protegido por chave secreta, mesmo padrão de registerLead()
 // abaixo. Se o ERP estiver fora do ar, cai pro Supabase local do site como rede
 // de segurança e manda o e-mail de boas-vindas fixo direto por aqui.
-async function registerNewsletterSubscriber({ email }) {
+async function registerNewsletterSubscriber({ email, nome, interesse }) {
   if (process.env.ERP_API_URL && process.env.SITE_SHARED_SECRET) {
     try {
       const erpResponse = await fetch(`${process.env.ERP_API_URL}/api/newsletter/site`, {
@@ -46,7 +46,7 @@ async function registerNewsletterSubscriber({ email }) {
           'Content-Type': 'application/json',
           'X-Site-Key': process.env.SITE_SHARED_SECRET,
         },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email, nome, interesse }),
       });
 
       if (erpResponse.ok) {
@@ -116,9 +116,13 @@ app.post('/api/newsletter/subscribe', async (req, res) => {
   if (!email || !email.includes('@')) {
     return res.status(400).json({ error: 'Email inválido' });
   }
+  // Objetivo declarado (segmenta a newsletter no ERP). Lista fechada, igual a
+  // INTERESSES em erp/server/services/newsletterRegras.ts.
+  const interesse = ['cultural', 'academico', 'profissional'].includes(req.body?.interesse) ? req.body.interesse : undefined;
+  const nome = typeof req.body?.nome === 'string' && req.body.nome.trim() ? req.body.nome.trim().slice(0, 120) : undefined;
 
   try {
-    const result = await registerNewsletterSubscriber({ email });
+    const result = await registerNewsletterSubscriber({ email, nome, interesse });
     if (result.ok) {
       res.status(200).json({ message: 'Inscrito com sucesso!', emailSent: result.emailSent, databaseStored: result.databaseStored, emailError: result.emailError });
     } else {
